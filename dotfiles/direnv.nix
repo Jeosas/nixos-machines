@@ -5,8 +5,7 @@
     enable = true;
   };
 
-  xdg.configFile.direnvrc = {
-    target = "direnv/direnvrc";
+  xdg.configFile."direnv/direnvrc" = {
     text = /* bash */ ''
       layout_poetry() {
          PYPROJECT_TOML="''${PYPROJECT_TOML:-pyproject.toml}"

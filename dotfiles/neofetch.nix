@@ -4,8 +4,7 @@
   home.packages = with pkgs; [ neofetch ];
 
 
-  xdg.configFile.neofetch = {
-    target = "neofetch/config.conf";
+  xdg.configFile."neofetch/config.conf" = {
     text = /* bash */ ''
       print_info() {
           prin "\n"
