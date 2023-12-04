@@ -1,6 +1,10 @@
 { inputs, config, pkgs, lib, ... }:
 
 with pkgs.lib.strings;
+let
+  volume = import ./dunst/volumeScript.nix { inherit pkgs; };
+  brightness = import ./dunst/brightnessScript.nix { inherit pkgs; };
+in
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -134,18 +138,18 @@ with pkgs.lib.strings;
       binde = SUPER_CTRL, j, resizeactive, 0 50
 
       # media
-      # bindel =, XF86MonBrightnessUp, exec, 
-      # bindel =, XF86MonBrightnessDown, exec, 
-      # bindel =, XF86AudioRaiseVolume, exec, 
-      # bindel =, XF86AudioLowerVolume, exec, 
-      # bindl =, XF86AudioMute, exec, 
-      # bindl =, XF86AudioPlay, exec, 
-      # bindl =, XF86AudioPause, exec, 
-      # bindl =, XF86AudioStop, exec, 
-      # bindl =, XF86AudioNext, exec, 
-      # bindl =, XF86AudioPrevious, exec, 
-      # bind =, Print, exec, 
-      # bind = SHIFT, Print, exec, 
+      bindel =, XF86MonBrightnessUp, exec, ${brightness} up
+      bindel =, XF86MonBrightnessDown, exec, ${brightness} down
+      bindel =, XF86AudioRaiseVolume, exec, ${volume} up
+      bindel =, XF86AudioLowerVolume, exec, ${volume} down
+      bindl =, XF86AudioMute, exec,  ${volume} mute
+      bindl =, XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause
+      bindl =, XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause
+      bindl =, XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop
+      bindl =, XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next
+      bindl =, XF86AudioPrevious, exec, ${pkgs.playerctl}/bin/playerctl previous
+      bind =, Print, exec, ${pkgs.flameshot}/bin/flameshot screen
+      bind = SHIFT, Print, exec, ${pkgs.flameshot}/bin/flameshot gui -s -p ~/Images
 
       # system
       # bind = SUPER_SHIFT, q, exec, POWERMENU

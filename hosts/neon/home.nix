@@ -26,6 +26,7 @@ in
     packages = with pkgs; [
       just
       (import ./houseKeeping.nix { inherit pkgs; })
+      ncpamixer
     ];
     sessionVariables = {
       # hyprland nvidia fix

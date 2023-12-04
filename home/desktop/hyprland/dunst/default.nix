@@ -279,13 +279,17 @@
 
       [volume]
           stack_tag = myvolume
-          font = Hack Nerd Font 14
+          origin = top-center
+          offset = 0x30
+          font = ${config.theme.fonts.sans} 14
           format = "<b>%s</b>"
           history_ignore=yes
 
       [brightness]
           stack_tag = mybrightness
-          font = Hack Nerd Font 14
+          origin = top-center
+          offset = 0x30
+          font = ${config.theme.fonts.sans} 14
           format = "<b>%s</b>"
           history_ignore=yes
     '';
