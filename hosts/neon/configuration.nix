@@ -50,6 +50,24 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Nvidia
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    open = true;
+    modesetting.enable = true;
+    nvidiaSettings = false;
+    powerManagement.enable = true;
+  };
+  services.xserver.videoDrivers = [ "nvidia" ]; # needed even for wayland
+
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    enableNvidiaPatches = true;
   };
 
   # Fonts - leave user (home-manager) setup fonts
