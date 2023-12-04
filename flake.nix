@@ -5,15 +5,21 @@
     nixpkgs-stable.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
+    nurpkgs.url = "github:nix-community/NUR";
+
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    arkenfox-userjs = {
+      url = "github:arkenfox/user.js";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, hyprland, ... }@inputs: {
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nurpkgs, home-manager, hyprland, arkenfox-userjs, ... }@inputs: {
     homeConfigurations.jeosas =
       let
         username = "jeosas";
@@ -30,9 +36,14 @@
           system = "x86_64-linux";
           config.allowUnfree = false;
           config.xdg.configHome = configHome;
+          overlays = [
+            nurpkgs.overlay
+          ];
         };
 
         modules = [
+          inputs.hyprland.homeManagerModules.default
+          inputs.nurpkgs.hmModules.nur
           {
             home = {
               inherit username homeDirectory;
@@ -51,7 +62,7 @@
           ./dotfiles/starship.nix
           ./dotfiles/neovim
           ./dotfiles/direnv
-          inputs.hyprland.homeManagerModules.default
+          ./dotfiles/firefox
           ./dotfiles/de/hyprland
         ];
       };
