@@ -8,6 +8,7 @@ with pkgs.lib.strings;
     ../../common/theme.nix
     ./eww
     ./dunst
+    ./wofi
   ];
 
   home.packages = with pkgs; [ wl-clipboard ];
@@ -92,7 +93,7 @@ with pkgs.lib.strings;
       }
 
       # apps
-      # bind = SUPER, d, exec, APPMENU
+      bind = SUPER, d, exec, ${config.programs.wofi.package}/bin/wofi --show drun
       bind = SUPER_SHIFT, Return, exec,${config.programs.firefox.package}/bin/firefox 
       bind = SUPER, Return, exec, ${pkgs.alacritty}/bin/alacritty
 
