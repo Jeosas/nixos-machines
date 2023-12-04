@@ -11,6 +11,10 @@ let
   '';
 in
 {
+  home.sessionVariables = mkIf config.wayland.windowManager.hyprland.enable {
+    MOZ_ENABLE_WAYLAND = "1";
+  };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
@@ -50,49 +54,10 @@ in
         This repo https://github.com/Timvde/UserChrome-Tweaks contains nice snippets.
         */
 
-        /* Move Tab bar to the right. */
-
-        /* Move toolbox to the bottom. */
-
-        body {
-        	flex-direction: column-reverse !important;
-        }
-
-        #urlbar {
-          top: unset !important;
-          bottom: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
-          box-shadow: none !important;
-          display: flex !important;
-          flex-direction: column !important;
-        }
-
-        #urlbar-input-container {
-          order: 2;
-        }
-
-        #urlbar > .urlbarView {
-          order: 1;
-          border-bottom: 1px solid #666;
-        }
-
-        toolbox[inFullscreen=true] { 
-          display: none;
-        }
-
-
         /* Remove 'Sync' ad from App Menu. */
-
         #appMenu-fxa-status2, 
         #appMenu-fxa-status2 + toolbarseparator {
           display: none !important;
-        }
-
-
-        /* Inverse App Menu. */
-
-        .panel-subview-body {
-          display: flex !important;
-          flex-direction: column-reverse !important;
         }
       '';
       extraConfig = mkUserJs {
