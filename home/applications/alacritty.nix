@@ -5,15 +5,17 @@
     enable = true;
     settings = {
       font = {
-        normal.family = "M+1Code Nerd Font Mono";
+        normal.family = config.theme.fonts.mono;
         size = 11;
+        offset.x = 1;
       };
 
       window = {
         opacity = 0.8;
+        decorations = "None";
       };
 
-      colors = with config.colors; {
+      colors = with config.theme.colors; {
         primary = {
           background = background;
           foreground = foreground;
