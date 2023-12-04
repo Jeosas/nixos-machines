@@ -29,8 +29,8 @@
       color9 = "#bf616a"; # nord11
       color10 = "#a3be8c"; # nord14
       color11 = "#ebcb8b"; # nord13
-      color12 = "#ebcb8b"; # nord9
-      color13 = "#ebcb8b"; # nord15
+      color12 = "#81a1c1"; # nord9
+      color13 = "#b48ead"; # nord15
       color14 = "#8fbcbb"; # nord7
       color15 = "#eceff4"; # nord6
       background = "#2e3440"; # nord0
