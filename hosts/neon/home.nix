@@ -8,6 +8,7 @@ in
   imports = [
     inputs.nurpkgs.hmModules.nur
 
+    ../../home/desktop/hyprland
     ../../home/applications/neovim
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix

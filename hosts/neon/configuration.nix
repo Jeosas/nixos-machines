@@ -16,7 +16,15 @@
   # Nix
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+    overlays = [
+      inputs.nurpkgs.overlay
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
   nix = {
     gc = {
       automatic = true;
@@ -44,15 +52,12 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # xserver
+  # Graphics
   hardware.opengl = {
     enable = true;
     driSupport = true;
   };
-  services.xserver = {
-    enable = true;
-    displayManager.startx.enable = true;
-  };
+  programs.hyprland.enable = true;
 
   # Fonts - leave user (home-manager) setup fonts
   fonts.enableDefaultPackages = false;
@@ -87,6 +92,7 @@
       }
     ];
   };
+  security.polkit.enable = true;
 
   # Users
   users.mutableUsers = false;

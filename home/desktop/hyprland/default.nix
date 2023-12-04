@@ -1,24 +1,17 @@
-{ inputs, config, pkgs, nvidia ? false, ... }:
+{ inputs, config, pkgs, ... }:
 
 with pkgs.lib.strings;
 {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
-    enableNvidiaPatches = nvidia;
-    systemdIntegration = true;
     xwayland.enable = true;
 
     extraConfig = ''
       monitor=,preferred,auto,auto
-
-      ${optionalString nvidia ''
-      # nvidia setup
-      env = LIBVA_DRIVER_NAME,nvidia
-      env = XDG_SESSION_TYPE,wayland
-      env = GBM_BACKEND,nvidia-drm
-      env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-      env = WLR_NO_HARDWARE_CURSORS,1
-      ''}
 
       input {
         kb_layout = us
@@ -74,8 +67,8 @@ with pkgs.lib.strings;
       }
 
       # apps
-      bind = SUPER, F, exec, firefox
-      bind = SUPER, Return, exec, alacritty
+      bind = SUPER, F, exec,${config.programs.firefox.package}/bin/firefox 
+      bind = SUPER, Return, exec, ${pkgs.alacritty}/bin/alacritty
 
       # workspaces
       # binds SUPER + [shift +] {1..10} to [move to] workspace {1..10}
@@ -92,17 +85,20 @@ with pkgs.lib.strings;
         )
         10)}
 
-      # move around hjkl
+      # move around
       bind = SUPER, h, movefocus, l
       bind = SUPER, l, movefocus, r
       bind = SUPER, k, movefocus, u
       bind = SUPER, j, movefocus, d
+    '';
+  };
 
-      # move around arrows
-      bind = SUPER, left, movefocus, l
-      bind = SUPER, right, movefocus, r
-      bind = SUPER, up, movefocus, u
-      bind = SUPER, down, movefocus, d
+  # Start on login
+  programs.zsh = {
+    profileExtra = /* bash */ ''
+      if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+        Hyprland
+      fi
     '';
   };
 }
