@@ -11,6 +11,7 @@ in
     ../../home/desktop/hyprland
     ../../home/applications/neovim
     ../../home/applications/firefox.nix
+    ../../home/applications/alacritty.nix
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
     ../../home/tools/direnv.nix

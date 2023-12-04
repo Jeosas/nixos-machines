@@ -4,10 +4,7 @@
   imports = [ ../../modules/home-manager/theme.nix ];
   # Fonts
   home.packages = with pkgs; [
-    # normal fonts
-    helvetica-neue-lt-std
-
-    # cjk fonts
+    # normal + cjk font
     mplus-outline-fonts.githubRelease
 
     # emoji

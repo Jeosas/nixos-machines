@@ -4,6 +4,8 @@ with pkgs.lib.strings;
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
+
+    ../../common/theme.nix
   ];
 
   wayland.windowManager.hyprland = {
