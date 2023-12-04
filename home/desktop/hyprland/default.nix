@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 with pkgs.lib.strings;
 {
@@ -32,14 +32,16 @@ with pkgs.lib.strings;
     systemdIntegration = false;
     recommendedEnvironment = true;
 
-    extraConfig = ''
+    extraConfig = with config.theme.colors; let
+      inherit (lib) removePrefix;
+    in
+    ''
       monitor=,3440x1440@144,auto,auto
 
       input {
         kb_layout = us
         kb_variant = altgr-intl
         kb_model = pc105
-
         follow_mouse = 0
       }
 
@@ -47,22 +49,21 @@ with pkgs.lib.strings;
         gaps_in = 8
         gaps_out = 16
         border_size = 2
-        col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-        col.inactive_border = rgba(595959aa)
+        col.active_border = rgba(${removePrefix "#" color2}ff) rgba(${removePrefix "#" color6}ff) 45deg
+        col.inactive_border = rgba(${removePrefix "#" background}cc)
         layout = dwindle
         allow_tearing = false
         cursor_inactive_timeout = 6
+        no_cursor_warps = true
       }
 
       decoration {
         rounding = 8
-
         blur {
           enabled = true
           size = 3
           passes = 1
         }
-
         drop_shadow = true
         shadow_range = 4
         shadow_render_power = 3
@@ -71,9 +72,7 @@ with pkgs.lib.strings;
 
       animations {
         enabled = true
-
         bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
         animation = windows, 1, 7, myBezier
         animation = windowsOut, 1, 7, default, popin 80%
         animation = border, 1, 10, default
