@@ -3,6 +3,7 @@
 {
   imports = [
     ./vm.nix
+    ./hardware.nix
 
     inputs.home-manager.nixosModules.home-manager
     {
@@ -17,7 +18,6 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
   nixpkgs = {
-    hostPlatform = "x86_64-linux";
     overlays = [
       inputs.nurpkgs.overlay
     ];
@@ -50,6 +50,10 @@
     LC_PAPER = "fr_FR.UTF-8";
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
+  };
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
   };
 
   # Graphics
@@ -92,6 +96,12 @@
     ];
   };
   security.polkit.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    wget
+  ];
 
   # Users
   users.mutableUsers = false;

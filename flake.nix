@@ -36,5 +36,18 @@
           modules = [ ./hosts/JB-IV/home.nix ];
         };
       };
+
+      devShells = {
+        x86_64-linux.nixos-install =
+          let
+            pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          in
+          pkgs.mkShell {
+            name = "nixos-install";
+            packages = with pkgs; [
+              nixos-install-tools
+            ];
+          };
+      };
     };
 }
