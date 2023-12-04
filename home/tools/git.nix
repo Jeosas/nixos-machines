@@ -33,7 +33,7 @@
     enable = true;
     settings = {
       os.editCommand = "nvim";
-      gui.showIcons = true;
+      gui.nerdFontsVersion = "3"; # show icons
     };
   };
   programs.zsh.shellAliases.lz = "lazygit";
