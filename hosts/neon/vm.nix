@@ -5,7 +5,7 @@
   virtualisation.vmVariant = {
     virtualisation = {
       memorySize = 8192;
-      cores = 4;
+      cores = 8;
       resolution = { x = 1600; y = 900; };
     };
   };
