@@ -37,6 +37,7 @@ in
         youtube-nonstop
         tridactyl
         kristofferhagen-nord-theme
+        darkreader
       ];
       search = {
         default = "DuckDuckGo";
