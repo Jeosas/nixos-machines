@@ -58,11 +58,11 @@
           }
           ./dotfiles/git.nix
           ./dotfiles/zsh.nix
-          ./dotfiles/neofetch
+          ./dotfiles/neofetch.nix
           ./dotfiles/starship.nix
           ./dotfiles/neovim
-          ./dotfiles/direnv
-          ./dotfiles/firefox
+          ./dotfiles/direnv.nix
+          ./dotfiles/firefox.nix
           ./dotfiles/de/hyprland
         ];
       };
