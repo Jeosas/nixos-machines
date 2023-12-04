@@ -109,6 +109,7 @@
     git
     vim
     wget
+    tree
   ];
 
   # Users
