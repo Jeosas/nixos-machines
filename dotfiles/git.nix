@@ -12,6 +12,7 @@
       core.editor = "nvim";
       color.ui = true;
       pull.rebase = true;
+      fetch.prune = true;
       init.defaultBranch = "main";
     };
 
@@ -26,7 +27,6 @@
       };
     };
   };
-  programs.zsh.shellAliases.git-clean-branches = "git fetch --all --prune && git branch | grep -v '^[\\*\\+]' | xargs git branch -D";
 
   # Lazygit
   programs.lazygit = {
