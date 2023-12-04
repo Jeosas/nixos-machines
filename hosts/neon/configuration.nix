@@ -57,7 +57,6 @@
     enable = true;
     driSupport = true;
   };
-  programs.hyprland.enable = true;
 
   # Fonts - leave user (home-manager) setup fonts
   fonts.enableDefaultPackages = false;

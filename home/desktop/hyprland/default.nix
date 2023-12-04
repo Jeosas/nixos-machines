@@ -9,9 +9,11 @@ with pkgs.lib.strings;
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    systemdIntegration = false;
+    recommendedEnvironment = true;
 
     extraConfig = ''
-      monitor=,preferred,auto,auto
+      monitor=,3440x1440@144,auto,auto
 
       input {
         kb_layout = us
@@ -67,7 +69,7 @@ with pkgs.lib.strings;
       }
 
       # apps
-      bind = SUPER, F, exec,${config.programs.firefox.package}/bin/firefox 
+      bind = SUPER_SHIFT, Return, exec,${config.programs.firefox.package}/bin/firefox 
       bind = SUPER, Return, exec, ${pkgs.alacritty}/bin/alacritty
 
       # workspaces
