@@ -21,10 +21,8 @@ in
 
   home = {
     inherit username homeDirectory;
-
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "24.05";
-
+    stateVersion = "24.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    language.base = "en_US.UTF-8";
     packages = with pkgs; [
       just
     ];
