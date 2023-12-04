@@ -19,6 +19,7 @@
     };
   };
 
+
   # starship
   programs.starship.enableZshIntegration = true;
 

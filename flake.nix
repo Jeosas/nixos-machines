@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs-stable.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     nurpkgs.url = "github:nix-community/NUR";
@@ -19,84 +19,21 @@
     };
   };
 
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nurpkgs, home-manager, hyprland, arkenfox-userjs, ... }@inputs: {
-    homeConfigurations.jeosas =
-      let
-        username = "jeosas";
-        homeDirectory = "/home/${username}";
-        configHome = "${homeDirectory}/.config";
-      in
-      home-manager.lib.homeManagerConfiguration rec {
-        extraSpecialArgs = {
-          inherit inputs;
-          nvidia = true;
+  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, home-manager, hyprland, arkenfox-userjs, ... }@inputs:
+    {
+      nixosConfigurations = {
+        neon = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/neon/configuration.nix ];
         };
-
-        pkgs = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config.allowUnfree = false;
-          config.xdg.configHome = configHome;
-          overlays = [
-            nurpkgs.overlay
-          ];
-        };
-
-        modules = [
-          inputs.hyprland.homeManagerModules.default
-          inputs.nurpkgs.hmModules.nur
-          {
-            home = {
-              inherit username homeDirectory;
-              stateVersion = "23.11"; # a.k.a. unstable
-
-              packages = with pkgs; [
-                edgedb
-              ];
-            };
-
-            programs.home-manager.enable = true;
-          }
-          ./dotfiles/git.nix
-          ./dotfiles/zsh.nix
-          ./dotfiles/neofetch.nix
-          ./dotfiles/starship.nix
-          ./dotfiles/neovim
-          ./dotfiles/direnv.nix
-          ./dotfiles/firefox.nix
-          ./dotfiles/de/hyprland
-        ];
       };
-    homeConfigurations.jb =
-      let
-        username = "jb";
-        homeDirectory = "/home/${username}";
-        configHome = "${homeDirectory}/.config";
-      in
-      home-manager.lib.homeManagerConfiguration rec {
-        extraSpecialArgs = {
-          inherit inputs;
-          nvidia = true;
+
+      homeConfigurations = {
+        "jeosas@JB-IV" = home-manager.lib.homeManagerConfiguration rec {
+          extraSpecialArgs = { inherit inputs; };
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          modules = [ ./hosts/JB-IV/home.nix ];
         };
-
-        pkgs = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config.allowUnfree = false;
-          config.xdg.configHome = configHome;
-        };
-
-        modules = [
-          {
-            home = {
-              inherit username homeDirectory;
-              stateVersion = "23.11"; # a.k.a. unstable
-
-              # packages = with pkgs; [];
-            };
-
-            programs.home-manager.enable = true;
-          }
-          ./dotfiles/neovim
-        ];
       };
-  };
+    };
 }
