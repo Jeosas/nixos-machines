@@ -40,7 +40,7 @@
 
     fonts = {
       sans = "M+1Code Nerd Font";
-      mono = "M+1 Code Nerd Font Mono";
+      mono = "M+1Code Nerd Font Mono";
     };
   };
 }
