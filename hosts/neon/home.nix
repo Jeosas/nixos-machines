@@ -15,7 +15,7 @@ in
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
     ../../home/tools/direnv.nix
-    ../../home/tools/neofetch.nix
+    ../../home/tools/macchina.nix
     ../../home/tools/starship.nix
   ];
 
