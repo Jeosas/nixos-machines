@@ -25,6 +25,7 @@ in
     language.base = "en_US.UTF-8";
     packages = with pkgs; [
       just
+      (import ./houseKeeping.nix { inherit pkgs; })
     ];
     sessionVariables = {
       # hyprland nvidia fix
