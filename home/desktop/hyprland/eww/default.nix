@@ -13,4 +13,8 @@
     source = ./config;
     recursive = true;
   };
+
+  wayland.windowManager.hyprland.extraConfig = ''
+    exec-once=${pkgs.eww-wayland}/bin/eww open statusbar
+  '';
 }
