@@ -47,6 +47,7 @@
           }
           ./dotfiles/git.nix
           ./dotfiles/zsh.nix
+          ./dotfiles/neofetch
           ./dotfiles/starship.nix
           ./dotfiles/neovim
           ./dotfiles/direnv

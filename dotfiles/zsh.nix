@@ -11,9 +11,6 @@
     history = {
       expireDuplicatesFirst = true;
     };
-    initExtra = ''
-      # pokemon-colorscript -r
-    '';
     oh-my-zsh = {
       enable = true;
       plugins = [
