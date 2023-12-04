@@ -11,6 +11,7 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nixgl.url = "github:guibou/nixGL";
 
     hyprland.url = "github:hyprwm/Hyprland";
     arkenfox-userjs = {
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, home-manager, hyprland, arkenfox-userjs, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, home-manager, nixgl, hyprland, arkenfox-userjs, ... }@inputs:
     {
       nixosConfigurations = {
         neon = nixpkgs.lib.nixosSystem {

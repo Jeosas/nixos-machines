@@ -24,6 +24,7 @@ in
     # You can add overlays here
     overlays = [
       inputs.nurpkgs.overlay
+      inputs.nixgl.overlay
     ];
     # Configure your nixpkgs instance
     config = {
@@ -41,6 +42,7 @@ in
     packages = with pkgs; [
       just
       edgedb
+      nixgl.auto.nixGLDefault
     ];
   };
 
