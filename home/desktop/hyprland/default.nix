@@ -9,10 +9,18 @@ with pkgs.lib.strings;
   ];
 
   home.pointerCursor = {
+    gtk.enable = true;
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors";
-    size = 36;
-    gtk.enable = true;
+    size = 24;
+  };
+
+  gtk = {
+    enable = true;
+    font = {
+      name = config.theme.fonts.sans;
+      size = 11;
+    };
   };
 
   wayland.windowManager.hyprland = {
@@ -81,6 +89,7 @@ with pkgs.lib.strings;
       }
 
       # apps
+      # bind = SUPER, d, exec, APPMENU
       bind = SUPER_SHIFT, Return, exec,${config.programs.firefox.package}/bin/firefox 
       bind = SUPER, Return, exec, ${pkgs.alacritty}/bin/alacritty
 
@@ -104,15 +113,39 @@ with pkgs.lib.strings;
       bind = SUPER, l, movefocus, r
       bind = SUPER, k, movefocus, u
       bind = SUPER, j, movefocus, d
-      bind = SUPER_SHIFT, h, movewindow, l
-      bind = SUPER_SHIFT, l, movewindow, r
-      bind = SUPER_SHIFT, k, movewindow, u
-      bind = SUPER_SHIFT, j, movewindow, d
+      bind = SUPER_SHIFT, h, swapwindow, l
+      bind = SUPER_SHIFT, l, swapwindow, r
+      bind = SUPER_SHIFT, k, swapwindow, u
+      bind = SUPER_SHIFT, j, swapwindow, d
+      bindm = SUPER, mouse:272, movewindow
 
       # windows
+      bind = SUPER_SHIFT, a, killactive
       bind = SUPER, Space, togglefloating, active
       bind = SUPER, f, fullscreen, 1
       bind = SUPER_SHIFT, p, pin, active
+      binde = SUPER_CTRL, h, resizeactive, -50 0
+      binde = SUPER_CTRL, l, resizeactive, 50 0
+      binde = SUPER_CTRL, k, resizeactive, 0 -50
+      binde = SUPER_CTRL, j, resizeactive, 0 50
+
+      # media
+      # bindel =, XF86MonBrightnessUp, exec, 
+      # bindel =, XF86MonBrightnessDown, exec, 
+      # bindel =, XF86AudioRaiseVolume, exec, 
+      # bindel =, XF86AudioLowerVolume, exec, 
+      # bindl =, XF86AudioMute, exec, 
+      # bindl =, XF86AudioPlay, exec, 
+      # bindl =, XF86AudioPause, exec, 
+      # bindl =, XF86AudioStop, exec, 
+      # bindl =, XF86AudioNext, exec, 
+      # bindl =, XF86AudioPrevious, exec, 
+      # bind =, Print, exec, 
+      # bind = SHIFT, Print, exec, 
+
+      # system
+      # bind = SUPER_SHIFT, q, exec, POWERMENU
+      # bind = SUPER_SHIFT, d, exec, LOCKSCREEN
     '';
   };
 
