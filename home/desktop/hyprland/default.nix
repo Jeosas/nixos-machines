@@ -7,6 +7,7 @@ with pkgs.lib.strings;
 
     ../../common/theme.nix
     ./eww
+    ./dunst
   ];
 
   home.packages = with pkgs; [ wl-clipboard ];
