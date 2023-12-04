@@ -5,12 +5,15 @@
     enable = true;
     settings = {
       font = {
-        normal.family = "Hack Nerd Font Mono";
-        size = 7;
+        normal.family = "M+1Code Nerd Font Mono";
+        size = 11;
+      };
+
+      window = {
+        opacity = 0.8;
       };
 
       colors = with config.colors; {
-
         primary = {
           background = background;
           foreground = foreground;

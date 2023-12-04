@@ -11,7 +11,7 @@
     openmoji-color
 
     # nerdfonts
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    (nerdfonts.override { fonts = [ "MPlus" ]; })
   ];
   fonts.fontconfig.enable = true;
 

@@ -8,6 +8,13 @@ with pkgs.lib.strings;
     ../../common/theme.nix
   ];
 
+  home.pointerCursor = {
+    package = pkgs.nordzy-cursor-theme;
+    name = "Nordzy-cursors";
+    size = 36;
+    gtk.enable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -26,24 +33,23 @@ with pkgs.lib.strings;
       }
 
       general {
-        gaps_in = 5
-        gaps_out = 20
+        gaps_in = 8
+        gaps_out = 16
         border_size = 2
         col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
         col.inactive_border = rgba(595959aa)
-      
         layout = dwindle
-      
         allow_tearing = false
+        cursor_inactive_timeout = 6
       }
 
       decoration {
-        rounding = 10
+        rounding = 8
 
         blur {
-            enabled = true
-            size = 3
-            passes = 1
+          enabled = true
+          size = 3
+          passes = 1
         }
 
         drop_shadow = true
@@ -63,7 +69,11 @@ with pkgs.lib.strings;
         animation = borderangle, 1, 8, default
         animation = fade, 1, 7, default
         animation = workspaces, 1, 6, default
-      }    
+      }
+
+      input {
+        follow_mouse = 2
+      }
 
       dwindle {
         pseudotile = true
@@ -94,6 +104,15 @@ with pkgs.lib.strings;
       bind = SUPER, l, movefocus, r
       bind = SUPER, k, movefocus, u
       bind = SUPER, j, movefocus, d
+      bind = SUPER_SHIFT, h, movewindow, l
+      bind = SUPER_SHIFT, l, movewindow, r
+      bind = SUPER_SHIFT, k, movewindow, u
+      bind = SUPER_SHIFT, j, movewindow, d
+
+      # windows
+      bind = SUPER, Space, togglefloating, active
+      bind = SUPER, f, fullscreen, 1
+      bind = SUPER_SHIFT, p, pin, active
     '';
   };
 
