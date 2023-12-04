@@ -1,0 +1,27 @@
+.statusbar {
+  .container {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #2e3440;
+    color: #a3be8c;
+    border: solid 2px;
+    border-color: #a3be8c;
+    border-radius: 8px;
+
+    .workspace-entry {
+      margin: 4px;
+
+      &.occupied {
+        color: #d8dee9;
+        background-color: #a3be8c;
+      }
+
+      &.current {
+        color: #d8dee9;
+        background-color: #81a1c1;
+      }
+    }
+  }
+}

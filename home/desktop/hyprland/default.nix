@@ -6,6 +6,7 @@ with pkgs.lib.strings;
     inputs.hyprland.homeManagerModules.default
 
     ../../common/theme.nix
+    ./eww
   ];
 
   home.packages = with pkgs; [ wl-clipboard ];
