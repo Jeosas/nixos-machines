@@ -1,7 +1,7 @@
 -- Load the colorscheme
-vim.g.nord_contrast = false
 vim.g.nord_borders = true
-vim.g.nord_borders = true
+vim.g.nord_disable_background = true
+vim.g.nord_cursorline_transparent = true
 
 require("nord").set()
 
