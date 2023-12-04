@@ -8,6 +8,8 @@ with pkgs.lib.strings;
     ../../common/theme.nix
   ];
 
+  home.packages = with pkgs; [ wl-clipboard ];
+
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.nordzy-cursor-theme;
