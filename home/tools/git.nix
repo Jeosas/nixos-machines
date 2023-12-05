@@ -1,12 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  inherit (lib) mkDefault;
+in
 {
   # Git
   programs.git = {
     enable = true;
 
-    userName = "Jeosas";
-    userEmail = "jeanbaptiste@wintergerst.fr";
+    userName = mkDefault "Jeosas";
+    userEmail = mkDefault "jeanbaptiste@wintergerst.fr";
 
     extraConfig = {
       core.editor = "nvim";

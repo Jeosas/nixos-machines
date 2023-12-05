@@ -35,6 +35,7 @@
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           modules = [ ./hosts/JB-IV/home.nix ];
         };
+        "jb@fr-jb-xps" = import ./. + "hosts/jb@fr-jb-xps" { inherit inputs; pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux; };
       };
 
       devShells = {
