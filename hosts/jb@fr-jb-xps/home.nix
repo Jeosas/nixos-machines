@@ -9,6 +9,8 @@ in
   imports = [
     inputs.nurpkgs.hmModules.nur
 
+    ./monitors.nix
+
     ../../home/desktop/hyprland
     ../../home/applications/neovim
     ../../home/applications/firefox.nix
@@ -24,7 +26,7 @@ in
     # You can add overlays here
     overlays = [
       inputs.nurpkgs.overlay
-      # inputs.nixgl.overlay
+      inputs.nixgl.overlay
     ];
     # Configure your nixpkgs instance
     config = {
@@ -46,7 +48,8 @@ in
 
     packages = with pkgs; [
       just
-      # nixgl.auto.nixGLDefault
+      ranger
+      nixgl.auto.nixGLDefault
     ];
   };
 

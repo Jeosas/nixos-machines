@@ -8,6 +8,8 @@ in
   imports = [
     inputs.nurpkgs.hmModules.nur
 
+    ./monitors.nix
+
     ../../home/desktop/hyprland
     ../../home/applications/neovim
     ../../home/applications/firefox.nix

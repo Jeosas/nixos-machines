@@ -42,8 +42,6 @@ in
       inherit (lib) removePrefix;
     in
     ''
-      monitor=,3440x1440@144,auto,auto
-
       input {
         kb_layout = us
         kb_variant = altgr-intl
@@ -159,11 +157,18 @@ in
 
   # Start on login
   programs.zsh = {
-    profileExtra = /* bash */ ''
-      if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
-        Hyprland
-      fi
-    '';
+    profileExtra =
+      if config.targets.genericLinux.enable
+      then /* bash */ ''
+        if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+          ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL Hyprland
+        fi
+      ''
+      else /* bash */ ''
+        if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+          Hyprland
+        fi
+      '';
   };
 }
 

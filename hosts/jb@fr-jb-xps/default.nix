@@ -6,5 +6,6 @@ inputs.home-manager.lib.homeManagerConfiguration rec {
   modules = [
     ./configuration.nix
     ./home.nix
+    ./bash_to_zsh.nix
   ];
 }
