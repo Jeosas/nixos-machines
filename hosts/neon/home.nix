@@ -28,6 +28,8 @@ in
     language.base = "en_US.UTF-8";
     packages = with pkgs; [
       (import ./houseKeeping.nix { inherit pkgs; })
+      heroic
+      steam
     ];
     sessionVariables = {
       # hyprland nvidia fix
