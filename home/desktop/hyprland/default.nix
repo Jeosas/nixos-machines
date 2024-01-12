@@ -39,7 +39,7 @@ in
         border_size = 2
         col.active_border = rgba(${removePrefix "#" color2}ff) rgba(${removePrefix "#" color6}ff) 45deg
         col.inactive_border = rgba(${removePrefix "#" background}cc)
-        layout = dwindle
+        layout = master
         allow_tearing = false
         cursor_inactive_timeout = 6
         no_cursor_warps = true
@@ -75,7 +75,13 @@ in
 
       dwindle {
         pseudotile = true
-        preserve_split = true
+        force_split = 2
+      }
+
+      master {
+        mfact = .40
+        new_on_top = true
+        orientation = center
       }
 
       # apps
@@ -138,6 +144,14 @@ in
       # bind = SUPER_SHIFT, d, exec, LOCKSCREEN
     '';
   };
+
+  # xdg.portal = {
+  #   config = {
+  #     common = {
+  #       default = [ "gtk" ];
+  #     };
+  #   };
+  # };
 
   # Start on login
   programs.zsh = {
