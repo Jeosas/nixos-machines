@@ -67,7 +67,6 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    enableNvidiaPatches = true;
   };
 
   # Fonts - leave user (home-manager) setup fonts

@@ -20,8 +20,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemdIntegration = false;
-    recommendedEnvironment = true;
+    systemd.enable = false;
 
     extraConfig = with config.theme.colors; let
       inherit (lib) removePrefix;

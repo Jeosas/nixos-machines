@@ -14,6 +14,7 @@ in
     ../../home/applications/neovim
     ../../home/applications/firefox.nix
     ../../home/applications/alacritty.nix
+    ../../home/tools/commons.nix
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
     ../../home/tools/direnv.nix
@@ -26,9 +27,7 @@ in
     stateVersion = "24.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     language.base = "en_US.UTF-8";
     packages = with pkgs; [
-      just
       (import ./houseKeeping.nix { inherit pkgs; })
-      ncpamixer
     ];
     sessionVariables = {
       # hyprland nvidia fix

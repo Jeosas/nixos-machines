@@ -9,6 +9,11 @@ pkgs.writeShellApplication {
     print_help() {
         printf "switch\t\tnixos generation switch\n"
         printf "test\t\tnixos generation test\n"
+        printf "update\t\tsystem update\n"
+    }
+
+    nixos_switch() {
+        doas nixos-rebuild switch --flake ~/.setup
     }
 
     cmd=$1
@@ -20,11 +25,15 @@ pkgs.writeShellApplication {
         exit 0
         ;;
     test)  # Example with an operand
-        doas nixos-rebuild test --flake ~/.setup#neon
+        doas nixos-rebuild test --flake ~/.setup
         exit 0
         ;;
     switch)  # Example with an operand
-        doas nixos-rebuild switch --flake ~/.setup#neon
+        nixos_switch
+        exit 0
+        ;;
+    update)
+        cd ~/.setup && nix flake update && nixos_switch
         exit 0
         ;;
     *)
