@@ -17,6 +17,9 @@
         "git"
       ];
     };
+    initExtra = ''
+      export PATH=$HOME/.local/bin:$PATH
+    '';
   };
 
 

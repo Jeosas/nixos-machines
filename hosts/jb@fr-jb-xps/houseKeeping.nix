@@ -7,8 +7,12 @@ pkgs.writeShellApplication {
     #!${pkgs.bash}/bin/bash
 
     print_help() {
-        printf "switch\t\tnixos generation switch\n"
-        printf "test\t\tnixos generation test\n"
+        printf "switch\t\thome-manager generation switch\n"
+        printf "update\t\tsystem update\n"
+    }
+
+    hm_switch() {
+        home-manager switch --flake ~/.setup
     }
 
     cmd=$1
@@ -19,12 +23,13 @@ pkgs.writeShellApplication {
         print_help
         exit 0
         ;;
-    test)  # Example with an operand
-        doas nixos-rebuild test --flake ~/.setup#neon
+    switch)  # Example with an operand
+        hm_switch
         exit 0
         ;;
-    switch)  # Example with an operand
-        doas nixos-rebuild switch --flake ~/.setup#neon
+    update)
+        sudo apt update && sudo apt upgrade
+        cd ~/.setup && nix flake update && hm_switch
         exit 0
         ;;
     *)

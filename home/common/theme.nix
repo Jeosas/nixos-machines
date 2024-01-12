@@ -2,17 +2,17 @@
 
 {
   imports = [ ../../modules/home-manager/theme.nix ];
-  # Fonts
+
   home.packages = with pkgs; [
-    # normal + cjk font
-    mplus-outline-fonts.githubRelease
+    # Fonts
+    mplus-outline-fonts.githubRelease # normal + cjk font
+    openmoji-color # emoji
+    (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
 
-    # emoji
-    openmoji-color
-
-    # nerdfonts
-    (nerdfonts.override { fonts = [ "MPlus" ]; })
+    # Cursor
+    nordzy-cursor-theme
   ];
+
   fonts.fontconfig.enable = true;
 
   theme = {
@@ -41,6 +41,22 @@
     fonts = {
       sans = "M+1Code Nerd Font";
       mono = "M+1Code Nerd Font Mono";
+    };
+
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.nordzy-cursor-theme;
+    name = "Nordzy-cursors";
+    size = 24;
+  };
+
+  gtk = {
+    enable = true;
+    font = {
+      name = config.theme.fonts.sans;
+      size = 11;
     };
   };
 }

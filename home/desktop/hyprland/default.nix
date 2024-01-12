@@ -17,21 +17,6 @@ in
 
   home.packages = with pkgs; [ wl-clipboard ];
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.nordzy-cursor-theme;
-    name = "Nordzy-cursors";
-    size = 24;
-  };
-
-  gtk = {
-    enable = true;
-    font = {
-      name = config.theme.fonts.sans;
-      size = 11;
-    };
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;

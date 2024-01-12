@@ -48,6 +48,7 @@
       # Treesitter
       nvim-treesitter.withAllGrammars
       playground
+      kmonad-vim
 
       # Git
       gitsigns-nvim
@@ -84,6 +85,9 @@
 
       # Neede form grammar compilation
       tree-sitter
+
+      # access clipboard on X11
+      xclip
     ];
   };
 

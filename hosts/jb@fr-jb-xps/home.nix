@@ -1,5 +1,4 @@
 { config, pkgs, inputs, ... }:
-
 let
   username = "jb";
   homeDirectory = "/home/${username}";
@@ -9,12 +8,16 @@ in
   imports = [
     inputs.nurpkgs.hmModules.nur
 
-    ./monitors.nix
+    ./dev.nix
+    ./regolith.nix
+    ./keymap.nix
 
-    ../../home/desktop/hyprland
+    ../../home/common/theme.nix
+    ../../home/desktop/hyprland/dunst
+
     ../../home/applications/neovim
-    ../../home/applications/firefox.nix
     ../../home/applications/alacritty.nix
+    ../../home/tools/commons.nix
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
     ../../home/tools/direnv.nix
@@ -25,8 +28,6 @@ in
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      inputs.nurpkgs.overlay
-      inputs.nixgl.overlay
     ];
     # Configure your nixpkgs instance
     config = {
@@ -47,9 +48,9 @@ in
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      just
-      ranger
-      nixgl.auto.nixGLDefault
+      (import ./houseKeeping.nix { inherit pkgs; })
+      bluetuith
+      autorandr
     ];
   };
 
