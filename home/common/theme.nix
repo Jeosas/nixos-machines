@@ -66,5 +66,11 @@
       package = pkgs.nordic;
       name = "Nordic";
     };
+    gtk3 = {
+      extraCss = /* css */ ''
+        /* Remove dotted lines from GTK+ 3 applications */
+        undershoot.top, undershoot.right, undershoot.bottom, undershoot.left { background-image: none; }   
+      '';
+    };
   };
 }

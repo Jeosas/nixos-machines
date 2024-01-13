@@ -4,54 +4,72 @@
   programs.wofi = {
     enable = true;
     settings = {
-      insensitve = true;
+      width = 450;
+      height = 250;
+      location = "center";
+      show = "drun";
+      prompt = "Search...";
       matching = "fuzzy";
+      filter_rate = 100;
+      allow_markup = true;
+      no_actions = true;
+      halign = "fill";
+      valigh = "start";
       hide_scroll = true;
-      term = "${pkgs.alacritty}/bin/alacritty";
+      hide_search = false;
+      orientation = "vertical";
+      insensitive = true;
+      allow_images = true;
+      image_size = 40;
+      gtk_dark = true;
     };
-    style = with config.theme.colors; ''
-      * {
-        background-color: ${background};
-        color: ${foreground};
+    style = with config.theme.colors; /* css */ ''
+      window {
+        font-family: "${config.theme.fonts.sans}";
+        font-size: 13px;
+        margin: 0px;
+        padding: 0px;
+        border: 2px solid ${config.theme.colors.color2};
+        border-radius: 6px;
       }
-      #window { 
-        border: solid 2px;
-        border-color: ${color2};
-        border-radius: 8px;
-      }
-      #outer-box {
-        padding: 24px;
-      }
+
       #input {
-        margin: 8px;
+        min-height: 36px;
+        padding: 4px 10px;
+        margin: 4px;
+        border: none;
+        font-weight: bold;
+        outline: none;
+        border-radius: 6px;
+        margin: 10px;
+        margin-bottom: 2px;
+      }
+
+      #outer-box {
+        margin: 0px;
         padding: 8px;
-        border-color: ${color2};
+        border: none;
       }
-      input:focus, 
-      textarea:focus, 
-      #input,
-      #input *,
-      #input:focus, 
-      #input *:focus {
-        border-color: ${color2};
-      }
+
       #scroll {
         padding: 8px;
-        border: solid 2px;
-        border-color: ${foreground};
-        border-radius: 8px;
       }
-      .entry {
-        padding: 8px;
+
+      #text {
+        padding: 3px;
       }
-      #entry:selected,
-      #entry:selected *{
-        border-radius: 8px;
-        background-color: ${foreground};
-        opacity: 0.7;
+
+      #entry {
+        margin: 3px;
+        border: none;
+        border-radius: 6px;
       }
-      #entry:selected label {
-        color: ${color0};
+
+      .undershoot.top {
+        background-image = transparent;
+      }
+      .undershoot.bottom {
+        background-image = transparent;
       }
     '';
   };
