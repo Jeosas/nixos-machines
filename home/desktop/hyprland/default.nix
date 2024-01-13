@@ -34,9 +34,9 @@ in
       }
 
       general {
-        gaps_in = 8
-        gaps_out = 16
-        border_size = 2
+        gaps_in = 4
+        gaps_out = 8
+        border_size = 1
         col.active_border = rgba(${removePrefix "#" color2}ff) rgba(${removePrefix "#" color6}ff) 45deg
         col.inactive_border = rgba(${removePrefix "#" background}cc)
         layout = master
@@ -46,7 +46,7 @@ in
       }
 
       decoration {
-        rounding = 8
+        rounding = 6
         blur {
           enabled = true
           size = 3
@@ -79,7 +79,7 @@ in
       }
 
       master {
-        mfact = .40
+        mfact = 0.35
         new_on_top = true
         orientation = center
       }
