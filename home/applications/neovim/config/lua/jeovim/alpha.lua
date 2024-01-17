@@ -53,7 +53,7 @@ local active_splash = "mountains"
 dashboard.section.header.val = splash[active_splash].art
 dashboard.section.buttons.val = {
 	buttonhl("e", "  New file", ":ene <BAR> startinsert <CR>"),
-	buttonhl("SPC f f", "  Find file", ":Telescope find_files <CR>"),
+	buttonhl("SPC f f", "󰍉  Find file", ":Telescope find_files <CR>"),
 	buttonhl("SPC p p", "  Find project", ":Telescope projects <CR>"),
 	buttonhl("SPC f r", "  Recently used files", ":Telescope oldfiles <CR>"),
 }

@@ -109,6 +109,7 @@ local mappings = {
 				"List open buffers",
 			},
 			c = { "<cmd>Bdelete<CR>", "Close" },
+			C = { "<cmd>Bdelete!<CR>", "Close without saving" },
 			s = { "<cmd>w!<CR>", "Save" },
 			S = { "<cmd>wa<CR>", "Save All" },
 		},
@@ -167,15 +168,6 @@ local mappings = {
 			r = { "<cmd>lua _PROJECT_RUN()<cr>", "Run project" },
 			t = { "<cmd>lua _PROJECT_TEST_FUNCTION()<cr>", "Run test" },
 			T = { "<cmd>lua _PROJECT_TEST_ALL()<cr>", "Run all tests" },
-		},
-
-		P = {
-			name = "Packer",
-			c = { "<cmd>PackerCompile<cr>", "Compile" },
-			i = { "<cmd>PackerInstall<cr>", "Install" },
-			s = { "<cmd>PackerSync<cr>", "Sync" },
-			S = { "<cmd>PackerStatus<cr>", "Status" },
-			u = { "<cmd>PackerUpdate<cr>", "Update" },
 		},
 
 		t = {
