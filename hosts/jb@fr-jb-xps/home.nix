@@ -21,7 +21,7 @@ in
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
     ../../home/tools/direnv.nix
-    ../../home/tools/macchina.nix
+    ../../home/tools/fastfetch.nix
     ../../home/tools/starship.nix
   ];
 
@@ -62,6 +62,10 @@ in
     enable = true;
     userName = "Jean-Baptiste WINTERGERST";
     userEmail = "jbaptiste.wintergerst@preligens.com";
+  };
+
+  programs.zsh.shellAliases = {
+    ssh = "TERM=xterm-256color $(which ssh)";
   };
 
   # Setup home manager to run over other distros
