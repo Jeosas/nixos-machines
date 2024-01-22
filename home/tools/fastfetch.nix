@@ -6,7 +6,7 @@ in
 {
   home.packages = with pkgs; [ fastfetch ];
 
-  xdg.configFile.${config_file}.text = ''
+  xdg.configFile.${config_file}.text = /* json */ ''
     {
       "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
       "logo": {
@@ -27,7 +27,10 @@ in
           "type": "cpu",
           "temp": true
         },
-        "gpu",
+        {
+          "type": "gpu",
+          "temp": true
+        },
         "break",
         "os",
         "kernel",
