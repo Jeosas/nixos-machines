@@ -54,6 +54,9 @@ in
     ];
   };
 
+  # leave ubuntu manage
+  xdg.mime.enable = false;
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
@@ -65,7 +68,7 @@ in
   };
 
   programs.zsh.shellAliases = {
-    ssh = "TERM=xterm-256color $(which ssh)";
+    ssh = "TERM=xterm-256color ssh";
   };
 
   # Setup home manager to run over other distros
