@@ -44,6 +44,7 @@
 
       # Telescope
       telescope-nvim
+      project-nvim
 
       # Treesitter
       nvim-treesitter.withAllGrammars
