@@ -7,6 +7,8 @@
 
     nurpkgs.url = "github:nix-community/NUR";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -20,13 +22,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, home-manager, nixgl, hyprland, arkenfox-userjs, ... }@inputs:
+  outputs = { self, nixpkgs, impermanence, nixpkgs-unstable, nurpkgs, home-manager, nixgl, hyprland, arkenfox-userjs, ... }@inputs:
     {
       nixosConfigurations = {
-        neon = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/neon/configuration.nix ];
-        };
+        neon = nixpkgs.lib.nixosSystem { specialArgs = { inherit inputs; }; modules = [ ./hosts/neon/configuration.nix ]; };
+        helium = nixpkgs.lib.nixosSystem { specialArgs = { inherit inputs; }; modules = [ ./hosts/helium/configuration.nix ]; };
       };
 
       homeConfigurations = {
