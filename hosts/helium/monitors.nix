@@ -3,6 +3,6 @@
 
 {
   wayland.windowManager.hyprland.extraConfig = ''
-    monitor=,1920x1080@60,auto,auto
+    monitor=,1920x1080@60,auto,1
   '';
 }
