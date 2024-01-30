@@ -20,18 +20,6 @@ in
     package = pkgs.firefox;
     profiles.default = {
       isDefault = true;
-      containers = {
-        Google = {
-          color = "red";
-          icon = "chill";
-          id = 1;
-        };
-        Music = {
-          color = "green";
-          icon = "circle";
-          id = 2;
-        };
-      };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         skip-redirect
