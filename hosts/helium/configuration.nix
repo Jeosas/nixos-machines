@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware.nix
+    ./battery.nix
 
     inputs.impermanence.nixosModules.impermanence
     ./impermanence.nix
