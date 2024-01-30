@@ -106,9 +106,9 @@
   users.mutableUsers = false;
   users.users.jeosas = {
     isNormalUser = true;
-    initialPassword = "jeosas";
+    hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
