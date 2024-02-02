@@ -39,7 +39,8 @@ in
         border_size = 1
         col.active_border = rgba(${removePrefix "#" color2}ff) rgba(${removePrefix "#" color6}ff) 45deg
         col.inactive_border = rgba(${removePrefix "#" background}cc)
-        layout = master
+        # layout = master ## TODO make this a module
+        layout = dwindle
         allow_tearing = false
         cursor_inactive_timeout = 6
         no_cursor_warps = true
