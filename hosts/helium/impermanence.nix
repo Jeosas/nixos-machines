@@ -17,8 +17,8 @@
         ".setup" # nixps config
         "Images"
         { directory = ".ssh"; mode = "0700"; } # ssh keys
+        ".mozilla/firefox/default"
       ];
-      files = [ ];
     };
   };
 }
