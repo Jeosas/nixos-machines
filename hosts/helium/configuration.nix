@@ -16,6 +16,9 @@
     }
   ];
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Nix
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
@@ -74,8 +77,11 @@
   networking.firewall.enable = false;
 
   # Audio
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    enableAllFirmware = true;
+    enableRedistributableFirmware = true;
+  };
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
