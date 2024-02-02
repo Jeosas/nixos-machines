@@ -9,6 +9,7 @@ in
     inputs.nurpkgs.hmModules.nur
 
     ./monitors.nix
+    ./keymap.nix
 
     ../../home/desktop/hyprland
     ../../home/applications/neovim

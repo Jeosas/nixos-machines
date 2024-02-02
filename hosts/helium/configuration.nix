@@ -96,6 +96,9 @@
   };
   security.polkit.enable = true;
 
+  # for Kmonad
+  hardware.uinput.enable = true;
+
   environment.systemPackages = with pkgs; [
     git
     vim
@@ -109,7 +112,7 @@
     isNormalUser = true;
     hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "input" "uinput" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
