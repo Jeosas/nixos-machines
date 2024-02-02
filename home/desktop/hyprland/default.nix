@@ -103,6 +103,10 @@ in
           ''
         )
         10)}
+      bind = SUPER_CTRL_SHIFT, h, movecurrentworkspacetomonitor, l
+      bind = SUPER_CTRL_SHIFT, l, movecurrentworkspacetomonitor, r
+      bind = SUPER_CTRL_SHIFT, k, movecurrentworkspacetomonitor, u
+      bind = SUPER_CTRL_SHIFT, j, movecurrentworkspacetomonitor, d
 
       # move around
       bind = SUPER, h, movefocus, l
