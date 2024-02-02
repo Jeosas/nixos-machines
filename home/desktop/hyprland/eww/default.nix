@@ -1,5 +1,20 @@
 { inputs, config, pkgs, ... }:
 
+let
+  launch_bar = pkgs.writeShellScript "launch_bar" /* bash */ ''
+    #!${pkgs.bash}/bin/bash
+
+    eww=${pkgs.eww-wayland}/bin/eww
+
+    ## Start/Reload eww daemon
+    $eww daemon --restart
+    sleep 1
+
+    $eww close-all
+    $eww open bar
+
+  '';
+in
 {
   home.packages = with pkgs; [
     eww-wayland
@@ -7,6 +22,8 @@
     jq
     socat
     coreutils
+    playerctl
+    zscroll
   ];
 
   xdg.configFile.eww = {
@@ -15,6 +32,6 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
-    exec-once=${pkgs.eww-wayland}/bin/eww open statusbar
+    exec=${launch_bar}
   '';
 }

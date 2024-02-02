@@ -1,0 +1,89 @@
+(include "bar/variables.yuck")
+
+(defvar open-system-widget "echo system") ;; TODO: open system eww window
+
+(defwidget separator []
+  (label :class "separator" :text "|"))
+
+(defwidget graph-comp [label value ?onclick]
+  (button :onclick {onclick == "" ? open-system-widget : onclick} :class "graph-comp-module" :tooltip "${round(value, 1)}%"
+    (box :spacing 2 :orientation "h" :space-evenly false
+      (label :class "graph-comp-icon" :text label)
+      (box :class "graph-comp-graph-container"
+        (graph :class "graph-comp-graph ${value > 90 ? "danger" : ""}"
+               :value value
+               :height 16
+               :width 50
+               :thickness 2
+               :dynamic false
+               :min 0
+               :max 20
+               :time-range "1m"
+               :line-style "round")))))
+
+(defwidget gauge-comp [label value ?onclick]
+  (button :onclick {onclick == "" ? open-system-widget : onclick} 
+          :tooltip "${value}%"
+    (box :class "gauge-comp-module"
+      (circular-progress :value value
+                         :class "gauge-comp-graph ${value > 90 ? "danger" : ""}"
+                         :thickness 3
+        (label :class "gauge-comp-icon" :text label)))))
+
+(defwidget cpu []
+  (graph-comp :label "󰊚 " :value {EWW_CPU.avg}))
+
+(defwidget memory []
+  (graph-comp :label " " :value {EWW_RAM.used_mem_perc}))
+
+(defwidget volume []
+  (gauge-comp :label "" :value 80 :onclick "alacritty -e ncpamixer &"))
+
+(defwidget left []
+  (box :orientation "h"
+       :spacing 8
+       :space-evenly false 
+       :halign "start" 
+       :valign "baseline"
+       :class "left-modules"
+    (button :onclick open-system-widget
+      (image :path "bar/assets/nix-snowflake.svg" :image-height 18))
+    (separator)
+    (literal :content workspaces :valign "center")))
+
+
+(defwidget center []
+  (box :orientation "h"
+       :spacing 8
+       :space-evenly false 
+       :halign "center" 
+       :valign "baseline"
+       :class "center-modules"
+    (label :text music-current)))
+
+(defwidget right []
+  (box :orientation "h"
+       :spacing 8
+       :space-evenly false 
+       :halign "end" 
+       :valign "baseline"
+       :class "center-modules"
+    (cpu)
+    (memory) 
+    (separator)
+    (volume)
+    (separator)
+    (label :text {formattime(EWW_TIME, "%H:%M %d %b %Y")})))
+
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "8px"
+                               :width "100%"
+                               :height "36px"
+                               :anchor "top center")
+           :stacking "fg"
+           :exclusive true
+           :focusable false
+  (centerbox :orientation "h" :class "container" (left) (center) (right)))
+
