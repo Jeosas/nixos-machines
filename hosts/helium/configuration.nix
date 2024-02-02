@@ -132,5 +132,16 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
+
+  programs.ssh.extraConfig = ''
+    Host *
+      AddkeysToAgent yes
+      Identitiesonly yes
+
+    Host github.com
+      HostName      github.com
+      IdentityFile  ~/.ssh/id_github
+      User          git
+  '';
 }
 
