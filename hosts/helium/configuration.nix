@@ -51,12 +51,22 @@
     keyMap = "us";
   };
 
+  # Firmeare update software
+  services.fwupd.enable = true;
+
   # Graphics
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
   };
+
+  # SSD
+  services.fstrim.enable = true;
+
+  # Trackpoint
+  hardware.trackpoint.enable = true;
+  hardware.trackpoint.emulateWheel = true;
 
   # Hyprland
   programs.hyprland = {
