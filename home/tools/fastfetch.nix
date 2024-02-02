@@ -39,7 +39,6 @@ in
         "break",
         "cpuusage",
         "memory",
-        "swap",
         "disk",
         "battery",
         "break",
