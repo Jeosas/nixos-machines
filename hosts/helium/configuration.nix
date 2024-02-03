@@ -115,6 +115,9 @@
   # for Kmonad
   hardware.uinput.enable = true;
 
+  # backlight
+  programs.light.enable = true;
+
   environment.systemPackages = with pkgs; [
     git
     vim
@@ -128,7 +131,7 @@
     isNormalUser = true;
     hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = [ "wheel" "networkmanager" "input" "uinput" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "uinput" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
