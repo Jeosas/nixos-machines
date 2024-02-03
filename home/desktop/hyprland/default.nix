@@ -136,6 +136,7 @@ in
       bindel =, XF86AudioRaiseVolume, exec, ${volume} up
       bindel =, XF86AudioLowerVolume, exec, ${volume} down
       bindl =, XF86AudioMute, exec,  ${volume} mute
+      bindl =, XF86AudioMicMute, exec, ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
       bindl =, XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause
       bindl =, XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause
       bindl =, XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop
