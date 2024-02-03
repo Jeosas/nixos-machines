@@ -1,9 +1,6 @@
-(include "bar/variables.yuck")
-
 (defvar open-system-widget "echo system") ;; TODO: open system eww window
 
-(defwidget separator []
-  (label :class "separator" :text "|"))
+;; lib --------------
 
 (defwidget graph-comp [label value ?onclick]
   (button :onclick {onclick == "" ? open-system-widget : onclick} :class "graph-comp-module" :tooltip "${round(value, 1)}%"
@@ -30,15 +27,40 @@
                          :thickness 3
         (label :class "gauge-comp-icon" :text label)))))
 
+;; widgets --------------
+
+;; separator
+(defwidget separator []
+  (label :class "separator" :text "|"))
+
+;; cpu
 (defwidget cpu []
   (graph-comp :label "󰊚 " :value {EWW_CPU.avg}))
 
+;; ram
 (defwidget memory []
   (graph-comp :label " " :value {EWW_RAM.used_mem_perc}))
 
+;; volume
 (defwidget volume []
   (gauge-comp :label "" :value 80 :onclick "alacritty -e ncpamixer &"))
 
+;; datetime
+(defvar date_rev false)
+(defwidget datetime []
+    (eventbox :class "datetime"
+              :onhover "${EWW_CMD} update date_rev=true"
+              :onhoverlost "${EWW_CMD} update date_rev=false"
+      (box :valign "baseline" :space-evenly "false"
+          (label :class "module-dt-htime" :text {formattime(EWW_TIME, "%H")} )
+          (label :class "module-dt-septime" :text "󰴼" )
+          (label :class "module-dt-mtime" :text {formattime(EWW_TIME, "%M")} )
+          (revealer :transition "slideright" :reveal date_rev :duration "350ms"
+            (box :valign "baseline" (label :class "module-dt-date" :text {formattime(EWW_TIME, "%d %b %Y")} ))))))
+
+;; bar --------------
+
+(deflisten workspaces "bash ~/.config/eww/bar/scripts/workspaces")
 (defwidget left []
   (box :orientation "h"
        :spacing 8
@@ -51,7 +73,7 @@
     (separator)
     (literal :content workspaces :valign "center")))
 
-
+(deflisten music-current "bash ~/.config/eww/bar/scripts/music-scroll")
 (defwidget center []
   (box :orientation "h"
        :spacing 8
@@ -73,7 +95,7 @@
     (separator)
     (volume)
     (separator)
-    (label :text {formattime(EWW_TIME, "%H:%M %d %b %Y")})))
+    (datetime)))
 
 (defwindow bar
            :monitor 0

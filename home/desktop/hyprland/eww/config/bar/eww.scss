@@ -5,11 +5,6 @@ $grey: #3b4252;
 $green: #a3be8c;
 $red: #bf616a;
 
-.separator {
-  font-size: 16px;
-  color: $grey;
-}
-
 .graph-comp-module {
   margin-top: 2px;
   padding: 7px 0px;
@@ -52,9 +47,31 @@ $red: #bf616a;
   }
 }
 
+.separator {
+  font-size: 16px;
+  color: $grey;
+}
+
+.datetime {
+  .module-dt-htime, .module-dt-mtime {
+    font-family: "M+1Code Nerd Font Mono";
+    font-size: 18px;
+  }
+
+  .module-dt-septime {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .module-dt-date {
+    color: $green;
+    margin-left: 8px;
+  }
+}
+
 .bar {
   .container {
-    font-family: M+1Code Nerd Font;
+    font-family: "M+1Code Nerd Font";
     font-size: 14px;
     margin-left: 8px;
     margin-right: 8px;
@@ -85,7 +102,7 @@ $red: #bf616a;
     }
 
     .center-module {
-      font-family: M+1Code Nerd Font Mono;
+      font-family: "M+1Code Nerd Font Mono";
     }
   }
 }
