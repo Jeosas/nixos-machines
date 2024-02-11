@@ -79,6 +79,8 @@
       nodePackages.typescript
       nodePackages.typescript-language-server
       rnix-lsp
+      vscode-langservers-extracted
+      htmx-lsp
 
       # Telescope dependencies
       ripgrep

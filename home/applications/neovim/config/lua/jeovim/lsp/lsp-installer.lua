@@ -20,6 +20,10 @@ local servers = {
 	"marksman",
 	-- svelte
 	"svelte",
+	-- html
+	"html",
+	-- htmx
+	"htmx",
 	-- typescript
 	"tsserver",
 	-- nix
