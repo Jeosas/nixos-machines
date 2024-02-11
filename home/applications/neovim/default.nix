@@ -12,6 +12,7 @@
       nvim-web-devicons
       toggleterm-nvim
       which-key-nvim
+      nvim-ufo
 
       # Buffer / Tab line
       bufferline-nvim
