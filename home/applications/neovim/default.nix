@@ -69,9 +69,7 @@
       (python3.withPackages (ps: with ps; [
         ipython
         mypy
-        pylsp-mypy
         ruff
-        python-lsp-ruff
         python-lsp-server
       ]))
       rust-analyzer
