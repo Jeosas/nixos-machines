@@ -37,6 +37,8 @@ in
     settings = {
       os.editCommand = "nvim";
       gui.nerdFontsVersion = "3"; # show icons
+      gui.mouseEvents = false;
+      gui.disableStartupPopups = true;
     };
   };
   programs.zsh.shellAliases.lz = "lazygit";

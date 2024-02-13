@@ -18,6 +18,9 @@
         "Images"
         { directory = ".ssh"; mode = "0700"; } # ssh keys
         ".mozilla/firefox/default"
+        "code"
+        ".local/share/direnv/allow"
+        ".cargo"
         ".config/Signal"
       ];
     };
