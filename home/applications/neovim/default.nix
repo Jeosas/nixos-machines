@@ -1,13 +1,47 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  inherit (builtins) readFile;
+  inherit (lib.strings) concatStrings;
+in
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
 
+    extraLuaConfig = concatStrings [
+      /* lua */
+      ''
+        require("jeovim.colorscheme")
+        require("jeovim.cmp")
+        require("jeovim.lsp")
+        require("jeovim.telescope")
+        require("jeovim.gitsigns")
+        require("jeovim.treesitter")
+        require("jeovim.autopairs")
+        require("jeovim.comment")
+        require("jeovim.nvim-tree")
+        require("jeovim.lualine")
+        require("jeovim.toggleterm")
+        require("jeovim.project")
+        require("jeovim.indentline")
+        require("jeovim.whichkey")
+        require("jeovim.autocommands")
+        require("jeovim.tabby")
+        require("jeovim.dressing")
+        require("jeovim.ufo")
+      ''
+      (readFile ./options.lua)
+      (readFile ./remap.lua)
+    ];
+
     plugins = with pkgs.vimPlugins; [
       # Apps
-      alpha-nvim
+      {
+        plugin = alpha-nvim;
+        type = "lua";
+        config = readFile ./alpha.lua;
+      }
       nvim-tree-lua
       nvim-web-devicons
       toggleterm-nvim
@@ -63,14 +97,12 @@
       # Lsp
       sumneko-lua-language-server
       stylua
-      nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
       (python3.withPackages (ps: with ps; [
-        ipython
+        python-lsp-server
         mypy
         ruff
-        python-lsp-server
       ]))
       rust-analyzer
       marksman
@@ -78,7 +110,7 @@
       nodePackages.typescript
       nodePackages.typescript-language-server
       rnix-lsp
-      vscode-langservers-extracted
+      vscode-langservers-extracted # html, json
       htmx-lsp
 
       # Telescope dependencies

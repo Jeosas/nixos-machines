@@ -85,11 +85,7 @@ local mappings = {
 
 	["<leader>"] = {
 		["<leader>"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-		a = { "<cmd>Alpha<cr>", "Alpha" },
 		e = { "<cmd>NvimTreeToggle<cr>", "File explorer" },
-		q = { "<cmd>q<CR>", "Quit" },
-		Q = { "<cmd>qa<CR>", "Quit all" },
-		c = { "<cmd>Bdelete<CR>", "Close buffer" },
 		h = { "<cmd>nohlsearch<CR>", "Reset highlight" },
 
 		["?"] = {
@@ -108,10 +104,6 @@ local mappings = {
 				"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 				"List open buffers",
 			},
-			c = { "<cmd>Bdelete<CR>", "Close" },
-			C = { "<cmd>Bdelete!<CR>", "Close without saving" },
-			s = { "<cmd>w!<CR>", "Save" },
-			S = { "<cmd>wa<CR>", "Save All" },
 		},
 
 		f = {
@@ -133,10 +125,6 @@ local mappings = {
 		l = {
 			name = "LSP",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-			d = {
-				"<cmd>Telescope lsp_document_diagnostics<cr>",
-				"Document Diagnostics",
-			},
 			f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
 			i = { "<cmd>LspInfo<cr>", "Info" },
 			j = {
@@ -153,10 +141,6 @@ local mappings = {
 				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 				"Workspace Symbols",
 			},
-			w = {
-				"<cmd>Telescope lsp_workspace_diagnostics<cr>",
-				"Workspace Diagnostics",
-			},
 		},
 
 		p = {
@@ -170,38 +154,7 @@ local mappings = {
 			T = { "<cmd>lua _PROJECT_TEST_ALL()<cr>", "Run all tests" },
 		},
 
-		t = {
-			name = "Tabs",
-			a = { ":$tabnew<cr>", "Open new tab" },
-			c = { ":tabclose<cr>", "Close current tab" },
-			n = { ":tabn<cr>", "Go to next tab" },
-			o = { ":tabonly<cr>", "Close all other tabs" },
-			t = { ":tabn<cr>", "Go to next tab" },
-			p = { ":tabp<cr>", "Go to previous tab" },
-		},
-
-		o = {
-			name = "Open",
-			-- p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python console" },
-			t = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
-		},
-
-		w = {
-			name = "Window",
-			c = { "<C-w><C-q>", "Close" },
-			h = { "<C-w><C-h>", "Go to the left window" },
-			j = { "<C-w><C-j>", "Go to the down window" },
-			k = { "<C-w><C-k>", "Go to the up window" },
-			l = { "<C-w><C-l>", "Go to the right window" },
-			q = { "<C-w><C-q>", "Close" },
-			s = { "<C-w><C-s>", "Split horizontal" },
-			v = { "<C-w><C-v>", "Split vertical" },
-		},
-	},
-
-	g = {
-		d = { "Go to definition" },
-		l = { "Show diagnostic" },
+		t = { "<cmd>ToggleTerm direction=float<cr>", "Open Terminal" },
 	},
 }
 
