@@ -27,7 +27,7 @@ local servers = {
 	-- typescript
 	"tsserver",
 	-- nix
-	"rnix",
+	"nil_ls",
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")

@@ -109,7 +109,7 @@ in
       nodePackages.svelte-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
-      rnix-lsp
+      nil
       vscode-langservers-extracted # html, json
       htmx-lsp
 
