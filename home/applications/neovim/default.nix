@@ -101,8 +101,9 @@ in
       nodePackages.bash-language-server
       (python3.withPackages (ps: with ps; [
         python-lsp-server
-        mypy
+        python-lsp-ruff
         ruff
+        mypy
       ]))
       rust-analyzer
       marksman
