@@ -22,6 +22,8 @@
         ".local/share/direnv/allow"
         ".cargo"
         ".config/Signal"
+        ".logseq"
+        ".config/Logseq"
       ];
     };
   };
