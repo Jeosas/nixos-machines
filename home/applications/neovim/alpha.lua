@@ -1,4 +1,4 @@
-function alpha_setup()
+local function alpha_setup()
 	local dashboard = require("alpha.themes.dashboard")
 
 	dashboard.section.header.val = {
