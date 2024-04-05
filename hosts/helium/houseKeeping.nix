@@ -45,7 +45,7 @@ writeShellApplication {
       echo "Unknown command."
       echo ""
       print_help
-      exit 0
+      exit 2
       ;;
     esac
   '';
