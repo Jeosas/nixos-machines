@@ -31,6 +31,8 @@ in
       (import ./houseKeeping.nix { inherit pkgs; })
       signal-desktop
       logseq
+      krita
+      inkscape
     ];
   };
 
