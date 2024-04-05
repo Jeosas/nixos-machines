@@ -10,7 +10,7 @@ in
     inputs.hyprland.homeManagerModules.default
 
     ../../common/theme.nix
-    ./eww
+    ./waybar.nix
     ./dunst
     ./wofi
   ];
