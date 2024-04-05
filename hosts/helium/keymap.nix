@@ -53,7 +53,7 @@ in
       )
 
       (defalias 
-        caps (tap-hold 200 esc (layer-toggle layer1))
+        caps (tap-hold 500 esc (layer-toggle layer1))
       )
 
       (defsrc
