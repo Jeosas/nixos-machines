@@ -19,9 +19,10 @@ function options()
 	vim.opt.undofile = true -- enable persistent undo
 	vim.opt.updatetime = 50 -- faster completion (4000ms default)
 	vim.opt.writebackup = false -- if a file is being edited by another program, it is not allowed to be edited
-	vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-	vim.opt.tabstop = 4 -- insert 4 spaces for a tab
-	vim.opt.softtabstop = 4 -- fake tab insertion with space during editing
+	vim.opt.expandtab = true -- use spaces instead of tabs, fucks up lsp formatters
+	vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+	vim.opt.tabstop = 2 -- insert 4 spaces for a tab
+	vim.opt.softtabstop = 2 -- fake tab insertion with space during editing
 	vim.opt.cursorline = true -- highlight the current line
 	vim.opt.number = true -- set numbered lines
 	vim.opt.relativenumber = true -- set relative numbered lines
