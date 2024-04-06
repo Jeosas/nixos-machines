@@ -33,6 +33,7 @@ in
       logseq
       krita
       inkscape
+      bluetuith
     ];
   };
 

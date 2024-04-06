@@ -133,6 +133,10 @@
     tree
   ];
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
+
   # Users
   users.mutableUsers = false;
   users.users.jeosas = {
