@@ -16,6 +16,9 @@
     }
   ];
 
+  # System Emulation
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
