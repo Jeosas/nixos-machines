@@ -16,6 +16,7 @@
       directories = [
         ".setup" # nixps config
         "Images"
+        "Documents"
         { directory = ".ssh"; mode = "0700"; } # ssh keys
         ".mozilla/firefox/default"
         "code"
