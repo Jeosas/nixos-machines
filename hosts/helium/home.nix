@@ -34,6 +34,11 @@ in
       krita
       inkscape
       bluetuith
+      libreoffice
+      hunspell # spellcheck and its dicts
+      hunspellDicts.fr-any
+      hunspellDicts.en-us
+      hunspellDicts.de-de
     ];
   };
 
