@@ -133,6 +133,20 @@
     tree
   ];
 
+  fonts.packages = with pkgs; [
+    # Fonts
+    mplus-outline-fonts.githubRelease # normal + cjk font
+    openmoji-color # emoji
+    (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
+
+    # Windaube fonts for compat
+    corefonts
+    vistafonts
+
+    # Cursor
+    nordzy-cursor-theme
+  ];
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
