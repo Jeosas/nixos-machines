@@ -113,6 +113,7 @@ in
       nil
       vscode-langservers-extracted # html, json
       htmx-lsp
+      texlab
 
       # Telescope dependencies
       ripgrep

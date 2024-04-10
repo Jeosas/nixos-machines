@@ -28,6 +28,8 @@ local servers = {
 	"tsserver",
 	-- nix
 	"nil_ls",
+	-- LaTeX
+	"texlab",
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
