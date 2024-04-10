@@ -39,6 +39,7 @@ in
       hunspellDicts.fr-any
       hunspellDicts.en-us
       hunspellDicts.de-de
+      xournalpp
     ];
   };
 
