@@ -8,6 +8,7 @@
       "/var/log"
       "/var/lib/bluetooth" # bluetooth devices
       "/etc/NetworkManager/system-connections" # wifi connections
+      "/tmp" # needed for big nixos builds (thanks electron !)
     ];
     files = [
       "/etc/machine-id"
