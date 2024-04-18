@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -euo pipefail
+
+DISK_NVME=/dev/nvme0n1
+DISK_SSD=/dev/sda
+
+# Setup partitions
+
+parted --script --align optimal $DISK_NVME -- \
+  mktable gpt \
+  mkpart boot 0% 512MiB \
+  type 1 C12A7328-F81F-11D2-BA4B-00A0C93EC93B \
+  set 1 esp on \
+  mkpart root 512MiB 100% \
+  type 2 CA7D7CCB-63ED-4C53-861C-1742536059CC \
+  print
+
+parted --script --align optimal $DISK_SSD -- \
+  mktable gpt \
+  mkpart storage 0% 100% \
+  type 1 CA7D7CCB-63ED-4C53-861C-1742536059CC \
+  print
+
+# Setup LUKS encryption
+cryptsetup --verify-passphrase -v luksFormat "$DISK_NVME"p2
+cryptsetup open "$DISK_NVME"p2 enc_nvme
+
+cryptsetup --verify-passphrase -v luksFormat "$DISK_SSD"1
+cryptsetup open "$DISK_SSD"1 enc_ssd
+
+# Format
+mkfs.vfat -n boot "$DISK_NVME"p1
+mkfs.btrfs /dev/mapper/enc_nvme
+mkfs.btrfs /dev/mapper/enc_ssd
+
+# Create subvolumes
+mount -t btrfs /dev/mapper/enc_nvme  -o compress-force=zstd,noatime,ssd /mnt
+btrfs subvolume create /mnt/nix
+btrfs subvolume create /mnt/persist
+umount /mnt
+
+mount -t btrfs /dev/mapper/enc_ssd  -o compress-force=zstd,noatime,ssd /mnt
+btrfs subvolume create /mnt/games
+umount /mnt
+
+# Mounting everything
+mount -t tmpfs none /mnt
+mkdir -p /mnt/{boot,persist,nix}
+mkdir -p /mnt/home/jeosas/Games
+mount -o subvol=nix,compress=zstd,noatime,ssd /dev/mapper/enc_nvme /mnt/nix
+mount -o subvol=persist,compress=zstd,noatime,ssd /dev/mapper/enc_nvme /mnt/persist
+mount -o subvol=games,compress=zstd,noatime,ssd /dev/mapper/enc_ssd /mnt/home/jeosas/Games
+mount "$DISK_NVME"p1 /mnt/boot
+
+# Generate hardware config
+
+nixos-generate-config --root /mnt
+

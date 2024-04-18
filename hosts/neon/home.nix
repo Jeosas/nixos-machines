@@ -9,6 +9,7 @@ in
     inputs.nurpkgs.hmModules.nur
 
     ./monitors.nix
+    # ./keymap.nix # TODO: fix broken kmonad package
 
     ../../home/desktop/hyprland
     ../../home/applications/neovim
@@ -18,7 +19,7 @@ in
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
     ../../home/tools/direnv.nix
-    ../../home/tools/macchina.nix
+    ../../home/tools/fastfetch.nix
     ../../home/tools/starship.nix
   ];
 
@@ -28,6 +29,18 @@ in
     language.base = "en_US.UTF-8";
     packages = with pkgs; [
       (import ./houseKeeping.nix { inherit pkgs; })
+      signal-desktop
+      logseq
+      krita
+      inkscape
+      bluetuith
+      libreoffice
+      hunspell # spellcheck and its dicts
+      hunspellDicts.fr-any
+      hunspellDicts.en-us
+      hunspellDicts.de-de
+      xournalpp
+
       heroic
       steam
     ];
@@ -46,5 +59,24 @@ in
 
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    matchBlocks = {
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_github";
+        identitiesOnly = true;
+      };
+      "oxygen" = {
+        hostname = "192.168.1.8";
+        user = "root";
+        identityFile = "~/.ssh/id_homelab";
+        identitiesOnly = true;
+      };
+    };
+  };
 }
 

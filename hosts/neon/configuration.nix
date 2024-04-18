@@ -2,9 +2,10 @@
 
 {
   imports = [
-    ./vm.nix
     ./hardware.nix
 
+    inputs.impermanence.nixosModules.impermanence
+    ./impermanence.nix
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
@@ -13,6 +14,12 @@
       home-manager.extraSpecialArgs = { inherit inputs; };
     }
   ];
+
+  # System Emulation
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Nix
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -63,6 +70,9 @@
   };
   services.xserver.videoDrivers = [ "nvidia" ]; # needed even for wayland
 
+  # SSD
+  services.fstrim.enable = true;
+
   # Hyprland
   programs.hyprland = {
     enable = true;
@@ -104,6 +114,11 @@
   };
   security.polkit.enable = true;
 
+  # usb automount
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   environment.systemPackages = with pkgs; [
     git
     vim
@@ -111,14 +126,44 @@
     tree
   ];
 
+  fonts.packages = with pkgs; [
+    # Fonts
+    mplus-outline-fonts.githubRelease # normal + cjk font
+    openmoji-color # emoji
+    (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
+
+    # Windaube fonts for compat
+    corefonts
+    vistafonts
+
+    # Cursor
+    nordzy-cursor-theme
+  ];
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
+
   # Users
   users.mutableUsers = false;
   users.users.jeosas = {
     isNormalUser = true;
-    initialPassword = "jeosas";
+    hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" "video" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
+
+  programs.ssh.extraConfig = ''
+    Host *
+      AddkeysToAgent yes
+      Identitiesonly yes
+
+    Host github.com
+      HostName      github.com
+      IdentityFile  ~/.ssh/id_github
+      User          git
+  '';
 }
+
