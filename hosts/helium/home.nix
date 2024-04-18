@@ -48,5 +48,24 @@ in
 
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    matchBlocks = {
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_github";
+        identitiesOnly = true;
+      };
+      "oxygen" = {
+        hostname = "192.168.1.8";
+        user = "root";
+        identityFile = "~/.ssh/id_homelab";
+        identitiesOnly = true;
+      };
+    };
+  };
 }
 
