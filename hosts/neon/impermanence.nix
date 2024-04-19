@@ -27,6 +27,7 @@
         ".logseq"
         ".config/Logseq"
         ".steam"
+        ".local/share/Steam"
         ".heroic"
       ];
     };

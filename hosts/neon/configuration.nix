@@ -13,6 +13,7 @@
       home-manager.users.jeosas = import ./home.nix { inherit config pkgs inputs; };
       home-manager.extraSpecialArgs = { inherit inputs; };
     }
+    ./gaming.nix
   ];
 
   # System Emulation

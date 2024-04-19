@@ -40,9 +40,6 @@ in
       hunspellDicts.en-us
       hunspellDicts.de-de
       xournalpp
-
-      heroic
-      steam
     ];
     sessionVariables = {
       # hyprland nvidia fix
