@@ -20,7 +20,7 @@
 { config, pkgs, ... }:
 
 let
-  kmonad = pkgs.haskellPackages.kmonad;
+  kmonad = pkgs.kmonad;
   mkKmonadService = configname: {
     Unit.Description = "kmonad keyboard config ${configname}";
     Service = {
