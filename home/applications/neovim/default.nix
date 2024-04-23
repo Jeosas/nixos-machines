@@ -3,6 +3,15 @@
 let
   inherit (builtins) readFile;
   inherit (lib.strings) concatStrings;
+
+  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+    };
+  };
 in
 {
   programs.neovim = {
@@ -26,11 +35,11 @@ in
         require("jeovim.project")
         require("jeovim.indentline")
         require("jeovim.whichkey")
-        require("jeovim.autocommands")
         require("jeovim.tabby")
         require("jeovim.dressing")
         require("jeovim.ufo")
       ''
+      (readFile ./autocommands.lua)
       (readFile ./options.lua)
       (readFile ./remap.lua)
     ];
