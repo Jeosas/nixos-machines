@@ -35,8 +35,9 @@ in
   programs.lazygit = {
     enable = true;
     settings = {
-      os.editCommand = "nvim";
-      os.disableStartupPopups = true;
+      notARepository = "skip";
+      disableStartupPopups = true;
+      os.edit = "nvim";
       gui.nerdFontsVersion = "3"; # show icons
       gui.mouseEvents = false;
     };
