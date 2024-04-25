@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./yazi.nix
+  ];
+
   home.packages = with pkgs; [
     just
     bat
