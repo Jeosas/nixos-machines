@@ -17,7 +17,6 @@
     };
     nixgl.url = "github:guibou/nixGL";
 
-    hyprland.url = "github:hyprwm/Hyprland";
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
       flake = false;
@@ -27,7 +26,7 @@
     thewinterdev-website.url = "github:Jeosas/thewinterdev.fr";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, deploy-rs, impermanence, home-manager, nixgl, hyprland, arkenfox-userjs, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, deploy-rs, impermanence, home-manager, nixgl, arkenfox-userjs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs-unstable.legacyPackages.${system};

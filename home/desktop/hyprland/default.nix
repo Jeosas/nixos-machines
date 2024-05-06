@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 with pkgs.lib.strings;
 let
@@ -7,8 +7,6 @@ let
 in
 {
   imports = [
-    inputs.hyprland.homeManagerModules.default
-
     ../../common/theme.nix
     ./waybar.nix
     ./dunst
