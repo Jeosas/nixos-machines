@@ -5,7 +5,7 @@
 ## Create sd-image
 
 ```console
-$ nix build .#oxygen-image
+$ nix build .#images.oxygen
 ```
 
 ## Flash sd-card

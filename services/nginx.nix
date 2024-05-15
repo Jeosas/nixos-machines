@@ -4,9 +4,9 @@
 {
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 	services.nginx = {
-		clientMaxBodySize = "40M";
-		enable = true;
+    enable = true;
 		enableReload = true;
+    clientMaxBodySize = "40M";
 		recommendedGzipSettings = true;
 		recommendedOptimisation = true;
 		recommendedProxySettings = true;

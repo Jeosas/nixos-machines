@@ -4,6 +4,10 @@ let
   domain = "thewinterdev.fr";
 in
 {
+  imports = [
+    ../nginx.nix
+  ];
+
   services.nginx.virtualHosts.${domain} = {
     enableACME = true;
     forceSSL = true;
