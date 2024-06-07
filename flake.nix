@@ -7,8 +7,6 @@
 
     nurpkgs.url = "github:nix-community/NUR";
 
-    deploy-rs.url = "github:serokell/deploy-rs";
-
     impermanence.url = "github:nix-community/impermanence";
 
     home-manager = {
@@ -26,7 +24,7 @@
     thewinterdev-website.url = "github:Jeosas/thewinterdev.fr";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, deploy-rs, impermanence, home-manager, nixgl, arkenfox-userjs, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nurpkgs, impermanence, home-manager, nixgl, arkenfox-userjs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs-unstable.legacyPackages.${system};
@@ -57,32 +55,10 @@
       images.oxygen = self.nixosConfigurations.oxygen.config.system.build.sdImage;
 
       devShells.${system} = {
-        default = self.devShells.${system}.deploy;
-        deploy  = pkgs.mkShell {
-          name = "deploy";
-          packages = [ pkgs.deploy-rs ];
-        };
         nixos-install = pkgs.mkShell {
           name = "nixos-install";
           packages = with pkgs; [ nixos-install-tools ];
         };
       };
-
-      deploy = {
-        nodes = {
-          oxygen = {
-            hostname = "oxygen";
-            profiles = {
-              system = {
-                sshUser = "root";
-                path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.oxygen;
-              };
-            };
-          };
-        };
-      };
-
-      # Check deployment definitions.
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }
