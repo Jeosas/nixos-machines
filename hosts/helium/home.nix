@@ -9,7 +9,7 @@ in
     inputs.nurpkgs.hmModules.nur
 
     ./monitors.nix
-    # ./keymap.nix # TODO: fix broken kmonad package
+    ./keymap.nix
 
     ../../home/desktop/hyprland
     ../../home/applications/neovim
