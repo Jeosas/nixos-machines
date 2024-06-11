@@ -42,7 +42,10 @@ in
       gui.mouseEvents = false;
     };
   };
-  programs.zsh.shellAliases.lz = "lazygit";
+  programs.zsh.shellAliases = {
+    lz = "lazygit";
+    fastcommit = "git add -A; git commit -a -m \"`curl -s http://whatthecommit.com/index.txt`\"";
+  };
 
   # dependencies
   programs.neovim.enable = true;
