@@ -213,11 +213,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1717746896,
-        "narHash": "sha256-FrtLd9f2olJw11wx2D9Jahnuk1NbgqIaDm4bMCYJw7Q=",
+        "lastModified": 1718739726,
+        "narHash": "sha256-Ewlk/rQeC6VAKvD/ISMUbXxVNikgMxxwTUiej4PZmjA=",
         "owner": "Jeosas",
         "repo": "thewinterdev.fr",
-        "rev": "7e8765733c57d1d4a95d6af7bfc99ff3ceaa17af",
+        "rev": "ce884f304c3becb5f52db7f398eba18b29321f2b",
         "type": "github"
       },
       "original": {
