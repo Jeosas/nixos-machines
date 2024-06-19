@@ -41,6 +41,10 @@ writeShellApplication {
         cd ~/.setup && nix flake update && nixos_switch
         exit 0
         ;;
+    gc)
+        doas nix-collect-garbage --delete-older-than 14d
+        exit 0;
+        ;;
     *)
       echo "Unknown command."
       echo ""
