@@ -32,9 +32,10 @@ local function lsp_config()
 	lspconfig["html"].setup(default_opts)
 	lspconfig["htmx"].setup(default_opts)
 	lspconfig["tsserver"].setup(default_opts)
+	lspconfig["svelte"].setup(default_opts)
 	lspconfig["nil_ls"].setup(default_opts) -- nix
 	lspconfig["texlab"].setup(default_opts) -- LaTeX
-	lspconfig["json_ls"].setup(vim.tbl_deep_extend("force", require("jeovim.lsp.settings.jsonls"), default_opts))
+	lspconfig["jsonls"].setup(vim.tbl_deep_extend("force", require("jeovim.lsp.settings.jsonls"), default_opts))
 end
 
 lsp_config()
