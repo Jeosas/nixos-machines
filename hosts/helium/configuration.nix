@@ -4,6 +4,8 @@
   imports = [
     ./hardware.nix
     ./battery.nix
+    
+    ./remove_me.nix
 
     inputs.impermanence.nixosModules.impermanence
     ./impermanence.nix
@@ -65,9 +67,9 @@
   services.fwupd.enable = true;
 
   # Graphics
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # SSD
