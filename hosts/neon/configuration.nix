@@ -20,7 +20,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
 
   # Nix
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -55,18 +55,17 @@
   };
 
   # Graphics
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Nvidia
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    open = false;
     modesetting.enable = true;
     nvidiaSettings = false;
-    powerManagement.enable = true;
   };
   services.xserver.videoDrivers = [ "nvidia" ]; # needed even for wayland
 

@@ -40,8 +40,11 @@ in
         # layout = master ## TODO make this a module
         layout = dwindle
         allow_tearing = false
-        cursor_inactive_timeout = 6
-        no_cursor_warps = true
+      }
+
+      cursor {
+        inactive_timeout = 6      
+        no_warps = true
       }
 
       decoration {

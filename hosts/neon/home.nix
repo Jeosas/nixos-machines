@@ -30,7 +30,7 @@ in
     packages = with pkgs; [
       (import ./houseKeeping.nix { inherit pkgs; })
       signal-desktop
-      logseq
+      # logseq
       krita
       inkscape
       bluetuith
