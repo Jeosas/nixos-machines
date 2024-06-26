@@ -51,7 +51,6 @@ in
       (import ./houseKeeping.nix { inherit pkgs; })
       bluetuith
       autorandr
-      logseq
     ];
   };
 
