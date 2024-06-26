@@ -103,26 +103,33 @@ in
     ];
 
     extraPackages = with pkgs; [
-      # Lsp
+      # LSP
+      ## misc
       sumneko-lua-language-server
       stylua
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
+      marksman
+      texlab
+      ## python
       (python3.withPackages (ps: with ps; [
         python-lsp-server
         python-lsp-ruff
         ruff
         mypy
       ]))
+      ## rust
       rust-analyzer
-      marksman
+      ## web
       nodePackages.svelte-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
-      nil
       vscode-langservers-extracted # html, json
       htmx-lsp
-      texlab
+      ## nix
+      nil
+      alejandra
+      statix
 
       # Telescope dependencies
       ripgrep

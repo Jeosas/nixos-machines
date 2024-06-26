@@ -7,13 +7,15 @@ local function nonels()
 	null_ls.setup({
 		debug = false,
 		sources = {
-			-- Lua
-			formatting.stylua,
+			-- misc
+			formatting.stylua, -- lua
+			diagnostics.actionlint, -- github action
+			diagnostics.zsh, -- zsh
 			-- Python
 			diagnostics.mypy,
-			diagnostics.actionlint,
-			-- zsh
-			diagnostics.zsh,
+			-- nix
+			formatting.alejandra,
+			diagnostics.statix,
 		},
 	})
 end

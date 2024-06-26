@@ -24,18 +24,23 @@ local function lsp_config()
 			},
 		},
 	})
+	-- misc
 	lspconfig["yamlls"].setup(default_opts)
 	lspconfig["bashls"].setup(default_opts)
-	lspconfig["pylsp"].setup(default_opts)
-	lspconfig["rust_analyzer"].setup(default_opts)
 	lspconfig["marksman"].setup(default_opts) -- markdown
-	lspconfig["html"].setup(default_opts)
-	lspconfig["htmx"].setup(default_opts)
-	lspconfig["tsserver"].setup(default_opts)
-	lspconfig["svelte"].setup(default_opts)
-	lspconfig["nil_ls"].setup(default_opts) -- nix
 	lspconfig["texlab"].setup(default_opts) -- LaTeX
 	lspconfig["jsonls"].setup(vim.tbl_deep_extend("force", require("jeovim.lsp.settings.jsonls"), default_opts))
+	-- python
+	lspconfig["pylsp"].setup(default_opts)
+	-- rust
+	lspconfig["rust_analyzer"].setup(default_opts)
+	-- web
+	lspconfig["html"].setup(default_opts)
+	lspconfig["htmx"].setup(default_opts)
+	lspconfig["svelte"].setup(default_opts)
+	lspconfig["tsserver"].setup(default_opts)
+	-- nix
+	lspconfig["nil_ls"].setup(default_opts)
 end
 
 lsp_config()
