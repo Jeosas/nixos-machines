@@ -1,13 +1,16 @@
-{ config, pkgs, lib, ... }:
-
 {
-  imports = [ ../../modules/home-manager/theme.nix ];
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [../../modules/home-manager/theme.nix];
 
   home.packages = with pkgs; [
     # Fonts
     mplus-outline-fonts.githubRelease # normal + cjk font
     openmoji-color # emoji
-    (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
+    (nerdfonts.override {fonts = ["MPlus"];}) # nerdfonts
 
     # Cursor
     nordzy-cursor-theme
@@ -42,7 +45,6 @@
       sans = "M+1Code Nerd Font";
       mono = "M+1Code Nerd Font Mono";
     };
-
   };
 
   home.pointerCursor = {
@@ -67,10 +69,14 @@
       name = "Nordic";
     };
     gtk3 = {
-      extraCss = /* css */ ''
-        /* Remove dotted lines from GTK+ 3 applications */
-        undershoot.top, undershoot.right, undershoot.bottom, undershoot.left { background-image: none; }   
-      '';
+      extraCss =
+        /*
+        css
+        */
+        ''
+          /* Remove dotted lines from GTK+ 3 applications */
+          undershoot.top, undershoot.right, undershoot.bottom, undershoot.left { background-image: none; }
+        '';
     };
   };
 }

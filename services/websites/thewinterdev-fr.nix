@@ -1,9 +1,10 @@
-{ config, inputs, ... }:
-
-let
-  domain = "thewinterdev.fr";
-in
 {
+  config,
+  inputs,
+  ...
+}: let
+  domain = "thewinterdev.fr";
+in {
   imports = [
     ../nginx.nix
   ];
@@ -12,9 +13,9 @@ in
     enableACME = true;
     forceSSL = true;
 
-    serverAliases = [ "www.${domain}" ];
+    serverAliases = ["www.${domain}"];
 
-    root ="${inputs.thewinterdev-website.packages.${config.nixpkgs.system}.default}/www/public";
+    root = "${inputs.thewinterdev-website.packages.${config.nixpkgs.system}.default}/www/public";
 
     extraConfig = ''
       error_page 404 /404.html;

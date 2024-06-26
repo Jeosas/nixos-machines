@@ -5,4 +5,3 @@
     domain = "oxygen.home";
   };
 }
-

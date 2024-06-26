@@ -1,10 +1,14 @@
-{ pkgs, lib, config, inputs, ... }:
-
 {
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware.nix
     ./battery.nix
-    
+
     ./remove_me.nix
 
     inputs.impermanence.nixosModules.impermanence
@@ -13,13 +17,13 @@
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.jeosas = import ./home.nix { inherit config pkgs inputs; };
-      home-manager.extraSpecialArgs = { inherit inputs; };
+      home-manager.users.jeosas = import ./home.nix {inherit config pkgs inputs;};
+      home-manager.extraSpecialArgs = {inherit inputs;};
     }
   ];
 
   # System Emulation
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -116,7 +120,7 @@
     enable = true;
     extraRules = [
       {
-        users = [ "jeosas" ];
+        users = ["jeosas"];
         persist = true;
       }
     ];
@@ -145,7 +149,7 @@
     # Fonts
     mplus-outline-fonts.githubRelease # normal + cjk font
     openmoji-color # emoji
-    (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
+    (nerdfonts.override {fonts = ["MPlus"];}) # nerdfonts
 
     # Windaube fonts for compat
     corefonts
@@ -165,9 +169,8 @@
     isNormalUser = true;
     hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = [ "wheel" "networkmanager" "video" "input" "uinput" ];
+    extraGroups = ["wheel" "networkmanager" "video" "input" "uinput"];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
 }
-

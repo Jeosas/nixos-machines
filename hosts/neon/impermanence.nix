@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
@@ -18,7 +16,10 @@
         ".setup" # nixps config
         "Images"
         "Documents"
-        { directory = ".ssh"; mode = "0700"; } # ssh keys
+        {
+          directory = ".ssh";
+          mode = "0700";
+        } # ssh keys
         ".mozilla/firefox/default"
         "code"
         ".local/share/direnv/allow"

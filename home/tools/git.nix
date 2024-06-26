@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-
-let
-  inherit (lib) mkDefault;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) mkDefault;
+in {
   # Git
   programs.git = {
     enable = true;

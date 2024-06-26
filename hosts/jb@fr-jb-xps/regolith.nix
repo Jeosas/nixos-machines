@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   xdg.configFile."regolith2/Xresources".text = ''
     ! Look
     gnome.terminal.font: ${config.theme.fonts.mono} 11
     gtk.document_font_name:	Sans 11
-    gtk.font_name: ${config.theme.fonts.sans} 11	
-    gtk.monospace_font_name: ${config.theme.fonts.mono} 11	
+    gtk.font_name: ${config.theme.fonts.sans} 11
+    gtk.monospace_font_name: ${config.theme.fonts.mono} 11
     i3-wm.bar.font:	${config.theme.fonts.sans} 11
     i3-wm.floatingwindow.border.size:	2
     i3-wm.window.border.size:	2

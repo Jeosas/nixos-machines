@@ -1,11 +1,13 @@
-{ config, pkgs, lib, ... }:
-
-with pkgs.lib.strings;
-let
-  volume = import ./dunst/volumeScript.nix { inherit pkgs; };
-  brightness = import ./dunst/brightnessScript.nix { inherit pkgs; };
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with pkgs.lib.strings; let
+  volume = import ./dunst/volumeScript.nix {inherit pkgs;};
+  brightness = import ./dunst/brightnessScript.nix {inherit pkgs;};
+in {
   imports = [
     ../../common/theme.nix
     ./waybar.nix
@@ -13,7 +15,7 @@ in
     ./wofi
   ];
 
-  home.packages = with pkgs; [ wl-clipboard ];
+  home.packages = with pkgs; [wl-clipboard];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -22,8 +24,7 @@ in
 
     extraConfig = with config.theme.colors; let
       inherit (lib) removePrefix;
-    in
-    ''
+    in ''
       input {
         kb_layout = us
         kb_variant = altgr-intl
@@ -43,7 +44,7 @@ in
       }
 
       cursor {
-        inactive_timeout = 6      
+        inactive_timeout = 6
         no_warps = true
       }
 
@@ -88,7 +89,7 @@ in
 
       # apps
       bind = SUPER, d, exec, ${config.programs.wofi.package}/bin/wofi --show drun
-      bind = SUPER_SHIFT, Return, exec,${config.programs.firefox.package}/bin/firefox 
+      bind = SUPER_SHIFT, Return, exec,${config.programs.firefox.package}/bin/firefox
       bind = SUPER, Return, exec, ${pkgs.alacritty}/bin/alacritty
 
       # workspaces
@@ -164,16 +165,23 @@ in
   programs.zsh = {
     profileExtra =
       if config.targets.genericLinux.enable
-      then /* bash */ ''
-        if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
-          ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL Hyprland
-        fi
-      ''
-      else /* bash */ ''
-        if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
-          Hyprland
-        fi
-      '';
+      then
+        /*
+        bash
+        */
+        ''
+          if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+            ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL Hyprland
+          fi
+        ''
+      else
+        /*
+        bash
+        */
+        ''
+          if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+            Hyprland
+          fi
+        '';
   };
 }
-

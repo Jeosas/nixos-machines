@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./yazi.nix
   ];
@@ -34,6 +36,6 @@
         };
       }
     ];
-    extraPackages = with pkgs; [ imagemagick ];
+    extraPackages = with pkgs; [imagemagick];
   };
 }

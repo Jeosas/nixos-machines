@@ -1,6 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -64,8 +68,6 @@
           white = color15;
         };
       };
-
     };
   };
 }
-

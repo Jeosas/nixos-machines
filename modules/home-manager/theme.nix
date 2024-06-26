@@ -1,21 +1,17 @@
-{ lib, ... }:
-
-with lib;
-
-{
+{lib, ...}:
+with lib; {
   # https://github.com/nix-community/home-manager/issues/361#issuecomment-425238620
   options = {
     theme = {
-      colors =
-        let
-          mkColorOption = name: {
-            inherit name;
-            value = mkOption {
-              type = types.strMatching "#[a-fA-F0-9]{6}";
-              description = "Color ${name}.";
-            };
+      colors = let
+        mkColorOption = name: {
+          inherit name;
+          value = mkOption {
+            type = types.strMatching "#[a-fA-F0-9]{6}";
+            description = "Color ${name}.";
           };
-        in
+        };
+      in
         listToAttrs (map mkColorOption [
           "background"
           "foreground"

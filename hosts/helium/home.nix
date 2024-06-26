@@ -1,10 +1,12 @@
-{ config, pkgs, inputs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   username = "jeosas";
   homeDirectory = "/home/${username}";
-in
-{
+in {
   imports = [
     inputs.nurpkgs.hmModules.nur
 
@@ -28,7 +30,7 @@ in
     stateVersion = "24.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     language.base = "en_US.UTF-8";
     packages = with pkgs; [
-      (import ./houseKeeping.nix { inherit pkgs; })
+      (import ./houseKeeping.nix {inherit pkgs;})
       signal-desktop
       logseq
       krita
@@ -68,4 +70,3 @@ in
     };
   };
 }
-

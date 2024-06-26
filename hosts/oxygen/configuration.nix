@@ -1,10 +1,12 @@
-{ pkgs, lib, config, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   hostInfo = (import ../../hosts.nix).oxygen;
   ports.ssh = 22;
-in
-{
+in {
   imports = [
     ../../services/websites/thewinterdev-fr.nix
   ];
@@ -24,10 +26,10 @@ in
   ];
 
   # Enable ssh
-  systemd.services.sshd.wantedBy = lib.mkOverride 40 [ "multi-user.target" ];
+  systemd.services.sshd.wantedBy = lib.mkOverride 40 ["multi-user.target"];
   services.openssh = {
     enable = true;
-    ports = with ports; [ ssh ];
+    ports = with ports; [ssh];
     settings = {
       PermitRootLogin = "prohibit-password";
       PasswordAuthentication = false;
@@ -39,15 +41,17 @@ in
   networking = {
     defaultGateway = "192.168.1.254";
     hostName = hostInfo.hostName;
-    interfaces.eth0.ipv4.addresses = [{
-      address = hostInfo.ipv4;
-      prefixLength = 24;
-    }];
-    nameservers = [ "9.9.9.9" ];
+    interfaces.eth0.ipv4.addresses = [
+      {
+        address = hostInfo.ipv4;
+        prefixLength = 24;
+      }
+    ];
+    nameservers = ["9.9.9.9"];
 
     firewall = {
       enable = true;
-      allowedTCPPorts = with ports; [ ssh ];
+      allowedTCPPorts = with ports; [ssh];
     };
   };
 }

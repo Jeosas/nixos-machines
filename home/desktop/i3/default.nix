@@ -1,10 +1,13 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../common/theme.nix
     ./i3
-    (import ./polybar.nix { })
+    (import ./polybar.nix {})
   ];
 
   xsession.enable = true;
@@ -56,10 +59,14 @@
 
   # Start x
   programs.zsh = {
-    profileExtra = /* bash */ ''
-      if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
-        startx
-      fi
-    '';
+    profileExtra =
+      /*
+      bash
+      */
+      ''
+        if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+          startx
+        fi
+      '';
   };
 }

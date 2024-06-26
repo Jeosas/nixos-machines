@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # zsh
   programs.zsh = {
     enable = true;
@@ -21,7 +23,6 @@
       export PATH=$HOME/.local/bin:$PATH
     '';
   };
-
 
   # starship
   programs.starship.enableZshIntegration = true;

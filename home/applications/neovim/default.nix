@@ -1,25 +1,30 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (builtins) readFile;
   inherit (lib.strings) concatStrings;
 
-  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
-    pname = "${lib.strings.sanitizeDerivationName repo}";
-    version = ref;
-    src = builtins.fetchGit {
-      url = "https://github.com/${repo}.git";
-      ref = ref;
+  fromGitHub = ref: repo:
+    pkgs.vimUtils.buildVimPlugin {
+      pname = "${lib.strings.sanitizeDerivationName repo}";
+      version = ref;
+      src = builtins.fetchGit {
+        url = "https://github.com/${repo}.git";
+        ref = ref;
+      };
     };
-  };
-in
-{
+in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
 
     extraLuaConfig = concatStrings [
-      /* lua */
+      /*
+      lua
+      */
       ''
         require("jeovim.colorscheme")
         require("jeovim.cmp")
@@ -112,12 +117,13 @@ in
       marksman
       texlab
       ## python
-      (python3.withPackages (ps: with ps; [
-        python-lsp-server
-        python-lsp-ruff
-        ruff
-        mypy
-      ]))
+      (python3.withPackages (ps:
+        with ps; [
+          python-lsp-server
+          python-lsp-ruff
+          ruff
+          mypy
+        ]))
       ## rust
       rust-analyzer
       ## web

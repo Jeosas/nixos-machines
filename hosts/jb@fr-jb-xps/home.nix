@@ -1,10 +1,13 @@
-{ config, pkgs, inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   username = "jb";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config";
-in
-{
+in {
   imports = [
     inputs.nurpkgs.hmModules.nur
 
@@ -38,7 +41,7 @@ in
 
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = ["nix-command" "flakes"];
   };
 
   home = {
@@ -48,7 +51,7 @@ in
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      (import ./houseKeeping.nix { inherit pkgs; })
+      (import ./houseKeeping.nix {inherit pkgs;})
       bluetuith
       autorandr
     ];
@@ -74,4 +77,3 @@ in
   # Setup home manager to run over other distros
   targets.genericLinux.enable = true;
 }
-

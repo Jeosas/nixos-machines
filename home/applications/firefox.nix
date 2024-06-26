@@ -1,16 +1,23 @@
-{ inputs, config, pkgs, lib, ... }:
-
-with lib;
-let
-  mkUserJs = { prefs ? { }, extraPrefs ? "" }: ''
-    ${fileContents "${inputs.arkenfox-userjs}/user.js"} 
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
+  mkUserJs = {
+    prefs ? {},
+    extraPrefs ? "",
+  }: ''
+    ${fileContents "${inputs.arkenfox-userjs}/user.js"}
 
     ${concatStrings (mapAttrsToList (name: value: ''
-      user_pref("${name}", ${builtins.toJSON value});
-    '') prefs)}
+        user_pref("${name}", ${builtins.toJSON value});
+      '')
+      prefs)}
   '';
-in
-{
+in {
   home.sessionVariables = mkIf config.wayland.windowManager.hyprland.enable {
     MOZ_ENABLE_WAYLAND = "1";
   };
@@ -35,19 +42,23 @@ in
         default = "DuckDuckGo";
         privateDefault = "DuckDuckGo";
         force = true;
-        order = [ "DuckDuckGo" ];
+        order = ["DuckDuckGo"];
       };
-      userChrome = /* css */ ''
+      userChrome =
         /*
-        This repo https://github.com/Timvde/UserChrome-Tweaks contains nice snippets.
+        css
         */
+        ''
+          /*
+          This repo https://github.com/Timvde/UserChrome-Tweaks contains nice snippets.
+          */
 
-        /* Remove 'Sync' ad from App Menu. */
-        #appMenu-fxa-status2, 
-        #appMenu-fxa-status2 + toolbarseparator {
-          display: none !important;
-        }
-      '';
+          /* Remove 'Sync' ad from App Menu. */
+          #appMenu-fxa-status2,
+          #appMenu-fxa-status2 + toolbarseparator {
+            display: none !important;
+          }
+        '';
       extraConfig = mkUserJs {
         prefs = {
           # Disable anoying features
@@ -77,4 +88,3 @@ in
     };
   };
 }
-

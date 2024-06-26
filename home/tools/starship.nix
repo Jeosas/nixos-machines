@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.starship = {
     enable = true;
     settings = {
@@ -19,8 +21,14 @@
       battery = {
         format = "[$symbol]($style)";
         display = [
-          { threshold = 30; style = "yellow"; }
-          { threshold = 10; style = "red"; }
+          {
+            threshold = 30;
+            style = "yellow";
+          }
+          {
+            threshold = 10;
+            style = "red";
+          }
         ];
       };
 

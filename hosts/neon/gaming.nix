@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   boot.blacklistedKernelModules = [
     "hid-thrustmaster" # T300rs drivers
   ];
@@ -11,7 +13,7 @@
     hid-tmff2 # T300rs drivers
   ];
 
-  services.udev.packages = with pkgs; [ oversteer ];
+  services.udev.packages = with pkgs; [oversteer];
   home-manager.users.jeosas.home.packages = with pkgs; [
     oversteer
     protonup-ng

@@ -1,11 +1,13 @@
-{ config, pkgs, inputs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   username = "jeosas";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config";
-in
-{
+in {
   imports = [
     inputs.nurpkgs.hmModules.nur
 

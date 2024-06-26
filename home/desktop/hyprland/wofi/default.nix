@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.wofi = {
     enable = true;
     settings = {
@@ -23,55 +25,58 @@
       image_size = 40;
       gtk_dark = true;
     };
-    style = with config.theme.colors; /* css */ ''
-      window {
-        font-family: "${config.theme.fonts.sans}";
-        font-size: 13px;
-        margin: 0px;
-        padding: 0px;
-        border: 2px solid ${config.theme.colors.color2};
-        border-radius: 6px;
-      }
+    style = with config.theme.colors;
+    /*
+    css
+    */
+      ''
+        window {
+          font-family: "${config.theme.fonts.sans}";
+          font-size: 13px;
+          margin: 0px;
+          padding: 0px;
+          border: 2px solid ${config.theme.colors.color2};
+          border-radius: 6px;
+        }
 
-      #input {
-        min-height: 36px;
-        padding: 4px 10px;
-        margin: 4px;
-        border: none;
-        font-weight: bold;
-        outline: none;
-        border-radius: 6px;
-        margin: 10px;
-        margin-bottom: 2px;
-      }
+        #input {
+          min-height: 36px;
+          padding: 4px 10px;
+          margin: 4px;
+          border: none;
+          font-weight: bold;
+          outline: none;
+          border-radius: 6px;
+          margin: 10px;
+          margin-bottom: 2px;
+        }
 
-      #outer-box {
-        margin: 0px;
-        padding: 8px;
-        border: none;
-      }
+        #outer-box {
+          margin: 0px;
+          padding: 8px;
+          border: none;
+        }
 
-      #scroll {
-        padding: 8px;
-      }
+        #scroll {
+          padding: 8px;
+        }
 
-      #text {
-        padding: 3px;
-      }
+        #text {
+          padding: 3px;
+        }
 
-      #entry {
-        margin: 3px;
-        border: none;
-        border-radius: 6px;
-      }
+        #entry {
+          margin: 3px;
+          border: none;
+          border-radius: 6px;
+        }
 
-      .undershoot.top {
-        background-image = transparent;
-      }
-      .undershoot.bottom {
-        background-image = transparent;
-      }
-    '';
+        .undershoot.top {
+          background-image = transparent;
+        }
+        .undershoot.bottom {
+          background-image = transparent;
+        }
+      '';
   };
 }
-
