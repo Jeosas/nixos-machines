@@ -58,11 +58,6 @@
     };
 
     homeConfigurations = {
-      "jeosas@JB-IV" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [./hosts/JB-IV/home.nix];
-      };
       "jb@fr-jb-xps" = import (./. + "/hosts/jb@fr-jb-xps") {inherit inputs pkgs;};
     };
 
