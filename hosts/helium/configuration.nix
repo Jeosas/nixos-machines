@@ -163,13 +163,15 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
+  programs.adb.enable = true;
+
   # Users
   users.mutableUsers = false;
   users.users.jeosas = {
     isNormalUser = true;
     hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = ["wheel" "networkmanager" "video" "input" "uinput"];
+    extraGroups = ["wheel" "networkmanager" "video" "input" "uinput" "adbusers" "kvm"];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
