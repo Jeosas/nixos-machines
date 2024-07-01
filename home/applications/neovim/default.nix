@@ -89,7 +89,16 @@ in {
 
       # LSP
       nvim-lspconfig
-      none-ls-nvim
+      {
+        plugin = conform-nvim;
+        type = "lua";
+        config = readFile ./lsp/conform.lua;
+      }
+      {
+        plugin = nvim-lint;
+        type = "lua";
+        config = readFile ./lsp/lint.lua;
+      }
 
       # Telescope
       telescope-nvim
@@ -111,7 +120,6 @@ in {
       # LSP
       ## misc
       sumneko-lua-language-server
-      stylua
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
       marksman
@@ -134,8 +142,16 @@ in {
       htmx-lsp
       ## nix
       nil
+
+      # Format
+      stylua
       alejandra
+      nodePackages.prettier
+      # --python ruff
+
+      # Lint
       statix
+      # --python mypy
 
       # Telescope dependencies
       ripgrep

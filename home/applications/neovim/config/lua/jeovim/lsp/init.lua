@@ -8,4 +8,3 @@ end
 
 require("jeovim.lsp.handlers").setup()
 require("jeovim.lsp.lsp-installer")
-require("jeovim.lsp.none-ls")
