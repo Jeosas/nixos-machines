@@ -1,4 +1,4 @@
-{pkgs}: let
+{pkgs, ... }: let
   onegaishimasu = pkgs.writeShellApplication {
     name = "onegaishimasu";
     runtimeInputs = with pkgs; [just];
