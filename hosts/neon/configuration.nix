@@ -19,6 +19,7 @@
       home-manager.extraSpecialArgs = {inherit inputs;};
     }
     ./gaming.nix
+    ./game_dev.nix
   ];
 
   # System Emulation
