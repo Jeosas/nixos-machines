@@ -155,7 +155,12 @@
     isNormalUser = true;
     hashedPasswordFile = "/persist/jeosas-password";
     description = "jeosas";
-    extraGroups = ["wheel" "networkmanager" "video"];
+    extraGroups = [
+      "wheel" # admin
+      "networkmanager" # network
+      "video" # nvidia
+      "kvm" # android avd
+    ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
