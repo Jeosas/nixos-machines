@@ -27,9 +27,16 @@
         ".config/Signal"
         ".logseq"
         ".config/Logseq"
+
+        # Gaming
         ".steam"
         ".local/share/Steam"
-        ".heroic"
+        ".config/heroic"
+
+        # VR
+        ".config/alvr"
+        ".config/openvr"
+        ".config/openxr"
       ];
     };
   };
