@@ -17,6 +17,7 @@ in {
     ../../home/applications/neovim
     ../../home/applications/firefox.nix
     ../../home/applications/alacritty.nix
+    ../../home/tools/houseKeeping.nix
     ../../home/tools/commons.nix
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix

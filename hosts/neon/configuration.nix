@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./hardware.nix
-    ../../home/tools/houseKeeping.nix
 
     inputs.impermanence.nixosModules.impermanence
     ./impermanence.nix

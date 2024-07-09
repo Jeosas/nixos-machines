@@ -8,7 +8,6 @@
   imports = [
     ./hardware.nix
     ./battery.nix
-    ../../home/tools/houseKeeping.nix
 
     ./remove_me.nix
 

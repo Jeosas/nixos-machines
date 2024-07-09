@@ -20,6 +20,7 @@ in {
 
     ../../home/applications/neovim
     ../../home/applications/alacritty.nix
+    ../../home/tools/houseKeeping.nix
     ../../home/tools/commons.nix
     ../../home/tools/zsh.nix
     ../../home/tools/git.nix
@@ -51,7 +52,6 @@ in {
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      (import ./houseKeeping.nix {inherit pkgs;})
       bluetuith
       autorandr
     ];
