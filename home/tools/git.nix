@@ -46,7 +46,7 @@ in {
   };
   programs.zsh.shellAliases = {
     lz = "lazygit";
-    fastcommit = "git add -A; git commit -a -m \"`curl -s http://whatthecommit.com/index.txt`\"";
+    fastcommit = "git add -A; git commit -a -m \"`curl -s https://whatthecommit.com/index.txt`\"";
   };
 
   # dependencies
