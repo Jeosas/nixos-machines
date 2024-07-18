@@ -16,6 +16,7 @@
         ".setup" # nixps config
         "Images"
         "Documents"
+        "notes"
         {
           directory = ".ssh";
           mode = "0700";

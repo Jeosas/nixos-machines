@@ -1,32 +1,33 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   # zsh
-  programs.zsh = {
-    enable = true;
-    dotDir = ".config/zsh";
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    autocd = true;
-    history = {
-      expireDuplicatesFirst = true;
-    };
-    oh-my-zsh = {
+  programs = {
+    zsh = {
       enable = true;
-      plugins = [
-        "git"
-      ];
+      dotDir = ".config/zsh";
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      autocd = true;
+      history = {
+        expireDuplicatesFirst = true;
+      };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "git"
+        ];
+      };
+      initExtra = ''
+        export PATH=$HOME/.local/bin:$PATH
+      '';
+      shellAliases = {
+        nn = "nvim --cmd 'cd ~/notes' ~/notes";
+      };
     };
-    initExtra = ''
-      export PATH=$HOME/.local/bin:$PATH
-    '';
+
+    # starship
+    starship.enableZshIntegration = true;
+
+    # direnv
+    direnv.enableZshIntegration = true;
   };
-
-  # starship
-  programs.starship.enableZshIntegration = true;
-
-  # direnv
-  programs.direnv.enableZshIntegration = true;
 }
