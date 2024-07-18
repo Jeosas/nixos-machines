@@ -31,7 +31,6 @@ in {
     stateVersion = "24.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     language.base = "en_US.UTF-8";
     packages = with pkgs; [
-      (import ./houseKeeping.nix {inherit pkgs;})
       signal-desktop
       logseq
       krita
