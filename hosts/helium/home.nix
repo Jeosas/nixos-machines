@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -42,6 +41,8 @@ in {
       hunspellDicts.en-us
       hunspellDicts.de-de
       xournalpp
+      mixxx
+      yt-dlp
     ];
   };
 

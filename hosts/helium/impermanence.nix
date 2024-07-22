@@ -16,6 +16,7 @@
         ".setup" # nixps config
         "Images"
         "Documents"
+        "Music"
         "notes"
         {
           directory = ".ssh";
@@ -28,6 +29,7 @@
         ".config/Signal"
         ".logseq"
         ".config/Logseq"
+        ".mixxx"
       ];
     };
   };
