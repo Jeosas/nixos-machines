@@ -19,6 +19,7 @@
     }
     ./gaming.nix
     ./game_dev.nix
+    ./wootility.nix
   ];
 
   # System Emulation
