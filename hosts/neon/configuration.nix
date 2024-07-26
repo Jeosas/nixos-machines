@@ -25,7 +25,7 @@
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Nix
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -68,7 +68,7 @@
   # Nvidia
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.beta;
-    open = false;
+    open = true;
     modesetting.enable = true;
     nvidiaSettings = false;
   };
@@ -96,7 +96,6 @@
   networking.firewall.enable = false;
 
   # Audio
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
