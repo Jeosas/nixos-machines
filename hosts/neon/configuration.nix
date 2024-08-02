@@ -159,6 +159,7 @@
       "networkmanager" # network
       "video" # nvidia
       "kvm" # android avd
+      "input" # wootility
     ];
     shell = pkgs.zsh;
   };
