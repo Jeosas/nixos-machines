@@ -22,7 +22,9 @@ in {
           "percent": {
             "type": 3
           },
-          "keyWidth": 25
+          "key": {
+            "width": 25
+          }
         },
         "modules": [
           "title",
