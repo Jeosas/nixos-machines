@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   inputs,
   ...
@@ -20,6 +19,7 @@
     ./gaming.nix
     ./game_dev.nix
     ./wootility.nix
+    ./discord.nix
   ];
 
   # System Emulation

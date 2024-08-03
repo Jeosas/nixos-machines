@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   alvr_usb_forward = pkgs.writeShellApplication {
     name = "alvr_usb_forward";
-    runtimeInputs = with pkgs; [ android-tools coreutils  ];
+    runtimeInputs = with pkgs; [android-tools coreutils];
     text = ''
       @echo off
       adb start-server
@@ -25,7 +27,7 @@ in {
     hid-tmff2 # T300rs drivers
   ];
 
-  services.udev.packages = with pkgs; [ oversteer ];
+  services.udev.packages = with pkgs; [oversteer];
   home-manager.users.jeosas = {
     home.packages = with pkgs; [
       oversteer
@@ -43,7 +45,7 @@ in {
       enable = true;
       settings = {
         fps_only = 1;
-        fps_limit=120; # for fallout 3
+        fps_limit = 120; # for fallout 3
       };
     };
   };
@@ -55,4 +57,3 @@ in {
     enable = true;
   };
 }
-
