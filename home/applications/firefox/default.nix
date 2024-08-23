@@ -34,7 +34,7 @@ in {
         behave
         bitwarden
         youtube-nonstop
-        tridactyl
+        vimium
         kristofferhagen-nord-theme
         darkreader
       ];
