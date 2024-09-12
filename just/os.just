@@ -19,8 +19,8 @@ switch:
 
 
 # Test new configuration
-test:
-  doas nixos-rebuild test --flake .
+test *args:
+  doas nixos-rebuild test --flake . {{args}}
 
 
 # Update flake dependencies and switch to new configuration
