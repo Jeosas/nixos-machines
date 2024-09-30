@@ -4,8 +4,8 @@
 }: let
   name = "ankama-launcher";
   src = fetchurl {
-    url = "https://launcher.cdn.ankama.com/installers/production/Wakfu-Setup-x86_64.AppImage";
-    sha256 = "0wi6qq71q3296yprwcw8c9qn4l4if49bh492a21agw4bzmdkx1gs"; # Change for the sha256 you get after running nix-prefetch-url https://download.ankama.com/launcher/full/linux/x64
+    url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
+    sha256 = "45r1cWDqZfTw/DTk9RRFdubNC/dycweKhp3hLWd4qgI=";
     name = "ankama-launcher.AppImage";
   };
 
