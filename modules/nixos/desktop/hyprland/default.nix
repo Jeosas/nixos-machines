@@ -170,8 +170,8 @@ in
             bindl =, XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop
             bindl =, XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next
             bindl =, XF86AudioPrevious, exec, ${pkgs.playerctl}/bin/playerctl previous
-            bind =, Print, exec, ${pkgs.flameshot}/bin/flameshot screen
-            bind = SHIFT, Print, exec, ${pkgs.flameshot}/bin/flameshot gui -s -p ~/Images
+            bind =, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m output
+            bind = SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
 
             # system
             # bind = SUPER_SHIFT, q, exec, POWERMENU
