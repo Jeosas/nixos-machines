@@ -13,6 +13,7 @@
     ./inkscape.nix
     ./krita.nix
     ./libreoffice.nix
+    ./lutris.nix
     ./mullvad.nix
     ./oversteer.nix
     ./pdf.nix

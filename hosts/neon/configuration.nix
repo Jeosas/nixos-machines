@@ -76,6 +76,7 @@
       discord.enable = true;
       steam.enable = true;
       heroic.enable = true;
+      lutris.enable = true;
       ankama-launcher.enable = true;
       oversteer.enable = true;
 
