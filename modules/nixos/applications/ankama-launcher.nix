@@ -12,7 +12,7 @@ in
     };
 
     config = mkIf cfg.enable {
-      home-manager.users.${config.jeomod.user}.home.packages = with pkgs; [ankama-launcher];
+      home-manager.users.${config.jeomod.user}.home.packages = with pkgs; [ankama-launcher wineWowPackages.stable];
       jeomod.system.impermanence.user.directories = [
         ".config/zaap"
         ".config/Ankama"
