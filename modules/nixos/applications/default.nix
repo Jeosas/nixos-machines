@@ -18,6 +18,7 @@
     ./pdf.nix
     ./signal.nix
     ./steam.nix
+    ./transmission.nix
     ./wootility.nix
   ];
 }

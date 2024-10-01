@@ -81,6 +81,7 @@
 
       # Tools
       wootility.enable = true;
+      transmission.enable = true;
     };
   };
 }
