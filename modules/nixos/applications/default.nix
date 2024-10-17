@@ -20,6 +20,7 @@
     ./signal.nix
     ./steam.nix
     ./transmission.nix
+    ./vesktop.nix
     ./wootility.nix
   ];
 }

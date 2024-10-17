@@ -74,6 +74,7 @@
       # Gaming
       alvr.enable = true;
       discord.enable = true;
+      vesktop.enable = true;
       steam.enable = true;
       heroic.enable = true;
       lutris.enable = true;
