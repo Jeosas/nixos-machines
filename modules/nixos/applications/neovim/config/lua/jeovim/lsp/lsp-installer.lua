@@ -38,7 +38,7 @@ local function lsp_config()
 	lspconfig["html"].setup(default_opts)
 	lspconfig["htmx"].setup(default_opts)
 	lspconfig["svelte"].setup(default_opts)
-	lspconfig["tsserver"].setup(default_opts)
+	lspconfig["ts_ls"].setup(default_opts)
 	-- nix
 	lspconfig["nil_ls"].setup(default_opts)
 end

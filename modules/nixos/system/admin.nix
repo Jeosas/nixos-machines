@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -10,6 +11,7 @@ in
     };
 
     config = {
+      environment.systemPackages = with pkgs; [doas-sudo-shim];
       security = {
         sudo.enable = false;
         doas = {

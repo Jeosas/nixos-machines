@@ -28,28 +28,30 @@ local setup = {
 	-- operators = {
 	-- 	gc = "Comment",
 	-- },
-	key_labels = {
-		-- override the label used to display some keys. It doesn't effect WK in any other way.
-		-- For example:
-		["<space>"] = "SPC",
-		-- ["<cr>"] = "RET",
-		["<tab>"] = "TAB",
+	replace = {
+		key = {
+			{ "<space>", "SPC" },
+			{ "<tab>", "TAB" },
+			-- {"<cr>", "RET"},
+		},
 	},
 	icons = {
 		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 		separator = "➜", -- symbol used between a key and it's label
 		group = "+", -- symbol prepended to a group
 	},
-	popup_mappings = {
+	keys = {
 		scroll_down = "<c-d>", -- binding to scroll down inside the popup
 		scroll_up = "<c-u>", -- binding to scroll up inside the popup
 	},
-	window = {
+	win = {
 		border = "none", -- none, single, double, shadow
 		position = "bottom", -- bottom, top
-		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-		padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-		winblend = 0,
+		margin = { 1, 0 }, -- extra window margin [top/bottom, left/right]
+		padding = { 2, 2 }, -- extra window padding [top/bottom, left/right]
+		wo = {
+			winblend = 0,
+		},
 	},
 	layout = {
 		height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -57,106 +59,99 @@ local setup = {
 		spacing = 3, -- spacing between columns
 		align = "left", -- align columns left, center or right
 	},
-	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
+	filter = function(mapping)
+		-- exclude mappings without a description
+		return mapping.desc and mapping.desc ~= ""
+	end,
 	show_help = true, -- show help message on the command line when the popup is visible
-	triggers = "auto", -- automatically setup triggers
-	-- triggers = {"<leader>"} -- or specify a list manually
-	triggers_blacklist = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		-- this is mostly relevant for key maps that start with a native binding
-		-- most people should not need to change this
-		i = { "j", "k" },
-		v = { "j", "k" },
+	triggers = {
+		{ "auto", mode = "nxso" },
 	},
-}
-
-local opts = {
-	mode = "n", -- NORMAL mode
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
 }
 
 local mappings = {
+	nowait = true,
+	remap = false,
+	{ "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
 
-	K = { "Show documentation" },
+	{ "<leader>?", group = "Search" },
+	{ "<leader>??", "<cmd>Telescope commands<cr>", desc = "Commands" },
+	{ "<leader>?R", "<cmd>Telescope registers<cr>", desc = "Registers" },
+	{ "<leader>?c", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+	{ "<leader>?h", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
+	{ "<leader>?k", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+	{ "<leader>?m", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
 
-	["<leader>"] = {
-		["<leader>"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-		e = { "<cmd>NvimTreeToggle<cr>", "File explorer" },
-		h = { "<cmd>nohlsearch<CR>", "Reset highlight" },
-
-		["?"] = {
-			name = "Search",
-			["?"] = { "<cmd>Telescope commands<cr>", "Commands" },
-			c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-			h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-			m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-			R = { "<cmd>Telescope registers<cr>", "Registers" },
-		},
-
-		b = {
-			name = "Buffer",
-			b = {
-				"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-				"List open buffers",
-			},
-		},
-
-		f = {
-			name = "Files",
-			f = { "<cmd>Telescope find_files<cr>", "Find files" },
-			r = { ":Telescope oldfiles <cr>", "Recent files" },
-			w = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find word" },
-		},
-
-		g = {
-			name = "Git",
-			d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-			g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-			b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-			r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-			R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		},
-
-		l = {
-			name = "LSP",
-			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-			f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
-			i = { "<cmd>LspInfo<cr>", "Info" },
-			j = {
-				"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-				"Next Diagnostic",
-			},
-			k = {
-				"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-				"Prev Diagnostic",
-			},
-			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-			S = {
-				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-				"Workspace Symbols",
-			},
-		},
-
-		p = {
-			name = "Project",
-			a = { "<cmd>lua _PROJECT_DEP_ADD()<cr>", "Add project dependency" },
-			c = { "<cmd>lua _PROJECT_CHECK()<cr>", "Check project" },
-			i = { "<cmd>lua _PROJECT_DEP_INSTALL()<cr>", "Install project dependencies" },
-			p = { ":Telescope projects <cr>", "Open project" },
-			r = { "<cmd>lua _PROJECT_RUN()<cr>", "Run project" },
-			t = { "<cmd>lua _PROJECT_TEST_FUNCTION()<cr>", "Run test" },
-			T = { "<cmd>lua _PROJECT_TEST_ALL()<cr>", "Run all tests" },
-		},
-
-		t = { "<cmd>ToggleTerm direction=float<cr>", "Open Terminal" },
+	{ "<leader>b", group = "Buffer" },
+	{
+		"<leader>bb",
+		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		desc = "List open buffers",
 	},
+
+	{ "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "File explorer" },
+
+	{ "<leader>f", group = "Files" },
+	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+	{ "<leader>fr", ":Telescope oldfiles <cr>", desc = "Recent files" },
+	{ "<leader>fw", "<cmd>Telescope live_grep theme=ivy<cr>", desc = "Find word" },
+
+	{ "<leader>g", group = "Git" },
+	{
+		"<leader>gR",
+		"<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
+		desc = "Reset Buffer",
+	},
+	{ "<leader>gb", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
+	{ "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
+	{ "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "Lazygit" },
+	{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+
+	{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "Reset highlight" },
+
+	{ "<leader>l", group = "LSP" },
+	{
+		"<leader>lS",
+		"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+		desc = "Workspace Symbols",
+	},
+	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+	{ "<leader>lf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", desc = "Format" },
+	{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+	{
+		"<leader>lj",
+		"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+		desc = "Next Diagnostic",
+	},
+	{
+		"<leader>lk",
+		"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+		desc = "Prev Diagnostic",
+	},
+	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+	{
+		"<leader>ls",
+		"<cmd>Telescope lsp_document_symbols<cr>",
+		desc = "Document Symbols",
+	},
+
+	{ "<leader>p", group = "Project" },
+	{ "<leader>pT", "<cmd>lua _PROJECT_TEST_ALL()<cr>", desc = "Run all tests" },
+	{ "<leader>pa", "<cmd>lua _PROJECT_DEP_ADD()<cr>", desc = "Add project dependency" },
+	{ "<leader>pc", "<cmd>lua _PROJECT_CHECK()<cr>", desc = "Check project" },
+	{
+		"<leader>pi",
+		"<cmd>lua _PROJECT_DEP_INSTALL()<cr>",
+		desc = "Install project dependencies",
+	},
+	{ "<leader>pp", ":Telescope projects <cr>", desc = "Open project" },
+	{ "<leader>pr", "<cmd>lua _PROJECT_RUN()<cr>", desc = "Run project" },
+	{ "<leader>pt", "<cmd>lua _PROJECT_TEST_FUNCTION()<cr>", desc = "Run test" },
+
+	{ "<leader>t", "<cmd>ToggleTerm direction=float<cr>", desc = "Open Terminal" },
+
+	{ "K", desc = "Show documentation" },
 }
 
 which_key.setup(setup)
-which_key.register(mappings, opts)
+which_key.add(mappings)

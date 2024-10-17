@@ -67,6 +67,7 @@ in
             }
             nvim-tree-lua
             nvim-web-devicons
+            mini-icons
             toggleterm-nvim
             which-key-nvim
             nvim-ufo

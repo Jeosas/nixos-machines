@@ -10,17 +10,17 @@ alias u := update
 
 # Garbage collect system store
 gc: && switch
-  doas nix-collect-garbage -d --delete-older-than 7d
+  nix-collect-garbage --use-remote-sudo -d --delete-older-than 7d
 
 
 # Switch to the new configuration
 switch:
-  doas nixos-rebuild switch --flake .
+  nixos-rebuild switch --use-remote-sudo --flake .
 
 
 # Test new configuration
 test *args:
-  doas nixos-rebuild test --flake . {{args}}
+  nixos-rebuild test --use-remote-sudo --flake . {{args}}
 
 
 # Update flake dependencies and switch to new configuration
