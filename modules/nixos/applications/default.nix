@@ -19,6 +19,7 @@
     ./openrazer.nix
     ./oversteer.nix
     ./pdf.nix
+    ./qemu.nix
     ./signal.nix
     ./steam.nix
     ./transmission.nix

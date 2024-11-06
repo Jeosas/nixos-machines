@@ -69,6 +69,7 @@
       # Dev
       neovim.enable = true;
       docker.enable = true;
+      qemu.enable = true;
       godot.enable = true;
 
       # Art
