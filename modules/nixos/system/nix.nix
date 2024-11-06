@@ -22,6 +22,7 @@ in
           inputs.nurpkgs.overlay
           outputs.overlays.additions
           outputs.overlays.discord-latest # Fix outdated discord on nixpkgs
+          outputs.overlays.fixes._7zz
         ];
         config = {
           inherit (cfg) allowUnfree;
