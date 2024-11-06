@@ -15,6 +15,7 @@
     ./libreoffice.nix
     ./lutris.nix
     ./mullvad.nix
+    ./openrazer.nix
     ./oversteer.nix
     ./pdf.nix
     ./signal.nix

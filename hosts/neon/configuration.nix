@@ -83,6 +83,7 @@
 
       # Tools
       wootility.enable = true;
+      openrazer.enable = true;
       transmission.enable = true;
     };
   };
