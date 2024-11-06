@@ -17,6 +17,43 @@ local function remap()
 	--   command_mode = "c",
 
 	-- Normal --
+	-- Buffers
+	keymap(
+		"n",
+		"<leader>bb",
+		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		opts
+	)
+
+	-- File explorer
+	keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+
+  -- Files
+	keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
+	keymap("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", opts)
+	keymap("n", "<leader>fr", "<cmd>Telescope oldfiles <cr>", opts)
+	keymap("n", "<leader>fw", "<cmd>Telescope live_grep theme=ivy<cr>", opts)
+
+  -- Git
+	keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", opts)
+	keymap("n", "<leader>gb", "<cmd>lua require 'gitsigns'.blame_line()<cr>", opts)
+	keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", opts)
+	keymap("n", "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", opts)
+  keymap("n", "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", opts)
+
+  -- LSP
+	keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
+	keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", opts)
+  keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+	keymap("n", "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+	keymap("n", "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", opts)
+	keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+	keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", opts)
+
+  -- Terminal
+	keymap("n", "<leader>t", "<cmd>ToggleTerm direction=float<cr>", opts)
+
 	-- Disable Ex mode
 	keymap("n", "Q", "<Nop>", opts)
 

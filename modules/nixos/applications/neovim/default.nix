@@ -48,7 +48,6 @@ in
               require("jeovim.toggleterm")
               require("jeovim.project")
               require("jeovim.indentline")
-              require("jeovim.whichkey")
               require("jeovim.tabby")
               require("jeovim.dressing")
               require("jeovim.ufo")
@@ -67,9 +66,7 @@ in
             }
             nvim-tree-lua
             nvim-web-devicons
-            mini-icons
             toggleterm-nvim
-            which-key-nvim
             nvim-ufo
 
             # Buffer / Tab line
