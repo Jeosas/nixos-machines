@@ -5,6 +5,7 @@
     ./alacritty.nix
     ./alvr.nix
     ./ankama-launcher.nix
+    ./blender.nix
     ./discord.nix
     ./docker.nix
     ./freecad.nix

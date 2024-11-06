@@ -71,6 +71,9 @@
       docker.enable = true;
       godot.enable = true;
 
+      # Art
+      blender.enable = false;
+
       # Gaming
       alvr.enable = true;
       discord.enable = true;
