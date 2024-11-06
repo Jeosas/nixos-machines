@@ -71,6 +71,9 @@ in
             cursor {
               inactive_timeout = 6
               no_warps = true
+              enable_hyprcursor = false
+              no_hardware_cursors = 0
+              allow_dumb_copy = true
             }
 
             decoration {
