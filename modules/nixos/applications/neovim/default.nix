@@ -154,6 +154,7 @@ in
             stylua
             alejandra
             nodePackages.prettier
+            djlint
             # --python ruff
 
             # Lint
