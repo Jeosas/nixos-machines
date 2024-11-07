@@ -2,7 +2,7 @@
   description = "Jeosas' infrastructure and dotfiles";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     nurpkgs.url = "github:nix-community/NUR";
@@ -46,17 +46,17 @@
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = forAllSystems (system: import ./pkgs nixpkgs-unstable.legacyPackages.${system});
     overlays = import ./overlays {inherit inputs;};
 
     nixosModules = import ./modules/nixos;
 
     nixosConfigurations = {
-      neon = nixpkgs.lib.nixosSystem {
+      neon = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/neon/configuration.nix];
       };
-      helium = nixpkgs.lib.nixosSystem {
+      helium = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/helium/configuration.nix];
       };
