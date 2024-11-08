@@ -43,7 +43,6 @@ in {
             behave
             bitwarden
             youtube-nonstop
-            vimium
             kristofferhagen-nord-theme
             darkreader
           ];
@@ -83,10 +82,13 @@ in {
               ## kristofferhagen-nord-theme
               "extensions.activeThemeID" = "{e410fec2-1cbd-4098-9944-e21e708418af}";
 
-              # Disable instals and auto updates
+              # Disable installs and auto updates
               "extensions.getAddons.showPane" = false;
               "app.update.auto" = false;
               "extensions.update.enabled" = false;
+
+              # Dev
+              devtools.cache.disabled = false;
 
               # Fonts
               # "font.name.monospace.x-western" = "${fonts.mono.family}";
