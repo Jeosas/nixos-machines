@@ -2,6 +2,7 @@
   home-manager.users.${config.jeomod.user} = {
     programs.direnv = {
       enable = true;
+      nix-direnv.enable = true;
     };
 
     xdg.configFile."direnv/direnvrc" = {
