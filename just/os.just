@@ -10,7 +10,7 @@ alias u := update
 
 # Garbage collect system store
 gc: && switch
-  nix-collect-garbage --use-remote-sudo -d --delete-older-than 7d
+  doas nix-collect-garbage -d --delete-older-than 7d
 
 
 # Switch to the new configuration

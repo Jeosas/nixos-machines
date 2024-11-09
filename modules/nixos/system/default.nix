@@ -29,6 +29,11 @@ in
         description = "system has ssd";
         default = true;
       };
+      isLaptop = mkOption {
+        type = types.bool;
+        description = "system is a laptop";
+        default = false;
+      };
     };
 
     config = let
@@ -66,8 +71,12 @@ in
         tree
       ];
 
+      programs.light.enable = cfg.isLaptop;
+
       home-manager.users.${config.jeomod.user}.home = {
         language.base = locale;
       };
+
+      jeomod.groups = mkIf cfg.isLaptop ["video"];
     };
   }

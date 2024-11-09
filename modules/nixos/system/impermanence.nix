@@ -62,8 +62,9 @@ in
           directories =
             [
               ".setup" # nixos config
-              "Images"
               "Documents"
+              "Images"
+              "Music"
               "notes"
               "code"
               {

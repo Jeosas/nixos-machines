@@ -12,9 +12,11 @@
     ./godot.nix
     ./heroic.nix
     ./inkscape.nix
+    ./kmonad.nix
     ./krita.nix
     ./libreoffice.nix
     ./lutris.nix
+    ./mixxx.nix
     ./mullvad.nix
     ./openrazer.nix
     ./oversteer.nix
@@ -23,6 +25,7 @@
     ./signal.nix
     ./steam.nix
     ./transmission.nix
+    ./ungoogled-chromium.nix
     ./vesktop.nix
     ./wootility.nix
   ];
