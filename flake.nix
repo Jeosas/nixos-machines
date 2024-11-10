@@ -80,5 +80,12 @@
         packages = with pkgs; [nixos-install-tools];
       };
     });
+
+    templates = {
+      rust = {
+        path = ./templates/rust;
+        description = "Rust development environment";
+      };
+    };
   };
 }
