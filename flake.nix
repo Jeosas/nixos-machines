@@ -22,6 +22,7 @@
 
     # Perso
     thewinterdev-website.url = "github:Jeosas/thewinterdev.fr";
+    ongaku.url = "github:Jeosas/ongaku";
   };
 
   outputs = {

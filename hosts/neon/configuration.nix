@@ -75,6 +75,9 @@
       # Art
       blender.enable = false;
 
+      # Music
+      ongaku.enable = true;
+
       # Gaming
       alvr.enable = true;
       vesktop.enable = true;

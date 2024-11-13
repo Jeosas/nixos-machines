@@ -18,6 +18,7 @@
     ./lutris.nix
     ./mixxx.nix
     ./mullvad.nix
+    ./ongaku.nix
     ./openrazer.nix
     ./oversteer.nix
     ./pdf.nix

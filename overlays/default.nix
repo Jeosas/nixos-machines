@@ -1,5 +1,9 @@
 {inputs, ...}: {
-  additions = final: _prev: import ../pkgs final.pkgs;
+  additions = final: _prev:
+    import ../pkgs final.pkgs
+    // {
+      ongaku = inputs.ongaku.packages.${_prev.system}.default;
+    };
   discord-latest = final: _prev: {
     discord = _prev.discord.overrideAttrs (_: {
       src = builtins.fetchTarball {
