@@ -27,6 +27,7 @@
     ./steam.nix
     ./transmission.nix
     ./ungoogled-chromium.nix
+    ./vagrant.nix
     ./vesktop.nix
     ./wootility.nix
   ];

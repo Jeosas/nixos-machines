@@ -1,4 +1,4 @@
-{
+{inputs}: {
   appimageTools,
   fetchurl,
 }: let
@@ -10,8 +10,8 @@
   };
 
   appimageContents = appimageTools.extractType2 {inherit name src;};
-in
-  appimageTools.wrapType2 {
+in {
+  ankama-launcher = appimageTools.wrapType2 {
     inherit name src;
 
     extraInstallCommands = ''
@@ -19,4 +19,5 @@ in
       sed -i 's/.*Exec.*/Exec=ankama-launcher/' $out/share/applications/ankama-launcher.desktop
       install -m 444 -D ${appimageContents}/zaap.png $out/share/icons/hicolor/256x256/apps/zaap.png
     '';
-  }
+  };
+}

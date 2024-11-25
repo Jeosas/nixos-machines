@@ -58,6 +58,7 @@
       # Browser
       firefox.enable = true;
       mullvad.enable = true;
+      ungoogled-chromium.enable = true;
 
       # Office
       libreoffice.enable = true;
@@ -70,6 +71,7 @@
       neovim.enable = true;
       docker.enable = true;
       qemu.enable = true;
+      vagrant.enable = true;
       godot.enable = true;
 
       # Art
@@ -85,7 +87,7 @@
       heroic.enable = true;
       lutris.enable = true;
       ankama-launcher.enable = true;
-      oversteer.enable = true;
+      # oversteer.enable = true; # TODO build failure
 
       # Tools
       wootility.enable = true;
