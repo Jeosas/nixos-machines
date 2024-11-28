@@ -4,7 +4,7 @@ mod os './just/os.just'
 
 # Show this message
 @default:
-  just --unstable --list
+  just --list
 
 # Deploy a configuration to the given `host`
 deploy host:

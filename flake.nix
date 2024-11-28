@@ -2,103 +2,82 @@
   description = "Jeosas' infrastructure and dotfiles";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    # NixPkgs
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
 
+    # NixPkgs unstable
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Snowfall lib: flake management
+    snowfall-lib.url = "github:snowfallorg/lib";
+    snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
+
+    # NixOS User Repository
     nurpkgs.url = "github:nix-community/NUR";
 
+    # Impermanence
     impermanence.url = "github:nix-community/impermanence";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # Home manager
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # NixGL: support graphical apps on non-nixos distros
     nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
 
-    arkenfox-userjs = {
-      url = "github:arkenfox/user.js";
-      flake = false;
-    };
+    # Arkenfox config
+    arkenfox-userjs.url = "github:arkenfox/user.js";
+    arkenfox-userjs.flake = false;
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    # Perso
+    #  --- Perso--- // TODO: migrate in here as a monorepository
+    # thewinterdev website
     thewinterdev-website.url = "github:Jeosas/thewinterdev.fr";
+    thewinterdev-website.inputs.nixpkgs.follows = "nixpkgs";
+
+    # ongaku: music library management
     ongaku.url = "github:Jeosas/ongaku";
+    ongaku.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    flake-utils,
-    nurpkgs,
-    impermanence,
-    home-manager,
-    nixgl,
-    arkenfox-userjs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
+  outputs = inputs: let
+    lib = inputs.snowfall-lib.mkLib {
+      inherit inputs;
+      src = ./.;
+
+      snowfall = {
+        meta = {
+          name = "jeosas-config";
+          title = "Jeosas' config";
+        };
+
+        namespace = "jeomod";
+      };
+    };
   in
-    {
-      overlays.default = import ./overlay.nix {inherit inputs;};
-
-      nixosModules = import ./modules/nixos;
-
-      nixosConfigurations = {
-        neon = nixpkgs-unstable.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs;};
-          modules = [./hosts/neon/configuration.nix];
-        };
-        helium = nixpkgs-unstable.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs;};
-          modules = [./hosts/helium/configuration.nix];
-        };
-        oxygen = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = {inherit inputs outputs;};
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            ./hosts/oxygen/configuration.nix
-          ];
-        };
+    lib.mkFlake {
+      channels-config = {
+        allowUnfree = true;
       };
 
-      images.oxygen = self.nixosConfigurations.oxygen.config.system.build.sdImage;
+      overlays = with inputs; [
+        nurpkgs.overlay
+      ];
+
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+      ];
+
+      homes.modules = with inputs; [
+        impermanence.homeManagerModules.impermanence
+      ];
 
       templates = {
-        rust = {
-          path = ./templates/rust;
-          description = "Rust development environment";
-        };
+        rust.description = "Rust development environment";
       };
     }
-    // flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs-unstable {
-        inherit system;
-        overlays = [self.overlays.default];
-        config = {};
-      };
-    in {
-      checks = let
-        getChecks = checkFile:
-          import checkFile {inherit inputs pkgs;};
-      in {
-        inherit (getChecks ./pkgs/neovim-jeosas/checks.nix) testNixVim;
-      };
-
-      packages = {inherit (pkgs) neovim-jeosas;};
-
-      devShells = {
-        nixos-install = pkgs.mkShell {
-          name = "nixos-install";
-          packages = with pkgs; [nixos-install-tools];
-        };
-      };
-    });
+    // {
+      inherit (inputs) self;
+    };
 }
