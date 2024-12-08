@@ -18,7 +18,7 @@ in
           settings = {
             logo = {
               source = ./shell-init-logo.png;
-              width = 60;
+              height = 22;
             };
             display = {
               separator = "";
@@ -57,9 +57,17 @@ in
           };
         };
         zsh = {
-          initExtra = ''
-            fastfetch
-          '';
+          initExtra =
+            /*
+            bash
+            */
+            ''
+              if [ $TERM = xterm-kitty ]; then
+                fastfetch
+              else
+                fastfetch --logo nix
+              fi
+            '';
         };
       };
     };

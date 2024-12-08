@@ -18,6 +18,7 @@ in
           dotDir = ".config/zsh";
           enableCompletion = true;
           syntaxHighlighting.enable = true;
+          autosuggestion.enable = true;
           autocd = true;
           history = {
             expireDuplicatesFirst = true;
