@@ -76,7 +76,8 @@ in {
     };
     cursor = {
       name = mkOpt str "Nordzy-cursors" "The name of the cursor theme to apply.";
-      package = mkOpt package pkgs.nordzy-cursor-theme "The package to use for the cursor theme.";
+      hypr-name = mkOpt str "Nordzy-hyprcursors" "The name of the hyprcursor theme to apply.";
+      package = mkOpt package pkgs.${namespace}.nordzy-cursors "The package to use for the cursor theme.";
     };
     theme = {
       name = mkOpt str "Nordic-darker" "The name of the GTK theme to apply.";
@@ -103,6 +104,15 @@ in {
         pointerCursor = {
           inherit (cfg.cursor) name package;
           size = 24;
+
+          gtk.enable = true;
+          # hyprcursor.enable = true; # TODO available only in 25.05
+        };
+
+        sessionVariables = {
+          # hack - similar to hyprcursor.enable = true;
+          HYPRCURSOR_THEME = cfg.cursor.hypr-name;
+          HYPRCURSOR_SIZE = 24;
         };
       };
 
