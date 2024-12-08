@@ -12,7 +12,7 @@ in
 
     config = mkIf cfg.enable {
       ${namespace} = {
-        apps.alacritty = enabled;
+        apps.kitty = enabled;
 
         desktop.hyprland = {
           enable = true;
@@ -46,7 +46,7 @@ in
             libreoffice = enabled;
             mullvad = enabled;
             transmission = enabled;
-            ungoogled-chromium = enabled;
+            # ungoogled-chromium = enabled; # TODO solve cache miss
             xournal = enabled;
           };
           cli-apps = {

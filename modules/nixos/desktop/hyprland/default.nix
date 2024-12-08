@@ -125,7 +125,7 @@ in {
                 # apps
                 "SUPER, d, exec, wofi --show drun"
                 "SUPER_SHIFT, Return, exec, firefox"
-                "SUPER, Return, exec, alacritty"
+                "SUPER, Return, exec, kitty"
 
                 # workspace move
                 "SUPER_CTRL_SHIFT, h, movecurrentworkspacetomonitor, l"
