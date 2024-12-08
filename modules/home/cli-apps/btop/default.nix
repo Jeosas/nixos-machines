@@ -12,6 +12,12 @@ in
     options.${namespace}.cli-apps.btop = {enable = mkEnableOption "btop";};
 
     config = mkIf cfg.enable {
-      home.packages = with pkgs; [btop];
+      programs.btop = {
+        enable = true;
+        settings = {
+          color_theme = "nord";
+          theme_background = false;
+        };
+      };
     };
   }

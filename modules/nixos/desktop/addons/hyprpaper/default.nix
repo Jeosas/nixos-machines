@@ -5,35 +5,24 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  inherit (lib.${namespace}) mkOpt;
+
+  wallpaper = config.${namespace}.theme.wallpaper;
 
   cfg = config.${namespace}.desktop.addons.hyprpaper;
-
-  username = config.${namespace}.user.name;
-  wallpaper-path = "/home/${username}/Pictures/wallpaper.jpg";
 in {
-  options.${namespace}.desktop.addons.hyprpaper = with lib.types; {
-    enable = mkEnableOption "hyprpaper";
-    wallpaper = mkOpt path ./wallpaper.jpg "Wallpaper file.";
-  };
+  options.${namespace}.desktop.addons.hyprpaper = with lib.types; {enable = mkEnableOption "hyprpaper";};
 
   config = mkIf cfg.enable {
     ${namespace}.desktop.hyprland.config.exec = [
       "systemctl --user restart hyprpaper"
     ];
 
-    home-manager.users.${username} = {
-      home.file = {
-        "Pictures/wallpaper.jpg" = {
-          source = cfg.wallpaper;
-        };
-      };
-
+    home-manager.users.${config.${namespace}.user.name} = {
       services.hyprpaper = {
         enable = true;
         settings = {
-          preload = [wallpaper-path];
-          wallpaper = ",${wallpaper-path}";
+          preload = ["${wallpaper}"];
+          wallpaper = ",${wallpaper}";
         };
       };
     };

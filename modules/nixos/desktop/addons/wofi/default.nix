@@ -40,7 +40,7 @@ in {
         */
           ''
             window {
-              font-family: "${fonts.sans}";
+              font-family: "${fonts.sans.name}";
               font-size: 13px;
               margin: 0px;
               padding: 0px;

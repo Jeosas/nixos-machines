@@ -17,7 +17,7 @@ in {
     home-manager.users.${config.${namespace}.user.name} = {
       programs.hyprlock = {
         enable = true;
-        settings = {
+        settings = with config.${namespace}.theme; {
           general = {
             hide_cursor = true;
           };
@@ -38,7 +38,7 @@ in {
               text = ''cmd[update:1000] echo "<span>$(date +"%H:%M")</span>"'';
               color = "rgba(216, 222, 233, 0.70)";
               font_size = 130;
-              font_family = config.${namespace}.theme.fonts.sans;
+              font_family = fonts.mono.name;
               position = "0, 240";
               halign = "center";
               valign = "center";
@@ -50,7 +50,7 @@ in {
               text = ''cmd[update:1000] echo -e "$(date +"%A, %d %B")"'';
               color = "rgba(216, 222, 233, 0.70)";
               font_size = 30;
-              font_family = config.${namespace}.theme.fonts.sans;
+              font_family = fonts.sans.name;
               position = "0, 105";
               halign = "center";
               valign = "center";
@@ -67,7 +67,7 @@ in {
             inner_color = "rgba(100, 114, 125, 0.4)";
             font_color = "rgb(200, 200, 200)";
             fade_on_empty = false;
-            font_family = config.${namespace}.theme.fonts.sans;
+            font_family = fonts.sans.name;
             placeholder_text = "<i>Enter Password</i>";
             hide_input = false;
             position = "0, -150";

@@ -37,11 +37,6 @@ in
           locale = enabled;
           time = enabled;
         };
-
-        theme = {
-          cursor = enabled;
-          gtk = enabled;
-        };
       };
 
       home-manager.users.${config.${namespace}.user.name} = {

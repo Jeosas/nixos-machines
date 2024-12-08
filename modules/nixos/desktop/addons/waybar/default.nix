@@ -153,7 +153,7 @@ in {
             }
 
             .modules-left, .modules-right, .modules-center {
-              font-family: "M+1Code Nerd Font";
+              font-family: "${config.${namespace}.theme.fonts.sans.name}";
               font-size: 14px;
               font-weight: 500;
               padding-left: 14px;
@@ -189,7 +189,7 @@ in {
             }
 
             #clock {
-              font-family: "M+1Code Nerd Font Mono";
+              font-family: "${config.${namespace}.theme.fonts.mono.name}";
               font-size: 18px;
               letter-spacing: 2px;
             }

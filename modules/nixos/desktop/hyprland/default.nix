@@ -11,7 +11,7 @@
 
   cfg = config.${namespace}.desktop.hyprland;
 
-  iconCfg = config.${namespace}.theme.gtk.icon;
+  iconCfg = config.${namespace}.theme.icon;
   iconPath = "${iconCfg.package}/share/icons/${iconCfg.name}/status/scalable";
 
   configOptions = {

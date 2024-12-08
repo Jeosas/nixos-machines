@@ -12,6 +12,11 @@ in
     options.${namespace}.tools.bat = {enable = mkEnableOption "bat";};
 
     config = mkIf cfg.enable {
-      home.packages = with pkgs; [bat];
+      programs.bat = {
+        enable = true;
+        config = {
+          theme = "Nord";
+        };
+      };
     };
   }

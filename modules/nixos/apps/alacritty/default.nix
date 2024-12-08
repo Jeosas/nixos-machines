@@ -17,7 +17,7 @@ in
           enable = true;
           settings = {
             font = {
-              normal.family = config.${namespace}.theme.fonts.mono;
+              normal.family = config.${namespace}.theme.fonts.mono.name;
               size = 11;
               offset.x = 1;
             };

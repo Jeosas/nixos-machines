@@ -42,6 +42,17 @@ in {
           vistafonts
         ]
         ++ cfg.fonts;
+
+      fontconfig = {
+        enable = true;
+        useEmbeddedBitmaps = true;
+        defaultFonts = with config.${namespace}.theme.fonts; {
+          monospace = [mono.name];
+          serif = [sans.name];
+          sansSerif = [sans.name];
+          emoji = [emoji.name];
+        };
+      };
     };
   };
 }
