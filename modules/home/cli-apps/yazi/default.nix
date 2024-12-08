@@ -12,8 +12,6 @@ in
     options.${namespace}.cli-apps.yazi = {enable = mkEnableOption "yazi";};
 
     config = mkIf cfg.enable {
-      home.packages = with pkgs; [ueberzugpp];
-
       programs.yazi = {
         enable = true;
         enableZshIntegration = true;
