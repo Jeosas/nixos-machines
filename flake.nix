@@ -61,7 +61,7 @@
       };
 
       overlays = with inputs; [
-        nurpkgs.overlay
+        nurpkgs.overlays.default
       ];
 
       systems.modules.nixos = with inputs; [
