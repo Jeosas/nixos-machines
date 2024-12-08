@@ -5,6 +5,19 @@
   config,
   ...
 }: let
+  choudai = pkgs.writeShellApplication {
+    name = "choudai";
+    runtimeInputs = with pkgs; [just];
+
+    text =
+      /*
+      bash
+      */
+      ''
+        just -f ~/.setup/justfile -d ~/.setup "$@"
+      '';
+  };
+
   cfg = config.${namespace}.tools.choudai;
 in
   with lib;
@@ -13,9 +26,6 @@ in
       enable = mkEnableOption "choudai";
     };
     config = mkIf cfg.enable {
-      home.packages = with pkgs; [just];
-      programs.zsh.shellAliases = {
-        choudai = "${pkgs.just}/bin/just -f ~/.setup/justfile -d ~/.setup \"$@\"";
-      };
+      home.packages = [choudai];
     };
   }
