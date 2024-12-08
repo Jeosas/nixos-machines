@@ -35,10 +35,17 @@ with lib.${namespace}; {
     hardware.bluetooth = enabled;
 
     system.openrazer = enabled;
+
+    desktop.hyprland.config = {
+      layout = "dwindle";
+      monitors = [
+        ",3440x1440@144,auto,1"
+      ];
+    };
   };
 
-  home-manager.users.${config.${namespace}.user.name} = {
-    ${namespace}.tools.ssh.user.config = {
+  home-manager.users.${config.${namespace}.user.name}.${namespace} = {
+    tools.ssh.user.config = {
       "github.com" = {
         hostname = "github.com";
         user = "git";
@@ -52,10 +59,6 @@ with lib.${namespace}; {
         identitiesOnly = true;
       };
     };
-
-    wayland.windowManager.hyprland.extraConfig = ''
-      monitor=,3440x1440@144,auto,1
-    '';
   };
 
   system.stateVersion = "24.05";

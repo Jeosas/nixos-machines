@@ -20,7 +20,15 @@ in {
   options.${namespace}.desktop.addons.waybar = {enable = mkEnableOption "waybar";};
 
   config = mkIf cfg.enable {
+    ${namespace}.desktop.hyprland.config.exec = [
+      "launchbar"
+    ];
+
     home-manager.users.${config.${namespace}.user.name} = {
+      home.packages = with pkgs; [
+        (callPackage ./launchbar.nix {})
+      ];
+
       programs.waybar = {
         enable = true;
         settings.main = {
@@ -55,7 +63,9 @@ in {
           "hyprland/workspaces" = {
             active-only = false;
             all-outputs = false;
-            persistent-workspaces."*" = 10;
+            persistent-workspaces = {
+              "*" = [1 2 3 4 5 6 7 8 9 10];
+            };
             sort-by = "id";
             format = "{icon}";
             format-icons = {

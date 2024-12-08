@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   namespace,
   config,
   ...
@@ -31,8 +30,6 @@ in
           };
           initExtra = ''
             export PATH=$HOME/.local/bin:$PATH
-
-            ${pkgs.chafa}/bin/chafa --size=60x25 ${./shell-init-logo.png}
           '';
           shellAliases = {};
         };

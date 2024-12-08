@@ -68,6 +68,7 @@ in
             ssh = enabled;
             starship = enabled;
             zsh = enabled;
+            fastfetch = enabled;
           };
         };
       };

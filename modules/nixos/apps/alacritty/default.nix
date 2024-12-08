@@ -23,7 +23,7 @@ in
             };
 
             window = {
-              opacity = 0.8;
+              opacity = 0.9;
               decorations = "None";
             };
 

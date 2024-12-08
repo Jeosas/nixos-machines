@@ -11,6 +11,10 @@ in {
   options.${namespace}.desktop.addons.dunst = {enable = mkEnableOption "dunst";};
 
   config = mkIf cfg.enable {
+    ${namespace}.desktop.hyprland.config.exec-once = [
+      "dunst &"
+    ];
+
     home-manager.users.${config.${namespace}.user.name} = {
       services.dunst = {
         enable = true;
