@@ -47,9 +47,27 @@ in {
           #   "eDP-1"
           #   "HDMI-A-1"
           # ];
-          modules-left = ["image#nixos" "custom/separator" "hyprland/workspaces"];
+          modules-left = [
+            "image#nixos"
+            "custom/separator"
+            "hyprland/workspaces"
+            "custom/separator"
+            "custom/kernel"
+          ];
           # modules-center = [ ];
-          modules-right = ["cpu" "temperature" "custom/separator" "pulseaudio" "battery" "custom/separator" "clock"];
+          modules-right = [
+            "tray"
+            "custom/separator"
+            "load"
+            "memory"
+            "temperature"
+            "custom/separator"
+            "network"
+            "wireplumber"
+            "battery"
+            "custom/separator"
+            "clock"
+          ];
 
           # Modules
           "custom/separator" = {
@@ -84,40 +102,39 @@ in {
               "10" = "十";
             };
           };
+
+          "custom/kernel" = {
+            format = "  {}";
+            interval = 3600;
+            exec = "uname -ro";
+            tooltip = false;
+          };
+
           clock = {
             format = "{:%H:%M}";
             tooltip = true;
-            tooltip-format = "<tt><small>{calendar}</small></tt>";
+            tooltip-format = "{calendar}";
             calendar = {
-              mode = "year";
-              mode-mon-col = 3;
-              weeks-pos = "right";
-              on-scroll = 1;
-              on-click-right = "mode";
               format = {
-                months = "<span color='${white}'><b>{}</b></span>";
-                days = "<span color='#ecc6d9'><b>{}</b></span>";
-                weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-                weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-                today = "<span color='${green}'><b><u>{}</u></b></span>";
+                today = "<span color='${green}'><b>{}</b></span>";
               };
             };
           };
+
           battery = {
             states = {
               warning = 30;
               critical = 10;
             };
             format = "{icon} {capacity}%";
-            format-warning = "{icon} {capacity}%";
-            format-critical = "{icon} {capacity}%";
             format-charging = "󰂄 {capacity}%";
             format-plugged = "󰚥 {capacity}%";
-            format-alt = "{icon} {capacity}%";
             format-full = "󰁹 100%";
             format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            interval = 5;
           };
-          pulseaudio = {
+
+          wireplumber = {
             format = "{icon} {volume}%";
             format-muted = "󰝟 {volume}%";
             format-icons = {
@@ -131,18 +148,43 @@ in {
               portable = "󰏲";
               car = "󰄋";
             };
-            on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-            on-click-right = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.ncpamixer}/bin/ncpamixer";
+            on-click = "volumectl mute";
+            on-click-right = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.ncpamixer}";
           };
+
+          network = {
+            format-wifi = "{icon}";
+            format-icons = ["󰤯 " "󰤟 " "󰤢 " "󰤥 " "󰤨 "];
+            format-ethernet = "󰈁";
+            format-disconnected = "󰖪";
+            tooltip-format-wifi = "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+            tooltip-format-ethernet = "󰈁 {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+            tooltip-format-disconnected = "Disconnected";
+            interval = 5;
+            nospacing = 1;
+          };
+
           temperature = {
             thermal-zone = cfg.cpu-temp-zone; # cpu
             critical-threshold = 80;
             format = " {temperatureC}°C";
             format-critical = " {temperatureC}°C";
             tooltip = false;
+            interval = 5;
           };
-          cpu = {
-            format = "󰯱 {load}";
+
+          memory = {
+            format = "󰰏 {percentage}%";
+            interval = 5;
+          };
+
+          load = {
+            format = "󰯱 {load1}";
+            interval = 5;
+          };
+
+          tray = {
+            spacing = 10;
           };
         };
 
@@ -169,6 +211,15 @@ in {
             .modules-center {
               /* TODO: remove me when some modules are added */
               background-color: transparent;
+            }
+
+            tooltip {
+              background: ${bg};
+              border-radius: 6px;
+              border: none;
+            }
+            tooltip label {
+              color: ${white};
             }
 
             #custom-separator {
