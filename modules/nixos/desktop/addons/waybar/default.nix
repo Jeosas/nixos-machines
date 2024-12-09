@@ -4,9 +4,9 @@
   namespace,
   config,
   ...
-}:
-with lib;
-with lib.${namespace}; let
+}: let
+  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.${namespace}) mkOpt;
   inherit (config.${namespace}.theme) colors;
 
   bg = colors.background;
@@ -17,7 +17,10 @@ with lib.${namespace}; let
 
   cfg = config.${namespace}.desktop.addons.waybar;
 in {
-  options.${namespace}.desktop.addons.waybar = {enable = mkEnableOption "waybar";};
+  options.${namespace}.desktop.addons.waybar = with lib.types; {
+    enable = mkEnableOption "waybar";
+    cpu-temp-zone = mkOpt int 2 "thermal zone for cpu temperature.";
+  };
 
   config = mkIf cfg.enable {
     ${namespace}.desktop.hyprland.config.exec = [
@@ -132,7 +135,7 @@ in {
             on-click-right = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.ncpamixer}/bin/ncpamixer";
           };
           temperature = {
-            thermal-zone = 6; # cpu
+            thermal-zone = cfg.cpu-temp-zone; # cpu
             critical-threshold = 80;
             format = " {temperatureC}°C";
             format-critical = " {temperatureC}°C";
