@@ -37,7 +37,7 @@ with lib.${namespace}; {
     system.openrazer = enabled;
 
     desktop.hyprland.config = {
-      layout = "dwindle";
+      layout = "hy3";
       monitors = [
         ",3440x1440@144,auto,1"
       ];

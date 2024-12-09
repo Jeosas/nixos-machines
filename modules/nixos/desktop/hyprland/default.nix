@@ -14,9 +14,22 @@
   iconCfg = config.${namespace}.theme.icon;
   iconPath = "${iconCfg.package}/share/icons/${iconCfg.name}/status/scalable";
 
+  layoutCommands = {
+    dwindle = {
+      movefocus = "movefocus";
+      movewindow = "movewindow";
+    };
+    hy3 = {
+      movefocus = "hy3:movefocus";
+      movewindow = "hy3:movewindow";
+    };
+  };
+
+  getCmd = cmd: layoutCommands.${cfg.config.layout}.${cmd};
+
   configOptions = {
     options = with lib.types; {
-      layout = mkOpt (enum ["dwindle"]) "dwindle" "Tiling layout to use.";
+      layout = mkOpt (enum ["dwindle" "hy3"]) "dwindle" "Tiling layout to use.";
       monitors = mkOpt (listOf str) [] "List of monitor settings.";
       exec = mkOpt (listOf str) [] "List of process to run on load.";
       exec-once = mkOpt (listOf str) [] "List process to run at startup.";
@@ -64,6 +77,8 @@ in {
         xwayland.enable = true;
         systemd.enable = false;
 
+        plugins = with pkgs.hyprlandPlugins; [hy3];
+
         settings = mkMerge [
           {
             exec = [] ++ cfg.config.exec;
@@ -80,8 +95,8 @@ in {
             };
 
             dwindle = {
-              pseudotile = true;
               force_split = 2;
+              split_width_multiplier = 2;
             };
 
             input = {
@@ -139,16 +154,16 @@ in {
                 "SUPER_CTRL_SHIFT, j, movecurrentworkspacetomonitor, d"
 
                 # window focus move
-                "SUPER, h, movefocus, l"
-                "SUPER, l, movefocus, r"
-                "SUPER, k, movefocus, u"
-                "SUPER, j, movefocus, d"
+                "SUPER, h, ${getCmd "movefocus"}, l"
+                "SUPER, l, ${getCmd "movefocus"}, r"
+                "SUPER, k, ${getCmd "movefocus"}, u"
+                "SUPER, j, ${getCmd "movefocus"}, d"
 
                 # window move
-                "SUPER_SHIFT, h, swapwindow, l"
-                "SUPER_SHIFT, l, swapwindow, r"
-                "SUPER_SHIFT, k, swapwindow, u"
-                "SUPER_SHIFT, j, swapwindow, d"
+                "SUPER_SHIFT, h, ${getCmd "movewindow"}, l"
+                "SUPER_SHIFT, l, ${getCmd "movewindow"}, r"
+                "SUPER_SHIFT, k, ${getCmd "movewindow"}, u"
+                "SUPER_SHIFT, j, ${getCmd "movewindow"}, d"
 
                 # window action
                 "SUPER_SHIFT, a, killactive"
@@ -211,6 +226,16 @@ in {
               # window move
               "SUPER, mouse:272, movewindow"
             ];
+
+            plugins = {
+              hy3 = {
+                autotile = {
+                  enable = false; # broken :smh:
+                  trigger_width = 800;
+                  trigger_height = 500;
+                };
+              };
+            };
 
             monitor = cfg.config.monitors;
           }
