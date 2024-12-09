@@ -96,7 +96,7 @@ in {
 
             dwindle = {
               force_split = 2;
-              split_width_multiplier = 2;
+              split_width_multiplier = 1.8;
             };
 
             input = {
