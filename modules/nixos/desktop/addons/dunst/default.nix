@@ -42,7 +42,6 @@ in {
             horizontal_padding = 15;
             frame_width = 2;
             font = "${fonts.sans.name} 11";
-            frame_color = colors.color2;
 
             # Formating
             markup = "full";
@@ -60,12 +59,14 @@ in {
             background = colors.background;
             foreground = colors.foreground;
             highlight = colors.foreground;
+            frame_color = colors.color2;
           };
           urgency_normal = {
             timeout = 6;
             background = colors.background;
             foreground = colors.foreground;
             highlight = colors.foreground;
+            frame_color = colors.color2;
           };
           urgency_high = {
             timeout = 0;
