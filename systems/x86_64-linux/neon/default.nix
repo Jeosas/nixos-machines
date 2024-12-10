@@ -48,6 +48,7 @@ with lib.${namespace}; {
   };
 
   home-manager.users.${config.${namespace}.user.name}.${namespace} = {
+    apps.monero-gui = enabled;
     tools.ssh.user.config = {
       "github.com" = {
         hostname = "github.com";
