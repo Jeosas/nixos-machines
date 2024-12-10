@@ -30,6 +30,8 @@ in
 
         security.doas = enabled;
 
+        services.mullvad-vpn = enabled;
+
         system = {
           auto-mount = enabled;
           boot = enabled;
