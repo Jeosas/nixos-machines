@@ -39,13 +39,9 @@ in {
         isDefault = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          skip-redirect
-          multi-account-containers
           behave
           bitwarden
-          youtube-nonstop
           kristofferhagen-nord-theme
-          darkreader
         ];
         search = {
           default = "DuckDuckGo";
@@ -88,8 +84,13 @@ in {
             "app.update.auto" = false;
             "extensions.update.enabled" = false;
 
-            # Dev
-            devtools.cache.disabled = false;
+            # --- Arkenfox overrides ---
+            # letterboxing
+            "privacy.resistFingerprinting.letterboxing" = false;
+            # # webRTC
+            # "media.peerconnection.enabled" = true;
+            # webGL
+            "webgl.disabled" = false;
           };
         };
       };

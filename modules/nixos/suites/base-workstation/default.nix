@@ -46,7 +46,6 @@ in
             libreoffice = enabled;
             mullvad = enabled;
             transmission = enabled;
-            # ungoogled-chromium = enabled; # TODO solve cache miss
             xournal = enabled;
           };
           cli-apps = {

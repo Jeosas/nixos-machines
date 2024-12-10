@@ -144,7 +144,8 @@ in {
               [
                 # apps
                 "SUPER, d, exec, wofi --show drun"
-                "SUPER_SHIFT, Return, exec, firefox"
+                "SUPER_SHIFT, Return, exec, mullvad-browser"
+                "SUPER_CTRL, Return, exec, firefox"
                 "SUPER, Return, exec, kitty"
 
                 # workspace move
