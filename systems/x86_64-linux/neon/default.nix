@@ -29,12 +29,15 @@ with lib.${namespace}; {
       social = enabled;
     };
 
-    apps.wootility = enabled;
-
-    hardware.network.hostName = "neon";
-    hardware.bluetooth = enabled;
+    hardware = {
+      graphics.nvidia = enabled;
+      network.hostName = "neon";
+      bluetooth = enabled;
+    };
 
     system.openrazer = enabled;
+
+    apps.wootility = enabled;
 
     desktop.hyprland.config = {
       layout = "hy3";
