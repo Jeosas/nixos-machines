@@ -12,7 +12,6 @@ in {
   config = mkIf cfg.enable {
     services = {
       devmon.enable = true;
-      gvfs.enable = true;
       udisks2.enable = true;
     };
   };

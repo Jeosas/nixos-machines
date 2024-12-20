@@ -37,6 +37,7 @@ in
           boot = enabled;
           fonts = enabled;
           locale = enabled;
+          mtp = enabled;
           time = enabled;
         };
       };
