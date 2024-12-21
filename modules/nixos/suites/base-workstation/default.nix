@@ -56,6 +56,7 @@ in
             home-manager = enabled;
             neovim = enabled;
             yazi = enabled;
+            termscp = enabled;
           };
           tools = {
             bat = enabled;
