@@ -156,7 +156,7 @@ in {
             format-wifi = "{icon}";
             format-icons = ["󰤯 " "󰤟 " "󰤢 " "󰤥 " "󰤨 "];
             format-ethernet = "󰈁";
-            format-disconnected = "󰖪";
+            format-disconnected = "󰖪 ";
             tooltip-format-wifi = "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
             tooltip-format-ethernet = "󰈁 {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
             tooltip-format-disconnected = "Disconnected";
