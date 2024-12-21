@@ -12,7 +12,10 @@ in
 
     config = mkIf cfg.enable {
       ${namespace} = {
-        apps.kitty = enabled;
+        apps = {
+          alacritty = enabled;
+          kitty = enabled;
+        };
 
         desktop.hyprland = {
           enable = true;
