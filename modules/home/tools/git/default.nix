@@ -15,9 +15,6 @@ in
     };
 
     config = mkIf cfg.enable {
-      # dependencies
-      programs.neovim.enable = true;
-
       # Git
       programs.git = {
         enable = true;
@@ -25,7 +22,6 @@ in
         inherit (cfg) userName userEmail;
 
         extraConfig = {
-          core.editor = "nvim";
           color.ui = true;
           pull.rebase = true;
           fetch.prune = true;
@@ -50,7 +46,6 @@ in
         settings = {
           notARepository = "skip";
           disableStartupPopups = true;
-          os.edit = "nvim";
           gui.nerdFontsVersion = "3"; # show icons
           gui.mouseEvents = false;
         };
