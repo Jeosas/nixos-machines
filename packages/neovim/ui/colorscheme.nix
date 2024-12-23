@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, config, ... }:
 {
   colorschemes.nord = {
     enable = true;
@@ -12,4 +12,13 @@
       uniform_diff_background = false;
     };
   };
+
+  extraConfigLuaPost =
+    lib.mkIf config.colorschemes.nord.enable # lua
+      ''
+        local colors = require('nord.colors')
+        require('nord.util').highlight('LspInlayHint',
+          { fg = colors.nord3_gui_bright, style = 'italic' }
+        )
+      '';
 }

@@ -16,6 +16,12 @@
     enable = true;
     autoClose = true;
     hijackCursor = true;
+    respectBufCwd = true;
+    syncRootWithCwd = true;
+    updateFocusedFile = {
+      enable = true;
+      updateRoot = true;
+    };
     diagnostics = {
       enable = true;
       showOnDirs = true;
