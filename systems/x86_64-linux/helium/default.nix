@@ -5,13 +5,14 @@
   ...
 }:
 with lib;
-with lib.${namespace}; {
+with lib.${namespace};
+{
   imports = [
     ./battery.nix
     ./hardware.nix
   ];
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   ${namespace} = {
     suites = {
@@ -45,9 +46,7 @@ with lib.${namespace}; {
     system.kmonad = {
       enable = true;
       config =
-        /*
-        kbd
-        */
+        # kbd
         ''
           (defcfg
             input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")

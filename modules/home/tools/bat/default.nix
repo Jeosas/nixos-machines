@@ -4,19 +4,23 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.tools.bat;
 in
-  with lib;
-  with lib.${namespace}; {
-    options.${namespace}.tools.bat = {enable = mkEnableOption "bat";};
+with lib;
+with lib.${namespace};
+{
+  options.${namespace}.tools.bat = {
+    enable = mkEnableOption "bat";
+  };
 
-    config = mkIf cfg.enable {
-      programs.bat = {
-        enable = true;
-        config = {
-          theme = "Nord";
-        };
+  config = mkIf cfg.enable {
+    programs.bat = {
+      enable = true;
+      config = {
+        theme = "Nord";
       };
     };
-  }
+  };
+}

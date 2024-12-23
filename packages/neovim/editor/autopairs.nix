@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins.nvim-autopairs = {
     enable = true;
     settings = {

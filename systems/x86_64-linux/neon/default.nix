@@ -5,12 +5,11 @@
   ...
 }:
 with lib;
-with lib.${namespace}; {
-  imports = [
-    ./hardware.nix
-  ];
+with lib.${namespace};
+{
+  imports = [ ./hardware.nix ];
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   ${namespace} = {
     suites = {
@@ -41,9 +40,7 @@ with lib.${namespace}; {
 
     desktop.hyprland.config = {
       layout = "hy3";
-      monitors = [
-        ",3440x1440@144,auto,1"
-      ];
+      monitors = [ ",3440x1440@144,auto,1" ];
     };
   };
 

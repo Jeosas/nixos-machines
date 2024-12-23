@@ -1,20 +1,19 @@
 {
   lib,
   namespace,
-  osConfig ? {},
+  osConfig ? { },
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.user;
-in {
+in
+{
   options.${namespace}.user = {
-    name =
-      mkOpt types.str (osConfig.${namespace}.user.name or "jeosas")
-      "The name of the user account.";
-    home =
-      mkOpt types.str "/home/${cfg.name}"
-      "The home directory of the user account.";
+    name = mkOpt types.str (osConfig.${namespace}.user.name or "jeosas"
+    ) "The name of the user account.";
+    home = mkOpt types.str "/home/${cfg.name}" "The home directory of the user account.";
   };
 
   config = {

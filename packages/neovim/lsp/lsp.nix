@@ -1,11 +1,20 @@
-{...}: let
+{ ... }:
+let
   options = {
     noremap = true;
     silent = true;
   };
 
-  mkKeymap = mode: key: action: {inherit mode key action options;};
-in {
+  mkKeymap = mode: key: action: {
+    inherit
+      mode
+      key
+      action
+      options
+      ;
+  };
+in
+{
   plugins.lsp = {
     enable = true;
 

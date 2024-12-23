@@ -1,8 +1,9 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   autoCmd = [
     {
-      event = ["User"];
-      pattern = ["AlphaReady"];
+      event = [ "User" ];
+      pattern = [ "AlphaReady" ];
       command = "set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2";
     }
   ];

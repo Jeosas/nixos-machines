@@ -6,15 +6,19 @@
   config,
   modulesPath,
   ...
-}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "none";
@@ -26,7 +30,13 @@
     device = "/dev/disk/by-uuid/58d1b70f-c8ee-4a91-9f43-26f34a73f38c";
     fsType = "btrfs";
     neededForBoot = true;
-    options = ["defaults" "compress-force=zstd" "noatime" "ssd" "subvol=nix"];
+    options = [
+      "defaults"
+      "compress-force=zstd"
+      "noatime"
+      "ssd"
+      "subvol=nix"
+    ];
   };
 
   boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/60d24361-258d-4b4b-9736-346432d6f759";
@@ -35,7 +45,13 @@
     device = "/dev/disk/by-uuid/58d1b70f-c8ee-4a91-9f43-26f34a73f38c";
     fsType = "btrfs";
     neededForBoot = true;
-    options = ["defaults" "compress-force=zstd" "noatime" "ssd" "subvol=persist"];
+    options = [
+      "defaults"
+      "compress-force=zstd"
+      "noatime"
+      "ssd"
+      "subvol=persist"
+    ];
   };
 
   fileSystems."/boot" = {
@@ -43,7 +59,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

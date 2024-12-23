@@ -1,15 +1,19 @@
-{pkgs, ...}: {
-  extraPackages = with pkgs; [jq nodePackages.jsonlint];
+{ pkgs, ... }:
+{
+  extraPackages = with pkgs; [
+    jq
+    nodePackages.jsonlint
+  ];
 
   plugins = {
     lsp.servers.jsonls = {
       enable = true;
     };
     conform-nvim.settings.formatters_by_ft = {
-      json = ["jq"];
+      json = [ "jq" ];
     };
     lint.lintersByFt = {
-      json = ["jsonlint"];
+      json = [ "jsonlint" ];
     };
 
     schemastore = {
@@ -17,7 +21,7 @@
       json = {
         enable = true;
         settings = {
-          ignore = [];
+          ignore = [ ];
           # extra = [
           #   {
           #     description = "My other custom JSON schema";

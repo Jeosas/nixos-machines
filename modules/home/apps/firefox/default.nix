@@ -7,30 +7,33 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
-  mkUserJs = {
-    prefs ? {},
-    extraPrefs ? "",
-  }: ''
-    ${fileContents "${inputs.arkenfox-userjs}/user.js"}
+with lib.${namespace};
+let
+  mkUserJs =
+    {
+      prefs ? { },
+      extraPrefs ? "",
+    }:
+    ''
+      ${fileContents "${inputs.arkenfox-userjs}/user.js"}
 
-    ${concatStrings (mapAttrsToList (name: value: ''
-        user_pref("${name}", ${builtins.toJSON value});
-      '')
-      prefs)}
-  '';
+      ${concatStrings (
+        mapAttrsToList (name: value: ''
+          user_pref("${name}", ${builtins.toJSON value});
+        '') prefs
+      )}
+    '';
 
   cfg = config.${namespace}.apps.firefox;
-in {
+in
+{
   options.${namespace}.apps.firefox = {
     enable = mkEnableOption "Firefox";
     enableWaylandSupport = mkOpt types.bool true "Enable wayland support.";
   };
 
   config = mkIf cfg.enable {
-    home.sessionVariables = mkIf cfg.enableWaylandSupport {
-      MOZ_ENABLE_WAYLAND = "1";
-    };
+    home.sessionVariables = mkIf cfg.enableWaylandSupport { MOZ_ENABLE_WAYLAND = "1"; };
 
     programs.firefox = {
       enable = true;
@@ -47,12 +50,10 @@ in {
           default = "DuckDuckGo";
           privateDefault = "DuckDuckGo";
           force = true;
-          order = ["DuckDuckGo"];
+          order = [ "DuckDuckGo" ];
         };
         userChrome =
-          /*
-          css
-          */
+          # css
           ''
             /*
             This repo https://github.com/Timvde/UserChrome-Tweaks contains nice snippets.
@@ -96,6 +97,6 @@ in {
       };
     };
 
-    ${namespace}.impermanence.directories = [".mozilla/firefox/default"];
+    ${namespace}.impermanence.directories = [ ".mozilla/firefox/default" ];
   };
 }

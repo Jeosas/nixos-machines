@@ -4,15 +4,19 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.apps.heroic;
 in
-  with lib; {
-    options.${namespace}.apps.heroic = {enable = mkEnableOption "Heroic";};
+with lib;
+{
+  options.${namespace}.apps.heroic = {
+    enable = mkEnableOption "Heroic";
+  };
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [heroic];
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ heroic ];
 
-      ${namespace}.impermanence.directories = [".config/heroic"];
-    };
-  }
+    ${namespace}.impermanence.directories = [ ".config/heroic" ];
+  };
+}

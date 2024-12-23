@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   opts = {
     hlsearch = false; # don't highlight matches on previous search pattern
     incsearch = true; # show current search match during typing

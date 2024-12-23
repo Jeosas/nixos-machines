@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins.dressing = {
     enable = true;
     settings = {
@@ -10,7 +11,10 @@
         };
       };
       select = {
-        backend = ["telescope" "builtin"];
+        backend = [
+          "telescope"
+          "builtin"
+        ];
       };
     };
   };

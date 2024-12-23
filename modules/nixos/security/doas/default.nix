@@ -6,13 +6,17 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.security.doas;
-in {
-  options.${namespace}.security.doas = with types; {enable = mkEnableOption "doas";};
+in
+{
+  options.${namespace}.security.doas = with types; {
+    enable = mkEnableOption "doas";
+  };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [doas-sudo-shim];
+    environment.systemPackages = with pkgs; [ doas-sudo-shim ];
 
     security = {
       sudo.enable = false;
@@ -20,7 +24,7 @@ in {
         enable = true;
         extraRules = [
           {
-            groups = ["wheel"];
+            groups = [ "wheel" ];
             persist = true;
           }
         ];

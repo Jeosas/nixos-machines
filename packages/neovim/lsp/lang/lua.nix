@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  extraPackages = with pkgs; [stylua lua];
+{ pkgs, ... }:
+{
+  extraPackages = with pkgs; [
+    stylua
+    lua
+  ];
 
   plugins = {
     lsp.servers.lua_ls = {
@@ -7,9 +11,11 @@
 
       settings = {
         Lua = {
-          version = {version = "max";};
+          version = {
+            version = "max";
+          };
           diagnostics = {
-            globals = ["vim"];
+            globals = [ "vim" ];
           };
           workspace = {
             library.__raw =
@@ -25,12 +31,12 @@
       };
     };
     conform-nvim.settings.formatters_by_ft = {
-      lua = ["stylua"];
-      luau = ["stylua"];
+      lua = [ "stylua" ];
+      luau = [ "stylua" ];
     };
     lint.lintersByFt = {
-      lua = ["luac"];
-      luau = ["luac"];
+      lua = [ "luac" ];
+      luau = [ "luac" ];
     };
   };
 }

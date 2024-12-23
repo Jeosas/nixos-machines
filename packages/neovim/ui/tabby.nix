@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   opts.showtabline = 2; # always show tabline
 
-  extraPlugins = with pkgs.vimPlugins; [tabby-nvim];
+  extraPlugins = with pkgs.vimPlugins; [ tabby-nvim ];
   extraConfigLua =
     # lua
     ''

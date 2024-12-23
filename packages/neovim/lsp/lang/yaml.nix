@@ -1,15 +1,24 @@
-{pkgs, ...}: {
-  extraPackages = with pkgs; [yamlfmt yamllint actionlint shellcheck];
+{ pkgs, ... }:
+{
+  extraPackages = with pkgs; [
+    yamlfmt
+    yamllint
+    actionlint
+    shellcheck
+  ];
 
   plugins = {
     lsp.servers.yamlls = {
       enable = true;
     };
     conform-nvim.settings.formatters_by_ft = {
-      yaml = ["yamlfmt"];
+      yaml = [ "yamlfmt" ];
     };
     lint.lintersByFt = {
-      yaml = ["yamllint" "actionlint"];
+      yaml = [
+        "yamllint"
+        "actionlint"
+      ];
     };
 
     schemastore = {
@@ -17,7 +26,7 @@
       yaml = {
         enable = true;
         settings = {
-          ignore = [];
+          ignore = [ ];
           # extra = [
           #   {
           #     description = "My other custom JSON schema";

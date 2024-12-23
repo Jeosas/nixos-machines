@@ -4,9 +4,15 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   inherit (builtins) concatLists genList toString;
-  inherit (lib) mkIf mkEnableOption mkMerge removePrefix;
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    mkMerge
+    removePrefix
+    ;
   inherit (lib.${namespace}) mkOpt enabled;
 
   cfg = config.${namespace}.desktop.hyprland;
@@ -29,18 +35,22 @@
 
   configOptions = {
     options = with lib.types; {
-      layout = mkOpt (enum ["dwindle" "hy3"]) "dwindle" "Tiling layout to use.";
-      monitors = mkOpt (listOf str) [] "List of monitor settings.";
-      exec = mkOpt (listOf str) [] "List of process to run on load.";
-      exec-once = mkOpt (listOf str) [] "List process to run at startup.";
-      extraConfig = mkOpt attrs {} "Extra configuration.";
+      layout = mkOpt (enum [
+        "dwindle"
+        "hy3"
+      ]) "dwindle" "Tiling layout to use.";
+      monitors = mkOpt (listOf str) [ ] "List of monitor settings.";
+      exec = mkOpt (listOf str) [ ] "List of process to run on load.";
+      exec-once = mkOpt (listOf str) [ ] "List process to run at startup.";
+      extraConfig = mkOpt attrs { } "Extra configuration.";
     };
   };
-in {
+in
+{
   options.${namespace}.desktop.hyprland = with lib.types; {
     enable = mkEnableOption "Hyprland custom";
     enableZshLaunchOnLogin = mkOpt bool false "Add startup hooks to zsh .profile.";
-    config = mkOpt (submodule configOptions) {} "Hyprland config options.";
+    config = mkOpt (submodule configOptions) { } "Hyprland config options.";
   };
 
   config = mkIf cfg.enable {
@@ -67,8 +77,8 @@ in {
           playerctl
           hyprshot
 
-          (callPackage ./brightnessctl.nix {inherit iconPath;})
-          (callPackage ./volumectl.nix {inherit iconPath;})
+          (callPackage ./brightnessctl.nix { inherit iconPath; })
+          (callPackage ./volumectl.nix { inherit iconPath; })
         ];
       };
 
@@ -77,12 +87,12 @@ in {
         xwayland.enable = true;
         systemd.enable = false;
 
-        plugins = with pkgs.hyprlandPlugins; [hy3];
+        plugins = with pkgs.hyprlandPlugins; [ hy3 ];
 
         settings = mkMerge [
           {
-            exec = [] ++ cfg.config.exec;
-            exec-once = [] ++ cfg.config.exec-once;
+            exec = [ ] ++ cfg.config.exec;
+            exec-once = [ ] ++ cfg.config.exec-once;
 
             general = with config.${namespace}.theme.colors; {
               gaps_in = 4;
@@ -129,9 +139,7 @@ in {
 
             animations = {
               enabled = true;
-              bezier = [
-                "overshot, 0.05, 0.9, 0.1, 1.05"
-              ];
+              bezier = [ "overshot, 0.05, 0.9, 0.1, 1.05" ];
               animation = [
                 "border, 1, 2, default"
                 "fade, 1, 3, default"
@@ -179,19 +187,23 @@ in {
                 # screen lock
                 "SUPER_SHIFT, d, exec, hyprlock"
               ]
-              ++ (concatLists (genList (
-                  x: let
-                    ws = let
-                      c = (x + 1) / 10;
-                    in
+              ++ (concatLists (
+                genList (
+                  x:
+                  let
+                    ws =
+                      let
+                        c = (x + 1) / 10;
+                      in
                       toString (x + 1 - (c * 10));
-                  in [
+                  in
+                  [
                     # change workspace [0-9]
                     "SUPER, ${ws}, workspace, ${toString (x + 1)}"
                     "SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
                   ]
-                )
-                10));
+                ) 10
+              ));
 
             binde = [
               # window resize
@@ -247,9 +259,7 @@ in {
       # Start on login
       programs.zsh = {
         profileExtra =
-          /*
-          bash
-          */
+          # bash
           ''
             if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
               Hyprland

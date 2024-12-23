@@ -3,17 +3,19 @@
   pkgs,
   iconPath,
   ...
-}: let
+}:
+let
   inherit (pkgs) writeShellApplication;
 
   brightnessctl = writeShellApplication {
     name = "brightnessctl";
-    runtimeInputs = with pkgs; [dunst light];
+    runtimeInputs = with pkgs; [
+      dunst
+      light
+    ];
 
     text =
-      /*
-      bash
-      */
+      # bash
       ''
         notify () {
           brightness="$(light | cut -d'.' -f1)"
@@ -29,4 +31,4 @@
       '';
   };
 in
-  brightnessctl
+brightnessctl

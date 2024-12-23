@@ -4,13 +4,15 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.cli-apps.ongaku;
 in
-  with lib; {
-    options.${namespace}.cli-apps.ongaku = {enable = mkEnableOption "Ongaku";};
+with lib;
+{
+  options.${namespace}.cli-apps.ongaku = {
+    enable = mkEnableOption "Ongaku";
+  };
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [ongaku];
-    };
-  }
+  config = mkIf cfg.enable { home.packages = with pkgs; [ ongaku ]; };
+}

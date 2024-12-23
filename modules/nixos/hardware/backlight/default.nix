@@ -5,12 +5,16 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.hardware.backlight;
-in {
-  options.${namespace}.hardware.backlight = {enable = mkEnableOption "backlight";};
+in
+{
+  options.${namespace}.hardware.backlight = {
+    enable = mkEnableOption "backlight";
+  };
   config = mkIf cfg.enable {
     programs.light = enabled;
-    ${namespace}.user.extraGroups = ["video"];
+    ${namespace}.user.extraGroups = [ "video" ];
   };
 }

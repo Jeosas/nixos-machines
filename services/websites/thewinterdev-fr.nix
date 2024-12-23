@@ -1,19 +1,15 @@
-{
-  config,
-  inputs,
-  ...
-}: let
+{ config, inputs, ... }:
+let
   domain = "thewinterdev.fr";
-in {
-  imports = [
-    ../nginx.nix
-  ];
+in
+{
+  imports = [ ../nginx.nix ];
 
   services.nginx.virtualHosts.${domain} = {
     enableACME = true;
     forceSSL = true;
 
-    serverAliases = ["www.${domain}"];
+    serverAliases = [ "www.${domain}" ];
 
     root = "${inputs.thewinterdev-website.packages.${config.nixpkgs.system}.default}/www/public";
 

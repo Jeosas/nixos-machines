@@ -4,13 +4,15 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.cli-apps.termscp;
 in
-  with lib; {
-    options.${namespace}.cli-apps.termscp = {enable = mkEnableOption "termscp";};
+with lib;
+{
+  options.${namespace}.cli-apps.termscp = {
+    enable = mkEnableOption "termscp";
+  };
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [termscp];
-    };
-  }
+  config = mkIf cfg.enable { home.packages = with pkgs; [ termscp ]; };
+}

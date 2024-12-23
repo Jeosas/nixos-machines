@@ -4,15 +4,19 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.apps.signal;
 in
-  with lib; {
-    options.${namespace}.apps.signal = {enable = mkEnableOption "Signal";};
+with lib;
+{
+  options.${namespace}.apps.signal = {
+    enable = mkEnableOption "Signal";
+  };
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [signal-desktop];
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ signal-desktop ];
 
-      ${namespace}.impermanence.directories = [".config/Signal"];
-    };
-  }
+    ${namespace}.impermanence.directories = [ ".config/Signal" ];
+  };
+}

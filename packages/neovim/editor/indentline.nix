@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins.indent-blankline = {
     enable = true;
     settings = {
@@ -7,9 +8,7 @@
           "terminal"
           "nofile"
         ];
-        filetypes = [
-          "help"
-        ];
+        filetypes = [ "help" ];
       };
     };
   };

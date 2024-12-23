@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins = {
     lsp.servers.rust_analyzer = {
       enable = true;
@@ -7,7 +8,7 @@
       installRustfmt = true;
     };
     conform-nvim.settings.formatters_by_ft = {
-      rust = ["rustfmt"];
+      rust = [ "rustfmt" ];
     };
   };
 }

@@ -4,15 +4,19 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.apps.transmission;
 in
-  with lib; {
-    options.${namespace}.apps.transmission = {enable = mkEnableOption "Transmission";};
+with lib;
+{
+  options.${namespace}.apps.transmission = {
+    enable = mkEnableOption "Transmission";
+  };
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [transmission_4-gtk];
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ transmission_4-gtk ];
 
-      ${namespace}.impermanence.directories = [".config/transmission"];
-    };
-  }
+    ${namespace}.impermanence.directories = [ ".config/transmission" ];
+  };
+}

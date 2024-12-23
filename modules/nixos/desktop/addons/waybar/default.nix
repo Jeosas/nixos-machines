@@ -4,7 +4,8 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf mkEnableOption;
   inherit (lib.${namespace}) mkOpt;
   inherit (config.${namespace}.theme) colors;
@@ -16,21 +17,18 @@
   red = colors.color9;
 
   cfg = config.${namespace}.desktop.addons.waybar;
-in {
+in
+{
   options.${namespace}.desktop.addons.waybar = with lib.types; {
     enable = mkEnableOption "waybar";
     cpu-temp-zone = mkOpt int 2 "thermal zone for cpu temperature.";
   };
 
   config = mkIf cfg.enable {
-    ${namespace}.desktop.hyprland.config.exec = [
-      "launchbar"
-    ];
+    ${namespace}.desktop.hyprland.config.exec = [ "launchbar" ];
 
     home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = with pkgs; [
-        (callPackage ./launchbar.nix {})
-      ];
+      home.packages = with pkgs; [ (callPackage ./launchbar.nix { }) ];
 
       programs.waybar = {
         enable = true;
@@ -85,7 +83,18 @@ in {
             active-only = false;
             all-outputs = false;
             persistent-workspaces = {
-              "*" = [1 2 3 4 5 6 7 8 9 10];
+              "*" = [
+                1
+                2
+                3
+                4
+                5
+                6
+                7
+                8
+                9
+                10
+              ];
             };
             sort-by = "id";
             format = "{icon}";
@@ -130,7 +139,18 @@ in {
             format-charging = "󰂄 {capacity}%";
             format-plugged = "󰚥 {capacity}%";
             format-full = "󰁹 100%";
-            format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            format-icons = [
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
             interval = 5;
           };
 
@@ -154,11 +174,21 @@ in {
 
           network = {
             format-wifi = "{icon}";
-            format-icons = ["󰤯 " "󰤟 " "󰤢 " "󰤥 " "󰤨 "];
+            format-icons = [
+              "󰤯 "
+              "󰤟 "
+              "󰤢 "
+              "󰤥 "
+              "󰤨 "
+            ];
             format-ethernet = "󰈁";
             format-disconnected = "󰖪 ";
-            tooltip-format-wifi = "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
-            tooltip-format-ethernet = "󰈁 {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+            tooltip-format-wifi = ''
+              {icon} {essid}
+              ⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}'';
+            tooltip-format-ethernet = ''
+              󰈁 {ifname}
+              ⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}'';
             tooltip-format-disconnected = "Disconnected";
             interval = 5;
             nospacing = 1;
@@ -189,9 +219,7 @@ in {
         };
 
         style =
-          /*
-          css
-          */
+          # css
           ''
             window#waybar {
               background-color: transparent;

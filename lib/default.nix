@@ -1,5 +1,6 @@
-{lib, ...}:
-with lib; rec {
+{ lib, ... }:
+with lib;
+rec {
   ## Create a NixOS module option.
   ##
   ## ```nix
@@ -7,8 +8,9 @@ with lib; rec {
   ## ```
   ##
   #@ Type -> Any -> String
-  mkOpt = type: default: description:
-    mkOption {inherit type default description;};
+  mkOpt =
+    type: default: description:
+    mkOption { inherit type default description; };
 
   ## Create a NixOS module option without a description.
   ##
@@ -26,7 +28,9 @@ with lib; rec {
   ## ```
   ##
   #@ true
-  enabled = {enable = true;};
+  enabled = {
+    enable = true;
+  };
 
   ## Quickly disable an option.
   ##
@@ -35,5 +39,7 @@ with lib; rec {
   ## ```
   ##
   #@ false
-  disabled = {enable = false;};
+  disabled = {
+    enable = false;
+  };
 }

@@ -3,12 +3,16 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf mkEnableOption mkForce;
 
   cfg = config.${namespace}.desktop.addons.hyprlock;
-in {
-  options.${namespace}.desktop.addons.hyprlock = {enable = mkEnableOption "hyprlock";};
+in
+{
+  options.${namespace}.desktop.addons.hyprlock = {
+    enable = mkEnableOption "hyprlock";
+  };
 
   config = mkIf cfg.enable {
     programs.hyprlock.enable = true;

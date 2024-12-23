@@ -1,5 +1,5 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.mkShell {
   name = "nixos-install";
-  packages = with pkgs; [nixos-install-tools];
+  packages = with pkgs; [ nixos-install-tools ];
 }

@@ -5,11 +5,13 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.cli-apps.home-manager;
-in {
+in
+{
   options.${namespace}.cli-apps.home-manager.enable =
     mkEnableOption "Enable home-manager and its extras.";
 
-  config = mkIf cfg.enable {programs.home-manager = enabled;};
+  config = mkIf cfg.enable { programs.home-manager = enabled; };
 }

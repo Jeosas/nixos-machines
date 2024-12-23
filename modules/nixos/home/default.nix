@@ -6,18 +6,17 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.home;
-in {
+in
+{
   options.${namespace}.home = with types; {
-    extraConfig =
-      mkOpt (attrsOf anything) {} "A config set to be passed directly to home-manager.";
+    extraConfig = mkOpt (attrsOf anything) { } "A config set to be passed directly to home-manager.";
     configFile =
-      mkOpt (attrsOf str) {}
-      "A set of files to be managed by home-manager's `xdg.configFile`.";
-    file =
-      mkOpt (attrsOf str) {}
-      "A set of files to be managed by home-manager's `home.file`.";
+      mkOpt (attrsOf str) { }
+        "A set of files to be managed by home-manager's `xdg.configFile`.";
+    file = mkOpt (attrsOf str) { } "A set of files to be managed by home-manager's `home.file`.";
   };
 
   config = {

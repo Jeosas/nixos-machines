@@ -6,12 +6,14 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.system.fonts;
-in {
+in
+{
   options.${namespace}.system.fonts = with types; {
     enable = mkEnableOption "fonts";
-    fonts = mkOpt (listOf package) [] "Custom font packages to install.";
+    fonts = mkOpt (listOf package) [ ] "Custom font packages to install.";
   };
   config = mkIf cfg.enable {
     console = {
@@ -25,11 +27,12 @@ in {
     };
 
     fonts = {
-      packages = with pkgs;
+      packages =
+        with pkgs;
         [
           mplus-outline-fonts.githubRelease # normal + cjk font
 
-          (nerdfonts.override {fonts = ["MPlus"];}) # nerdfonts
+          (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
           # NOTE: becomes `nerd-fonts.mplus` in 25.05
 
           noto-fonts
@@ -47,10 +50,10 @@ in {
         enable = true;
         useEmbeddedBitmaps = true;
         defaultFonts = with config.${namespace}.theme.fonts; {
-          monospace = [mono.name];
-          serif = [sans.name];
-          sansSerif = [sans.name];
-          emoji = [emoji.name];
+          monospace = [ mono.name ];
+          serif = [ sans.name ];
+          sansSerif = [ sans.name ];
+          emoji = [ emoji.name ];
         };
       };
     };

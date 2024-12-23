@@ -8,29 +8,31 @@
     fenix.url = "github:nix-community/fenix";
   };
 
-  outputs = {
-    self,
-    flake-utils,
-    naersk,
-    nixpkgs,
-    fenix,
-  }:
+  outputs =
+    {
+      self,
+      flake-utils,
+      naersk,
+      nixpkgs,
+      fenix,
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
+      system:
+      let
         pkgs = (import nixpkgs) {
           inherit system;
-          overlays = [fenix.overlays.default];
+          overlays = [ fenix.overlays.default ];
         };
 
         rust' = pkgs.fenix.latest; # Rust toolchain selection
 
-        naersk' = pkgs.callPackage naersk {inherit (rust') cargo rustc;};
-      in {
-        defaultPackage = naersk'.buildPackage {
-          src = ./.;
-        };
+        naersk' = pkgs.callPackage naersk { inherit (rust') cargo rustc; };
+      in
+      {
+        defaultPackage = naersk'.buildPackage { src = ./.; };
 
-        devShell = with pkgs;
+        devShell =
+          with pkgs;
           mkShell rec {
             packages = [
               # General

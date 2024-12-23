@@ -1,18 +1,16 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{ lib, pkgs, ... }:
+let
   inherit (pkgs) writeShellApplication;
 
   launchbar = writeShellApplication {
     name = "launchbar";
-    runtimeInputs = with pkgs; [killall waybar];
+    runtimeInputs = with pkgs; [
+      killall
+      waybar
+    ];
 
     text =
-      /*
-      bash
-      */
+      # bash
       ''
         killall waybar || true
         killall .waybar-wrapped || true
@@ -21,4 +19,4 @@
       '';
   };
 in
-  launchbar
+launchbar

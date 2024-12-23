@@ -6,15 +6,21 @@
   lib,
   modulesPath,
   ...
-}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "none";
@@ -26,33 +32,53 @@
     device = "/dev/disk/by-uuid/2e5f0b8a-9199-446c-a85a-f08e007b7fec";
     neededForBoot = true;
     fsType = "btrfs";
-    options = ["defaults" "compress-force=zstd" "noatime" "ssd" "subvol=nix"];
+    options = [
+      "defaults"
+      "compress-force=zstd"
+      "noatime"
+      "ssd"
+      "subvol=nix"
+    ];
   };
 
-  boot.initrd.luks.devices."enc_nvme".device = "/dev/disk/by-uuid/88d3f469-9f65-473b-a0d9-07d4878806de";
+  boot.initrd.luks.devices."enc_nvme".device =
+    "/dev/disk/by-uuid/88d3f469-9f65-473b-a0d9-07d4878806de";
 
   fileSystems."/persist" = {
     device = "/dev/disk/by-uuid/2e5f0b8a-9199-446c-a85a-f08e007b7fec";
     neededForBoot = true;
     fsType = "btrfs";
-    options = ["defaults" "compress-force=zstd" "noatime" "ssd" "subvol=persist"];
+    options = [
+      "defaults"
+      "compress-force=zstd"
+      "noatime"
+      "ssd"
+      "subvol=persist"
+    ];
   };
 
   fileSystems."/home/jeosas/Games" = {
     device = "/dev/disk/by-uuid/6ee74d97-af29-4a51-977a-84d69ccbf1ab";
     neededForBoot = true;
     fsType = "btrfs";
-    options = ["defaults" "compress-force=zstd" "noatime" "ssd" "subvol=games"];
+    options = [
+      "defaults"
+      "compress-force=zstd"
+      "noatime"
+      "ssd"
+      "subvol=games"
+    ];
   };
 
-  boot.initrd.luks.devices."enc_ssd".device = "/dev/disk/by-uuid/cf407dba-946c-47f5-91ad-983822758135";
+  boot.initrd.luks.devices."enc_ssd".device =
+    "/dev/disk/by-uuid/cf407dba-946c-47f5-91ad-983822758135";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9C64-A54B";
     fsType = "vfat";
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

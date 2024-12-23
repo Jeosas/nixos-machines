@@ -1,23 +1,26 @@
-{...}: {
-  keymaps = let
-    options = {
-      noremap = true;
-      silent = true;
-    };
-  in [
-    {
-      mode = "n";
-      key = "<leader>o";
-      action = "<cmd>ToggleTerm direction=float<cr>";
-      inherit options;
-    }
-    {
-      mode = "n";
-      key = "<leader>gg";
-      action = "<cmd>lua _LAZYGIT_TOGGLE()<cr>";
-      inherit options;
-    }
-  ];
+{ ... }:
+{
+  keymaps =
+    let
+      options = {
+        noremap = true;
+        silent = true;
+      };
+    in
+    [
+      {
+        mode = "n";
+        key = "<leader>o";
+        action = "<cmd>ToggleTerm direction=float<cr>";
+        inherit options;
+      }
+      {
+        mode = "n";
+        key = "<leader>gg";
+        action = "<cmd>lua _LAZYGIT_TOGGLE()<cr>";
+        inherit options;
+      }
+    ];
 
   plugins.toggleterm = {
     enable = true;

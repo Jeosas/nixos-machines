@@ -3,17 +3,19 @@
   pkgs,
   iconPath,
   ...
-}: let
+}:
+let
   inherit (pkgs) writeShellApplication;
 
   volumectl = writeShellApplication {
     name = "volumectl";
-    runtimeInputs = with pkgs; [dunst wireplumber];
+    runtimeInputs = with pkgs; [
+      dunst
+      wireplumber
+    ];
 
     text =
-      /*
-      sh
-      */
+      # sh
       ''
         notify () {
           volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
@@ -45,4 +47,4 @@
       '';
   };
 in
-  volumectl
+volumectl

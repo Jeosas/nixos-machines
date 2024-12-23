@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins = {
     cmp_luasnip.enable = true;
     cmp-buffer.enable = true;
@@ -10,24 +11,30 @@
       enable = true;
 
       settings = {
-        experimental = {ghost_text = true;};
+        experimental = {
+          ghost_text = true;
+        };
         snippet.expand = ''
           function(args)
             require('luasnip').lsp_expand(args.body)
           end
         '';
         sources = [
-          {name = "nvim_lsp";}
-          {name = "luasnip";}
+          { name = "nvim_lsp"; }
+          { name = "luasnip"; }
           {
             name = "buffer";
             option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
           }
-          {name = "path";}
+          { name = "path"; }
         ];
 
         formatting = {
-          fields = ["kind" "abbr" "menu"];
+          fields = [
+            "kind"
+            "abbr"
+            "menu"
+          ];
           format =
             # lua
             ''
@@ -90,7 +97,16 @@
           };
 
           settings.documentation = {
-            border = ["╭" "─" "╮" "│" "╯" "─" "╰" "│"];
+            border = [
+              "╭"
+              "─"
+              "╮"
+              "│"
+              "╯"
+              "─"
+              "╰"
+              "│"
+            ];
           };
         };
 

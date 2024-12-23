@@ -5,10 +5,14 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.desktop.addons.wofi;
-in {
-  options.${namespace}.desktop.addons.wofi = {enable = mkEnableOption "wofi";};
+in
+{
+  options.${namespace}.desktop.addons.wofi = {
+    enable = mkEnableOption "wofi";
+  };
 
   config = mkIf cfg.enable {
     home-manager.users.${config.${namespace}.user.name} = {
@@ -34,10 +38,9 @@ in {
           image_size = 40;
           gtk_dark = true;
         };
-        style = with config.${namespace}.theme;
-        /*
-        css
-        */
+        style =
+          with config.${namespace}.theme;
+          # css
           ''
             window {
               font-family: "${fonts.sans.name}";

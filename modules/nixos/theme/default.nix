@@ -4,7 +4,8 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) listToAttrs;
   inherit (lib.${namespace}) mkOpt;
 
@@ -36,38 +37,41 @@
   };
 
   cfg = config.${namespace}.theme;
-in {
+in
+{
   options.${namespace}.theme = with lib.types; {
     wallpaper = mkOpt path ./wallpaper.jpg "Wallpaper";
-    colors = listToAttrs (map mkColorOption [
-      "background"
-      "foreground"
-      "cursor"
-      "color0"
-      "color1"
-      "color2"
-      "color3"
-      "color4"
-      "color5"
-      "color6"
-      "color7"
-      "color8"
-      "color9"
-      "color10"
-      "color11"
-      "color12"
-      "color13"
-      "color14"
-      "color15"
-    ]);
+    colors = listToAttrs (
+      map mkColorOption [
+        "background"
+        "foreground"
+        "cursor"
+        "color0"
+        "color1"
+        "color2"
+        "color3"
+        "color4"
+        "color5"
+        "color6"
+        "color7"
+        "color8"
+        "color9"
+        "color10"
+        "color11"
+        "color12"
+        "color13"
+        "color14"
+        "color15"
+      ]
+    );
     fonts = {
       sans = {
         name = mkOpt str "M+1Code Nerd Font" "Default sans font";
-        package = mkOpt package (pkgs.nerdfonts.override {fonts = ["MPlus"];}) "sans font package.";
+        package = mkOpt package (pkgs.nerdfonts.override { fonts = [ "MPlus" ]; }) "sans font package.";
       };
       mono = {
         name = mkOpt str "M+1Code Nerd Font Mono" "Default monospace font";
-        package = mkOpt package (pkgs.nerdfonts.override {fonts = ["MPlus"];}) "mono font package";
+        package = mkOpt package (pkgs.nerdfonts.override { fonts = [ "MPlus" ]; }) "mono font package";
       };
       emoji = {
         name = mkOpt str "Noto Color Emoji" "Default emoji font";
@@ -90,16 +94,18 @@ in {
   };
 
   config = {
-    fonts.packages = with cfg.fonts; [sans.package mono.package emoji.package];
+    fonts.packages = with cfg.fonts; [
+      sans.package
+      mono.package
+      emoji.package
+    ];
 
     # Required for Home Manager's GTK settings to work
     programs.dconf.enable = true;
 
     home-manager.users.${config.${namespace}.user.name} = {
       home = {
-        packages = [
-          cfg.cursor.package
-        ];
+        packages = [ cfg.cursor.package ];
 
         pointerCursor = {
           inherit (cfg.cursor) name package;
@@ -118,12 +124,10 @@ in {
 
       gtk = {
         enable = true;
-        iconTheme = {inherit (cfg.icon) name package;};
-        theme = {inherit (cfg.theme) name package;};
+        iconTheme = { inherit (cfg.icon) name package; };
+        theme = { inherit (cfg.theme) name package; };
         gtk3.extraCss =
-          /*
-          css
-          */
+          # css
           ''
             /* Remove dotted lines from GTK+ 3 applications */
             undershoot.top, undershoot.right, undershoot.bottom, undershoot.left { background-image: none; }

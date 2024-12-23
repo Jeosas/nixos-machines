@@ -5,15 +5,17 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.desktop.addons.dunst;
-in {
-  options.${namespace}.desktop.addons.dunst = {enable = mkEnableOption "dunst";};
+in
+{
+  options.${namespace}.desktop.addons.dunst = {
+    enable = mkEnableOption "dunst";
+  };
 
   config = mkIf cfg.enable {
-    ${namespace}.desktop.hyprland.config.exec-once = [
-      "dunst &"
-    ];
+    ${namespace}.desktop.hyprland.config.exec-once = [ "dunst &" ];
 
     home-manager.users.${config.${namespace}.user.name} = {
       services.dunst = {
@@ -45,7 +47,10 @@ in {
 
             # Formating
             markup = "full";
-            format = "<small>%a</small>\n<b>%s %p</b>\n%b";
+            format = ''
+              <small>%a</small>
+              <b>%s %p</b>
+              %b'';
             ellipsize = "end";
 
             # Mouse interaction

@@ -5,10 +5,14 @@
   ...
 }:
 with lib;
-with lib.${namespace}; let
+with lib.${namespace};
+let
   cfg = config.${namespace}.hardware.ssd;
-in {
-  options.${namespace}.hardware.ssd = {enable = mkEnableOption "ssd";};
+in
+{
+  options.${namespace}.hardware.ssd = {
+    enable = mkEnableOption "ssd";
+  };
 
-  config = mkIf cfg.enable {services.fstrim = enabled;};
+  config = mkIf cfg.enable { services.fstrim = enabled; };
 }

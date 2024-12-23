@@ -4,15 +4,19 @@
   namespace,
   config,
   ...
-}: let
+}:
+let
   cfg = config.${namespace}.apps.godot;
 in
-  with lib; {
-    options.${namespace}.apps.godot = {enable = mkEnableOption "Godot";};
+with lib;
+{
+  options.${namespace}.apps.godot = {
+    enable = mkEnableOption "Godot";
+  };
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [godot_4];
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ godot_4 ];
 
-      ${namespace}.impermanence.directories = [".config/godot"];
-    };
-  }
+    ${namespace}.impermanence.directories = [ ".config/godot" ];
+  };
+}
