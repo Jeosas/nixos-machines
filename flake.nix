@@ -30,6 +30,10 @@
     arkenfox-userjs.url = "github:arkenfox/user.js";
     arkenfox-userjs.flake = false;
 
+    # NixVim
+    nixvim.url = "github:nix-community/nixvim/nixos-24.11";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
     #  --- Perso--- // TODO: migrate in here as a monorepository
     # thewinterdev website
     thewinterdev-website.url = "github:Jeosas/thewinterdev.fr";
