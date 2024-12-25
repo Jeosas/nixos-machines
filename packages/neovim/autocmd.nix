@@ -1,4 +1,3 @@
-{ ... }:
 {
   autoCmd = [
     {
@@ -24,6 +23,11 @@
       event = [ "FileType" ];
       pattern = [ "qf" ]; # quick fix window
       command = "set nobuflisted";
+    }
+    {
+      event = [ "VimResized" ];
+      pattern = [ "*" ];
+      command = "tabdo wincmd =";
     }
   ];
 }
