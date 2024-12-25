@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   opts = {
     hlsearch = false; # don't highlight matches on previous search pattern
@@ -12,7 +11,7 @@
     splitright = true; # force all vertical splits to go to the right of current window
     swapfile = false; # don't create swapfiles
     termguicolors = true; # set term gui colors (most terminals support this)
-    timeoutlen = 300; # time to wait for a mapped sequence to complete (in milliseconds)
+    timeoutlen = 500; # time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true; # enable persistent undo
     updatetime = 50; # faster completion (4000ms default)
     writebackup = false; # if a file is being edited by another program, it is not allowed to be edited
