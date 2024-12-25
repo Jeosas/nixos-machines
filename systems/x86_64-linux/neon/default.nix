@@ -39,7 +39,7 @@ with lib.${namespace};
     apps.wootility = enabled;
 
     desktop.hyprland.config = {
-      layout = "hy3";
+      # layout = "hy3";
       monitors = [ ",3440x1440@144,auto,1" ];
     };
   };

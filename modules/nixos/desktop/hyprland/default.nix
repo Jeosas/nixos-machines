@@ -37,7 +37,7 @@ let
     options = with lib.types; {
       layout = mkOpt (enum [
         "dwindle"
-        "hy3"
+        # "hy3"
       ]) "dwindle" "Tiling layout to use.";
       monitors = mkOpt (listOf str) [ ] "List of monitor settings.";
       exec = mkOpt (listOf str) [ ] "List of process to run on load.";
@@ -87,12 +87,12 @@ in
         xwayland.enable = true;
         systemd.enable = false;
 
-        plugins = with pkgs.hyprlandPlugins; [ hy3 ];
+        # plugins = with pkgs.hyprlandPlugins; [ hy3 ];
 
         settings = mkMerge [
           {
-            exec = [ ] ++ cfg.config.exec;
-            exec-once = [ ] ++ cfg.config.exec-once;
+            inherit (cfg.config) exec;
+            inherit (cfg.config) exec-once;
 
             general = with config.${namespace}.theme.colors; {
               gaps_in = 4;
@@ -100,7 +100,7 @@ in
               border_size = 1;
               "col.active_border" = "rgba(${removePrefix "#" color2}ff) rgba(${removePrefix "#" color6}ff) 45deg";
               "col.inactive_border" = "rgba(${removePrefix "#" background}cc)";
-              layout = cfg.config.layout;
+              inherit (cfg.config) layout;
               allow_tearing = false;
             };
 
@@ -261,7 +261,7 @@ in
         profileExtra =
           # bash
           ''
-            if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+            if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
               Hyprland
             fi
           '';
