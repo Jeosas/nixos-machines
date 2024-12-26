@@ -15,9 +15,9 @@ stdenvNoCC.mkDerivation rec {
   };
 
   installPhase = ''
-    mkdir -p $out/share/icons
-    cp -r xcursors/Nordzy-cursors{,-white} $out/share/icons
-    cp -r hyprcursors/themes/Nordzy-hyprcursors{,-white} $out/share/icons
+    mkdir -p "$out/share/icons"
+    cp -r xcursors/Nordzy-cursors{,-white} "$out/share/icons"
+    cp -r hyprcursors/themes/Nordzy-hyprcursors{,-white} "$out/share/icons"
   '';
 
   meta = with lib; {
