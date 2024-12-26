@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) listToAttrs;
+  inherit (lib) listToAttrs mkIf mkEnableOption;
   inherit (lib.${namespace}) mkOpt;
 
   default-colors = {
@@ -40,6 +40,7 @@ let
 in
 {
   options.${namespace}.theme = with lib.types; {
+    enable = mkEnableOption "theme";
     wallpaper = mkOpt path ./wallpaper.jpg "Wallpaper";
     colors = listToAttrs (
       map mkColorOption [
@@ -93,7 +94,7 @@ in
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     fonts.packages = with cfg.fonts; [
       sans.package
       mono.package
@@ -103,7 +104,7 @@ in
     # Required for Home Manager's GTK settings to work
     programs.dconf.enable = true;
 
-    home-manager.users.${config.${namespace}.user.name} = {
+    ${namespace}.home.extraConfig = {
       home = {
         packages = [ cfg.cursor.package ];
 
