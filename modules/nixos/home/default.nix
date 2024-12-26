@@ -1,25 +1,26 @@
 {
   lib,
   namespace,
-  options,
   config,
   ...
 }:
-with lib;
-with lib.${namespace};
 let
+  inherit (lib) mkIf mkEnableOption mkMerge;
+  inherit (lib.${namespace}) mkOpt;
+
+  username = config.${namespace}.user.name;
+  homeDirectory = "/home/${username}";
+
   cfg = config.${namespace}.home;
 in
 {
-  options.${namespace}.home = with types; {
-    extraConfig = mkOpt (attrsOf anything) { } "A config set to be passed directly to home-manager.";
-    configFile =
-      mkOpt (attrsOf str) { }
-        "A set of files to be managed by home-manager's `xdg.configFile`.";
-    file = mkOpt (attrsOf str) { } "A set of files to be managed by home-manager's `home.file`.";
+  options.${namespace}.home = with lib.types; {
+    enable = mkEnableOption "home";
+    # extraConfig: limitation for setting lists in multiple files, fails to merge them.
+    extraConfig = mkOpt (attrsOf anything) { } "Extra home manager config.";
   };
 
-  config = {
+  config = mkIf cfg.enable {
     home-manager = {
       extraSpecialArgs = {
         osConfig = config;
@@ -29,16 +30,23 @@ in
       useGlobalPkgs = true;
     };
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      home = {
-        stateVersion = config.system.stateVersion;
-        file = mkAliasDefinitions options.${namespace}.home.file;
-      };
+    home-manager.users.${username} = mkMerge [
+      {
+        home = {
+          inherit (config.system) stateVersion;
+          inherit username homeDirectory;
+        };
 
-      xdg = {
-        enable = true;
-        configFile = mkAliasDefinitions options.${namespace}.home.configFile;
-      };
-    };
+        xdg = {
+          enable = true;
+        };
+
+        systemd.user = {
+          enable = true;
+          startServices = "sd-switch";
+        };
+      }
+      cfg.extraConfig
+    ];
   };
 }

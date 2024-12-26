@@ -16,6 +16,10 @@ with lib.${namespace};
 
   config = mkIf cfg.enable {
     ${namespace} = {
+      user = enabled;
+      home = enabled;
+      theme = enabled;
+
       apps = {
         alacritty = enabled;
         kitty = enabled;
