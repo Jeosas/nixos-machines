@@ -36,28 +36,29 @@ with lib.${namespace};
 
     system.openrazer = enabled;
 
-    apps.wootility = enabled;
+    apps = {
+      wootility = enabled;
+      monero-gui = enabled;
+    };
 
     desktop.hyprland.config = {
-      # layout = "hy3";
       monitors = [ ",3440x1440@144,auto,1" ];
     };
-  };
 
-  home-manager.users.${config.${namespace}.user.name}.${namespace} = {
-    apps.monero-gui = enabled;
-    tools.ssh.user.config = {
-      "github.com" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/id_github";
-        identitiesOnly = true;
-      };
-      "oxygen" = {
-        hostname = "192.168.1.8";
-        user = "root";
-        identityFile = "~/.ssh/id_homelab";
-        identitiesOnly = true;
+    home.extraConfig = {
+      ${namespace}.tools.ssh.user.config = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/id_github";
+          identitiesOnly = true;
+        };
+        "oxygen" = {
+          hostname = "192.168.1.8";
+          user = "root";
+          identityFile = "~/.ssh/id_homelab";
+          identitiesOnly = true;
+        };
       };
     };
   };

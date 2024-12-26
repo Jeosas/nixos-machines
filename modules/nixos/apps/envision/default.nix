@@ -19,10 +19,8 @@ with lib;
       openFirewall = true;
     };
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.impermanence.directories = [
-        ".config/envision"
-      ];
-    };
+    ${namespace}.impermanence.userDirectories = [
+      ".config/envision"
+    ];
   };
 }

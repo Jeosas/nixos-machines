@@ -34,15 +34,13 @@ with lib;
         ];
     };
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.impermanence.directories = [
+    ${namespace} = {
+      impermanence.userDirectories = [
         ".config/wivrn"
         ".config/openvr"
         ".config/openxr"
       ];
-    };
 
-    ${namespace} = {
       user.extraGroups = [ "adbusers" ];
     };
   };

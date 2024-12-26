@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) listToAttrs mkIf mkEnableOption;
-  inherit (lib.${namespace}) mkOpt;
+  inherit (lib.${namespace}) mkOpt mkColorOpt;
 
   default-colors = {
     background = "#2e3440"; # nord0
@@ -31,39 +31,42 @@ let
     color15 = "#eceff4"; # nord6 - cwhite
   };
 
-  mkColorOption = name: {
-    inherit name;
-    value = mkOpt (lib.types.strMatching "#[a-fA-F0-9]{6}") default-colors.${name} "Color for ${name}.";
-  };
-
   cfg = config.${namespace}.theme;
 in
 {
   options.${namespace}.theme = with lib.types; {
     enable = mkEnableOption "theme";
-    wallpaper = mkOpt path ./wallpaper.jpg "Wallpaper";
+    wallpaper = mkOpt path ../../../assets/wallpaper.jpg "Wallpaper";
     colors = listToAttrs (
-      map mkColorOption [
-        "background"
-        "foreground"
-        "cursor"
-        "color0"
-        "color1"
-        "color2"
-        "color3"
-        "color4"
-        "color5"
-        "color6"
-        "color7"
-        "color8"
-        "color9"
-        "color10"
-        "color11"
-        "color12"
-        "color13"
-        "color14"
-        "color15"
-      ]
+      map
+        (
+          key:
+          mkColorOpt {
+            name = key;
+            default = default-colors.${key};
+          }
+        )
+        [
+          "background"
+          "foreground"
+          "cursor"
+          "color0"
+          "color1"
+          "color2"
+          "color3"
+          "color4"
+          "color5"
+          "color6"
+          "color7"
+          "color8"
+          "color9"
+          "color10"
+          "color11"
+          "color12"
+          "color13"
+          "color14"
+          "color15"
+        ]
     );
     fonts = {
       sans = {
@@ -95,44 +98,17 @@ in
   };
 
   config = mkIf cfg.enable {
-    fonts.packages = with cfg.fonts; [
-      sans.package
-      mono.package
-      emoji.package
-    ];
-
-    # Required for Home Manager's GTK settings to work
-    programs.dconf.enable = true;
-
     ${namespace}.home.extraConfig = {
-      home = {
-        packages = [ cfg.cursor.package ];
-
-        pointerCursor = {
-          inherit (cfg.cursor) name package;
-          size = 24;
-
-          gtk.enable = true;
-          # hyprcursor.enable = true; # TODO available only in 25.05
-        };
-
-        sessionVariables = {
-          # hack - similar to hyprcursor.enable = true;
-          HYPRCURSOR_THEME = cfg.cursor.hypr-name;
-          HYPRCURSOR_SIZE = 24;
-        };
-      };
-
-      gtk = {
+      ${namespace}.theme = {
         enable = true;
-        iconTheme = { inherit (cfg.icon) name package; };
-        theme = { inherit (cfg.theme) name package; };
-        gtk3.extraCss =
-          # css
-          ''
-            /* Remove dotted lines from GTK+ 3 applications */
-            undershoot.top, undershoot.right, undershoot.bottom, undershoot.left { background-image: none; }
-          '';
+        inherit (cfg)
+          wallpaper
+          colors
+          fonts
+          cursor
+          theme
+          icon
+          ;
       };
     };
   };

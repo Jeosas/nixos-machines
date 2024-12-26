@@ -22,12 +22,9 @@ with lib;
       };
     };
 
-    ${namespace} = {
-      impermanence.directories = [ "/var/lib/docker" ];
-    };
-
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.impermanence.directories = [ ".config/docker" ];
+    ${namespace}.impermanence = {
+      directories = [ "/var/lib/docker" ];
+      userDirectories = [ ".config/docker" ];
     };
   };
 }

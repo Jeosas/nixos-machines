@@ -17,8 +17,6 @@ with lib;
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ vagrant ];
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.impermanence.directories = [ ".vagrant.d" ];
-    };
+    ${namespace}.impermanence.userDirectories = [ ".vagrant.d" ];
   };
 }

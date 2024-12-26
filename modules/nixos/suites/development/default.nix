@@ -20,12 +20,10 @@ with lib.${namespace};
         docker = enabled;
         qemu = enabled;
       };
-    };
-
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.tools = {
+      tools = {
         direnv = enabled;
       };
     };
+
   };
 }

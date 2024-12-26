@@ -22,10 +22,7 @@ with lib;
       hid-tmff2 # T300rs drivers
     ];
 
+    environment.systemPackages = with pkgs; [ oversteer ];
     services.udev.packages = with pkgs; [ oversteer ];
-
-    home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = with pkgs; [ oversteer ];
-    };
   };
 }

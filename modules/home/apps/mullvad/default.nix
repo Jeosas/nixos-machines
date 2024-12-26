@@ -23,7 +23,5 @@ in
 
       sessionVariables = mkIf cfg.enableWaylandSupport { MOZ_ENABLE_WAYLAND = "1"; };
     };
-
-    ${namespace}.impermanence.directories = [ ".mullvad" ];
   };
 }

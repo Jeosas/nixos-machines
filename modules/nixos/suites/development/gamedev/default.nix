@@ -15,12 +15,8 @@ with lib.${namespace};
   };
 
   config = mkIf cfg.enable {
-    ${namespace} = { };
-
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.apps = {
-        godot = enabled;
-      };
+    ${namespace}.apps = {
+      godot = enabled;
     };
   };
 }

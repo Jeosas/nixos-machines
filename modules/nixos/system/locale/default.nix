@@ -16,7 +16,8 @@ in
   };
   config = mkIf cfg.enable {
     i18n.defaultLocale = locale;
-    home-manager.users.${config.${namespace}.user.name} = {
+
+    ${namespace}.home.extraConfig = {
       home.language.base = locale;
     };
   };

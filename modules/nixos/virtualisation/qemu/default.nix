@@ -20,8 +20,6 @@ with lib;
       quickemu
     ];
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.impermanence.directories = [ "vm" ];
-    };
+    ${namespace}.impermanence.userDirectories = [ "vm" ];
   };
 }

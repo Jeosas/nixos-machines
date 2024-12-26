@@ -16,13 +16,11 @@ with lib;
 
   config = mkIf cfg.enable {
     services.udev.packages = [ pkgs.wooting-udev-rules ];
+    environment.systemPackages = [ pkgs.wootility ];
 
     ${namespace} = {
       user.extraGroups = [ "input" ];
     };
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = [ pkgs.wootility ];
-    };
   };
 }

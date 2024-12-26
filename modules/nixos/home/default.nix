@@ -48,5 +48,17 @@ in
       }
       cfg.extraConfig
     ];
+
+    ${namespace}.impermanence = {
+      userDirectories = [
+        ".setup" # nixos config
+        "Documents"
+        "Pictures"
+        "Music"
+        "notes"
+        "code"
+        ".ssh"
+      ];
+    };
   };
 }

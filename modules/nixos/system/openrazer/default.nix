@@ -16,14 +16,13 @@ with lib;
   config = mkIf cfg.enable {
     hardware.openrazer.enable = true;
 
-    environment.systemPackages = with pkgs; [ openrazer-daemon ];
+    environment.systemPackages = with pkgs; [
+      openrazer-daemon
+      polychromatic
+    ];
 
     ${namespace} = {
       user.extraGroups = [ "openrazer" ];
-    };
-
-    home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = with pkgs; [ polychromatic ];
     };
   };
 }

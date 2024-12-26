@@ -8,6 +8,8 @@ let
   inherit (lib) mkIf mkEnableOption;
   inherit (lib.${namespace}) mkOpt;
 
+  username = config.${namespace}.user.name;
+
   cfg = config.${namespace}.impermanence;
 in
 {
@@ -16,6 +18,8 @@ in
     systemDir = mkOpt str "/persist" "Global persistent directory";
     files = mkOpt (listOf str) [ ] "List of system files to persist";
     directories = mkOpt (listOf str) [ ] "List of system directories to persist";
+    userFiles = mkOpt (listOf str) [ ] "List of user files to persist";
+    userDirectories = mkOpt (listOf str) [ ] "List of user directories to persist";
   };
 
   config = mkIf cfg.enable {
@@ -23,6 +27,7 @@ in
     programs.fuse.userAllowOther = true;
 
     environment.persistence.${cfg.systemDir} = {
+      inherit (cfg) enable;
       hideMounts = true;
       directories = [
         "/etc/ssh"
@@ -33,6 +38,11 @@ in
         "/tmp" # needed for big nixos builds (thanks electron !)
       ] ++ cfg.directories;
       files = [ "/etc/machine-id" ] ++ cfg.files;
+
+      users.${username} = {
+        directories = cfg.userDirectories;
+        files = cfg.userFiles;
+      };
     };
   };
 }

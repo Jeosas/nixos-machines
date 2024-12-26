@@ -15,10 +15,8 @@ with lib.${namespace};
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.apps = {
-        mixxx = enabled;
-      };
+    ${namespace}.apps = {
+      mixxx = enabled;
     };
   };
 }

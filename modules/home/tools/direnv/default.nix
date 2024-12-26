@@ -51,7 +51,5 @@ with lib.${namespace};
           }
         '';
     };
-
-    ${namespace}.impermanence.directories = [ ".local/share/direnv/allow" ];
   };
 }

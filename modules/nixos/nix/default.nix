@@ -1,17 +1,4 @@
 {
-  lib,
-  namespace,
-  config,
-  ...
-}:
-with lib;
-with lib.${namespace};
-let
-  cfg = config.${namespace}.nix;
-in
-{
-  options.${namespace}.nix = { };
-
   config = {
     nix = {
       gc = {

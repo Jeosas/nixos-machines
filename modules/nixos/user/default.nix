@@ -21,7 +21,7 @@ in
     extraGroups = mkOpt (listOf str) [ ] "A list of groups for the user to be assigned to.";
   };
 
-  config = {
+  config = mkIf cfg.enable {
     # Configuring for the default shell I want to use.
     programs.zsh = enabled;
 

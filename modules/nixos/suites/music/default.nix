@@ -15,7 +15,7 @@ with lib.${namespace};
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${config.${namespace}.user.name} = {
+    ${namespace}.home.extraConfig = {
       ${namespace}.cli-apps = {
         ongaku = enabled;
       };

@@ -34,20 +34,17 @@ with lib;
   config = mkIf cfg.enable {
     programs.adb.enable = true;
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = with pkgs; [
-        alvr
-        alvr_usb_forward
-      ];
+    environment.systemPackages = with pkgs; [
+      alvr
+      alvr_usb_forward
+    ];
 
-      ${namespace}.impermanence.directories = [
+    ${namespace} = {
+      impermanence.userDirectories = [
         ".config/alvr"
         ".config/openvr"
         ".config/openxr"
       ];
-    };
-
-    ${namespace} = {
       user.extraGroups = [ "adbusers" ];
     };
   };

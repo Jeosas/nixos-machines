@@ -15,12 +15,10 @@ with lib.${namespace};
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.apps = {
-        blender = enabled;
-        inkscape = enabled;
-        krita = enabled;
-      };
+    ${namespace}.apps = {
+      blender = enabled;
+      inkscape = enabled;
+      krita = enabled;
     };
   };
 }

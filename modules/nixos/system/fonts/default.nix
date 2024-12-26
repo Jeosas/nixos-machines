@@ -26,23 +26,26 @@ in
       LOG_ICONS = "true";
     };
 
+    # Required for Home Manager's GTK settings to work
+    programs.dconf.enable = true;
+
     fonts = {
       packages =
         with pkgs;
+        with config.${namespace}.theme.fonts;
         [
-          mplus-outline-fonts.githubRelease # normal + cjk font
-
-          (nerdfonts.override { fonts = [ "MPlus" ]; }) # nerdfonts
-          # NOTE: becomes `nerd-fonts.mplus` in 25.05
-
           noto-fonts
           noto-fonts-cjk-sans
           noto-fonts-cjk-serif
-          noto-fonts-emoji
 
           # Windaube fonts for compat
           corefonts
           vistafonts
+
+          # Theme
+          sans.package
+          mono.package
+          emoji.package
         ]
         ++ cfg.fonts;
 

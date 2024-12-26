@@ -18,8 +18,22 @@ rec {
   ## lib.mkOpt' nixpkgs.lib.types.str "My default"
   ## ```
   ##
-  #@ Type -> Any -> String
+  #@ Type -> Any
   mkOpt' = type: default: mkOpt type default null;
+
+  ## Create a NixOS module hex color option.
+  ##
+  ## ```nix
+  ## lib.mkcolorOpt "primary"
+  ## ```
+  ##
+  #@ String -> String
+  mkColorOpt =
+    { name, default }:
+    {
+      inherit name;
+      value = mkOpt (lib.types.strMatching "#[a-fA-F0-9]{6}") default "Color for ${name}.";
+    };
 
   ## Quickly enable an option.
   ##
@@ -27,7 +41,6 @@ rec {
   ## services.nginx = enabled;
   ## ```
   ##
-  #@ true
   enabled = {
     enable = true;
   };
@@ -38,7 +51,6 @@ rec {
   ## services.nginx = enabled;
   ## ```
   ##
-  #@ false
   disabled = {
     enable = false;
   };

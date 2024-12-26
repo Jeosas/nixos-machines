@@ -16,11 +16,8 @@ with lib.${namespace};
 
   config = mkIf cfg.enable {
     ${namespace} = {
-      apps.steam = enabled;
-    };
-
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.apps = {
+      apps = {
+        steam = enabled;
         heroic = enabled;
         lutris = enabled;
         ankama-launcher = enabled;

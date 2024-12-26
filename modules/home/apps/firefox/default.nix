@@ -96,7 +96,5 @@ in
         };
       };
     };
-
-    ${namespace}.impermanence.directories = [ ".mozilla/firefox/default" ];
   };
 }

@@ -15,11 +15,9 @@ with lib.${namespace};
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace}.apps = {
-        signal = enabled;
-        vesktop = enabled;
-      };
+    ${namespace}.apps = {
+      signal = enabled;
+      vesktop = enabled;
     };
   };
 }

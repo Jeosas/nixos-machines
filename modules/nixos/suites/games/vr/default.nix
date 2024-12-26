@@ -18,7 +18,7 @@ with lib.${namespace};
     ${namespace} = {
       apps = {
         steam = enabled;
-        alvr = enabled;
+        # alvr = enabled;
         wivrn = enabled;
         envision = enabled;
       };

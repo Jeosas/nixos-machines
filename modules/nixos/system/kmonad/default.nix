@@ -8,7 +8,7 @@
 let
   cfg = config.${namespace}.system.kmonad;
 
-  kmonad = pkgs.kmonad;
+  inherit (pkgs) kmonad;
 in
 with lib;
 {
@@ -29,25 +29,26 @@ with lib;
       "uinput"
     ];
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = [ kmonad ];
+    environment.systemPackages = [ kmonad ];
 
-      xdg.configFile."kmonad/keymap.kbd" = {
-        text = cfg.config;
-      };
-
-      systemd.user.services."kmonad-keymap" = {
+    systemd.user.services."kmonad-keymap" =
+      let
+        kmonadConfig = pkgs.writeTextFile {
+          name = "kmonad-config";
+          text = cfg.config;
+        };
+      in
+      {
         Unit.Description = "kmonad keyboard config";
         Service = {
           Restart = "always";
           RestartSec = 3;
-          ExecStart = "${kmonad}/bin/kmonad %E/kmonad/keymap.kbd";
+          ExecStart = "${kmonad}/bin/kmonad ${kmonadConfig}";
           Nice = -20;
         };
         Install = {
           WantedBy = [ "default.target" ];
         };
       };
-    };
   };
 }

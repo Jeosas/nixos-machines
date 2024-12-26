@@ -17,18 +17,17 @@ with lib.${namespace};
   config = mkIf cfg.enable {
     ${namespace} = {
       user = enabled;
-      home = enabled;
       theme = enabled;
 
       apps = {
-        alacritty = enabled;
-        kitty = enabled;
+        firefox = enabled;
+        libreoffice = enabled;
+        mullvad = enabled;
+        transmission = enabled;
+        xournal = enabled;
       };
 
-      desktop.hyprland = {
-        enable = true;
-        enableZshLaunchOnLogin = true;
-      };
+      desktop.hyprland = enabled;
 
       hardware = {
         audio = enabled;
@@ -51,33 +50,33 @@ with lib.${namespace};
         mtp = enabled;
         time = enabled;
       };
-    };
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      ${namespace} = {
-        apps = {
-          firefox = enabled;
-          libreoffice = enabled;
-          mullvad = enabled;
-          transmission = enabled;
-          xournal = enabled;
-        };
-        cli-apps = {
-          btop = enabled;
-          home-manager = enabled;
-          neovim = enabled;
-          yazi = enabled;
-          termscp = enabled;
-        };
-        tools = {
-          bat = enabled;
-          choudai = enabled;
-          git = enabled;
-          ripgrep = enabled;
-          ssh = enabled;
-          starship = enabled;
-          zsh = enabled;
-          fastfetch = enabled;
+      home = {
+        enable = true;
+        extraConfig = {
+          ${namespace} = {
+            apps = {
+              alacritty = enabled;
+              kitty = enabled;
+            };
+            cli-apps = {
+              btop = enabled;
+              home-manager = enabled;
+              neovim = enabled;
+              termscp = enabled;
+              yazi = enabled;
+            };
+            tools = {
+              bat = enabled;
+              choudai = enabled;
+              git = enabled;
+              ripgrep = enabled;
+              ssh = enabled;
+              starship = enabled;
+              zsh = enabled;
+              fastfetch = enabled;
+            };
+          };
         };
       };
     };
