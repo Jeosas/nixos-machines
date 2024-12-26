@@ -1,7 +1,6 @@
 {
   lib,
   namespace,
-  config,
   ...
 }:
 with lib;
@@ -21,7 +20,7 @@ with lib.${namespace};
       };
       games = {
         enable = true;
-        # simracing = enabled; TODO build failure
+        simracing = enabled;
         vr = enabled;
       };
       music = enabled;
