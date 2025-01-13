@@ -39,15 +39,14 @@ with lib;
         };
       in
       {
-        Unit.Description = "kmonad keyboard config";
-        Service = {
+        enable = true;
+        description = "kmonad keyboard config";
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
           Restart = "always";
           RestartSec = 3;
           ExecStart = "${kmonad}/bin/kmonad ${kmonadConfig}";
           Nice = -20;
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
         };
       };
   };

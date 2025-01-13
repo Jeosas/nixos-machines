@@ -8,6 +8,9 @@
     # NixPkgs unstable
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Nixos Hardware
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # Snowfall lib: flake management
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";

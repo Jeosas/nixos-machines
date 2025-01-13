@@ -79,7 +79,7 @@ in
 
           dwindle = {
             force_split = 2;
-            split_width_multiplier = 1.8;
+            split_width_multiplier = 1.65;
           };
 
           input = {
@@ -94,7 +94,7 @@ in
             no_warps = true;
             enable_hyprcursor = true;
             no_hardware_cursors = 0;
-            use_cpu_buffer = true;
+            allow_dumb_copy = true;
           };
 
           misc = {
