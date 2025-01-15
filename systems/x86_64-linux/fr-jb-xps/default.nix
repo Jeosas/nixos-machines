@@ -47,12 +47,17 @@ with lib.${namespace};
         cpu-temp-zone = 6;
       };
     };
-    tools.ssh.user.config = {
-      "github.com" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/id_github";
-        identitiesOnly = true;
+    tools = {
+      git = {
+        userEmail = "jean-baptiste.wintergerst@lumapps.com";
+      };
+      ssh.user.config = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/id_github";
+          identitiesOnly = true;
+        };
       };
     };
   };
