@@ -32,7 +32,10 @@ with lib.${namespace};
       hardware = {
         audio = enabled;
         graphics = enabled;
-        network = enabled;
+        network = {
+          enable = true;
+          enableNetworkManager = true;
+        };
         ssd = enabled;
       };
 

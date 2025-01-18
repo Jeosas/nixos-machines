@@ -13,5 +13,8 @@ in
   options.${namespace}.system.time = {
     enable = mkEnableOption "time";
   };
-  config = mkIf cfg.enable { time.timeZone = "Europe/Paris"; };
+  config = mkIf cfg.enable {
+    time.timeZone = "Europe/Paris";
+    services.ntp.enable = true;
+  };
 }

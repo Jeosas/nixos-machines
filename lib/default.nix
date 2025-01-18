@@ -54,4 +54,12 @@ rec {
   disabled = {
     enable = false;
   };
+
+  ## XOR operator
+  ##
+  ## ```nix
+  ## lib.xor a b
+  ## ```
+  #@ Bool -> Bool -> Bool
+  xor = a: b: ((a && !b) || (!a && b));
 }

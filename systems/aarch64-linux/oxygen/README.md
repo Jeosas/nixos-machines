@@ -4,10 +4,8 @@
 
 ## Create sd-image
 
-> TODO: change me
-
 ```console
-$ nix build .#images.oxygen
+$ nix build .#nixosConfigurations.oxygen.config.system.build.sdImage
 ```
 
 ## Flash sd-card

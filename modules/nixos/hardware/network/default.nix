@@ -5,23 +5,33 @@
   ...
 }:
 let
+  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.${namespace}) mkOpt xor;
+
   cfg = config.${namespace}.hardware.network;
 in
-with lib;
 {
-  options.${namespace}.hardware.network = {
+  options.${namespace}.hardware.network = with lib.types; {
     enable = mkEnableOption "network";
-    hostName = mkOption {
-      type = types.str;
-      description = "system hostname";
-    };
+    hostName = mkOpt str "" "system hostname";
+    enableNetworkManager = mkOpt bool false "enable NetworkManager";
   };
 
   config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.hostName != "";
+        message = "hostName must be provided";
+      }
+    ];
+
     networking = {
       inherit (cfg) hostName;
-      networkmanager.enable = true;
       firewall.enable = true;
+
+      networkmanager.enable = cfg.enableNetworkManager;
+
+      nameservers = [ "9.9.9.9" ];
     };
     ${namespace}.user.extraGroups = [ "networkmanager" ];
   };
