@@ -15,6 +15,8 @@ with lib.${namespace};
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  programs.nix-ld = enabled;
+
   ${namespace} = {
     suites = {
       art = enabled;
