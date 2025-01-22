@@ -47,5 +47,8 @@ in
     (mkKeymap "n" "N" "Nzzzv")
     (mkKeymap "n" "*" "*zzzv")
     (mkKeymap "n" "#" "#zzzv")
+
+    # Keep yank text when pasting in VISUAL mode
+    (mkKeymap "x" "p" ''"_dP'')
   ];
 }
