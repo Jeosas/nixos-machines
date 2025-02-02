@@ -13,6 +13,7 @@
       ts_ls.enable = true;
       svelte.enable = true;
       tailwindcss.enable = true;
+      cssls.enable = true;
     };
 
     conform-nvim.settings = {
