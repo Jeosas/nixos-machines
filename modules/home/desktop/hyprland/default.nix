@@ -90,9 +90,9 @@ in
           };
 
           cursor = {
-            inactive_timeout = 6;
-            no_warps = true;
             enable_hyprcursor = true;
+            inactive_timeout = 6;
+            warp_on_change_workspace = 1;
             no_hardware_cursors = 0;
             allow_dumb_copy = true;
           };
