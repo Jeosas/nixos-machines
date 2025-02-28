@@ -5,26 +5,31 @@
   ...
 }:
 let
+  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.${namespace}) mkOpt';
   cfg = config.${namespace}.virtualisation.docker;
 in
-with lib;
 {
-  options.${namespace}.virtualisation.docker = {
+  options.${namespace}.virtualisation.docker = with lib.types; {
     enable = mkEnableOption "Docker";
+    rootless = mkOpt' bool true;
   };
 
   config = mkIf cfg.enable {
     virtualisation.docker = {
       enable = true;
-      rootless = {
+      rootless = mkIf cfg.rootless {
         enable = true;
         setSocketVariable = true;
       };
     };
 
-    ${namespace}.impermanence = {
-      directories = [ "/var/lib/docker" ];
-      userDirectories = [ ".config/docker" ];
+    ${namespace} = {
+      user.extraGroups = mkIf cfg.rootless [ "docker" ];
+      impermanence = {
+        directories = [ "/var/lib/docker" ];
+        userDirectories = [ ".config/docker" ];
+      };
     };
   };
 }
