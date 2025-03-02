@@ -43,6 +43,15 @@ with lib.${namespace};
       bluetooth = enabled;
     };
 
+    services = {
+      ollama = {
+        enable = true;
+        acceleration = "cuda";
+      };
+    };
+
+    virtualisation.docker.enableNvidia = true;
+
     system.openrazer = enabled;
 
     apps = {

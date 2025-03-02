@@ -12,20 +12,17 @@ in
 {
   options.${namespace}.virtualisation.docker = with lib.types; {
     enable = mkEnableOption "Docker";
-    rootless = mkOpt' bool true;
+    enableNvidia = mkOpt' bool false;
   };
 
   config = mkIf cfg.enable {
     virtualisation.docker = {
       enable = true;
-      rootless = mkIf cfg.rootless {
-        enable = true;
-        setSocketVariable = true;
-      };
     };
+    hardware.nvidia-container-toolkit.enable = cfg.enableNvidia;
 
     ${namespace} = {
-      user.extraGroups = mkIf cfg.rootless [ "docker" ];
+      user.extraGroups = [ "docker" ];
       impermanence = {
         directories = [ "/var/lib/docker" ];
         userDirectories = [ ".config/docker" ];
