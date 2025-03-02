@@ -61,6 +61,7 @@ with lib.${namespace};
             apps = {
               alacritty = enabled;
               kitty = enabled;
+              zed = enabled;
             };
             cli-apps = {
               btop = enabled;
