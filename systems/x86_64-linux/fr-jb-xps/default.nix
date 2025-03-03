@@ -41,7 +41,6 @@ with lib.${namespace};
     theme.wallpaper = ./wallpaper.jpg;
 
     system.keyd = enabled;
-    virtualisation.docker.rootless = false;
   };
 
   home-manager.users.${config.${namespace}.user.name}.${namespace} = {
