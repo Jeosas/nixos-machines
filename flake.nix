@@ -11,6 +11,9 @@
     # Nixos Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Git Hooks
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
     # Snowfall lib: flake management
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
