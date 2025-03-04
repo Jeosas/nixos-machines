@@ -32,6 +32,7 @@ in
         "<leader>lr" = "rename";
       };
       extra = [
+        (mkKeymap "i" "<c-k>" "<cmd>lua vim.lsp.buf.signature_help()<cr>")
         (mkKeymap "n" "gd" "<cmd>Telescope lsp_definitions<cr>")
         (mkKeymap "n" "gD" "<cmd>Telescope lsp_references<cr>")
         (mkKeymap "n" "<leader>ld" "<cmd>Telescope lsp_diagnostics<cr>")
