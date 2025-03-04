@@ -27,7 +27,10 @@ in
   config = mkIf cfg.enable {
     ${namespace}.desktop.hyprland.config.exec = [ "launchbar" ];
 
-    home.packages = with pkgs; [ (callPackage ./launchbar.nix { }) ];
+    home.packages = with pkgs; [
+      (callPackage ./launchbar.nix { })
+      jq
+    ];
 
     programs.waybar = {
       enable = true;
@@ -48,6 +51,7 @@ in
           "image#nixos"
           "custom/separator"
           "hyprland/workspaces"
+          "custom/hl-fullscreen"
           "custom/separator"
           "custom/kernel"
         ];
@@ -116,6 +120,21 @@ in
           interval = 3600;
           exec = "uname -ro";
           tooltip = false;
+        };
+
+        "custom/hl-fullscreen" = {
+          format = "{}";
+          interval = 1;
+          exec = ''
+            fs=`hyprctl activewindow -j | jq .fullscreen`;
+            if [ $fs = "1" ]; then
+              echo "FULLSCREEN";
+            else
+              echo "";
+            fi;
+          '';
+          tooltip = false;
+          hide-empty-text = true;
         };
 
         clock = {
@@ -283,6 +302,10 @@ in
           }
 
           #temperature.critical {
+            color: ${red};
+          }
+
+          #custom-hl-fullscreen {
             color: ${red};
           }
         '';
