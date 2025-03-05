@@ -38,6 +38,8 @@ with lib.${namespace};
       };
     };
 
+    apps.zen-browser = enabled;
+
     theme.wallpaper = ./wallpaper.jpg;
 
     system.keyd = enabled;
