@@ -196,7 +196,7 @@ in
             ", XF86AudioPause, exec, playerctl play-pause"
             ", XF86AudioStop, exec, playerctl stop"
             ", XF86AudioNext, exec, playerctl next"
-            ", XF86AudioPrevious, exec, playerctl previous"
+            ", XF86AudioPrev, exec, playerctl previous"
           ];
 
           bindle = [
