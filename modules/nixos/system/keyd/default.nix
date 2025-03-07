@@ -34,6 +34,12 @@ in
               j = "down";
               k = "up";
               l = "right";
+              a = "previoussong";
+              s = "playpause";
+              d = "nextsong";
+              q = "mute";
+              w = "volumedown";
+              e = "volumeup";
             };
           };
         };
