@@ -40,6 +40,10 @@ with lib.${namespace};
 
     apps.zen-browser = enabled;
 
+    services = {
+      ollama = enabled;
+    };
+
     theme.wallpaper = ./wallpaper.jpg;
 
     system.keyd = enabled;

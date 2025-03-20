@@ -35,7 +35,7 @@ in
             image = "ollama/ollama";
             volumes = [ "${ollamaHome}:/root/.ollama" ];
             ports = [ "${toString cfg.port}:11434" ];
-            extraOptions = [
+            extraOptions = mkIf (cfg.acceleration == "cuda") [
               "--device=nvidia.com/gpu=all"
             ];
           };
