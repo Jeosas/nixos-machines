@@ -67,6 +67,11 @@ in
           inherit (cfg.config) exec;
           inherit (cfg.config) exec-once;
 
+          misc = {
+            disable_hyprland_logo = true;
+            disable_splash_rendering = true;
+          };
+
           general = with config.${namespace}.theme.colors; {
             gaps_in = 4;
             gaps_out = 8;
