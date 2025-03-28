@@ -27,6 +27,10 @@ with lib.${namespace};
         xournal = enabled;
       };
 
+      cli-apps = {
+        tldr = enabled;
+      };
+
       desktop.hyprland = enabled;
 
       hardware = {
