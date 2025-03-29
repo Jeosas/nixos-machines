@@ -3,7 +3,7 @@ let
   name = "ankama-launcher";
   src = fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
-    sha256 = "6HJqmADjrQqr2Vm/mXnRN/BMPv6qcP7kU7xyTzLJQRA=";
+    sha256 = "psN7aJQ19s4dYI1s/o6mma32g9++wKZyINDpNo3/q+U=";
     name = "ankama-launcher.AppImage";
   };
 
