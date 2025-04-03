@@ -13,7 +13,7 @@ in
 {
   options.${namespace}.cli-apps.tldr = with lib.types; {
     enable = mkEnableOption "tldr";
-    cacheDir = mkOpt string ".cache/tealdeer" "tldr pages cache directory";
+    cacheDir = mkOpt str ".cache/tealdeer" "tldr pages cache directory";
   };
 
   config = mkIf cfg.enable {

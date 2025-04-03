@@ -1,10 +1,10 @@
 { appimageTools, fetchurl }:
 let
   name = "zen";
-  version = "1.8.2";
+  version = "1.10.3";
   src = fetchurl {
     url = "https://github.com/zen-browser/desktop/releases/download/${version}b/zen-x86_64.AppImage";
-    sha256 = "hZiJ8JLzLhtD1W8DAso3yBAJYhFE+nJEbQJa59AWjnU=";
+    sha256 = "H3rxDi0xoN7xYSysmOndZE6feQVO7UgZLE7DSwN30AQ=";
     name = "zen-x86_64.AppImage";
   };
 
