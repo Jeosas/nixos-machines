@@ -57,6 +57,7 @@ with lib.${namespace};
     apps = {
       wootility = enabled;
       monero-gui = enabled;
+      freetube = enabled;
     };
 
     desktop.hyprland.config = {
