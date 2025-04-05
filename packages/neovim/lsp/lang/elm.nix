@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   extraPackages = with pkgs.elmPackages; [
+    elm
     elm-format
   ];
   plugins = {
