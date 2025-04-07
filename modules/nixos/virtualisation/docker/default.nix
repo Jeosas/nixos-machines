@@ -25,7 +25,10 @@ in
       user.extraGroups = [ "docker" ];
       impermanence = {
         directories = [ "/var/lib/docker" ];
-        userDirectories = [ ".config/docker" ];
+        userDirectories = [
+          ".config/docker"
+          ".docker"
+        ];
       };
     };
   };
