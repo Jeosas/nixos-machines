@@ -39,6 +39,9 @@ with lib.${namespace};
     };
 
     apps.zen-browser = enabled;
+    cli-apps = {
+      gh = enabled;
+    };
 
     services = {
       ollama = enabled;
