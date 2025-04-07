@@ -57,6 +57,7 @@ with lib.${namespace};
     };
     tools = {
       git = {
+        userName = "Jean-Baptiste WINTERGERST";
         userEmail = "jean-baptiste.wintergerst@lumapps.com";
       };
       ssh.user.config = {
