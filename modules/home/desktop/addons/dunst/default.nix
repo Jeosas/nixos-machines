@@ -42,6 +42,7 @@ in
           padding = 12;
           horizontal_padding = 15;
           frame_width = 2;
+          corner_radius = config.${namespace}.theme.borderRadius;
           font = "${fonts.sans.name} 11";
 
           # Formating

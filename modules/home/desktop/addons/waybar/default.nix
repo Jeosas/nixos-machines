@@ -6,6 +6,7 @@
   ...
 }:
 let
+  inherit (builtins) toString;
   inherit (lib) mkIf mkEnableOption;
   inherit (lib.${namespace}) mkOpt;
   inherit (config.${namespace}.theme) colors;
@@ -251,7 +252,7 @@ in
             padding-right: 14px;
             background-color: ${bg};
             color: ${white};
-            border-radius: 6px;
+            border-radius: ${toString config.${namespace}.theme.borderRadius}px;
           }
 
           .modules-center {

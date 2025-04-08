@@ -95,6 +95,7 @@ in
       name = mkOpt str "Nordzy-dark" "The name of the icon theme to apply.";
       package = mkOpt package pkgs.nordzy-icon-theme "The package to use for the icon theme.";
     };
+    borderRadius = mkOpt int 6 "The border radius used across the theme.";
   };
 
   config = mkIf cfg.enable {

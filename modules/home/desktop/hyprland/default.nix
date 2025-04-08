@@ -107,7 +107,7 @@ in
           };
 
           decoration = {
-            rounding = 6;
+            rounding = config.${namespace}.theme.borderRadius;
 
             blur = {
               enabled = false;
