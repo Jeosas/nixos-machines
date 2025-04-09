@@ -7,6 +7,12 @@
     shellcheck
   ];
 
+  filetype = {
+    pattern = {
+      ".*/.github/workflows/.*%.yml" = "yaml.ghaction";
+    };
+  };
+
   plugins = {
     lsp.servers.yamlls = {
       enable = true;
@@ -15,10 +21,8 @@
       yaml = [ "yamlfmt" ];
     };
     lint.lintersByFt = {
-      yaml = [
-        "yamllint"
-        "actionlint"
-      ];
+      yaml = [ "yamllint" ];
+      "yaml.ghaction" = [ "actionlint" ];
     };
 
     schemastore = {
