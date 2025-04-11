@@ -14,10 +14,6 @@
     # Git Hooks
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
-    # Snowfall lib: flake management
-    snowfall-lib.url = "github:snowfallorg/lib";
-    snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
-
     # NixOS User Repository
     nurpkgs.url = "github:nix-community/NUR";
 
@@ -25,8 +21,8 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "unstable";
 
     # NixGL: support graphical apps on non-nixos distros
     nixgl.url = "github:guibou/nixGL";
@@ -51,45 +47,52 @@
   };
 
   outputs =
-    inputs:
+    inputs@{ nixpkgs, unstable, ... }:
     let
-      lib = inputs.snowfall-lib.mkLib {
-        inherit inputs;
-        src = ./.;
+      namespace = "jeomod";
 
-        snowfall = {
-          meta = {
-            name = "jeosas-config";
-            title = "Jeosas' config";
-          };
+      lib = nixpkgs.lib.extend (
+        self: super: { ${namespace} = import ./lib self super { inherit namespace; }; }
+      );
 
-          namespace = "jeomod";
-        };
-      };
-    in
-    lib.mkFlake {
-      channels-config = {
-        allowUnfree = true;
-      };
-
-      overlays = with inputs; [ nurpkgs.overlays.default ];
-
-      systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
-        impermanence.nixosModules.impermanence
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
       ];
+      forAllSystems = lib.forAllSystems supportedSystems;
+    in
+    {
+      inherit lib;
 
-      homes.modules = with inputs; [ impermanence.homeManagerModules.impermanence ];
+      nixosConfigurations = import ./hosts { inherit inputs lib namespace; };
+
+      devShells = forAllSystems { inherit nixpkgs; } (pkgs: {
+        install = pkgs.mkShell {
+          name = "nixos-install";
+          packages = with pkgs; [ nixos-install-tools ];
+        };
+      });
 
       templates = {
-        rust.description = "Rust development environment";
+        rust = {
+          path = ./templates/rust;
+        };
       };
 
-      outputs-builder = channels: {
-        formatter = channels.nixpkgs.nixfmt-rfc-style;
-      };
-    }
-    // {
-      inherit (inputs) self;
+      formatter = forAllSystems { nixpkgs = unstable; } (pkgs: pkgs.nixfmt-rfc-style);
+
+      checks = forAllSystems { nixpkgs = unstable; } (pkgs: {
+        git-hooks = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
+          src = ./.;
+          hooks = {
+            # General
+            typos.enable = true;
+
+            # Nix
+            nixfmt-rfc-style.enable = true;
+            flake-checker.enable = true;
+          };
+        };
+      });
     };
 }
