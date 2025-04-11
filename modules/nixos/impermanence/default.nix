@@ -2,6 +2,7 @@
   lib,
   namespace,
   config,
+  inputs,
   ...
 }:
 let
@@ -13,6 +14,8 @@ let
   cfg = config.${namespace}.impermanence;
 in
 {
+  imports = [ inputs.impermanence.nixosModules.impermanence ];
+
   options.${namespace}.impermanence = with lib.types; {
     enable = mkEnableOption "impermanence";
     systemDir = mkOpt str "/persist" "Global persistent directory";

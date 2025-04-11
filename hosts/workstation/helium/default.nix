@@ -1,11 +1,9 @@
 {
-  lib,
   namespace,
   config,
+  hosts,
   ...
 }:
-with lib;
-with lib.${namespace};
 {
   imports = [
     ./battery.nix
@@ -16,19 +14,19 @@ with lib.${namespace};
 
   ${namespace} = {
     suites = {
-      art = enabled;
-      base-workstation = enabled;
-      laptop = enabled;
-      development = enabled;
+      art.enable = true;
+      base-workstation.enable = true;
+      laptop.enable = true;
+      development.enable = true;
       music = {
         enable = true;
-        dj = enabled;
+        dj.enable = true;
       };
-      social = enabled;
+      social.enable = true;
     };
 
     hardware.network.hostName = "helium";
-    hardware.bluetooth = enabled;
+    hardware.bluetooth.enable = true;
 
     desktop = {
       hyprland.config = {
@@ -40,7 +38,7 @@ with lib.${namespace};
       };
     };
 
-    system.keyd = enabled;
+    system.keyd.enable = true;
   };
 
   home-manager.users.${config.${namespace}.user.name}.${namespace} = {
@@ -49,15 +47,15 @@ with lib.${namespace};
         cpu-temp-zone = 6;
       };
     };
-    tools.ssh.user.config = {
+    tools.ssh.user.config = with hosts; {
       "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_github";
         identitiesOnly = true;
       };
-      "oxygen" = {
-        hostname = "192.168.1.8";
+      ${oxygen.hostName} = {
+        hostname = oxygen.ipv4;
         user = "root";
         identityFile = "~/.ssh/id_homelab";
         identitiesOnly = true;
@@ -65,7 +63,7 @@ with lib.${namespace};
     };
   };
 
-  # Firmeare update software
+  # Firmware update software
   services.fwupd.enable = true;
 
   # Trackpoint

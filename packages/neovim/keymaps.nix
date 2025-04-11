@@ -1,4 +1,4 @@
-{ ... }:
+{ _, ... }:
 let
   options = {
     noremap = true;

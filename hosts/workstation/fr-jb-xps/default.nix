@@ -1,11 +1,8 @@
 {
-  lib,
   namespace,
   config,
   ...
 }:
-with lib;
-with lib.${namespace};
 {
   imports = [
     ./battery.nix
@@ -15,41 +12,42 @@ with lib.${namespace};
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  programs.nix-ld = enabled;
+  programs.nix-ld.enable = true;
 
   ${namespace} = {
     suites = {
-      art = enabled;
-      base-workstation = enabled;
-      laptop = enabled;
-      development = enabled;
-      social = enabled;
+      art.enable = true;
+      base-workstation.enable = true;
+      laptop.enable = true;
+      development.enable = true;
+      social.enable = true;
     };
 
     hardware.network.hostName = "fr-jb-xps";
-    hardware.bluetooth = enabled;
+    hardware.bluetooth.enable = true;
 
     desktop = {
       hyprland.config = {
         monitors = [
           "eDP-1,1920x1200@60,auto,1"
+          "desc:Dell Inc. DELL P2415Q,preferred,auto,1.5"
           ",preferred,auto,1"
         ];
       };
     };
 
-    apps.zen-browser = enabled;
+    apps.zen-browser.enable = true;
     cli-apps = {
-      gh = enabled;
+      gh.enable = true;
     };
 
     services = {
-      ollama = enabled;
+      ollama.enable = true;
     };
 
     theme.wallpaper = ./wallpaper.jpg;
 
-    system.keyd = enabled;
+    system.keyd.enable = true;
   };
 
   home-manager.users.${config.${namespace}.user.name}.${namespace} = {

@@ -67,7 +67,7 @@ in
           '';
         extraConfig = mkUserJs {
           prefs = {
-            # Disable anoying features
+            # Disable annoying features
             "browser.bookmarks.restore_default_bookmarks" = false;
             "signon.rememberSignons" = false;
             "extensions.pocket.enabled" = false;

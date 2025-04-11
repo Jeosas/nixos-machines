@@ -24,7 +24,7 @@ $ cargo init (--lib)
 ```
 
 > It is recommended to gitignore `.envrc` and its `.direnv` directory, as it can be used to set personal environment settings.
-> Also it is prefered to not add it to the remote `.gitignore` file but to the local `.git/info/exclude` one.
+> Also it is preferred to not add it to the remote `.gitignore` file but to the local `.git/info/exclude` one.
 
 ## Environment settings
 

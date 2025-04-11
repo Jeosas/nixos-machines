@@ -1,3 +1,4 @@
 result
 *.qcow2
 notes.md
+.pre-commit-config.yaml

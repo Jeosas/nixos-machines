@@ -45,7 +45,7 @@ in
           corner_radius = config.${namespace}.theme.borderRadius;
           font = "${fonts.sans.name} 11";
 
-          # Formating
+          # Formatting
           markup = "full";
           format = ''
             <small>%a</small>

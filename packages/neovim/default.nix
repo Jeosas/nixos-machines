@@ -3,13 +3,15 @@
   pkgs,
   inputs,
   system,
+  namespace,
+  ...
 }:
 inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
   inherit pkgs;
   module =
     { ... }:
     {
-      imports = lib.snowfall.fs.get-non-default-nix-files-recursive ./.;
+      imports = lib.${namespace}.getNonDefaultNixFilesRecursive ./.;
     };
   extraSpecialArgs = { };
 }

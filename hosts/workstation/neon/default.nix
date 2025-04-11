@@ -1,11 +1,9 @@
 {
-  lib,
   namespace,
   config,
+  hosts,
   ...
 }:
-with lib;
-with lib.${namespace};
 {
   imports = [ ./hardware.nix ];
 
@@ -22,25 +20,25 @@ with lib.${namespace};
 
   ${namespace} = {
     suites = {
-      art = enabled;
-      base-workstation = enabled;
+      art.enable = true;
+      base-workstation.enable = true;
       development = {
         enable = true;
-        gamedev = enabled;
+        gamedev.enable = true;
       };
       games = {
         enable = true;
-        simracing = enabled;
-        vr = enabled;
+        simracing.enable = true;
+        vr.enable = true;
       };
-      music = enabled;
-      social = enabled;
+      music.enable = true;
+      social.enable = true;
     };
 
     hardware = {
-      graphics.nvidia = enabled;
+      graphics.nvidia.enable = true;
       network.hostName = "neon";
-      bluetooth = enabled;
+      bluetooth.enable = true;
     };
 
     services = {
@@ -52,12 +50,12 @@ with lib.${namespace};
 
     virtualisation.docker.enableNvidia = true;
 
-    system.openrazer = enabled;
+    system.openrazer.enable = true;
 
     apps = {
-      wootility = enabled;
-      monero-gui = enabled;
-      freetube = enabled;
+      wootility.enable = true;
+      monero-gui.enable = true;
+      freetube.enable = true;
     };
 
     desktop.hyprland.config = {
@@ -65,15 +63,15 @@ with lib.${namespace};
     };
 
     home.extraConfig = {
-      ${namespace}.tools.ssh.user.config = {
+      ${namespace}.tools.ssh.user.config = with hosts; {
         "github.com" = {
           hostname = "github.com";
           user = "git";
           identityFile = "~/.ssh/id_github";
           identitiesOnly = true;
         };
-        "oxygen" = {
-          hostname = "192.168.1.8";
+        ${oxygen.hostName} = {
+          hostname = oxygen.ipv4;
           user = "root";
           identityFile = "~/.ssh/id_homelab";
           identitiesOnly = true;
