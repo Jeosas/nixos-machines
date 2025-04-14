@@ -22,8 +22,8 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "unstable";
 
     # NixGL: support graphical apps on non-nixos distros
     nixgl.url = "github:guibou/nixGL";
@@ -68,8 +68,6 @@
       forAllSystems = lib.${namespace}.forAllSystems supportedSystems;
     in
     {
-      inherit lib;
-
       nixosConfigurations = import ./hosts { inherit inputs lib namespace; };
 
       packages =

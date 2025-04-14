@@ -1,6 +1,6 @@
 { appimageTools, fetchurl }:
 let
-  name = "zen";
+  pname = "zen";
   version = "1.10.3";
   src = fetchurl {
     url = "https://github.com/zen-browser/desktop/releases/download/${version}b/zen-x86_64.AppImage";
@@ -8,13 +8,12 @@ let
     name = "zen-x86_64.AppImage";
   };
 
-  appimageContents = appimageTools.extractType2 { inherit name src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit src pname version;
+  };
 in
 appimageTools.wrapType2 {
-  pname = name;
-  inherit version;
-
-  inherit src;
+  inherit src pname version;
 
   extraInstallCommands = # bash
     ''

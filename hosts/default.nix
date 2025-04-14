@@ -12,7 +12,7 @@ let
 
   mkServer = lib.${namespace}.mkHost args { inherit (inputs) nixpkgs; };
   mkWorkstation = lib.${namespace}.mkHost args {
-    inherit (inputs) nixpkgs;
+    nixpkgs = inputs.unstable;
     nixpkgsConfig = {
       allowUnfree = true;
     };

@@ -100,6 +100,10 @@ rec {
       system: function (import nixpkgs ({ inherit system; } // nixpkgsConfig))
     );
 
+  #@ `nixpkgs` -> `lib`
+  extendLib =
+    lib_: lib_.extend (self: super: { ${namespace} = import ./. self super { inherit namespace; }; });
+
   #@ `specialArgs` -> `nixpkgs` -> {modules: List Modules} -> nixosConfiguration
   mkHost =
     {
@@ -118,7 +122,9 @@ rec {
     in
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = args;
+      specialArgs = args // {
+        lib = extendLib nixpkgs.lib;
+      };
       modules = nixosModules ++ [
         {
           nixpkgs = {

@@ -1,16 +1,19 @@
 { appimageTools, fetchurl }:
 let
-  name = "ankama-launcher";
+  pname = "ankama-launcher";
+  version = "latest";
   src = fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
     sha256 = "psN7aJQ19s4dYI1s/o6mma32g9++wKZyINDpNo3/q+U=";
     name = "ankama-launcher.AppImage";
   };
 
-  appimageContents = appimageTools.extractType2 { inherit name src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit src pname version;
+  };
 in
 appimageTools.wrapType2 {
-  inherit name src;
+  inherit src pname version;
 
   extraInstallCommands = # bash
     ''

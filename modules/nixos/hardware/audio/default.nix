@@ -15,12 +15,14 @@ with lib;
   };
 
   config = mkIf cfg.enable {
-    hardware.pulseaudio.enable = false;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
+    services = {
+      pulseaudio.enable = false;
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
     };
     environment.systemPackages = with pkgs; [ ncpamixer ];
   };

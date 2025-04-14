@@ -9,7 +9,7 @@ let
   inherit (lib) listToAttrs mkIf mkEnableOption;
   inherit (lib.${namespace}) mkOpt mkColorOpt;
 
-  default-colors = {
+  defaultColors = {
     background = "#2e3440"; # nord0
     foreground = "#d8dee9"; # nord4
     cursor = "#d8dee9"; # nord4
@@ -31,6 +31,12 @@ let
     color15 = "#eceff4"; # nord6 - cwhite
   };
 
+  defaultFont =
+    {
+      "24.11" = pkgs.nerdfonts.override { fonts = [ "MPlus" ]; };
+    }
+    ."${config.system.nixos.release}" or pkgs.nerd-fonts.mplus;
+
   cfg = config.${namespace}.theme;
 in
 {
@@ -43,7 +49,7 @@ in
           key:
           mkColorOpt {
             name = key;
-            default = default-colors.${key};
+            default = defaultColors.${key};
           }
         )
         [
@@ -71,11 +77,11 @@ in
     fonts = {
       sans = {
         name = mkOpt str "M+1Code Nerd Font" "Default sans font";
-        package = mkOpt package (pkgs.nerdfonts.override { fonts = [ "MPlus" ]; }) "sans font package.";
+        package = mkOpt package defaultFont "sans font package.";
       };
       mono = {
         name = mkOpt str "M+1Code Nerd Font Mono" "Default monospace font";
-        package = mkOpt package (pkgs.nerdfonts.override { fonts = [ "MPlus" ]; }) "mono font package";
+        package = mkOpt package defaultFont "mono font package";
       };
       emoji = {
         name = mkOpt str "Noto Color Emoji" "Default emoji font";

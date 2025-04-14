@@ -40,17 +40,17 @@ in
       package = pkgs.firefox;
       profiles.default = {
         isDefault = true;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           behave
           bitwarden
           kristofferhagen-nord-theme
         ];
         search = {
-          default = "DuckDuckGo";
-          privateDefault = "DuckDuckGo";
+          default = "ddg";
+          privateDefault = "ddg";
           force = true;
-          order = [ "DuckDuckGo" ];
+          order = [ "ddg" ];
         };
         userChrome =
           # css
