@@ -47,6 +47,12 @@
 
     theme.wallpaper = ./wallpaper.jpg;
 
+    tools = {
+      azure.enable = true;
+      gcloud.enable = true;
+      kubectl.enable = true;
+    };
+
     system.keyd.enable = true;
   };
 
