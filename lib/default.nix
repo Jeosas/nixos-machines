@@ -14,6 +14,8 @@ let
   fileNameRegex = "(.*)\\.(.*)$";
 in
 rec {
+  vars = import ./vars.nix;
+
   #@ Type -> Any -> String
   mkOpt =
     type: default: description:
@@ -110,7 +112,6 @@ rec {
       inputs,
       lib,
       namespace,
-      hosts,
     }@args:
     {
       nixpkgs,

@@ -1,8 +1,11 @@
 {
+  lib,
   namespace,
-  hosts,
   ...
 }:
+let
+  inherit (lib.${namespace}.vars) hosts;
+in
 {
   imports = [ ./hardware.nix ];
 
@@ -60,8 +63,8 @@
           identityFile = "~/.ssh/id_github";
           identitiesOnly = true;
         };
-        ${oxygen.hostName} = {
-          hostname = oxygen.ipv4;
+        ${oxygen.network.hostName} = {
+          hostname = oxygen.network.ipv4;
           user = "root";
           identityFile = "~/.ssh/id_homelab";
           identitiesOnly = true;

@@ -2,14 +2,8 @@
   inputs,
   lib,
   namespace,
-}@args_:
+}@args:
 let
-  hosts = import ./hosts.nix;
-
-  args = args_ // {
-    inherit hosts;
-  };
-
   mkServer = lib.${namespace}.mkHost args { inherit (inputs) nixpkgs; };
   mkWorkstation = lib.${namespace}.mkHost args {
     nixpkgs = inputs.unstable;

@@ -1,15 +1,18 @@
 {
+  lib,
   namespace,
-  hosts,
   ...
 }:
+let
+  host = lib.${namespace}.vars.hosts.oxygen;
+in
 {
   imports = [ ./hardware.nix ];
 
   ${namespace} = {
     suites.base-rpi.enable = true;
 
-    hardware.network = { inherit (hosts.oxygen) hostName; };
+    hardware.network = { inherit (host.network) hostName; };
 
     services.websites.portfolio = {
       enable = true;

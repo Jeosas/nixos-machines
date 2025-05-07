@@ -1,9 +1,12 @@
 {
+  lib,
   namespace,
   config,
-  hosts,
   ...
 }:
+let
+  inherit (lib.${namespace}.vars) hosts;
+in
 {
   imports = [
     ./battery.nix
@@ -54,8 +57,8 @@
         identityFile = "~/.ssh/id_github";
         identitiesOnly = true;
       };
-      ${oxygen.hostName} = {
-        hostname = oxygen.ipv4;
+      ${oxygen.network.hostName} = {
+        hostname = oxygen.network.ipv4;
         user = "root";
         identityFile = "~/.ssh/id_homelab";
         identitiesOnly = true;
