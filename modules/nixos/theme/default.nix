@@ -35,7 +35,7 @@ let
     {
       "24.11" = pkgs.nerdfonts.override { fonts = [ "MPlus" ]; };
     }
-    ."${config.system.nixos.release}" or pkgs.nerd-fonts.mplus;
+    ."${config.system.nixos.release}" or pkgs.nerd-fonts."m+";
 
   cfg = config.${namespace}.theme;
 in

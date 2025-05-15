@@ -29,7 +29,7 @@ with lib.${namespace};
           enable = true;
           plugins = [ "git" ];
         };
-        initExtra = ''
+        initContent = ''
           export PATH=$HOME/.local/bin:$PATH
         '';
         shellAliases = { };

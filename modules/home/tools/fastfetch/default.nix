@@ -59,7 +59,7 @@ with lib.${namespace};
         };
       };
       zsh = {
-        initExtra =
+        initContent =
           # bash
           ''
             if [ $TERM = xterm-kitty ]; then
