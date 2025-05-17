@@ -18,4 +18,11 @@ in
   fr-jb-xps = mkWorkstation "x86_64-linux" ./workstation/fr-jb-xps;
   helium = mkWorkstation "x86_64-linux" ./workstation/helium;
   neon = mkWorkstation "x86_64-linux" ./workstation/neon;
+
+  iso =
+    let
+      inherit (inputs) unstable;
+    in
+    unstable.lib.nixosSystem { modules = [ ./iso.nix ]; };
+
 }
