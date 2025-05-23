@@ -16,7 +16,7 @@ with lib.${namespace};
 
   config = mkIf cfg.enable {
     ${namespace} = {
-      user = enabled;
+      # user = enabled;
       theme = enabled;
 
       apps = {
@@ -34,28 +34,28 @@ with lib.${namespace};
       desktop.hyprland = enabled;
 
       hardware = {
-        audio = enabled;
-        graphics = enabled;
-        network = {
-          enable = true;
-          enableNetworkManager = true;
-        };
-        ssd = enabled;
+        # audio = enabled;
+        # graphics = enabled;
+        # network = {
+        #   enable = true;
+        #   enableNetworkManager = true;
+        # };
+        # ssd = enabled;
       };
 
-      impermanence = enabled;
+      # impermanence = enabled;
 
-      security.doas = enabled;
+      # security.doas = enabled;
 
       services.mullvad-vpn = enabled;
 
       system = {
-        auto-mount = enabled;
-        boot = enabled;
-        fonts = enabled;
-        locale = enabled;
-        mtp = enabled;
-        time = enabled;
+        # auto-mount = enabled;
+        # boot = enabled;
+        # fonts = enabled;
+        # locale = enabled;
+        # mtp = enabled;
+        # time = enabled;
       };
 
       home = {

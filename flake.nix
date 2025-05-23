@@ -21,6 +21,10 @@
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
 
+    # Disko: declarative disk formatting
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "unstable";
@@ -88,7 +92,13 @@
         default = pkgs.mkShell {
           name = "default";
           inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
+          buildInputs =
+            with pkgs;
+            [
+              just
+              nixos-anywhere
+            ]
+            ++ self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
         };
         install = pkgs.mkShell {
           name = "nixos-install";
