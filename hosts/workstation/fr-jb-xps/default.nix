@@ -43,6 +43,7 @@
 
     services = {
       ollama.enable = true;
+      wireguard.enable = true;
     };
 
     theme.wallpaper = ./wallpaper.jpg;
