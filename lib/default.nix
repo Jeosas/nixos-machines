@@ -105,41 +105,4 @@ rec {
   #@ `nixpkgs` -> `lib`
   extendLib =
     lib_: lib_.extend (self: super: { ${namespace} = import ./. self super { inherit namespace; }; });
-
-  #@ `specialArgs` -> `nixpkgs` -> {modules: List Modules} -> nixosConfiguration
-  mkHost =
-    {
-      inputs,
-      lib,
-      namespace,
-    }@args:
-    {
-      nixpkgs,
-      nixpkgsConfig ? { },
-    }:
-    system: path:
-    let
-      nixosModules = getDefaultNixFilesRecursive ../modules/nixos;
-    in
-    nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = args // {
-        lib = extendLib nixpkgs.lib;
-      };
-      modules = nixosModules ++ [
-        {
-          nixpkgs = {
-            config = nixpkgsConfig;
-            overlays = [
-              (import ../packages/overlay.nix { inherit namespace lib inputs; })
-              inputs.nurpkgs.overlays.default
-              (final: prev: {
-                inherit (inputs.ongaku.packages.${prev.system}) ongaku;
-              })
-            ];
-          };
-        }
-        path
-      ];
-    };
 }

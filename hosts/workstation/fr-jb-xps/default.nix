@@ -1,74 +1,39 @@
 {
   namespace,
-  config,
   ...
 }:
 {
   imports = [
-    ./battery.nix
-    ./chassis.nix
     ./hardware.nix
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  # Enable lib dynamix linking support
   programs.nix-ld.enable = true;
 
   ${namespace} = {
-    suites = {
-      art.enable = true;
-      base-workstation.enable = true;
-      laptop.enable = true;
-      development.enable = true;
-      social.enable = true;
-    };
+    workstation = {
+      hostName = "fr-jb-xps";
 
-    hardware.network.hostName = "fr-jb-xps";
-    hardware.bluetooth.enable = true;
+      hardware = {
+        enableSSD = true;
+        enableLaptopUtils = true;
+        enableBluetooth = true;
+      };
 
-    desktop = {
-      hyprland.config = {
-        monitors = [
+      desktop = {
+        hyprland.monitors = [
           "eDP-1,1920x1200@60,auto,1"
           "desc:Dell Inc. DELL P2415Q,preferred,auto,1.5"
           ",preferred,auto,1"
         ];
+        waybar.cpu-temp-zone = 6;
       };
-    };
 
-    apps.zen-browser.enable = true;
-    cli-apps = {
-      gh.enable = true;
-    };
+      # suites = { };
 
-    services = {
-      ollama.enable = true;
-      wireguard.enable = true;
-    };
-
-    theme.wallpaper = ./wallpaper.jpg;
-
-    tools = {
-      azure.enable = true;
-      gcloud.enable = true;
-      kubectl.enable = true;
-    };
-
-    system.keyd.enable = true;
-  };
-
-  home-manager.users.${config.${namespace}.user.name}.${namespace} = {
-    desktop = {
-      addons.waybar = {
-        cpu-temp-zone = 6;
-      };
-    };
-    tools = {
-      git = {
-        userName = "Jean-Baptiste WINTERGERST";
-        userEmail = "jean-baptiste.wintergerst@lumapps.com";
-      };
-      ssh.user.config = {
+      sshConfig = {
         "github.com" = {
           hostname = "github.com";
           user = "git";
@@ -76,6 +41,25 @@
           identitiesOnly = true;
         };
       };
+    };
+
+    theme.wallpaper = ./wallpaper.jpg;
+
+    apps = {
+      # keep-sorted start case=no numeric=yes
+      azure.enable = true;
+      gcloud.enable = true;
+      gh.enable = true;
+      keyd.enable = true;
+      kubectl.enable = true;
+      ollama.enable = true;
+      wireguard.enable = true;
+      # keep-sorted end
+    };
+
+    apps.git = {
+      userName = "Jean-Baptiste WINTERGERST";
+      userEmail = "jean-baptiste.wintergerst@lumapps.com";
     };
   };
 

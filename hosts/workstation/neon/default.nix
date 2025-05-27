@@ -12,51 +12,27 @@ in
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   ${namespace} = {
-    suites = {
-      art.enable = true;
-      base-workstation.enable = true;
-      development = {
-        enable = true;
-        gamedev.enable = true;
+    workstation = {
+      hostName = "neon";
+
+      hardware = {
+        enableSSD = true;
+        gpuVendor = "nvidia";
+        enableBluetooth = true;
       };
-      games = {
-        enable = true;
+
+      desktop = {
+        hyprland.monitors = [ ",3440x1440@144,auto,1" ];
+        waybar.cpu-temp-zone = 2;
+      };
+
+      suites = {
+        games.enable = true;
         simracing.enable = true;
         vr.enable = true;
       };
-      music.enable = true;
-      social.enable = true;
-    };
 
-    hardware = {
-      graphics.nvidia.enable = true;
-      network.hostName = "neon";
-      bluetooth.enable = true;
-    };
-
-    services = {
-      ollama = {
-        enable = true;
-        acceleration = "cuda";
-      };
-    };
-
-    virtualisation.docker.enableNvidia = true;
-
-    system.openrazer.enable = true;
-
-    apps = {
-      wootility.enable = true;
-      monero-gui.enable = true;
-      freetube.enable = true;
-    };
-
-    desktop.hyprland.config = {
-      monitors = [ ",3440x1440@144,auto,1" ];
-    };
-
-    home.extraConfig = {
-      ${namespace}.tools.ssh.user.config = with hosts; {
+      sshConfig = with hosts; {
         "github.com" = {
           hostname = "github.com";
           user = "git";
@@ -70,6 +46,16 @@ in
           identitiesOnly = true;
         };
       };
+    };
+
+    apps = {
+      ollama = {
+        enable = true;
+        acceleration = "cuda";
+      };
+      docker.enableNvidia = true;
+      openrazer.enable = true;
+      wootility.enable = true;
     };
   };
 

@@ -7,16 +7,18 @@ let
   host = lib.${namespace}.vars.hosts.oxygen;
 in
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    ./www/thewinterdev_fr.nix
+  ];
 
   ${namespace} = {
-    suites.base-rpi.enable = true;
+    server = {
+      inherit (host.network) hostName;
 
-    hardware.network = { inherit (host.network) hostName; };
-
-    services.websites.portfolio = {
-      enable = true;
-      domain = "thewinterdev.fr";
+      mixins = {
+        rpi3.enable = true;
+      };
     };
   };
 
