@@ -39,6 +39,7 @@ in
             plugins = [ "git" ];
           };
           initContent = ''
+            bindkey -v
             export PATH=$HOME/.local/bin:$PATH
           '';
           shellAliases = { };
