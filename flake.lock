@@ -641,7 +641,8 @@
         "ongaku": "ongaku",
         "pre-commit-hooks": "pre-commit-hooks",
         "thewinterdev-website": "thewinterdev-website",
-        "unstable": "unstable"
+        "unstable": "unstable",
+        "yazi-plugins": "yazi-plugins"
       }
     },
     "rust-analyzer-src": {
@@ -782,6 +783,22 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "yazi-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746940873,
+        "narHash": "sha256-v/C+ZBrF1ghDt1SXpZcDELmHMVAqfr44iWxzUWynyRk=",
+        "owner": "yazi-rs",
+        "repo": "plugins",
+        "rev": "55bf6996ada3df4cbad331ce3be0c1090769fc7c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yazi-rs",
+        "repo": "plugins",
         "type": "github"
       }
     }
