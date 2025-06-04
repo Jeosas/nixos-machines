@@ -46,6 +46,11 @@ in
           noto-fonts-cjk-sans
           noto-fonts-cjk-serif
 
+          # Innovlens
+          montserrat
+          inter
+          manrope
+
           # Windaube fonts for compat
           corefonts
           vistafonts
