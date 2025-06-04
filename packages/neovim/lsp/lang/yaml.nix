@@ -7,12 +7,17 @@
     shellcheck
   ];
 
-  # https://github.com/nix-community/nixvim/issues/989
   autoCmd = [
+    # https://github.com/nix-community/nixvim/issues/989
     {
       event = "FileType";
       pattern = "helm";
       command = "LspRestart yamlls";
+    }
+    {
+      event = "FileType";
+      pattern = "helm";
+      command = "lua vim.diagnostic.disable(0)";
     }
   ];
 
@@ -23,6 +28,8 @@
   };
 
   plugins = {
+    helm.enable = true;
+
     lsp.servers = {
       helm_ls = {
         enable = true;
