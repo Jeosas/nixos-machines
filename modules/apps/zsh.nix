@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   namespace,
   config,
   ...
@@ -39,6 +40,10 @@ in
             plugins = [ "git" ];
           };
           initContent = ''
+            jqfind () {
+                ${pkgs.jq}/bin/jq '{"path": ([path(.. | select('$1'))|map(if type=="number" then "[\(.)]" else tostring end)|join(".")|split(".[]")|join("[]")]|unique|map("."+.)|.[]), "value": (.. | select('$1'))}'
+            }
+
             bindkey -v
             export PATH=$HOME/.local/bin:$PATH
           '';
