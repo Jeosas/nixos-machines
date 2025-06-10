@@ -122,6 +122,9 @@ in
                 "SUPER_SHIFT, Return, exec, mullvad-browser"
                 "SUPER_CTRL, Return, exec, firefox"
                 "SUPER, Return, exec, kitty"
+                "SUPER, c, exec, kitty -e nmtui"
+                "SUPER, v, exec, kitty -e ncpamixer"
+                "SUPER, b, exec, kitty -e bluetuith"
 
                 # workspace move
                 "SUPER_CTRL_SHIFT, h, movecurrentworkspacetomonitor, l"
