@@ -13,6 +13,7 @@
   ./apps/firefox.nix
   ./apps/gcloud.nix
   ./apps/gh.nix
+  ./apps/ghostty.nix
   ./apps/git.nix
   ./apps/godot.nix
   ./apps/heroic.nix
