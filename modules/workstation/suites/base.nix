@@ -27,6 +27,7 @@ in
       docker.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
+      ghostty.enable = true;
       git.enable = true;
       inkscape.enable = true;
       kitty.enable = true;

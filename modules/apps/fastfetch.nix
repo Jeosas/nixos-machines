@@ -28,7 +28,7 @@ in
           settings = {
             logo = {
               source = ./shell-init-logo.png;
-              height = 22;
+              height = 18;
             };
             display = {
               separator = "";
@@ -70,7 +70,7 @@ in
           initContent =
             # bash
             ''
-              if [ "$TERM" = xterm-kitty ]; then
+              if [ "$TERM" = xterm-ghostty ]; then
                 fastfetch
               else
                 fastfetch --logo nix

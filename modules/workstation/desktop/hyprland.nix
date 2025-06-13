@@ -121,7 +121,7 @@ in
                 "SUPER, d, exec, wofi --show drun"
                 "SUPER_SHIFT, Return, exec, mullvad-browser"
                 "SUPER_CTRL, Return, exec, firefox"
-                "SUPER, Return, exec, kitty"
+                "SUPER, Return, exec, ghostty"
                 "SUPER, c, exec, kitty -e nmtui"
                 "SUPER, v, exec, kitty -e ncpamixer"
                 "SUPER, b, exec, kitty -e bluetuith"
