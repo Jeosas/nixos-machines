@@ -35,7 +35,6 @@ in
           font-family-bold-italic = "${config.${namespace}.theme.fonts.mono.name} Bold Italic";
           font-feature = "-calt, -liga, -dlig"; # disable ligature
           font-size = 11;
-          adjust-cell-width = "10%";
 
           cursor-style = "block";
           shell-integration-features = "no-cursor";
@@ -45,9 +44,8 @@ in
         };
         themes = with config.${namespace}.theme; {
           custom = {
-            background = colors.background;
+            inherit (colors) background foreground;
             cursor-color = colors.cursor;
-            foreground = colors.foreground;
             palette = [
               "0=${colors.color0}"
               "1=${colors.color1}"
