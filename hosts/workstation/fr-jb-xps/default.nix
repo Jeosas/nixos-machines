@@ -43,8 +43,6 @@
       };
     };
 
-    theme.wallpaper = ./wallpaper.jpg;
-
     apps = {
       # keep-sorted start case=no numeric=yes
       azure.enable = true;
