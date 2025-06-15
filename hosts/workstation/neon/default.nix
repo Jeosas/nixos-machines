@@ -41,7 +41,7 @@ in
         };
         ${oxygen.network.hostName} = {
           hostname = oxygen.network.ipv4;
-          user = "root";
+          user = "jeosas";
           identityFile = "~/.ssh/id_homelab";
           identitiesOnly = true;
         };
