@@ -21,6 +21,10 @@ in
         rpi3.enable = true;
       };
     };
+
+    services = {
+      goatcounter.enable = true;
+    };
   };
 
   system.stateVersion = "24.05";

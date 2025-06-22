@@ -45,6 +45,7 @@
   ./apps/xournal.nix
   ./apps/yazi.nix
   ./apps/zsh.nix
+  ./services/goatcounter.nix
   ./services/nginx.nix
   # keep-sorted end
 ]
