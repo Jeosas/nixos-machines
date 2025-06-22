@@ -53,6 +53,8 @@
     # ongaku: music library management
     ongaku.url = "github:Jeosas/ongaku";
     ongaku.inputs.nixpkgs.follows = "nixpkgs";
+
+    innovlens.url = "git+ssh://git@github.com/jeosas/innovlens?ref=production";
   };
 
   outputs =

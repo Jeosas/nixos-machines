@@ -10,6 +10,7 @@ in
   imports = [
     ./hardware.nix
     ./www/thewinterdev_fr.nix
+    ./www/innovlens-fr.nix
   ];
 
   ${namespace} = {
