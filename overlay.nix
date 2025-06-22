@@ -15,5 +15,6 @@ in
     nordzy-cursors = mkPackage ./packages/nordzy-cursors;
 
     inherit (inputs.ongaku.packages.${prev.system}) ongaku;
+    inherit (inputs.maudfmt.packages.${prev.system}) maudfmt;
   };
 }

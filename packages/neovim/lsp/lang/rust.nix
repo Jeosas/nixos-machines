@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, namespace, ... }:
 {
   plugins = {
     lsp.servers.rust_analyzer = {
@@ -9,8 +9,19 @@
       installCargo = false;
       installRustfmt = false;
     };
-    conform-nvim.settings.formatters_by_ft = {
-      rust = [ "rustfmt" ];
+    conform-nvim.settings = {
+      formatters = {
+        maudfmt = {
+          command = "${pkgs.${namespace}.maudfmt}/bin/maudfmt";
+          args = [ "-s" ];
+        };
+      };
+      formatters_by_ft = {
+        rust = [
+          "rustfmt"
+          "maudfmt"
+        ];
+      };
     };
   };
 }

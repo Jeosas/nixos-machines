@@ -54,6 +54,9 @@
     ongaku.url = "github:Jeosas/ongaku";
     ongaku.inputs.nixpkgs.follows = "nixpkgs";
 
+    # maudfmt: maud formatter
+    maudfmt.url = "github:Jeosas/maudfmt";
+
     innovlens.url = "git+ssh://git@github.com/jeosas/innovlens?ref=production";
   };
 

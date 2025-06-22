@@ -13,5 +13,7 @@ inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
     {
       imports = lib.${namespace}.getNonDefaultNixFilesRecursive ./.;
     };
-  extraSpecialArgs = { };
+  extraSpecialArgs = {
+    inherit namespace;
+  };
 }
