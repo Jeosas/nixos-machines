@@ -9,4 +9,5 @@
   ];
 
   sdImage.compressImage = false;
+
 }

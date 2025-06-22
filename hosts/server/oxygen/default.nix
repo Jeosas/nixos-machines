@@ -13,8 +13,9 @@ in
   ];
 
   ${namespace} = {
-    server = {
+    server-legacy = {
       inherit (host.network) hostName;
+      impermanenceEnabled = false;
 
       mixins = {
         rpi3.enable = true;

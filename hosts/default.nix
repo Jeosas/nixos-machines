@@ -4,6 +4,17 @@
   namespace,
 }@args:
 let
+  mkServerLegacy =
+    system: systemConfigPath:
+    inputs.nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = args;
+      modules = [
+        ../modules/server-legacy
+        systemConfigPath
+      ];
+    };
+
   mkServer =
     system: systemConfigPath:
     inputs.nixpkgs.lib.nixosSystem {
@@ -49,7 +60,7 @@ let
     };
 in
 {
-  oxygen = mkServer "aarch64-linux" ./server/oxygen;
+  oxygen = mkServerLegacy "aarch64-linux" ./server/oxygen;
   carbon = mkServer "x86_64-linux" ./server/carbon;
 
   fr-jb-xps = mkWorkstation "x86_64-linux" ./workstation/fr-jb-xps;
