@@ -3,7 +3,7 @@
 
   inputs = {
     # NixPkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     # NixPkgs unstable
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -42,8 +42,8 @@
     yazi-plugins.flake = false;
 
     # NixVim
-    nixvim.url = "github:nix-community/nixvim/nixos-24.11";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim/main"; # keep synced with nixpkgs version
+    nixvim.inputs.nixpkgs.follows = "unstable";
 
     #  --- Perso--- // TODO: migrate in here as a monorepository
     # thewinterdev website
