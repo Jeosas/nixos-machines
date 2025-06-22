@@ -40,12 +40,13 @@ in
       alvr_usb_forward
     ];
 
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/alvr"
+      ".config/openvr"
+      ".config/openxr"
+    ];
+
     ${namespace} = {
-      impermanence.userDirectories = [
-        ".config/alvr"
-        ".config/openvr"
-        ".config/openxr"
-      ];
       user.extraGroups = [ "adbusers" ];
     };
   };

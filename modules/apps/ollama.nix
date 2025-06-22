@@ -42,6 +42,6 @@ in
         };
       };
 
-      ${namespace}.impermanence.directories = [ ollamaHome ];
+      environment.persistence.main.directories = [ ollamaHome ];
     };
 }

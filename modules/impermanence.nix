@@ -6,6 +6,7 @@
   ...
 }:
 let
+  inherit (lib) mkEnableOption;
   inherit (lib.${namespace}) mkOpt;
 
   user = { inherit (config.${namespace}.user) name home; };
@@ -19,26 +20,21 @@ in
   ];
 
   options.${namespace}.impermanence = with lib.types; {
+    enable = mkEnableOption "impermanence";
     systemDir = mkOpt str "/persist" "Global persistent directory";
-    files = mkOpt (listOf str) [ ] "List of system files to persist";
-    directories = mkOpt (listOf str) [ ] "List of system directories to persist";
-    userFiles = mkOpt (listOf str) [ ] "List of user files to persist";
-    userDirectories = mkOpt (listOf str) [ ] "List of user directories to persist";
   };
 
   config = {
     # Needed for home-manager impermanence module
     programs.fuse.userAllowOther = config.${namespace}.user.enableHomeManager;
 
-    environment.persistence.${cfg.systemDir} = {
+    environment.persistence.main = {
+      inherit (cfg) enable;
+      persistentStoragePath = cfg.systemDir;
       hideMounts = true;
-
-      inherit (cfg) files directories;
 
       users.${user.name} = {
         inherit (user) home;
-        directories = cfg.userDirectories;
-        files = cfg.userFiles;
       };
     };
   };

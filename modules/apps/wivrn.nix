@@ -36,13 +36,14 @@ in
     };
 
     ${namespace} = {
-      impermanence.userDirectories = [
-        ".config/wivrn"
-        ".config/openvr"
-        ".config/openxr"
-      ];
-
       user.extraGroups = [ "adbusers" ];
     };
+
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/wivrn"
+      ".config/openvr"
+      ".config/openxr"
+    ];
+
   };
 }

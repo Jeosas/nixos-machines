@@ -25,7 +25,9 @@ in
       }
     ];
 
-    ${namespace}.impermanence.userDirectories = [ ".mullvad" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".mullvad"
+    ];
 
     home-manager.users.${config.${namespace}.user.name} = {
       home = {

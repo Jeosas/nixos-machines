@@ -33,7 +33,7 @@ in
       };
     };
 
-    ${namespace}.impermanence.userDirectories = [
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
       ".config/gh"
       # ".config/gh-dash"
     ];

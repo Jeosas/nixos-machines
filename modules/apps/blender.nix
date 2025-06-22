@@ -17,6 +17,9 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ blender ];
-    ${namespace}.impermanence.userDirectories = [ ".config/blender" ];
+
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/blender"
+    ];
   };
 }

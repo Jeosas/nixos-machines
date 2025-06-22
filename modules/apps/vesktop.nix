@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ vesktop ];
 
-    ${namespace}.impermanence.userDirectories = [ ".config/vesktop" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/vesktop"
+    ];
   };
 }

@@ -17,6 +17,8 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ mixxx ];
-    ${namespace}.impermanence.userDirectories = [ ".mixxx" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".mixxx"
+    ];
   };
 }

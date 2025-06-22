@@ -20,7 +20,7 @@ in
 
     environment.systemPackages = with pkgs; [ protonup-ng ];
 
-    ${namespace}.impermanence.userDirectories = [
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
       ".steam"
       ".local/share/Steam"
     ];

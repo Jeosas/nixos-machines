@@ -16,6 +16,8 @@ in
 
   config = mkIf cfg.enable {
     services.mullvad-vpn.enable = true;
-    ${namespace}.impermanence.directories = [ "/etc/mullvad-vpn" ];
+    environment.persistence.main.directories = [
+      "/etc/mullvad-vpn"
+    ];
   };
 }

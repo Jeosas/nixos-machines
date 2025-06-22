@@ -24,13 +24,13 @@ in
 
     ${namespace} = {
       user.extraGroups = [ "docker" ];
-      impermanence = {
-        directories = [ "/var/lib/docker" ];
-        userDirectories = [
-          ".config/docker"
-          ".docker"
-        ];
-      };
+    };
+    environment.persistence.main = {
+      directories = [ "/var/lib/docker" ];
+      users.${config.${namespace}.user.name}.directories = [
+        ".config/docker"
+        ".docker"
+      ];
     };
   };
 }

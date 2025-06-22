@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ heroic ];
 
-    ${namespace}.impermanence.userDirectories = [ ".config/heroic" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/heroic"
+    ];
   };
 }

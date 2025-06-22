@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ transmission_4-gtk ];
 
-    ${namespace}.impermanence.userDirectories = [ ".config/transmission" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/transmission"
+    ];
   };
 }

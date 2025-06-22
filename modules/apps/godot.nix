@@ -17,6 +17,8 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ godot_4 ];
-    ${namespace}.impermanence.userDirectories = [ ".config/godot" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/godot"
+    ];
   };
 }

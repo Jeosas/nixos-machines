@@ -47,7 +47,9 @@ in
       }
     ];
 
-    ${namespace}.impermanence.userDirectories = [ ".mozilla/firefox/default" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".mozilla/firefox/default"
+    ];
 
     home-manager.users.${config.${namespace}.user.name} = {
       home.sessionVariables = mkIf cfg.enableWaylandSupport { MOZ_ENABLE_WAYLAND = "1"; };

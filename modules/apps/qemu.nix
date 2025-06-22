@@ -21,6 +21,8 @@ in
       quickemu
     ];
 
-    ${namespace}.impermanence.userDirectories = [ "vm" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      "vm"
+    ];
   };
 }

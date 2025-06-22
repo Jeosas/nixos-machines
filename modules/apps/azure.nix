@@ -29,6 +29,8 @@ in
         };
       };
 
-      ${namespace}.impermanence.userDirectories = [ configDir ];
+      environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+        configDir
+      ];
     };
 }

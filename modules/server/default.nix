@@ -159,28 +159,25 @@ in
         zfs rollback -r zboot/local/root@blank
       '';
     };
-    fileSystems = {
-      "/etc/nixos".options = [ "noexec" ];
-      "/srv".options = [ "noexec" ];
-      "/var/lib".options = [ "noexec" ];
-    };
-    ${namespace} = {
-      impermanence = {
-        directories = [
-          "/etc/nixos" # nixos system config files
-          "/srv" # service data
-          "/var/lib" # system service persistent data
-        ];
-        files = [
-          "/etc/ssh/ssh_host_rsa_key"
-          "/etc/ssh/ssh_host_rsa_key.pub"
-          "/etc/ssh/ssh_host_ed25519_key"
-          "/etc/ssh/ssh_host_ed25519_key.pub"
-          # "/etc/secrets/initrd/ssh_host_rsa_key" # TODO replace me with sops secrets
-          # "/etc/machine-id"
-        ];
-      };
 
+    environment.persistence.main = {
+      directories = [
+        "/etc/nixos" # nixos system config files
+        "/srv" # service data
+        "/var/lib" # system service persistent data
+      ];
+      files = [
+        "/etc/ssh/ssh_host_rsa_key"
+        "/etc/ssh/ssh_host_rsa_key.pub"
+        "/etc/ssh/ssh_host_ed25519_key"
+        "/etc/ssh/ssh_host_ed25519_key.pub"
+        # "/etc/secrets/initrd/ssh_host_rsa_key" # TODO replace me with sops secrets
+        # "/etc/machine-id"
+      ];
+    };
+
+    ${namespace} = {
+      impermanence.enable = true;
       # staff users
       user = {
         sshKeys = [

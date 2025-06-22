@@ -61,6 +61,8 @@ in
       };
     };
 
-    ${namespace}.impermanence.userDirectories = [ ".local/share/direnv/allow" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".local/share/direnv/allow"
+    ];
   };
 }

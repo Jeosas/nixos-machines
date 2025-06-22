@@ -91,16 +91,14 @@ in
         };
       };
 
-      ${namespace}.impermanence = {
-        userDirectories = [
-          ".setup" # nixos config
-          "Documents"
-          "Pictures"
-          "Music"
-          "notes"
-          "code"
-        ];
-      };
+      environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+        ".setup" # nixos config
+        "Documents"
+        "Pictures"
+        "Music"
+        "notes"
+        "code"
+      ];
     })
   ];
 }

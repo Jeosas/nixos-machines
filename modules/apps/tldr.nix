@@ -38,6 +38,8 @@ in
         };
       };
 
-      ${namespace}.impermanence.userDirectories = [ cacheDir ];
+      environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+        cacheDir
+      ];
     };
 }

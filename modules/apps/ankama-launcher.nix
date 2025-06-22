@@ -24,7 +24,7 @@ in
         wineWowPackages.stable
       ];
 
-    ${namespace}.impermanence.userDirectories = [
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
       ".config/zaap"
       ".config/Ankama"
       ".config/Ankama Launcher"

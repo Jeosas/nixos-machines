@@ -19,7 +19,7 @@ with lib;
       openFirewall = true;
     };
 
-    ${namespace}.impermanence.userDirectories = [
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
       ".config/envision"
     ];
   };

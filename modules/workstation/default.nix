@@ -100,23 +100,24 @@ in
       polkit.enable = true;
     };
 
-    ${namespace} = {
-      # impermanence
-      impermanence = {
-        directories = [
-          "/etc/ssh"
-          "/var/log"
-          "/etc/NetworkManager/system-connections" # wifi connections
-          "/var/lib" # system service persistent data
-        ];
-        files = [
-          "/etc/machine-id"
-        ];
-        userDirectories = [
-          ".ssh"
-        ];
-      };
+    # impermanence
+    environment.persistence.main = {
+      directories = [
+        "/etc/ssh"
+        "/var/log"
+        "/etc/NetworkManager/system-connections" # wifi connections
+        "/var/lib" # system service persistent data
+      ];
+      files = [
+        "/etc/machine-id"
+      ];
+      users.${config.${namespace}.user.name}.directories = [
+        ".ssh"
+      ];
+    };
 
+    ${namespace} = {
+      impermanence.enable = true;
       # user
       user = {
         hashedPasswordFile =

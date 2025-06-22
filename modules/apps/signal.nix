@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ signal-desktop ];
 
-    ${namespace}.impermanence.userDirectories = [ ".config/Signal" ];
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/Signal"
+    ];
   };
 }
