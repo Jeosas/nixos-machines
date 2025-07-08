@@ -15,12 +15,12 @@ gc: && switch
 
 # Switch to the new configuration
 switch:
-  nixos-rebuild switch --use-remote-sudo --flake ..
+  nixos-rebuild switch --sudo --flake ..
 
 
 # Test new configuration
 test *args:
-  nixos-rebuild test --use-remote-sudo --flake .. {{args}}
+  nixos-rebuild test --sudo --flake .. {{args}}
 
 
 # Update flake dependencies and switch to new configuration
