@@ -59,7 +59,7 @@ in
             "hyprland/workspaces"
             "custom/hl-fullscreen"
             "custom/separator"
-            "custom/kernel"
+            "custom/version"
           ];
           # modules-center = [ ];
           modules-right = [
@@ -121,10 +121,10 @@ in
             };
           };
 
-          "custom/kernel" = {
+          "custom/version" = {
             format = "  {}";
             interval = 3600;
-            exec = "uname -ro";
+            exec = "nixos-version";
             tooltip = false;
           };
 
