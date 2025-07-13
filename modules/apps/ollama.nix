@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   namespace,
   config,
   ...
@@ -20,28 +19,25 @@ in
     ]) false "gpu acceleration";
   };
 
-  config =
-    let
-      ollamaHome = "/var/lib/ollama";
-    in
-    mkIf cfg.enable {
-      environment.systemPackages = with pkgs; [
-        (ollama.override { inherit (cfg) acceleration; })
-      ];
-      virtualisation.oci-containers = {
-        backend = "docker";
-        containers = {
-          ollama = {
-            image = "ollama/ollama";
-            volumes = [ "${ollamaHome}:/root/.ollama" ];
-            ports = [ "11434:11434" ];
-            extraOptions = mkIf (cfg.acceleration == "cuda") [
-              "--device=nvidia.com/gpu=all"
-            ];
-          };
-        };
-      };
-
-      environment.persistence.main.directories = [ ollamaHome ];
+  config = mkIf cfg.enable {
+    services.ollama = {
+      inherit (cfg) enable acceleration;
+      user = "ollama";
+      group = "ollama";
+      home = "/var/lib/private/ollama";
     };
+
+    environment.persistence.main.directories = [
+      {
+        directory = config.services.ollama.home;
+        inherit (config.services.ollama) user group;
+        mode = "700";
+      }
+      {
+        directory = config.services.ollama.models;
+        inherit (config.services.ollama) user group;
+        mode = "700";
+      }
+    ];
+  };
 }

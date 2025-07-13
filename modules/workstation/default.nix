@@ -107,6 +107,12 @@ in
         "/var/log"
         "/etc/NetworkManager/system-connections" # wifi connections
         "/var/lib" # system service persistent data
+        {
+          directory = "/var/lib/private";
+          user = "root";
+          group = "root";
+          mode = "700";
+        }
       ];
       files = [
         "/etc/machine-id"
