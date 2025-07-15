@@ -45,6 +45,7 @@
 
     apps = {
       # keep-sorted start case=no numeric=yes
+      aider.enable = true;
       azure.enable = true;
       gcloud.enable = true;
       gh.enable = true;
