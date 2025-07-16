@@ -29,7 +29,7 @@ in
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
 
         settings = {
-          manager = {
+          mgr = {
             show_hidden = true;
             show_simlink = true;
             scrolloff = 6; # scroll offset
