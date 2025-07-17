@@ -24,6 +24,9 @@ rec {
   #@ Type -> Any
   mkOpt' = type: default: mkOpt type default null;
 
+  #@ Type -> String
+  mkOptRequired = type: description: mkOption { inherit type description; };
+
   #@ String -> String
   mkColorOpt =
     { name, default }:

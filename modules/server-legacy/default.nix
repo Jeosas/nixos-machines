@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkForce;
-  inherit (lib.${namespace}) mkOpt;
+  inherit (lib.${namespace}) mkOpt mkOptRequired;
 
   cfg = config.${namespace}.server-legacy;
 
@@ -31,18 +31,11 @@ in
   ] ++ import ../module-list.nix;
 
   options.${namespace}.server-legacy = with lib.types; {
-    hostName = mkOpt str "" "System hostname";
+    hostName = mkOptRequired str "System hostname";
     impermanenceEnabled = mkOpt bool true "Enable impermanence";
   };
 
   config = {
-    assertions = [
-      {
-        assertion = cfg.hostName != "";
-        message = "hostName must be provided";
-      }
-    ];
-
     documentation = {
       nixos.enable = false;
       man.enable = false;

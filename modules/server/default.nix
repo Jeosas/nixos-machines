@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkForce;
-  inherit (lib.${namespace}) mkOpt;
+  inherit (lib.${namespace}) mkOptRequired;
 
   cfg = config.${namespace}.server;
 
@@ -22,17 +22,10 @@ in
   ] ++ import ../module-list.nix;
 
   options.${namespace}.server = with lib.types; {
-    hostName = mkOpt str "" "System hostname";
+    hostName = mkOptRequired str "System hostname";
   };
 
   config = {
-    assertions = [
-      {
-        assertion = cfg.hostName != "";
-        message = "hostName must be provided";
-      }
-    ];
-
     boot = {
       # bootloader
       loader = {

@@ -8,7 +8,7 @@
 }:
 
 let
-  inherit (lib.${namespace}) mkOpt;
+  inherit (lib.${namespace}) mkOpt mkOptRequired;
 
   cfg = config.${namespace}.workstation;
 in
@@ -35,18 +35,11 @@ in
   ] ++ import ../module-list.nix;
 
   options.${namespace}.workstation = with lib.types; {
-    hostName = mkOpt str "" "System hostname";
+    hostName = mkOptRequired str "System hostname";
     sshConfig = mkOpt attrs { } "user ssh config";
   };
 
   config = {
-    assertions = [
-      {
-        assertion = cfg.hostName != "";
-        message = "hostName must be provided";
-      }
-    ];
-
     # system/boot
     boot = {
       loader = {
