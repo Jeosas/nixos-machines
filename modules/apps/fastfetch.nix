@@ -72,8 +72,6 @@ in
             ''
               if [ "$TERM" = xterm-ghostty ]; then
                 fastfetch
-              else
-                fastfetch --logo nix
               fi
             '';
         };
