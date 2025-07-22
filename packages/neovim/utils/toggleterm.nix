@@ -1,4 +1,7 @@
-{ ... }:
+{ lib, pkgs, ... }:
+let
+  inherit (lib) getExe;
+in
 {
   keymaps =
     let
@@ -18,6 +21,12 @@
         mode = "n";
         key = "<leader>gg";
         action = "<cmd>lua _LAZYGIT_TOGGLE()<cr>";
+        inherit options;
+      }
+      {
+        mode = "n";
+        key = "<leader>jj";
+        action = "<cmd>lua _LAZYJJ_TOGGLE()<cr>";
         inherit options;
       }
     ];
@@ -67,6 +76,22 @@
 
         function _LAZYGIT_TOGGLE()
         	lazygit:toggle()
+        end
+
+        -- lazyjj
+        local lazyjj = Terminal:new({
+        	cmd = "${getExe pkgs.lazyjj}",
+        	hidden = true,
+        	on_open = function(term)
+        		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", "<esc>", { noremap = true, silent = true })
+        	end,
+        	on_close = function(term)
+        		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", "[[<C-><C-n>]]", { noremap = true, silent = true })
+        	end,
+        })
+
+        function _LAZYJJ_TOGGLE()
+        	lazyjj:toggle()
         end
       '';
   };

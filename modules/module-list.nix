@@ -19,6 +19,7 @@
   ./apps/godot.nix
   ./apps/heroic.nix
   ./apps/inkscape.nix
+  ./apps/jj.nix
   ./apps/keyd.nix
   ./apps/kitty.nix
   ./apps/krita.nix
