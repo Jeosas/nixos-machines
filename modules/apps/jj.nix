@@ -39,6 +39,10 @@ with lib;
               email = config.${namespace}.apps.git.userEmail;
               name = config.${namespace}.apps.git.userName;
             };
+            ui = {
+              paginate = "never";
+              default-command = [ "log" ];
+            };
           };
         };
         zsh.shellAliases = {
