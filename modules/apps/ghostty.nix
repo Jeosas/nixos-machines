@@ -26,6 +26,8 @@ in
       programs.ghostty = {
         enable = true;
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
+        enableBashIntegration = config.${namespace}.apps.bash.enable;
+
         clearDefaultKeybinds = true;
         settings = {
           theme = "custom";

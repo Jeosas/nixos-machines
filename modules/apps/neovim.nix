@@ -31,7 +31,10 @@ in
         };
       };
 
-      programs.zsh.shellAliases.nv = "nvim";
+      programs = {
+        zsh.shellAliases.nv = "nvim";
+        bash.shellAliases.nv = "nvim";
+      };
     };
   };
 }

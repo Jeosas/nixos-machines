@@ -25,6 +25,7 @@ in
       programs.starship = {
         enable = true;
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
+        enableBashIntegration = config.${namespace}.apps.bash.enable;
         settings = {
           format = ''
             $nix_shell$container$git_branch$aws$python$rust

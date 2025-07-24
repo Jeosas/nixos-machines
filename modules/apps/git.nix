@@ -65,6 +65,11 @@ in
           lz = "lazygit";
           fastcommit = ''git add -A; git commit -a -m "`curl -s https://whatthecommit.com/index.txt`"'';
         };
+
+        bash.shellAliases = {
+          lz = "lazygit";
+          fastcommit = ''git add -A; git commit -a -m "`curl -s https://whatthecommit.com/index.txt`"'';
+        };
       };
     };
   };

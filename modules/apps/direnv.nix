@@ -26,6 +26,7 @@ in
       programs.direnv = {
         enable = true;
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
+        enableBashIntegration = config.${namespace}.apps.bash.enable;
 
         nix-direnv.enable = true;
       };

@@ -27,6 +27,7 @@ in
       programs.yazi = {
         enable = true;
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
+        enableBashIntegration = config.${namespace}.apps.bash.enable;
 
         settings = {
           mgr = {

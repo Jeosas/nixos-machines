@@ -4,6 +4,7 @@
   ./apps/alvr.nix
   ./apps/ankama-launcher.nix
   ./apps/azure.nix
+  ./apps/bash.nix
   ./apps/bat.nix
   ./apps/blender.nix
   ./apps/btop.nix

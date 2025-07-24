@@ -48,6 +48,9 @@ with lib;
         zsh.shellAliases = {
           lj = "lazyjj";
         };
+        bash.shellAliases = {
+          lj = "lazyjj";
+        };
       };
     };
   };
