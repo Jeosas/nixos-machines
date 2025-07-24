@@ -38,9 +38,6 @@ in
         }
       ];
 
-      # Configuring for the default shell I want to use.
-      programs.zsh.enable = true;
-
       users = {
         mutableUsers = false;
 
@@ -48,7 +45,7 @@ in
           inherit (cfg) name hashedPasswordFile home;
 
           group = "users";
-          shell = pkgs.zsh;
+          shell = pkgs.bash;
 
           extraGroups = [ "wheel" ] ++ cfg.extraGroups;
 

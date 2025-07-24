@@ -20,6 +20,7 @@ in
   config = {
     ${namespace}.apps = {
       # keep-sorted start case=no numeric=yes
+      bash.enable = true;
       bat.enable = true;
       blender.enable = true;
       btop.enable = true;
@@ -44,7 +45,6 @@ in
       vesktop.enable = true;
       xournal.enable = true;
       yazi.enable = true;
-      zsh.enable = true;
       # keep-sorted end
     };
 

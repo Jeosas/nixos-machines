@@ -115,65 +115,64 @@ in
               ];
             };
 
-            bind =
-              [
-                # apps
-                "SUPER, d, exec, wofi --show drun"
-                "SUPER_SHIFT, Return, exec, mullvad-browser"
-                "SUPER_CTRL, Return, exec, firefox"
-                "SUPER, Return, exec, ghostty"
-                "SUPER, c, exec, kitty -e nmtui"
-                "SUPER, v, exec, kitty -e ncpamixer"
-                "SUPER, b, exec, kitty -e bluetuith"
+            bind = [
+              # apps
+              "SUPER, d, exec, wofi --show drun"
+              "SUPER_SHIFT, Return, exec, mullvad-browser"
+              "SUPER_CTRL, Return, exec, firefox"
+              "SUPER, Return, exec, ghostty"
+              "SUPER, c, exec, kitty -e nmtui"
+              "SUPER, v, exec, kitty -e ncpamixer"
+              "SUPER, b, exec, kitty -e bluetuith"
 
-                # workspace move
-                "SUPER_CTRL_SHIFT, h, movecurrentworkspacetomonitor, l"
-                "SUPER_CTRL_SHIFT, l, movecurrentworkspacetomonitor, r"
-                "SUPER_CTRL_SHIFT, k, movecurrentworkspacetomonitor, u"
-                "SUPER_CTRL_SHIFT, j, movecurrentworkspacetomonitor, d"
+              # workspace move
+              "SUPER_CTRL_SHIFT, h, movecurrentworkspacetomonitor, l"
+              "SUPER_CTRL_SHIFT, l, movecurrentworkspacetomonitor, r"
+              "SUPER_CTRL_SHIFT, k, movecurrentworkspacetomonitor, u"
+              "SUPER_CTRL_SHIFT, j, movecurrentworkspacetomonitor, d"
 
-                # window focus move
-                "SUPER, h, movefocus, l"
-                "SUPER, l, movefocus, r"
-                "SUPER, k, movefocus, u"
-                "SUPER, j, movefocus, d"
+              # window focus move
+              "SUPER, h, movefocus, l"
+              "SUPER, l, movefocus, r"
+              "SUPER, k, movefocus, u"
+              "SUPER, j, movefocus, d"
 
-                # window move
-                "SUPER_SHIFT, h, movewindow, l"
-                "SUPER_SHIFT, l, movewindow, r"
-                "SUPER_SHIFT, k, movewindow, u"
-                "SUPER_SHIFT, j, movewindow, d"
+              # window move
+              "SUPER_SHIFT, h, movewindow, l"
+              "SUPER_SHIFT, l, movewindow, r"
+              "SUPER_SHIFT, k, movewindow, u"
+              "SUPER_SHIFT, j, movewindow, d"
 
-                # window action
-                "SUPER_SHIFT, a, killactive"
-                "SUPER, Space, togglefloating, active"
-                "SUPER, f, fullscreen, 1"
-                "SUPER_SHIFT, p, pin, active"
+              # window action
+              "SUPER_SHIFT, a, killactive"
+              "SUPER, Space, togglefloating, active"
+              "SUPER, f, fullscreen, 1"
+              "SUPER_SHIFT, p, pin, active"
 
-                # screen capture
-                ", Print, exec, hyprshot -m output"
-                "SHIFT, Print, exec, hyprshot -m region"
+              # screen capture
+              ", Print, exec, hyprshot -m output"
+              "SHIFT, Print, exec, hyprshot -m region"
 
-                # screen lock
-                "SUPER_SHIFT, d, exec, hyprlock"
-              ]
-              ++ (concatLists (
-                genList (
-                  x:
-                  let
-                    ws =
-                      let
-                        c = (x + 1) / 10;
-                      in
-                      toString (x + 1 - (c * 10));
-                  in
-                  [
-                    # change workspace [0-9]
-                    "SUPER, ${ws}, workspace, ${toString (x + 1)}"
-                    "SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-                  ]
-                ) 10
-              ));
+              # screen lock
+              "SUPER_SHIFT, d, exec, hyprlock"
+            ]
+            ++ (concatLists (
+              genList (
+                x:
+                let
+                  ws =
+                    let
+                      c = (x + 1) / 10;
+                    in
+                    toString (x + 1 - (c * 10));
+                in
+                [
+                  # change workspace [0-9]
+                  "SUPER, ${ws}, workspace, ${toString (x + 1)}"
+                  "SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+                ]
+              ) 10
+            ));
 
             binde = [
               # window resize
@@ -223,7 +222,7 @@ in
       };
 
       # Start on login
-      programs.zsh = {
+      programs.bash = {
         profileExtra =
           # bash
           ''

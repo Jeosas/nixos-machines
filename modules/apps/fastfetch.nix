@@ -66,8 +66,8 @@ in
             ];
           };
         };
-        zsh = {
-          initContent =
+        bash = {
+          initExtra =
             # bash
             ''
               if [ "$TERM" = xterm-ghostty ]; then
