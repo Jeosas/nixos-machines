@@ -28,10 +28,8 @@ in
         enableBashIntegration = config.${namespace}.apps.bash.enable;
         settings = {
           format = ''
-            $nix_shell$container$git_branch$aws$python$rust
-            $directory$battery$character'';
-
-          right_format = "$status$sudo$username[@](white)$hostname$time";
+            $username[@](white)$hostname $nix_shell''${custom.jj}$git_branch$python$rust
+            $sudo$directory$battery$status$character'';
 
           directory = {
             format = "[$path ]($style)";
@@ -53,16 +51,9 @@ in
             ];
           };
 
-          time = {
-            disabled = false;
-            format = "[ $time](white)";
-            time_format = "%R";
-            utc_time_offset = "+1";
-          };
-
           username = {
             show_always = true;
-            format = "[ $user]($style)";
+            format = "[$user]($style)";
             style_user = "white";
             style_root = "red";
           };
@@ -73,7 +64,32 @@ in
             ssh_only = false;
           };
 
+          nix_shell = {
+            format = "\\[[$symbol$state( \\($name\\))]($style)\\]";
+            symbol = " ";
+          };
+
+          git_branch = {
+            format = "\\[[$symbol$branch]($style)\\]";
+            only_attached = true;
+          };
+
+          python.format = ''\\[[''${symbol}''${pyenv_prefix}(''${version})(\\($virtualenv\\))]($style)\\]'';
+          rust.format = "\\[[$symbol($version)]($style)\\]";
+
           sudo.format = "[󱑷](bold yellow)";
+
+          custom.jj = {
+            disabled = false;
+            command = "jj log --no-graph -T description";
+            when = "true";
+            # when = "jj st";
+            format = "\\[[$symbol($output)]($style)\\]";
+            symbol = " ";
+            style = "bold purple";
+            require_repo = true;
+            detect_folders = [ ".jj" ];
+          };
         };
       };
     };
