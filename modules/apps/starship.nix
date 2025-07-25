@@ -28,7 +28,7 @@ in
         enableBashIntegration = config.${namespace}.apps.bash.enable;
         settings = {
           format = ''
-            $username[@](white)$hostname $nix_shell''${custom.jj}$git_branch$python$rust
+            $username[@](white)$hostname$nix_shell''${custom.jj}$git_branch$python$rust
             $sudo$directory$battery$status$character'';
 
           directory = {
@@ -74,16 +74,16 @@ in
             only_attached = true;
           };
 
-          python.format = ''\\[[''${symbol}''${pyenv_prefix}(''${version})(\\($virtualenv\\))]($style)\\]'';
+          python.format = ''\[[''${symbol}''${pyenv_prefix}(''${version})(\($virtualenv\))]($style)\]'';
+
           rust.format = "\\[[$symbol($version)]($style)\\]";
 
           sudo.format = "[󱑷](bold yellow)";
 
           custom.jj = {
             disabled = false;
-            command = "jj log --no-graph -T description";
-            when = "true";
-            # when = "jj st";
+            command = ''d=$(jj log --no-graph -T 'description.first_line()' -r @); test -n "$d" && echo $d || echo "(no desc)"'';
+            when = "jj st";
             format = "\\[[$symbol($output)]($style)\\]";
             symbol = " ";
             style = "bold purple";
