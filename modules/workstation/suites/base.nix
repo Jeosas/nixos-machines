@@ -55,6 +55,7 @@ in
         mpv
         ripgrep
         termscp
+        dua
         # keep-sorted end
       ];
     };

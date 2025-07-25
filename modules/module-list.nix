@@ -1,6 +1,9 @@
 [
   # keep-sorted start case=no numeric=yes
   ./apps/aider.nix
+  ./apps/fd.nix
+  ./apps/eza.nix
+  ./apps/zoxide.nix
   ./apps/alvr.nix
   ./apps/ankama-launcher.nix
   ./apps/azure.nix
