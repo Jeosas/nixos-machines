@@ -22,6 +22,10 @@ in
       }
     ];
 
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".local/share/zoxide"
+    ];
+
     home-manager.users.${config.${namespace}.user.name} = {
       programs = {
         zoxide = {
