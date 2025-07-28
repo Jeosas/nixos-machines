@@ -39,7 +39,7 @@ let
 in
 {
   options.${namespace}.theme = with lib.types; {
-    wallpaper = mkOpt path ../assets/wallpaper.jpg "Wallpaper";
+    wallpaper = mkOpt path ../assets/wallpaper.png "Wallpaper";
     colors = listToAttrs (
       map
         (
