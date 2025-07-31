@@ -43,6 +43,19 @@ with lib;
               paginate = "never";
               default-command = [ "log" ];
             };
+            aliases = {
+              pre-commit = [
+                "util"
+                "exec"
+                "--"
+                "bash"
+                "-c"
+                ''
+                  jj diff -f ''${1:-'@-'} -t ''${2:-'@'} --name-only --no-pager | xargs pre-commit run --files
+                ''
+                ""
+              ];
+            };
           };
         };
         zsh.shellAliases = {
