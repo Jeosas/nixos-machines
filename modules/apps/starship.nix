@@ -74,9 +74,15 @@ in
             only_attached = true;
           };
 
-          python.format = ''\[[''${symbol}''${pyenv_prefix}(''${version})(\($virtualenv\))]($style)\]'';
+          python = {
+            format = ''\[[''${symbol}''${pyenv_prefix}(''${version})(\($virtualenv\))]($style)\]'';
+            symbol = " ";
+          };
 
-          rust.format = "\\[[$symbol($version)]($style)\\]";
+          rust = {
+            format = "\\[[$symbol($version)]($style)\\]";
+            symbol = " ";
+          };
 
           sudo.format = "[󱑷](bold yellow)";
 
