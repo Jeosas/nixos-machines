@@ -121,9 +121,9 @@ in
               "SUPER_SHIFT, Return, exec, mullvad-browser"
               "SUPER_CTRL, Return, exec, firefox"
               "SUPER, Return, exec, ghostty"
-              "SUPER, c, exec, kitty -e nmtui"
-              "SUPER, v, exec, kitty -e ncpamixer"
-              "SUPER, b, exec, kitty -e bluetuith"
+              "SUPER, c, exec, ghostty -e nmtui"
+              "SUPER, v, exec, ghostty -e ${lib.getExe pkgs.wiremix}"
+              "SUPER, b, exec, ghostty -e bluetuith"
 
               # workspace move
               "SUPER_CTRL_SHIFT, h, movecurrentworkspacetomonitor, l"

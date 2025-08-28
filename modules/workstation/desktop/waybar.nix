@@ -193,7 +193,7 @@ in
               car = "󰄋";
             };
             on-click = "volumectl mute";
-            on-click-right = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.ncpamixer}";
+            on-click-right = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.wiremix}";
           };
 
           network = {

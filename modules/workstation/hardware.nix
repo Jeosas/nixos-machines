@@ -45,7 +45,7 @@ in
           pulse.enable = true;
         };
       };
-      environment.systemPackages = with pkgs; [ ncpamixer ];
+      environment.systemPackages = with pkgs; [ wiremix ];
 
       # ssd
       services.fstrim.enable = cfg.enableSSD;
