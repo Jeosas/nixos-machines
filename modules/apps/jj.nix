@@ -43,7 +43,18 @@ with lib;
               paginate = "never";
               default-command = [ "log" ];
             };
+            revset-aliases = {
+              "closest_bookmark(to)" = "heads(::to & bookmarks())";
+            };
             aliases = {
+              tug = [
+                "bookmark"
+                "move"
+                "--from"
+                "closest_bookmark(@-)"
+                "--to"
+                "@-"
+              ];
               pre-commit = [
                 "util"
                 "exec"
