@@ -20,6 +20,7 @@ in
 
     services.wivrn = {
       enable = true;
+      package = pkgs.wivrn.override { cudaSupport = true; };
       autoStart = true;
       openFirewall = true;
       defaultRuntime = true;
@@ -27,12 +28,6 @@ in
       #   enable = true;
       #   json = {};
       # };
-
-      extraPackages =
-        with pkgs;
-        mkIf config.hardware.graphics.nvidia.enable [
-          monado-vulkan-layers
-        ];
     };
 
     ${namespace} = {

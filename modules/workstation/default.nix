@@ -32,7 +32,8 @@ in
     ./system.nix
     ./theme.nix
     # keep-sorted end
-  ] ++ import ../module-list.nix;
+  ]
+  ++ import ../module-list.nix;
 
   options.${namespace}.workstation = with lib.types; {
     hostName = mkOptRequired str "System hostname";
@@ -74,6 +75,15 @@ in
       overlays = [
         (import ../../overlay.nix { inherit namespace lib inputs; })
         inputs.nurpkgs.overlays.default
+        (
+          final: prev:
+          let
+            stable = import inputs.nixpkgs { inherit (pkgs) system; };
+          in
+          {
+            inherit (stable) azure-cli;
+          }
+        )
       ];
     };
 
