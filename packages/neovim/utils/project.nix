@@ -6,6 +6,7 @@
         "lsp"
         "pattern"
       ];
+      ignore_lsp = [ "tsserve" ];
       patterns = [
         ".git"
         "_darcs"
