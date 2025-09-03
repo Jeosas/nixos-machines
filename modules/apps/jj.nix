@@ -27,10 +27,6 @@ with lib;
     ${namespace}.apps.git.enable = true;
 
     home-manager.users.${config.${namespace}.user.name} = {
-      home.packages = with pkgs; [
-        lazyjj
-      ];
-
       programs = {
         jujutsu = {
           enable = true;
@@ -68,12 +64,6 @@ with lib;
               ];
             };
           };
-        };
-        zsh.shellAliases = {
-          lj = "lazyjj";
-        };
-        bash.shellAliases = {
-          lj = "lazyjj";
         };
       };
     };
