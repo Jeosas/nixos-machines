@@ -75,15 +75,6 @@ in
       overlays = [
         (import ../../overlay.nix { inherit namespace lib inputs; })
         inputs.nurpkgs.overlays.default
-        (
-          final: prev:
-          let
-            stable = import inputs.nixpkgs { inherit (pkgs) system; };
-          in
-          {
-            inherit (stable) azure-cli;
-          }
-        )
       ];
     };
 
