@@ -1,15 +1,15 @@
 { pkgs, ... }:
 {
   extraPackages = with pkgs; [
-    sqlfluff
+    sqruff
   ];
 
   plugins = {
     conform-nvim.settings.formatters_by_ft = {
-      sql = [ "sqlfluff" ];
+      sql = [ "sqruff" ];
     };
     lint.lintersByFt = {
-      sql = [ "sqlfluff" ];
+      sql = [ "sqruff" ];
     };
   };
 }
