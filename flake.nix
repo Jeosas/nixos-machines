@@ -93,7 +93,7 @@
           }
           (
             pkgs: with pkgs.${namespace}; {
-              inherit neovim;
+              inherit neovim pomodoro-cli;
             }
           );
 
