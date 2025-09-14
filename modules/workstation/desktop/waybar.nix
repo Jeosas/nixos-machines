@@ -15,6 +15,7 @@ let
   grey = colors.color0;
   green = colors.color2;
   red = colors.color9;
+  yellow = colors.color3;
 
   cfg = config.${namespace}.workstation.desktop.waybar;
 in
@@ -64,6 +65,8 @@ in
           # modules-center = [ ];
           modules-right = [
             "tray"
+            "custom/separator"
+            "custom/pomodoro"
             "custom/separator"
             "load"
             "memory"
@@ -240,6 +243,20 @@ in
           tray = {
             spacing = 10;
           };
+
+          "custom/pomodoro" =
+            let
+              pomodoro-cli = "${pkgs.${namespace}.pomodoro-cli}/bin/pomodoro-cli";
+            in
+            {
+              format = " {}";
+              exec = "${pomodoro-cli} status --format json --time-format segmented";
+              return-type = "json";
+              on-click = "${pomodoro-cli} start --add 5m --notify";
+              on-click-middle = "${pomodoro-cli} pause";
+              on-click-right = "${pomodoro-cli} stop";
+              interval = 1;
+            };
         };
 
         style =
@@ -313,6 +330,16 @@ in
 
             #custom-hl-fullscreen {
               color: ${red};
+            }
+
+            #custom-pomodoro.running {
+              color: ${green};
+            }
+            #custom-pomodoro.paused {
+              color: ${yellow};
+            }
+            #custom-pomodoro.finished {
+              color: ${white};
             }
           '';
       };
