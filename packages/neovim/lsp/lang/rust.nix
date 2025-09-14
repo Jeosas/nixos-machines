@@ -4,6 +4,12 @@
     lsp.servers.rust_analyzer = {
       enable = true;
 
+      settings = {
+        cargo = {
+          allFeatures = true;
+        };
+      };
+
       # use devShell env
       installRustc = false;
       installCargo = false;
