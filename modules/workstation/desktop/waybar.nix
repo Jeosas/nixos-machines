@@ -16,6 +16,7 @@ let
   green = colors.color2;
   red = colors.color9;
   yellow = colors.color3;
+  cyan = colors.color6;
 
   cfg = config.${namespace}.workstation.desktop.waybar;
 in
@@ -151,9 +152,16 @@ in
             tooltip = true;
             tooltip-format = "{calendar}";
             calendar = {
+              mode = "month";
               format = {
-                today = "<span color='${green}'><b>{}</b></span>";
+                weekdays = "<span color='${cyan}'><b>{}</b></span>";
+                today = "<span color='${green}'><b><u>{}</u></b></span>";
               };
+            };
+            actions = {
+              on-scroll-up = "shift_down";
+              on-scroll-down = "shift_up";
+              on-click-right = "shift_reset";
             };
           };
 
