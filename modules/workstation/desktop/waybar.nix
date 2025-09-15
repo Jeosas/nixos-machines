@@ -65,6 +65,7 @@ in
           ];
           # modules-center = [ ];
           modules-right = [
+            "privacy"
             "tray"
             "custom/separator"
             "custom/pomodoro"
@@ -131,6 +132,26 @@ in
             exec = "nixos-version";
             tooltip = false;
           };
+
+          privacy =
+            let
+              icon-size = 14;
+            in
+            {
+              inherit icon-size;
+              icon-spacing = 4;
+              transition-duration = 250;
+              modules = [
+                {
+                  type = "screenshare";
+                  tooltip-icon-size = icon-size;
+                }
+                {
+                  type = "audio-in";
+                  tooltip-icon-size = icon-size;
+                }
+              ];
+            };
 
           "custom/hl-fullscreen" = {
             format = "{}";
@@ -348,6 +369,10 @@ in
             }
             #custom-pomodoro.finished {
               color: ${white};
+            }
+
+            #privacy-item {
+              color: ${red};
             }
           '';
       };
