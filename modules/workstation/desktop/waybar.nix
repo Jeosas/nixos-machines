@@ -59,7 +59,6 @@ in
             "image#nixos"
             "custom/separator"
             "hyprland/workspaces"
-            "custom/hl-fullscreen"
             "custom/separator"
             "custom/version"
           ];
@@ -152,21 +151,6 @@ in
                 }
               ];
             };
-
-          "custom/hl-fullscreen" = {
-            format = "{}";
-            interval = 1;
-            exec = ''
-              fs=`hyprctl activewindow -j | jq .fullscreen`;
-              if [ $fs = "1" ]; then
-                echo "FULLSCREEN";
-              else
-                echo "";
-              fi;
-            '';
-            tooltip = false;
-            hide-empty-text = true;
-          };
 
           clock = {
             format = "{:%H:%M}";
