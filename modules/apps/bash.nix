@@ -54,6 +54,7 @@ in
             ls = "${getExe pkgs.eza}";
             la = "${getExe pkgs.eza} -al";
             tree = "${getExe pkgs.eza} -T";
+            "~" = "cd ~";
             ".." = "cd ..";
             "..." = "cd ../..";
             "...." = "cd ../../..";
