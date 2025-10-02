@@ -45,7 +45,11 @@ in
           enableVteIntegration = true;
           historyControl = [
             "erasedups"
+            "ignoredups"
             "ignorespace"
+          ];
+          shellOptions = [
+            "histappend"
           ];
           sessionVariables = {
             PATH = "$HOME/.local/bin:$PATH";
@@ -54,6 +58,7 @@ in
             ls = "${getExe pkgs.eza}";
             la = "${getExe pkgs.eza} -al";
             tree = "${getExe pkgs.eza} -T";
+            ltmp = ''${getExe pkgs.fd} --one-file-system --base-directory / --type f --hidden --exclude "{tmp,etc/passwd,home/jeosas/.cache}"'';
             "~" = "cd ~";
             ".." = "cd ..";
             "..." = "cd ../..";
@@ -62,9 +67,13 @@ in
             "......" = "cd ../../../../..";
           };
           bashrcExtra = ''
+            # function commands
             jqfind () {
                 ${pkgs.jq}/bin/jq '{"path": ([path(.. | select('$1'))|map(if type=="number" then "[\(.)]" else tostring end)|join(".")|split(".[]")|join("[]")]|unique|map("."+.)|.[]), "value": (.. | select('$1'))}'
             }
+
+            # Sync bach history across terminal windows
+            PROMPT_COMMAND="''${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
           '';
         };
       };
