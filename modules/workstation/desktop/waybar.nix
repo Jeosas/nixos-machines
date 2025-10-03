@@ -45,7 +45,7 @@ in
         settings.main = {
           # Bar setting
           position = "top";
-          layer = "top";
+          layer = "bottom";
           height = 36;
           margin-top = 8;
           margin-left = 8;
