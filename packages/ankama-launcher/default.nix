@@ -4,7 +4,7 @@ let
   version = "latest";
   src = fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
-    sha256 = "wG7xg6uQJsdJR9Xu2T9PCVQb+LSyO10BveGftOrc2Uo=";
+    sha256 = "0GI3qBt/hwRqmfvg817C5IiD8s9AYzTX6w2UAmyR02I=";
     name = "ankama-launcher.AppImage";
   };
 
