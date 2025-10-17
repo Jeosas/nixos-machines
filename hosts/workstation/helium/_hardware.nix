@@ -24,6 +24,7 @@
     device = "none";
     fsType = "tmpfs";
     neededForBoot = true;
+    options = [ "size=3G" "mode=755" ];
   };
 
   fileSystems."/nix" = {
