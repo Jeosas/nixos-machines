@@ -29,7 +29,6 @@ in
       suites = {
         games.enable = true;
         simracing.enable = true;
-        vr.enable = true;
       };
 
       sshConfig = with hosts; {
