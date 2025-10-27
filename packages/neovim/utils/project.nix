@@ -3,18 +3,15 @@
     enable = true;
     settings = {
       detection_methods = [
-        "lsp"
         "pattern"
       ];
       ignore_lsp = [ "tsserve" ];
       patterns = [
         ".git"
-        "_darcs"
-        ".hg"
-        ".bzr"
-        ".svn"
+        ".jj"
+        "justfile"
         "Makefile"
-        "package.json"
+        "=~"
       ];
     };
   };
