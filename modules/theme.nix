@@ -2,7 +2,6 @@
   lib,
   pkgs,
   namespace,
-  config,
   ...
 }:
 let
@@ -30,16 +29,10 @@ let
     color14 = "#8fbcbb"; # nord7 - bcyan
     color15 = "#eceff4"; # nord6 - cwhite
   };
-
-  defaultFont =
-    {
-      "24.11" = pkgs.nerdfonts.override { fonts = [ "MPlus" ]; };
-    }
-    ."${config.system.nixos.release}" or pkgs.nerd-fonts."m+";
 in
 {
   options.${namespace}.theme = with lib.types; {
-    wallpaper = mkOpt path ../assets/wallpaper.png "Wallpaper";
+    wallpaper = mkOpt path ../assets/minimal-shuttle.png "Wallpaper";
     colors = listToAttrs (
       map
         (
