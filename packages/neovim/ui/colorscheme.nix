@@ -9,6 +9,7 @@
       cursorline_transparent = false;
       disable_background = true;
       italic = true;
+      bold = true;
       uniform_diff_background = false;
     };
   };

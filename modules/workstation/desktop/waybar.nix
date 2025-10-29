@@ -11,12 +11,12 @@ let
   inherit (config.${namespace}.theme) colors;
 
   bg = colors.background;
-  white = colors.color15;
-  grey = colors.color0;
-  green = colors.color2;
-  red = colors.color9;
-  yellow = colors.color3;
-  cyan = colors.color6;
+  white = colors.color5;
+  grey = colors.color1;
+  green = colors.color11;
+  red = colors.color8;
+  yellow = colors.color10;
+  cyan = colors.color12;
 
   cfg = config.${namespace}.workstation.desktop.waybar;
 in
@@ -325,7 +325,7 @@ in
             }
 
             #clock {
-              font-family: "${config.${namespace}.theme.fonts.mono.name}";
+              font-family: "${config.${namespace}.theme.fonts.sans.name}";
               font-size: 18px;
               letter-spacing: 2px;
             }

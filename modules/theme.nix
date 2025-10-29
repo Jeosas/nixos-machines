@@ -8,31 +8,32 @@ let
   inherit (lib) listToAttrs;
   inherit (lib.${namespace}) mkOpt mkColorOpt;
 
-  defaultColors = {
-    background = "#2e3440"; # nord0
-    foreground = "#d8dee9"; # nord4
-    cursor = "#d8dee9"; # nord4
-    color0 = "#3b4252"; # nord1 - black
-    color1 = "#bf616a"; # nord11 - red
-    color2 = "#a3be8c"; # nord14 - green
-    color3 = "#ebcb8b"; # nord13 - yellow
-    color4 = "#81a1c1"; # nord9 - blue
-    color5 = "#b48ead"; # nord15 - magenta
-    color6 = "#88c0d0"; # nord8 - cyan
-    color7 = "#eceff4"; # nord5 - white
-    color8 = "#4c566a"; # nord3 - bblack
-    color9 = "#bf616a"; # nord11 - bred
-    color10 = "#a3be8c"; # nord14 - bgreen
-    color11 = "#ebcb8b"; # nord13 - byallow
-    color12 = "#81a1c1"; # nord9 - bblue
-    color13 = "#b48ead"; # nord15 - bmagenta
-    color14 = "#8fbcbb"; # nord7 - bcyan
-    color15 = "#eceff4"; # nord6 - cwhite
+  defaultColors = rec {
+    background = color0;
+    foreground = color5;
+    cursor = color5;
+
+    color0 = "#2e3440"; # black
+    color1 = "#3b4252"; # bblack
+    color2 = "#434c5e"; # bbblack
+    color3 = "#4c566a"; # bbbblack
+    color4 = "#d8dee9"; # white
+    color5 = "#e5e9f0"; # bwhite
+    color6 = "#eceff4"; # bbwhite
+    color7 = "#8fbcbb"; # bgreen
+    color8 = "#bf616a"; # red
+    color9 = "#d08770"; # orange
+    color10 = "#ebcb8b"; # yellow
+    color11 = "#a3be8c"; # green
+    color12 = "#88c0d0"; # cyan
+    color13 = "#81a1c1"; # bblue
+    color14 = "#b48ead"; # magenta
+    color15 = "#5e81ac"; # blue
   };
 in
 {
   options.${namespace}.theme = with lib.types; {
-    wallpaper = mkOpt path ../assets/minimal-shuttle.png "Wallpaper";
+    wallpaper = mkOpt path ../assets/alberta.jpg "Wallpaper";
     colors = listToAttrs (
       map
         (
@@ -71,7 +72,7 @@ in
         package = mkOpt package pkgs.nerd-fonts."m+" "sans font package.";
       };
       mono = {
-        name = mkOpt str "Hack" "Default monospace font";
+        name = mkOpt str "Hack Nerd Font Mono" "Default monospace font";
         package = mkOpt package pkgs.nerd-fonts.hack "mono font package";
       };
       emoji = {

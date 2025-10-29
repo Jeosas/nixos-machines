@@ -66,7 +66,8 @@ in
               gaps_in = 4;
               gaps_out = 8;
               border_size = 1;
-              "col.active_border" = "rgba(${removePrefix "#" color2}ff) rgba(${removePrefix "#" color6}ff) 45deg";
+              "col.active_border" =
+                "rgba(${removePrefix "#" color11}ff) rgba(${removePrefix "#" color12}ff) 45deg";
               "col.inactive_border" = "rgba(${removePrefix "#" background}cc)";
               layout = "dwindle";
               allow_tearing = false;

@@ -54,19 +54,19 @@
             timeout = 3;
             inherit (colors) background foreground;
             highlight = colors.foreground;
-            frame_color = colors.color2;
+            frame_color = colors.color11;
           };
           urgency_normal = {
             timeout = 6;
             inherit (colors) background foreground;
             highlight = colors.foreground;
-            frame_color = colors.color2;
+            frame_color = colors.color11;
           };
           urgency_high = {
             timeout = 0;
             inherit (colors) background foreground;
             highlight = colors.foreground;
-            frame_color = colors.color1;
+            frame_color = colors.color8;
           };
         };
       };

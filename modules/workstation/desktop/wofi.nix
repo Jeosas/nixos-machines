@@ -37,7 +37,7 @@
               font-size: 13px;
               margin: 0px;
               padding: 0px;
-              border: 2px solid ${colors.color2};
+              border: 2px solid ${colors.color11};
               border-radius: 6px;
             }
 
