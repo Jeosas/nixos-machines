@@ -53,7 +53,7 @@ in
 
           # Windaube fonts for compat
           corefonts
-          vistafonts
+          vista-fonts
 
           # Theme
           sans.package

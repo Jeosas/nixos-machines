@@ -100,14 +100,14 @@
       devShells = forAllSystems { inherit nixpkgs; } (pkgs: {
         default = pkgs.mkShell {
           name = "default";
-          inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
+          inherit (self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check) shellHook;
           buildInputs =
             with pkgs;
             [
               just
               nixos-anywhere
             ]
-            ++ self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
+            ++ self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check.enabledPackages;
         };
         install = pkgs.mkShell {
           name = "nixos-install";
@@ -125,7 +125,7 @@
       formatter = forAllSystems { nixpkgs = unstable; } (pkgs: pkgs.nixfmt-tree);
 
       checks = forAllSystems { nixpkgs = unstable; } (pkgs: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.stdenv.hostPlatform.system}.run {
           src = ./.;
           hooks = {
             # General

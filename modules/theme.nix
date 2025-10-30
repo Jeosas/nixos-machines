@@ -77,7 +77,7 @@ in
       };
       emoji = {
         name = mkOpt str "Noto Color Emoji" "Default emoji font";
-        package = mkOpt package pkgs.noto-fonts-emoji "emoji font package";
+        package = mkOpt package pkgs.noto-fonts-color-emoji "emoji font package";
       };
     };
     cursor = {

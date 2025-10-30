@@ -50,7 +50,7 @@ in
 
           Restart = "always";
 
-          ExecStart = "${inputs.innovlens.packages.${pkgs.system}.http}/bin/innovlens";
+          ExecStart = "${inputs.innovlens.packages.${pkgs.stdenv.hostPlatform.system}.http}/bin/innovlens";
 
           ProtectSystem = "full";
           ReadWritePaths = "${dataDir}";

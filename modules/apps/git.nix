@@ -30,24 +30,27 @@ in
         git = {
           enable = true;
 
-          inherit (cfg) userName userEmail;
-
-          extraConfig = {
+          settings = {
+            user = {
+              name = cfg.userName;
+              email = cfg.userEmail;
+            };
             color.ui = true;
             pull.rebase = true;
             fetch.prune = true;
             init.defaultBranch = "main";
           };
+        };
 
-          # Pager for diff
-          delta = {
-            enable = true;
-            options = {
-              navigate = true;
-              side-by-side = true;
-              line-numbers = true;
-              syntax-theme = "Nord";
-            };
+        # Pager for diff
+        delta = {
+          enable = true;
+          enableGitIntegration = true;
+          options = {
+            navigate = true;
+            side-by-side = true;
+            line-numbers = true;
+            syntax-theme = "Nord";
           };
         };
 

@@ -1,6 +1,7 @@
 {
   namespace,
   inputs,
+  stdenv,
   config,
   ...
 }:
@@ -17,7 +18,7 @@ in
 
       serverAliases = [ "www.${domain}" ];
 
-      root = "${inputs.thewinterdev-website.packages.${config.nixpkgs.system}.default}/www/public";
+      root = "${inputs.thewinterdev-website.packages.${stdenv.hostPlatform.system}.default}/www/public";
 
       extraConfig = ''
         error_page 404 /404.html;

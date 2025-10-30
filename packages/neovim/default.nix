@@ -2,11 +2,11 @@
   lib,
   pkgs,
   inputs,
-  system,
+  stdenv,
   namespace,
   ...
 }:
-inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+inputs.nixvim.legacyPackages.${stdenv.hostPlatform.system}.makeNixvimWithModule {
   inherit pkgs;
   module =
     { ... }:
