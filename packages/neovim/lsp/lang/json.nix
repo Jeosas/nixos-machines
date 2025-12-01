@@ -2,7 +2,7 @@
 {
   extraPackages = with pkgs; [
     jq
-    nodePackages.jsonlint
+    python3
   ];
 
   plugins = {
@@ -13,7 +13,7 @@
       json = [ "jq" ];
     };
     lint.lintersByFt = {
-      json = [ "jsonlint" ];
+      json = [ "json_tool" ];
     };
 
     schemastore = {

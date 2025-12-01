@@ -3,7 +3,7 @@
 
   inputs = {
     # NixPkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     # NixPkgs unstable
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -13,7 +13,7 @@
 
     # Git Hooks
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
-    pre-commit-hooks.inputs.nixpkgs.follows = "unstable";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     # NixOS User Repository
     nurpkgs.url = "github:nix-community/NUR";
@@ -26,8 +26,8 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "unstable";
+    home-manager.url = "github:nix-community/home-manager/release-25.11"; # keep synced with nixpkgs version
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # NixGL: support graphical apps on non-nixos distros
     nixgl.url = "github:guibou/nixGL";
@@ -42,8 +42,8 @@
     yazi-plugins.flake = false;
 
     # NixVim
-    nixvim.url = "github:nix-community/nixvim/main"; # keep synced with nixpkgs version
-    nixvim.inputs.nixpkgs.follows = "unstable";
+    nixvim.url = "github:nix-community/nixvim/nixos-25.11"; # keep synced with nixpkgs version
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     #  --- Perso--- // TODO: migrate in here as a monorepository
     # thewinterdev website
@@ -139,7 +139,6 @@
 
             # Nix
             nixfmt-rfc-style.enable = true;
-            flake-checker.enable = true;
           };
         };
       });

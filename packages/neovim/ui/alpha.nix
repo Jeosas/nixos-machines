@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ _, ... }:
 {
   autoCmd = [
     {
@@ -10,7 +10,7 @@
 
   plugins.alpha = {
     enable = true;
-    layout = [
+    settings.layout = [
       {
         type = "padding";
         val = 2;

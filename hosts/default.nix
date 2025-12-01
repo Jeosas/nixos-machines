@@ -28,10 +28,10 @@ let
 
   mkWorkstation =
     system: systemConfigPath:
-    inputs.unstable.lib.nixosSystem {
+    inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = args // {
-        lib = lib.${namespace}.extendLib inputs.unstable.lib;
+        lib = lib.${namespace}.extendLib inputs.nixpkgs.lib;
       };
       modules = [
         ../modules/workstation
