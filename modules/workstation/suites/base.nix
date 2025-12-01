@@ -37,7 +37,6 @@ in
       libreoffice.enable = true;
       mullvad.enable = true;
       neovim.enable = true;
-      qemu.enable = true;
       signal.enable = true;
       starship.enable = true;
       tldr.enable = true;

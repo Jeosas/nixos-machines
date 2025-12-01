@@ -37,13 +37,12 @@
   ./apps/ongaku.nix
   ./apps/openrazer.nix
   ./apps/oversteer.nix
-  ./apps/qemu.nix
   ./apps/signal.nix
   ./apps/starship.nix
+  ./apps/libvirtd.nix
   ./apps/steam.nix
   ./apps/tldr.nix
   ./apps/transmission.nix
-  ./apps/vagrant.nix
   ./apps/vesktop.nix
   ./apps/wireguard.nix
   ./apps/wivrn.nix

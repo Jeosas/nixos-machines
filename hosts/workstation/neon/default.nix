@@ -48,11 +48,12 @@ in
     };
 
     apps = {
+      docker.enableNvidia = true;
+      libvirtd.enable = true;
       ollama = {
         enable = true;
         acceleration = "cuda";
       };
-      docker.enableNvidia = true;
       openrazer.enable = true;
       wootility.enable = true;
     };
