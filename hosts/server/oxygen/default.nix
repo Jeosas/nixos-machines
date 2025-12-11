@@ -1,6 +1,7 @@
 {
   lib,
   namespace,
+  inputs,
   ...
 }:
 let
@@ -11,6 +12,7 @@ in
     ./hardware.nix
     ./www/thewinterdev_fr.nix
     ./www/innovlens-fr.nix
+    ./www/postgres.nix
   ];
 
   ${namespace} = {
@@ -27,6 +29,10 @@ in
       goatcounter.enable = true;
     };
   };
+
+  nixpkgs.overlays = [
+    inputs.innovlens.overlays.innovlens
+  ];
 
   system.stateVersion = "24.05";
 }

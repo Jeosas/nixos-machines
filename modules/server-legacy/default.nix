@@ -25,10 +25,12 @@ in
     "${modulesPath}/profiles/headless.nix"
     "${modulesPath}/profiles/minimal.nix"
 
+    ../sops.nix
     ../user.nix
     ../impermanence.nix
     ./mixins/rpi3.nix
-  ] ++ import ../module-list.nix;
+  ]
+  ++ import ../module-list.nix;
 
   options.${namespace}.server-legacy = with lib.types; {
     hostName = mkOptRequired str "System hostname";
@@ -128,6 +130,7 @@ in
         inherit sshKeys;
         enableHomeManager = mkForce false;
       };
+      sops.secretFile = ../../secrets/oxygen.yaml;
     };
   };
 }

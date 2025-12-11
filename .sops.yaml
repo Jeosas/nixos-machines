@@ -1,0 +1,12 @@
+---
+keys:
+  # Admins
+  - &admin_jeosas_neon age1p2q5m4fd20z2fc9dus5un843tmt97q2sqlnh282dzclyjnfezyusv38eg4
+  # Hosts
+  - &host_oxygen age1znls3fetw0c8vwxtvr3mlcr2exjkycrwrr40zfps9gja96erdq2qegcf4c
+creation_rules:
+  - path_regex: secrets/oxygen.yaml
+    key_groups:
+      - age:
+          - *host_oxygen
+          - *admin_jeosas_neon

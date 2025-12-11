@@ -21,6 +21,10 @@
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
 
+    # Sops: secret management
+    sops.url = "github:Mic92/sops-nix";
+    sops.inputs.nixpkgs.follows = "nixpkgs";
+
     # Disko: declarative disk formatting
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -106,6 +110,7 @@
             [
               just
               nixos-anywhere
+              sops
             ]
             ++ self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check.enabledPackages;
         };
