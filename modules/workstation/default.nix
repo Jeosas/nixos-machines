@@ -113,6 +113,7 @@ in
       ];
       users.${config.${namespace}.user.name}.directories = [
         ".ssh"
+        ".config/sops/age"
       ];
     };
 
