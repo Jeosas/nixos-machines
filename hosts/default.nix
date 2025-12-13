@@ -63,7 +63,6 @@ in
   oxygen = mkServerLegacy "aarch64-linux" ./server/oxygen;
   carbon = mkServer "x86_64-linux" ./server/carbon;
 
-  fr-jb-xps = mkWorkstation "x86_64-linux" ./workstation/fr-jb-xps;
   helium = mkWorkstation "x86_64-linux" ./workstation/helium;
   neon = mkWorkstation "x86_64-linux" ./workstation/neon;
 
