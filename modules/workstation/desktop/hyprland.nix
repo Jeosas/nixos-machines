@@ -26,6 +26,12 @@ in
       xwayland.enable = true;
     };
 
+    # https://github.com/NixOS/nixpkgs/issues/464473
+    i18n.inputMethod = {
+      enable = true;
+      type = "ibus";
+    };
+
     home-manager.users.${config.${namespace}.user.name} = {
       home = {
         packages =
