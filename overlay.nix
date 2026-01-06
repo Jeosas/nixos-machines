@@ -14,6 +14,7 @@ in
     neovim = mkPackage ./packages/neovim;
     nordzy-cursors = mkPackage ./packages/nordzy-cursors;
     pomodoro-cli = mkPackage ./packages/pomodoro-cli;
+    bongocat = mkPackage ./packages/bongocat;
 
     inherit (inputs.ongaku.packages.${prev.system}) ongaku;
     inherit (inputs.maudfmt.packages.${prev.system}) maudfmt;

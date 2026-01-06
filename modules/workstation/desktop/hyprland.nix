@@ -16,11 +16,16 @@ in
 {
   options.${namespace}.workstation.desktop.hyprland = with lib.types; {
     monitors = mkOpt (listOf str) [ ] "List of monitor settings.";
+    keyboard_device = mkOpt str "" "kbd event path (e.g. /lib/input/event5)";
     exec = mkOpt (listOf str) [ ] "List of process to run on load.";
     exec-once = mkOpt (listOf str) [ ] "List process to run at startup.";
   };
 
   config = {
+    ${namespace}.workstation.desktop.hyprland.exec-once = with pkgs.${namespace}; [
+      "${(bongocat.override { inherit (cfg) keyboard_device; })}/bin/bongocat"
+    ];
+
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

@@ -97,7 +97,7 @@
           }
           (
             pkgs: with pkgs.${namespace}; {
-              inherit neovim pomodoro-cli;
+              inherit neovim pomodoro-cli bongocat;
             }
           );
 

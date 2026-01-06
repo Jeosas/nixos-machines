@@ -22,7 +22,10 @@ in
       };
 
       desktop = {
-        hyprland.monitors = [ ",3440x1440@144,auto,1" ];
+        hyprland = {
+          monitors = [ ",3440x1440@144,auto,1" ];
+          keyboard_device = "/dev/input/event5";
+        };
         waybar.cpu-temp-zone = 2;
       };
 
