@@ -24,11 +24,14 @@ in
       };
 
       desktop = {
-        hyprland.monitors = [
-          "eDP-1,1920x1080@60,auto,1"
-          "HDMI-A-1,1920x1080@60,auto,1"
-          ",preferred,auto,1"
-        ];
+        hyprland = {
+          monitors = [
+            "eDP-1,1920x1080@60,auto,1"
+            "HDMI-A-1,1920x1080@60,auto,1"
+            ",preferred,auto,1"
+          ];
+          keyboard_device = "/dev/input/event13";
+        };
         waybar.cpu-temp-zone = 6;
       };
 
