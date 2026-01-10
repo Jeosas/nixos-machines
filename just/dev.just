@@ -13,7 +13,7 @@ vm host:
 
 build-iso:
   @echo "Building iso..."
-  nixos-rebuild build-image --flake .#iso --image-variant iso-installer
+  nix build .#nixosConfigurations.iso.config.system.build.isoImage
 
 burn-iso drive: build-iso
   @echo "Burning iso to {{drive}}..."
