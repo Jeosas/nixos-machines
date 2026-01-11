@@ -64,5 +64,15 @@ in
     hostId = "30e20076";
   };
 
+  ${namespace} = {
+    services = {
+      unbound = {
+        enable = true;
+        openToNetwork = true;
+        useRecursiveDNS = false;
+      };
+    };
+  };
+
   system.stateVersion = "25.11";
 }

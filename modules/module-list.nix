@@ -52,5 +52,6 @@
   ./apps/zsh.nix
   ./services/goatcounter.nix
   ./services/nginx.nix
+  ./services/unbound.nix
   # keep-sorted end
 ]

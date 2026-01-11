@@ -23,7 +23,7 @@ in
   options.${namespace}.user = with lib.types; {
     name = mkOpt str "jeosas" "The name to use for the user account.";
     home = mkOpt str "/home/${cfg.name}" "The users's home directory.";
-    hashedPasswordFile = mkOpt str "" "The file path to the hashed user password.";
+    hashedPasswordFile = mkOpt (nullOr str) null "The file path to the hashed user password.";
     extraGroups = mkOpt (listOf str) [ ] "A list of groups for the user to be assigned to.";
     sshKeys = mkOpt (listOf str) [ ] "A list of ssh keys allowed to login to the user.";
     enableHomeManager = mkEnableOption "Enable home-manager support.";
@@ -33,7 +33,7 @@ in
     {
       assertions = [
         {
-          assertion = cfg.hashedPasswordFile != "" || (length cfg.sshKeys != 0);
+          assertion = cfg.hashedPasswordFile == null || (length cfg.sshKeys != 0);
           message = "either hashedPasswordFile or sshKeys must be provided";
         }
       ];

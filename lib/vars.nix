@@ -1,17 +1,32 @@
+let
+  ipv4Book = {
+    carbon = "192.168.1.6";
+    oxygen = "192.168.1.8";
+  };
+in
 {
   hosts = {
     oxygen = {
       network = {
         hostName = "oxygen";
-        ipv4 = "192.168.1.8";
+        ipv4 = ipv4Book.oxygen;
       };
     };
     carbon = {
       network = {
         hostName = "carbon";
-        ipv4 = "192.168.1.6";
+        ipv4 = ipv4Book.carbon;
       };
     };
+  };
+
+  dnsRecords = {
+    A = [
+      {
+        domain = "home.thewinterdev.fr";
+        ipv4 = ipv4Book.carbon;
+      }
+    ];
   };
 
   keys = rec {
