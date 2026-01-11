@@ -47,6 +47,24 @@ in
           identityFile = "~/.ssh/id_homelab";
           identitiesOnly = true;
         };
+        "${carbon.network.hostName}.unlock" = {
+          hostname = carbon.network.ipv4;
+          user = "root";
+          identityFile = "~/.ssh/id_homelab";
+          identitiesOnly = true;
+          extraOptions = {
+            HostKeyAlias = "initrd.carbon";
+          };
+        };
+        ${carbon.network.hostName} = {
+          hostname = carbon.network.ipv4;
+          user = "jeosas";
+          identityFile = "~/.ssh/id_homelab";
+          identitiesOnly = true;
+          extraOptions = {
+            HostKeyAlias = "carbon";
+          };
+        };
       };
     };
 
