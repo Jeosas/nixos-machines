@@ -33,7 +33,7 @@ in
     {
       assertions = [
         {
-          assertion = cfg.hashedPasswordFile == null || (length cfg.sshKeys != 0);
+          assertion = cfg.hashedPasswordFile != null || (length cfg.sshKeys != 0);
           message = "either hashedPasswordFile or sshKeys must be provided";
         }
       ];

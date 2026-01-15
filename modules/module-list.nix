@@ -33,6 +33,7 @@
   ./apps/mullvad-vpn.nix
   ./apps/mullvad.nix
   ./apps/neovim.nix
+  ./apps/obs.nix
   ./apps/ollama.nix
   ./apps/ongaku.nix
   ./apps/openrazer.nix

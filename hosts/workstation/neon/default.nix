@@ -31,6 +31,7 @@ in
 
       suites = {
         games.enable = true;
+        streaming.enable = true;
         simracing.enable = true;
       };
 

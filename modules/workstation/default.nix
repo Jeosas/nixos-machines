@@ -27,6 +27,7 @@ in
     ./hardware.nix
     ./suites/base.nix
     ./suites/gaming.nix
+    ./suites/streaming.nix
     ./suites/simracing.nix
     ./suites/vr.nix
     ./system.nix
