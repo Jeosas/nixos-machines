@@ -23,7 +23,10 @@ in
 
       desktop = {
         hyprland = {
-          monitors = [ ",3440x1440@144,auto,1" ];
+          monitors = [
+            "DP-3,3440x1440@144,0x0,1"
+            "HDMI-A-1,1920x1080@60,-1920x400,1"
+          ];
           keyboard_device = "/dev/input/event5";
         };
         waybar.cpu-temp-zone = 2;
