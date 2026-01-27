@@ -16,19 +16,22 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment = {
-      systemPackages = [
-        (pkgs.wrapOBS {
-          plugins = with pkgs.obs-studio-plugins; [
-            obs-backgroundremoval
-            obs-pipewire-audio-capture
-          ];
-        })
-      ];
+    programs.obs-studio = {
+      enable = true;
 
-      persistence.main.users.${config.${namespace}.user.name}.directories = [
-        ".config/obs-studio"
+      # optional Nvidia hardware acceleration
+      package = pkgs.obs-studio.override {
+        cudaSupport = true;
+      };
+
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
       ];
     };
+
+    environment.persistence.main.users.${config.${namespace}.user.name}.directories = [
+      ".config/obs-studio"
+    ];
   };
 }
