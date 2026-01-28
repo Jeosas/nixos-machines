@@ -18,6 +18,7 @@ in
     ../impermanence.nix
     ../theme.nix
     ../user.nix
+    ./desktop/bongocat.nix
     ./desktop/dunst.nix
     ./desktop/hyprland.nix
     ./desktop/hyprlock.nix

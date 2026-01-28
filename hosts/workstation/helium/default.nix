@@ -30,9 +30,12 @@ in
             "HDMI-A-1,1920x1080@60,auto,1"
             ",preferred,auto,1"
           ];
-          keyboard_device = "/dev/input/event13";
         };
         waybar.cpu-temp-zone = 6;
+        bongocat = {
+          enable = true;
+          keyboard_device = "/dev/input/event13";
+        };
       };
 
       # suite = { };

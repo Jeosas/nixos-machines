@@ -27,9 +27,13 @@ in
             "DP-3,3440x1440@144,0x0,1"
             "HDMI-A-1,1920x1080@60,-1920x400,1"
           ];
-          keyboard_device = "/dev/input/event5";
         };
         waybar.cpu-temp-zone = 2;
+        bongocat = {
+          enable = true;
+          keyboard_device = "/dev/input/event5";
+          monitor = "DP-3";
+        };
       };
 
       suites = {
