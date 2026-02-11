@@ -9,7 +9,7 @@ let
   inherit (lib) mkEnableOption;
   inherit (lib.${namespace}) mkOpt;
 
-  user = { inherit (config.${namespace}.user) name home; };
+  user = config.${namespace}.user.name;
 
   cfg = config.${namespace}.impermanence;
 in
@@ -33,9 +33,7 @@ in
       persistentStoragePath = cfg.systemDir;
       hideMounts = true;
 
-      users.${user.name} = {
-        inherit (user) home;
-      };
+      users.${user} = { };
     };
   };
 }
