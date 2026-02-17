@@ -25,6 +25,7 @@ in
       blender.enable = true;
       btop.enable = true;
       direnv.enable = true;
+      discord.enable = true;
       docker.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
@@ -41,7 +42,6 @@ in
       starship.enable = true;
       tldr.enable = true;
       transmission.enable = true;
-      vesktop.enable = true;
       xournal.enable = true;
       yazi.enable = true;
       # keep-sorted end

@@ -12,6 +12,7 @@
   ./apps/blender.nix
   ./apps/btop.nix
   ./apps/direnv.nix
+  ./apps/discord.nix
   ./apps/docker.nix
   ./apps/envision.nix
   ./apps/fastfetch.nix
@@ -44,7 +45,6 @@
   ./apps/steam.nix
   ./apps/tldr.nix
   ./apps/transmission.nix
-  ./apps/vesktop.nix
   ./apps/wireguard.nix
   ./apps/wivrn.nix
   ./apps/wootility.nix
