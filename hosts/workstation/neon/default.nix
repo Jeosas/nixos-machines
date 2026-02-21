@@ -1,6 +1,7 @@
 {
   lib,
   namespace,
+  config,
   ...
 }:
 let
@@ -86,6 +87,12 @@ in
       openrazer.enable = true;
       wootility.enable = true;
     };
+  };
+
+  environment.persistence.main = {
+    users.${config.${namespace}.user.name}.directories = [
+      ".config/Melvor Idle"
+    ];
   };
 
   system.stateVersion = "24.05";
