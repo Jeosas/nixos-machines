@@ -3,6 +3,7 @@
   extraPackages = with pkgs; [
     jq
     python3
+    fixjson
   ];
 
   plugins = {
@@ -11,6 +12,7 @@
     };
     conform-nvim.settings.formatters_by_ft = {
       json = [ "jq" ];
+      json5 = [ "fixjson" ];
     };
     lint.lintersByFt = {
       json = [ "json_tool" ];

@@ -90,7 +90,7 @@
       packages =
         forAllSystems
           {
-            nixpkgs = unstable;
+            inherit nixpkgs;
             nixpkgsConfig = {
               overlays = [ (import ./overlay.nix { inherit namespace lib inputs; }) ];
             };
