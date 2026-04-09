@@ -75,6 +75,12 @@ in
         allowUnfree = true;
       };
       overlays = [
+        (final: prev: {
+          unstable = import inputs.unstable {
+            inherit (final) system;
+            config.allowUnfree = true;
+          };
+        })
         (import ../../overlay.nix { inherit namespace lib inputs; })
         inputs.nurpkgs.overlays.default
       ];

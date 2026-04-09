@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   namespace,
   config,
   ...
@@ -13,6 +14,7 @@ in
 {
   options.${namespace}.apps.ollama = with lib.types; {
     enable = mkEnableOption "ollama";
+    package = mkOpt package "ollama package";
     acceleration = mkOpt (enum [
       false
       "cuda"
@@ -21,7 +23,9 @@ in
 
   config = mkIf cfg.enable {
     services.ollama = {
-      inherit (cfg) enable acceleration;
+      inherit (cfg) enable;
+      package =
+        if cfg.acceleration == "cuda" then pkgs.unstable.ollama-cuda else pkgs.unstable.ollama-cpu;
       user = "ollama";
       group = "ollama";
       home = "/var/lib/private/ollama";
