@@ -20,7 +20,10 @@
 
     conform-nvim.settings.formatters_by_ft =
       let
-        tfFmt = [ "terraform_fmt" ];
+        tfFmt = [
+          "terraform_fmt"
+          "tofu_fmt"
+        ];
       in
       {
         terraform = tfFmt;
