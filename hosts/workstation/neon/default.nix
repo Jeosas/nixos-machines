@@ -74,6 +74,13 @@ in
             HostKeyAlias = "carbon";
           };
         };
+        http001 = {
+          hostname = "195.15.193.41";
+          port = 22216;
+          user = "maintainer";
+          identityFile = "~/.ssh/id_innovlens";
+          identitiesOnly = true;
+        };
       };
     };
 
