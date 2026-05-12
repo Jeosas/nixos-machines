@@ -6,6 +6,20 @@
     eslint_d
   ];
 
+  filetype = {
+    pattern = {
+      ".*%.html%.j2" = "jinja.html";
+      ".*%.html%.jinja" = "jinja.html";
+    };
+  };
+
+  extraFiles = {
+    "queries/jinja/injections.scm".text = ''
+      ((content) @injection.content
+       (#set! injection.language "html"))
+    '';
+  };
+
   plugins = {
     lsp.servers = {
       html.enable = true;
@@ -32,6 +46,7 @@
       formatters_by_ft = {
         html = [ "djlint" ];
         htmldjango = [ "djlint" ];
+        "jinja.html" = [ "djlint" ];
 
         javascript = [ "prettierd" ];
         typescript = [ "prettierd" ];
@@ -48,6 +63,7 @@
     lint.lintersByFt = {
       html = [ "djlint" ];
       htmldjango = [ "djlint" ];
+      "jinja.html" = [ "djlint" ];
 
       javascript = [ "eslint_d" ];
       typescript = [ "eslint_d" ];
