@@ -53,7 +53,6 @@ in
         choudai
         mpv
         ripgrep
-        termscp
         dua
         # keep-sorted end
       ];

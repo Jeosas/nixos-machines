@@ -29,12 +29,6 @@ in
             "HDMI-A-1,1920x1080@60,-1920x400,1"
           ];
         };
-        waybar.cpu-temp-zone = 2;
-        bongocat = {
-          enable = true;
-          keyboard_device = "/dev/input/event5";
-          monitor = "DP-3";
-        };
       };
 
       suites = {
@@ -45,41 +39,37 @@ in
 
       sshConfig = with hosts; {
         "github.com" = {
-          hostname = "github.com";
-          user = "git";
-          identityFile = "~/.ssh/id_github";
-          identitiesOnly = true;
+          Hostname = "github.com";
+          User = "git";
+          IdentityFile = "~/.ssh/id_github";
+          IdentitiesOnly = true;
         };
         ${oxygen.network.hostName} = {
-          hostname = oxygen.network.ipv4;
-          user = "jeosas";
-          identityFile = "~/.ssh/id_homelab";
-          identitiesOnly = true;
+          Hostname = oxygen.network.ipv4;
+          User = "jeosas";
+          IdentityFile = "~/.ssh/id_homelab";
+          IdentitiesOnly = true;
         };
         "${carbon.network.hostName}.unlock" = {
-          hostname = carbon.network.ipv4;
-          user = "root";
-          identityFile = "~/.ssh/id_homelab";
-          identitiesOnly = true;
-          extraOptions = {
-            HostKeyAlias = "initrd.carbon";
-          };
+          Hostname = carbon.network.ipv4;
+          User = "root";
+          IdentityFile = "~/.ssh/id_homelab";
+          IdentitiesOnly = true;
+          HostKeyAlias = "initrd.carbon";
         };
         ${carbon.network.hostName} = {
-          hostname = carbon.network.ipv4;
-          user = "jeosas";
-          identityFile = "~/.ssh/id_homelab";
-          identitiesOnly = true;
-          extraOptions = {
-            HostKeyAlias = "carbon";
-          };
+          Hostname = carbon.network.ipv4;
+          User = "jeosas";
+          IdentityFile = "~/.ssh/id_homelab";
+          IdentitiesOnly = true;
+          HostKeyAlias = "carbon";
         };
         http001 = {
-          hostname = "195.15.193.41";
-          port = 22216;
-          user = "maintainer";
-          identityFile = "~/.ssh/id_innovlens";
-          identitiesOnly = true;
+          Hostname = "195.15.193.41";
+          Port = 22216;
+          User = "maintainer";
+          IdentityFile = "~/.ssh/id_innovlens";
+          IdentitiesOnly = true;
         };
       };
     };

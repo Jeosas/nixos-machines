@@ -67,10 +67,6 @@ in
       services.xserver.videoDrivers = [ "nvidia" ]; # needed even for wayland
       ${namespace}.user.extraGroups = [ "video" ];
     })
-    (mkIf cfg.enableLaptopUtils {
-      programs.light.enable = true;
-      ${namespace}.user.extraGroups = [ "video" ];
-    })
     (mkIf cfg.enableBluetooth {
       hardware.bluetooth.enable = true;
       hardware.bluetooth.powerOnBoot = false;

@@ -31,45 +31,36 @@ in
             ",preferred,auto,1"
           ];
         };
-        waybar.cpu-temp-zone = 6;
-        bongocat = {
-          enable = true;
-          keyboard_device = "/dev/input/event13";
-        };
       };
 
       # suite = { };
 
       sshConfig = with hosts; {
         "github.com" = {
-          hostname = "github.com";
-          user = "git";
-          identityFile = "~/.ssh/id_github";
-          identitiesOnly = true;
+          Hostname = "github.com";
+          User = "git";
+          IdentityFile = "~/.ssh/id_github";
+          IdentitiesOnly = true;
         };
         ${oxygen.network.hostName} = {
-          hostname = oxygen.network.ipv4;
-          user = "jeosas";
-          identityFile = "~/.ssh/id_homelab";
-          identitiesOnly = true;
+          Hostname = oxygen.network.ipv4;
+          User = "jeosas";
+          IdentityFile = "~/.ssh/id_homelab";
+          IdentitiesOnly = true;
         };
         "${carbon.network.hostName}.unlock" = {
-          hostname = carbon.network.ipv4;
-          user = "root";
-          identityFile = "~/.ssh/id_homelab";
-          identitiesOnly = true;
-          extraOptions = {
-            HostKeyAlias = "initrd.carbon";
-          };
+          Hostname = carbon.network.ipv4;
+          User = "root";
+          IdentityFile = "~/.ssh/id_homelab";
+          IdentitiesOnly = true;
+          HostKeyAlias = "initrd.carbon";
         };
         ${carbon.network.hostName} = {
-          hostname = carbon.network.ipv4;
-          user = "jeosas";
-          identityFile = "~/.ssh/id_homelab";
-          identitiesOnly = true;
-          extraOptions = {
-            HostKeyAlias = "carbon";
-          };
+          Hostname = carbon.network.ipv4;
+          User = "jeosas";
+          IdentityFile = "~/.ssh/id_homelab";
+          IdentitiesOnly = true;
+          HostKeyAlias = "carbon";
         };
       };
     };

@@ -21,7 +21,7 @@ in
       with pkgs.${namespace};
       [
         ankama-launcher
-        wineWowPackages.stable
+        wineWow64Packages.stable
       ];
 
     environment.persistence.main.users.${config.${namespace}.user.name}.directories = [

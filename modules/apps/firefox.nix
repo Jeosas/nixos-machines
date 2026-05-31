@@ -57,6 +57,7 @@ in
       programs.firefox = {
         enable = true;
         package = pkgs.firefox;
+        configPath = ".mozilla/firefox";
         profiles.default = {
           isDefault = true;
           extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [

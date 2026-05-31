@@ -28,6 +28,7 @@ in
         enable = true;
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
         enableBashIntegration = config.${namespace}.apps.bash.enable;
+        shellWrapperName = "yy";
 
         settings = {
           mgr = {

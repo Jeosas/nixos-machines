@@ -18,13 +18,9 @@ in
     ../impermanence.nix
     ../theme.nix
     ../user.nix
-    ./desktop/bongocat.nix
-    ./desktop/dunst.nix
+    ./desktop/greetd.nix
     ./desktop/hyprland.nix
-    ./desktop/hyprlock.nix
-    ./desktop/hyprpaper.nix
-    ./desktop/waybar.nix
-    ./desktop/wofi.nix
+    ./desktop/noctalia-shell/noctalia-shell.nix
     ./hardware.nix
     ./suites/base.nix
     ./suites/gaming.nix
@@ -144,7 +140,7 @@ in
       programs.ssh = {
         enable = true;
         enableDefaultConfig = false;
-        matchBlocks = {
+        settings = {
           "*" = {
             addKeysToAgent = "yes";
             forwardAgent = false;

@@ -3,7 +3,7 @@
 
   inputs = {
     # NixPkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     # NixPkgs unstable
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -30,7 +30,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11"; # keep synced with nixpkgs version
+    home-manager.url = "github:nix-community/home-manager/release-26.05"; # keep synced with nixpkgs version
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # NixGL: support graphical apps on non-nixos distros
@@ -46,7 +46,7 @@
     yazi-plugins.flake = false;
 
     # NixVim
-    nixvim.url = "github:nix-community/nixvim/nixos-25.11"; # keep synced with nixpkgs version
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05"; # keep synced with nixpkgs version
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     #  --- Perso--- // TODO: migrate in here as a monorepository

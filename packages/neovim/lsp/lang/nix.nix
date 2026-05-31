@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   extraPackages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
     statix
   ];
 

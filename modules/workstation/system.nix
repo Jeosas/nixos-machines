@@ -49,7 +49,6 @@ in
           # Innovlens
           montserrat
           inter
-          manrope
 
           # Windaube fonts for compat
           corefonts
