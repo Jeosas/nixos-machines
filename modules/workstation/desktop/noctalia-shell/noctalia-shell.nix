@@ -19,8 +19,13 @@ in
     };
 
     home-manager.users.${config.${namespace}.user.name} = {
-      home.file."Pictures/Wallpapers/default.jpg" = {
-        source = wallpaper;
+      home.file = {
+        "Pictures/Wallpapers/default.jpg" = {
+          source = wallpaper;
+        };
+        ".cache/noctalia/wallpapers.json" = {
+          source = ./cache/wallpapers.json;
+        };
       };
 
       xdg.configFile."noctalia" = {

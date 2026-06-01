@@ -75,10 +75,20 @@
     "widgets": {
       "center": [
         {
-          "colorName": "primary",
-          "hideWhenIdle": true,
-          "id": "AudioVisualizer",
-          "width": 200
+          "compactMode": false,
+          "hideMode": "hidden",
+          "hideWhenIdle": false,
+          "id": "MediaMini",
+          "maxWidth": 300,
+          "panelShowAlbumArt": true,
+          "scrollingMode": "hover",
+          "showAlbumArt": true,
+          "showArtistFirst": true,
+          "showProgressRing": false,
+          "showVisualizer": true,
+          "textColor": "none",
+          "useFixedWidth": false,
+          "visualizerType": "linear"
         }
       ],
       "left": [
@@ -115,22 +125,6 @@
           "usePadding": false
         },
         {
-          "compactMode": false,
-          "hideMode": "hidden",
-          "hideWhenIdle": false,
-          "id": "MediaMini",
-          "maxWidth": 145,
-          "panelShowAlbumArt": true,
-          "scrollingMode": "hover",
-          "showAlbumArt": true,
-          "showArtistFirst": true,
-          "showProgressRing": true,
-          "showVisualizer": false,
-          "textColor": "none",
-          "useFixedWidth": false,
-          "visualizerType": "linear"
-        },
-        {
           "characterCount": 2,
           "colorizeIcons": false,
           "emptyColor": "none",
@@ -157,7 +151,7 @@
           "blacklist": [],
           "chevronColor": "none",
           "colorizeIcons": false,
-          "drawerEnabled": true,
+          "drawerEnabled": false,
           "hidePassive": false,
           "id": "Tray",
           "pinned": []
@@ -241,7 +235,7 @@
   },
   "colorSchemes": {
     "darkMode": true,
-    "generationMethod": "tonal-spot",
+    "generationMethod": "content",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
     "monitorForColors": "",
@@ -293,7 +287,7 @@
       ],
       "right": [
         {
-          "id": "PowerProfile"
+          "id": "WallpaperSelector"
         },
         {
           "id": "KeepAwake"
@@ -635,7 +629,7 @@
     "panelPosition": "follow_bar",
     "randomIntervalSec": 300,
     "setWallpaperOnAllMonitors": true,
-    "showHiddenFiles": false,
+    "showHiddenFiles": true,
     "skipStartupTransition": true,
     "solidColor": "#1a1a2e",
     "sortOrder": "name",

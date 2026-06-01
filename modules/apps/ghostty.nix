@@ -46,8 +46,7 @@ in
         };
         themes = with config.${namespace}.theme; {
           custom = {
-            background = colors.color0;
-            foreground = colors.color5;
+            inherit (colors) foreground background;
 
             selection-background = colors.color2;
             selection-foreground = colors.color0;

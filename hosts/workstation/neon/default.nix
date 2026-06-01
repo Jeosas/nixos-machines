@@ -78,7 +78,7 @@ in
       docker.enableNvidia = true;
       libvirtd.enable = true;
       ollama = {
-        enable = true;
+        enable = false;
         acceleration = "cuda";
       };
       openrazer.enable = true;
