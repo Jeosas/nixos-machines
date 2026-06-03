@@ -24,7 +24,6 @@
     lsp.servers = {
       html.enable = true;
       emmet_language_server.enable = true;
-      htmx.enable = true;
       ts_ls.enable = true;
       svelte.enable = true;
       tailwindcss.enable = true;
