@@ -189,8 +189,8 @@ in
 
               binde = [
                 # window resize
-                "SUPER_CTRL, h, resizeactive, -50 0"
-                "SUPER_CTRL, l, resizeactive, 50 0"
+                "SUPER_CTRL, h, layoutmsg, colresize -conf"
+                "SUPER_CTRL, l, layoutmsg, colresize +conf"
                 "SUPER_CTRL, k, resizeactive, 0 -50"
                 "SUPER_CTRL, j, resizeactive, 0 50"
               ];
