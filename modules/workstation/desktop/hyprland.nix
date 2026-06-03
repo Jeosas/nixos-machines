@@ -75,9 +75,9 @@ in
               };
 
               input = {
-                kb_layout = "us";
-                kb_variant = "altgr-intl";
-                kb_model = "pc105";
+                kb_layout = "us,fr";
+                kb_variant = "altgr-intl,ergol";
+                kb_options = "grp:caps_toggle";
                 follow_mouse = 2;
               };
 

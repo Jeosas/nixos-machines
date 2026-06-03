@@ -192,6 +192,13 @@
           "showPowerProfiles": false
         },
         {
+          "displayMode": "onhover",
+          "iconColor": "none",
+          "id": "KeyboardLayout",
+          "showIcon": false,
+          "textColor": "none"
+        },
+        {
           "clockColor": "none",
           "customFont": "",
           "formatHorizontal": "HH:mm ddd, MMM dd",
