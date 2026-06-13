@@ -20,7 +20,7 @@ in
     ../user.nix
     ./desktop/greetd.nix
     ./desktop/hyprland.nix
-    ./desktop/noctalia-shell/noctalia-shell.nix
+    ./desktop/noctalia-shell.nix
     ./hardware.nix
     ./suites/base.nix
     ./suites/gaming.nix
