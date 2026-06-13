@@ -1,7 +1,8 @@
 {
   "diagnostics": {
     "globals": [
-      "hl"
+      "hl",
+      "__require"
     ]
   }
 }
