@@ -24,10 +24,7 @@ in
 
       desktop = {
         hyprland = {
-          monitors = [
-            "DP-3,3440x1440@144,0x0,1"
-            "HDMI-A-1,1920x1080@60,-1920x400,1"
-          ];
+          hostConfigGroup = "hyprland-neon";
         };
       };
 

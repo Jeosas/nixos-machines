@@ -133,6 +133,8 @@ in
           "${impermanenceDir}/${username}-password";
         enableHomeManager = true;
       };
+
+      apps.stow.enable = true;
     };
 
     home-manager.users.${config.${namespace}.user.name} = {

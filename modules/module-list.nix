@@ -43,6 +43,7 @@
   ./apps/starship.nix
   ./apps/libvirtd.nix
   ./apps/steam.nix
+  ./apps/stow.nix
   ./apps/tldr.nix
   ./apps/transmission.nix
   ./apps/wireguard.nix
