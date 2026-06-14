@@ -13,6 +13,10 @@
         "HDMI-A-1": {
             "dark": "/home/jeosas/Pictures/Wallpapers/default.jpg",
             "light": "/home/jeosas/Pictures/Wallpapers/default.jpg"
+        },
+        "eDP-1": {
+            "dark": "/home/jeosas/Pictures/Wallpapers/default.jpg",
+            "light": "/home/jeosas/Pictures/Wallpapers/default.jpg"
         }
     }
 }
