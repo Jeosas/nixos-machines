@@ -3,6 +3,7 @@ require("modules.critical")
 require("modules.keybinds")
 require("modules.style")
 require("modules.misc")
+require("modules.autostart")
 
 -- Wait fix in 0.55.4
 require("input")
@@ -28,7 +29,3 @@ require("monitors")
 -- if not monitor_ok then
 -- 	hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 -- end
-
-hl.on("config.reloaded", function()
-	hl.exec_cmd("/nix/store/qj7950jbdqhg3w1kmifd3wbghli5x9gm-noctalia-shell-4.7.6/bin/noctalia-shell")
-end)
