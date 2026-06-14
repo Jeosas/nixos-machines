@@ -6,7 +6,7 @@
 {
   config = {
     environment.systemPackages = [
-      pkgs.noctalia-shell
+      pkgs.unstable.noctalia-shell
     ];
 
     services.upower = {
