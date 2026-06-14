@@ -60,8 +60,6 @@
 
     # maudfmt: maud formatter
     maudfmt.url = "github:Jeosas/maudfmt";
-
-    innovlens.url = "git+ssh://git@github.com/jeosas/innovlens?ref=production";
   };
 
   outputs =
