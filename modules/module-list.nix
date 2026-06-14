@@ -1,12 +1,7 @@
 [
   # keep-sorted start case=no numeric=yes
-  ./apps/aider.nix
-  ./apps/fd.nix
-  ./apps/eza.nix
-  ./apps/zoxide.nix
   ./apps/alvr.nix
   ./apps/ankama-launcher.nix
-  ./apps/azure.nix
   ./apps/bash.nix
   ./apps/bat.nix
   ./apps/blender.nix
@@ -15,23 +10,19 @@
   ./apps/discord.nix
   ./apps/docker.nix
   ./apps/envision.nix
+  ./apps/eza.nix
   ./apps/fastfetch.nix
+  ./apps/fd.nix
   ./apps/firefox.nix
-  ./apps/gcloud.nix
-  ./apps/gh.nix
   ./apps/ghostty.nix
   ./apps/git.nix
-  ./apps/godot.nix
   ./apps/heroic.nix
   ./apps/inkscape.nix
   ./apps/jj.nix
   ./apps/keyd.nix
-  ./apps/kitty.nix
   ./apps/krita.nix
-  ./apps/kubectl.nix
   ./apps/libreoffice.nix
   ./apps/mixxx.nix
-  ./apps/mullvad-vpn.nix
   ./apps/mullvad.nix
   ./apps/neovim.nix
   ./apps/obs.nix
@@ -51,6 +42,7 @@
   ./apps/wootility.nix
   ./apps/xournal.nix
   ./apps/yazi.nix
+  ./apps/zoxide.nix
   ./apps/zsh.nix
   ./services/goatcounter.nix
   ./services/nginx.nix

@@ -33,7 +33,6 @@ in
       git.enable = true;
       inkscape.enable = true;
       jj.enable = true;
-      kitty.enable = true;
       krita.enable = true;
       libreoffice.enable = true;
       mullvad.enable = true;
