@@ -17,7 +17,7 @@ require("input")
 -- 			kb_variant = "altgr-intl",
 --
 -- 			touchpad = {
--- 				natural_scroll = false,
+-- 				natural_scroll = true,
 -- 			},
 -- 		},
 -- 	})
