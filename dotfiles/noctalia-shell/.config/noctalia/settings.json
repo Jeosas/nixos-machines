@@ -18,6 +18,7 @@
         "ignoreMouseInput": false,
         "overviewLayer": false,
         "pinnedApps": [
+            "writer"
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
@@ -89,7 +90,7 @@
                     "showAlbumArt": true,
                     "showArtistFirst": true,
                     "showProgressRing": false,
-                    "showVisualizer": true,
+                    "showVisualizer": false,
                     "textColor": "none",
                     "useFixedWidth": false,
                     "visualizerType": "linear"
