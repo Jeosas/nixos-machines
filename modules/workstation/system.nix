@@ -21,7 +21,13 @@ in
 
   config = {
     # locale
-    i18n = { inherit (cfg) defaultLocale supportedLocales; };
+    i18n = {
+      inherit (cfg) defaultLocale supportedLocales;
+      inputMethod = {
+        enable = true;
+        type = "ibus";
+      };
+    };
 
     # time (ntp)
     time.timeZone = "Europe/Paris";

@@ -5,6 +5,10 @@ require("modules.style")
 require("modules.misc")
 require("modules.autostart")
 
+hl.env("GTK_IM_MODULE", "ibus")
+hl.env("QT_IM_MODULE", "ibus")
+hl.env("XMODIFIERS", "@im=ibus")
+
 -- Wait fix in 0.55.4
 require("input")
 -- local input_ok, err = pcall(require, "input")
