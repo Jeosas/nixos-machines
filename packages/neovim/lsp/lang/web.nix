@@ -20,16 +20,38 @@
     '';
   };
 
-  plugins = {
-    lsp.servers = {
-      html.enable = true;
-      emmet_language_server.enable = true;
-      ts_ls.enable = true;
-      svelte.enable = true;
-      tailwindcss.enable = true;
-      cssls.enable = true;
+  lsp.servers = {
+    html = {
+      enable = true;
+      config = {
+        filetypes = [ "jinja.html" ];
+      };
     };
+    emmet_language_server = {
+      enable = true;
+      config = {
+        filetypes = [ "jinja.html" ];
+      };
+    };
+    ts_ls = {
+      enable = true;
+    };
+    svelte.enable = true;
+    tailwindcss = {
+      enable = true;
+      config = {
+        filetypes = [ "jinja.html" ];
+      };
+    };
+    cssls = {
+      enable = true;
+      config = {
+        filetypes = [ "jinja.html" ];
+      };
+    };
+  };
 
+  plugins = {
     conform-nvim.settings = {
       formatters = {
         djlint = {
