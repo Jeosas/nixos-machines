@@ -53,6 +53,7 @@ in
         mpv
         ripgrep
         dua
+        openscad
         # keep-sorted end
       ];
     };
