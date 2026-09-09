@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   namespace,
   config,
   inputs,
@@ -26,6 +27,7 @@ in
     home-manager.users.${config.${namespace}.user.name} = {
       programs.yazi = {
         enable = true;
+        package = pkgs.unstable.yazi;
         enableZshIntegration = config.${namespace}.apps.zsh.enable;
         enableBashIntegration = config.${namespace}.apps.bash.enable;
         shellWrapperName = "yy";

@@ -17,5 +17,10 @@ in
 
     inherit (inputs.ongaku.packages.${prev.system}) ongaku;
     inherit (inputs.maudfmt.packages.${prev.system}) maudfmt;
+
+    unstable = import inputs.unstable {
+      inherit (final) system;
+      config.allowUnfree = true;
+    };
   };
 }
