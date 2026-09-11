@@ -72,6 +72,11 @@ in
                 ${pkgs.jq}/bin/jq '{"path": ([path(.. | select('$1'))|map(if type=="number" then "[\(.)]" else tostring end)|join(".")|split(".[]")|join("[]")]|unique|map("."+.)|.[]), "value": (.. | select('$1'))}'
             }
 
+            # find and replace
+            rgr () {
+              rg --null -l "$1" | xargs -0 sed -i "s/$1/$2/g"
+            }
+
             # Sync bach history across terminal windows
             PROMPT_COMMAND="''${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
           '';
