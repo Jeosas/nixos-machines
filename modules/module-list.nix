@@ -37,6 +37,7 @@
   ./apps/stow.nix
   ./apps/tldr.nix
   ./apps/transmission.nix
+  ./apps/tuxguitar.nix
   ./apps/wireguard.nix
   ./apps/wivrn.nix
   ./apps/wootility.nix

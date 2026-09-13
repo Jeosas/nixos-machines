@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   namespace,
   config,
@@ -80,6 +81,7 @@ in
       };
       openrazer.enable = true;
       wootility.enable = true;
+      tuxguitar.enable = true;
     };
   };
 
