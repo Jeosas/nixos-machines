@@ -19,7 +19,7 @@ in
     environment.systemPackages = with pkgs; [
       libreoffice
       hunspell # spellcheck and its dicts
-      hunspellDicts.fr-any
+      # hunspellDicts.fr # https://github.com/NixOS/nixpkgs/issues/480639
       hunspellDicts.en-us
       hunspellDicts.de-de
     ];
