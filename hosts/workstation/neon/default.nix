@@ -88,6 +88,7 @@ in
   environment.persistence.main = {
     users.${config.${namespace}.user.name}.directories = [
       ".config/Melvor Idle"
+      ".config/Lethaline"
     ];
   };
 
