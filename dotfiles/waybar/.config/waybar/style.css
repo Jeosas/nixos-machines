@@ -1,0 +1,85 @@
+window#waybar {
+  background-color: transparent;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+  font-family: "M+1Code Nerd Font";
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 14px;
+  padding-right: 14px;
+  background-color: #2e3440;
+  color: #e5e9f0;
+  border-radius: 6px;
+}
+
+.modules-center {
+  /* TODO: remove me when some modules are added */
+  background-color: transparent;
+}
+
+tooltip {
+  background: #2e3440;
+  border-radius: 6px;
+  border: none;
+}
+tooltip label {
+  color: #e5e9f0;
+}
+
+#custom-separator {
+  color: #3b4252;
+  /* margin: 0 5px; */
+}
+
+#workspaces button {
+  color: #e5e9f0;
+  font-size: 18px;
+  font-weight: 500;
+}
+#workspaces button:hover {
+  background-color: inherit;
+}
+#workspaces button.empty {
+  color: #3b4252;
+}
+#workspaces button.visible {
+  color: #a3be8c;
+}
+
+#clock {
+  font-family: "M+1Code Nerd Font";
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+#battery.warning {
+  color: #bf616a;
+}
+#battery.critical {
+  color: #bf616a;
+}
+
+#temperature.critical {
+  color: #bf616a;
+}
+
+#custom-hl-fullscreen {
+  color: #bf616a;
+}
+
+#custom-pomodoro.running {
+  color: #a3be8c;
+}
+#custom-pomodoro.paused {
+  color: #ebcb8b;
+}
+#custom-pomodoro.finished {
+  color: #e5e9f0;
+}
+
+#privacy-item {
+  color: #bf616a;
+}

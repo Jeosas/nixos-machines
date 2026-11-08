@@ -10,13 +10,11 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region"))
 -- Shell
 --
 
-hl.bind("SUPER + d", hl.dsp.exec_cmd("noctalia-shell ipc call launcher toggle"))
-hl.bind("SUPER + c", hl.dsp.exec_cmd("noctalia-shell ipc call controlCenter toggle"))
-hl.bind("SUPER + v", hl.dsp.exec_cmd("noctalia-shell ipc call volume togglePanel"))
-hl.bind("SUPER + b", hl.dsp.exec_cmd("noctalia-shell ipc call bluetooth togglePanel"))
-hl.bind("SUPER + n", hl.dsp.exec_cmd("noctalia-shell ipc call network togglePanel"))
-hl.bind("SUPER + SHIFT + d", hl.dsp.exec_cmd("noctalia-shell ipc call lockScreen lock"))
-hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("noctalia-shell ipc call sessionMenu toggle"))
+hl.bind("SUPER + d", hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind("SUPER + v", hl.dsp.exec_cmd("ghostty -e wiremix"))
+hl.bind("SUPER + b", hl.dsp.exec_cmd("ghostty -e bluetuith"))
+hl.bind("SUPER + n", hl.dsp.exec_cmd("ghostty -e nmtui"))
+hl.bind("SUPER + SHIFT + d", hl.dsp.exec_cmd("hyprlock"))
 
 --
 -- Move
@@ -106,31 +104,16 @@ end)
 -- Media
 --
 
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("noctalia-shell ipc call volume muteOutput"), { locked = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("noctalia-shell ipc call volume muteInput"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("noctalia-shell ipc call media playPause"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("noctalia-shell ipc call media pause"), { locked = true })
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("noctalia-shell ipc call media next"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("noctalia-shell ipc call media previous"), { locked = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volumectl"), { locked = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
-hl.bind(
-	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd("noctalia-shell ipc call brightness increase"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd("noctalia-shell ipc call brightness decrease"),
-	{ locked = true, repeating = true }
-)
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl up"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl down"), { locked = true, repeating = true })
 
-hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("noctalia-shell ipc call volume increase"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("noctalia-shell ipc call volume decrease"),
-	{ locked = true, repeating = true }
-)
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("volumectl up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("volumectl down"), { locked = true, repeating = true })

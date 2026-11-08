@@ -19,8 +19,12 @@ in
     ../theme.nix
     ../user.nix
     ./desktop/greetd.nix
+    ./desktop/dunst.nix
     ./desktop/hyprland.nix
-    ./desktop/noctalia-shell.nix
+    ./desktop/hyprlock.nix
+    ./desktop/hyprpaper.nix
+    ./desktop/waybar.nix
+    ./desktop/wofi.nix
     ./hardware.nix
     ./suites/base.nix
     ./suites/gaming.nix

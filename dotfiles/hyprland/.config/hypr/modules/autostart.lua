@@ -1,7 +1,10 @@
 hl.on("hyprland.start", function()
-	hl.exec_cmd("noctalia-shell")
+	hl.exec_cmd("hyprpaper")
+	hl.exec_cmd("launchbar")
+	hl.exec_cmd("dunst &")
 end)
 
 hl.on("config.reloaded", function()
-	hl.exec_cmd("noctalia-shell")
+	hl.exec_cmd("hyprpaper")
+	hl.exec_cmd("launchbar")
 end)
