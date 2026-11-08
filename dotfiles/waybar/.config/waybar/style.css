@@ -1,29 +1,27 @@
-window#waybar {
-  background-color: transparent;
-}
-
-.modules-left,
-.modules-right,
-.modules-center {
+* {
+  border: none;
+  border-radius: 0;
   font-family: "M+1Code Nerd Font";
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  padding-left: 14px;
-  padding-right: 14px;
-  background-color: #2e3440;
+  min-height: 0;
   color: #e5e9f0;
-  border-radius: 6px;
 }
 
-.modules-center {
-  /* TODO: remove me when some modules are added */
-  background-color: transparent;
+window#waybar {
+  background-color: #2e3440;
+}
+
+.modules-left {
+  padding-left: 8px;
+}
+
+.modules-right {
+  padding-right: 8px;
 }
 
 tooltip {
-  background: #2e3440;
-  border-radius: 6px;
-  border: none;
+  background-color: #2e3440;
 }
 tooltip label {
   color: #e5e9f0;
@@ -31,28 +29,29 @@ tooltip label {
 
 #custom-separator {
   color: #3b4252;
-  /* margin: 0 5px; */
 }
 
 #workspaces button {
+  padding: 0 2px;
   color: #e5e9f0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
 }
 #workspaces button:hover {
   background-color: inherit;
 }
-#workspaces button.empty {
-  color: #3b4252;
+#workspaces button.hosting-monitor.visible {
+  color: #2e3440;
+  background-color: #a3be8c;
 }
-#workspaces button.visible {
-  color: #a3be8c;
+
+#workspaces button.hosting-monitor.visible label {
+  color: #2e3440;
 }
 
 #clock {
   font-family: "M+1Code Nerd Font";
-  font-size: 18px;
-  letter-spacing: 2px;
+  font-size: 12px;
 }
 
 #battery.warning {
@@ -68,16 +67,6 @@ tooltip label {
 
 #custom-hl-fullscreen {
   color: #bf616a;
-}
-
-#custom-pomodoro.running {
-  color: #a3be8c;
-}
-#custom-pomodoro.paused {
-  color: #ebcb8b;
-}
-#custom-pomodoro.finished {
-  color: #e5e9f0;
 }
 
 #privacy-item {
