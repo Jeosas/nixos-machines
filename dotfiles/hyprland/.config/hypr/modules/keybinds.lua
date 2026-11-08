@@ -63,8 +63,8 @@ hl.bind("SUPER + SHIFT + i", hl.dsp.window.move({ workspace = 8, follow = false 
 hl.bind("SUPER + SHIFT + o", hl.dsp.window.move({ workspace = 9, follow = false }))
 hl.bind("SUPER + SHIFT + p", hl.dsp.window.move({ workspace = 10, follow = false }))
 
-hl.bind("SUPER + CTRL + h", hl.dsp.layout("colresize -conf"), { repeating = true })
-hl.bind("SUPER + CTRL + l", hl.dsp.layout("colresize +conf"), { repeating = true })
+hl.bind("SUPER + CTRL + h", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
+hl.bind("SUPER + CTRL + l", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true })
 hl.bind("SUPER + CTRL + k", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
 hl.bind("SUPER + CTRL + j", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true })
 

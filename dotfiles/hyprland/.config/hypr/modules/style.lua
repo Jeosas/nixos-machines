@@ -70,7 +70,7 @@ hl.workspace_rule({
 
 hl.config({
 	animations = {
-		enabled = true,
+		enabled = false,
 	},
 	cursor = {
 		enable_hyprcursor = true,
@@ -83,18 +83,21 @@ hl.config({
 		blur = {
 			enabled = false,
 		},
-		rounding = 6,
+		rounding = 0,
 	},
 	general = {
 		allow_tearing = false,
-		border_size = 1,
+		border_size = 2,
 		col = {
-			active_border = { colors = { "rgba(a3be8cff)", "rgba(88c0d0ff)" }, angle = 45 },
+			active_border = "rgba(a3be8cff)",
 			inactive_border = "rgba(2e3440cc)",
 		},
-		gaps_in = 4,
-		gaps_out = 8,
-		layout = "scrolling",
+		gaps_in = 0,
+		gaps_out = 0,
+		layout = "dwindle",
+	},
+	dwindle = {
+		force_split = 2,
 	},
 	misc = {
 		disable_hyprland_logo = true,

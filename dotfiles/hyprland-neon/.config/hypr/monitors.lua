@@ -11,3 +11,9 @@ hl.monitor({
 	position = "3440x400",
 	scale = "1",
 })
+
+hl.config({
+	dwindle = {
+		split_width_multiplier = 1.5,
+	},
+})
