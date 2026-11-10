@@ -1,0 +1,7 @@
+[mgr]
+line_mode = "mtime"
+scrolloff = 6
+show_hidden = true
+show_simlink = true
+sort_by = "alphabetical"
+sort_dir_first = true
