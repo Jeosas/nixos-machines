@@ -1,0 +1,198 @@
+-- =============================================================================
+-- Core Autocommands
+-- Includes: highlight-on-yank, auto-save,
+--           build hooks (PackChanged), LSP log rotation
+-- =============================================================================
+
+vim.api.nvim_create_autocmd("VimResized", {
+	desc = "Easy exit help panes with q",
+  pattern = { "qf", "help", "man" },
+	command = "nnoremap <silent> <buffer> q :close<CR>",
+})
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	desc = "Force format options",
+  pattern =  "*"  ,
+  command = ":set formatoptions-=cro", 
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Delist qf buffer",
+  pattern =  "qf"  ,
+  command = "set nobuflisted",  
+})
+
+
+-- =============================================================================
+-- WINDOW AUTO RESIZE
+-- =============================================================================
+vim.api.nvim_create_autocmd("VimResized", {
+	desc = "Resize window on terminal resize",
+	pattern = "*",
+	command = "tabdo wincmd =",
+})
+
+-- =============================================================================
+-- HIGHLIGHT ON YANK
+-- =============================================================================
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("nvimpack-highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})
+
+-- =============================================================================
+-- AUTO-SAVE (replaces auto-save.nvim)
+-- Immediate save on BufLeave/FocusLost; debounced 3s save on text change.
+-- =============================================================================
+
+local _save_timer = nil
+local _autosave_group = vim.api.nvim_create_augroup("nvimpack-autosave", { clear = true })
+
+local function cancel_debounce()
+	if _save_timer then
+		_save_timer:stop()
+		_save_timer:close()
+		_save_timer = nil
+	end
+end
+
+local function is_saveable(bufnr)
+	bufnr = bufnr or vim.api.nvim_get_current_buf()
+	return vim.bo[bufnr].modifiable
+		and not vim.bo[bufnr].readonly
+		and vim.bo[bufnr].buftype == ""
+		and vim.bo[bufnr].modified
+end
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+	desc = "Auto-save with 3s debounce",
+	group = _autosave_group,
+	callback = function()
+		if not is_saveable() then
+			return
+		end
+		cancel_debounce()
+		_save_timer = vim.uv.new_timer()
+		_save_timer:start(
+			3000,
+			0,
+			vim.schedule_wrap(function()
+				cancel_debounce()
+				if is_saveable() then
+					vim.cmd("silent! write")
+				end
+			end)
+		)
+	end,
+})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+	desc = "Cancel deferred auto-save when entering insert mode",
+	group = _autosave_group,
+	callback = cancel_debounce,
+})
+
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+	desc = "Immediate auto-save on focus/buffer leave",
+	group = _autosave_group,
+	callback = function()
+		cancel_debounce()
+		if is_saveable() then
+			vim.cmd("silent! write")
+		end
+	end,
+})
+
+-- =============================================================================
+-- BUILD HOOKS (PackChanged)
+-- Run after vim.pack installs/updates a plugin.
+-- Uses ev.data.spec.name and ev.data.kind directly per the official
+-- vim.pack API.
+-- =============================================================================
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	desc = "Run build steps after plugin install/update",
+	callback = function(ev)
+		local name = ev.data.spec.name
+		local kind = ev.data.kind -- 'install' | 'update' | 'delete'
+
+		if kind ~= "install" and kind ~= "update" then
+			return
+		end
+
+		-- nvim-treesitter: run :TSUpdate after install/update
+		if name == "nvim-treesitter" then
+			vim.schedule(function()
+				local ok, _ = pcall(vim.cmd, "TSUpdate")
+				if not ok then
+					vim.notify("TSUpdate failed — run :TSUpdate manually.", vim.log.levels.WARN)
+				end
+			end)
+		end
+
+		-- nvim-dbee: install the Go binary
+		if name == "nvim-dbee" then
+			vim.schedule(function()
+				local ok, dbee = pcall(require, "dbee")
+				if ok then
+					dbee.install()
+					vim.notify("nvim-dbee binary installed", vim.log.levels.INFO)
+				else
+					vim.notify(
+						'nvim-dbee not loaded yet — run :lua require("dbee").install() manually',
+						vim.log.levels.WARN
+					)
+				end
+			end)
+		end
+
+		-- blink.cmp v2: build the Rust fuzzy matcher into lib/
+		if name == "blink.cmp" then
+			if vim.fn.executable("cargo") == 0 then
+				vim.notify("blink.cmp: cargo not found; fuzzy matching will use Lua", vim.log.levels.WARN)
+				return
+			end
+			vim.schedule(function()
+				pcall(function()
+					vim.cmd.packadd("blink.lib")
+				end)
+				pcall(function()
+					vim.cmd.packadd("blink.cmp")
+				end)
+				local called, ok, err = pcall(function()
+					return require("blink.cmp").build():pwait()
+				end)
+				if called and ok then
+					vim.notify("blink.cmp Rust fuzzy library built", vim.log.levels.INFO)
+				else
+					local msg = called and err or ok
+					vim.notify("blink.cmp Rust build failed: " .. tostring(msg), vim.log.levels.ERROR)
+				end
+			end)
+		end
+	end,
+})
+
+-- =============================================================================
+-- LSP LOG ROTATION
+-- Truncate the LSP log file on VimEnter if it exceeds 10 MB to prevent
+-- unbounded growth (the default log level is WARN, which still accumulates).
+-- The log is recreated automatically when LSP clients start.
+-- =============================================================================
+vim.api.nvim_create_autocmd("VimEnter", {
+	desc = "Truncate oversized LSP log file",
+	group = vim.api.nvim_create_augroup("nvimpack-lsp-log-rotation", { clear = true }),
+	callback = function()
+		local log_path = vim.lsp.log.get_filename()
+		if not log_path then
+			return
+		end
+		local ok, stat = pcall(vim.uv.fs_stat, log_path)
+		if ok and stat and stat.size > 10 * 1024 * 1024 then
+			pcall(vim.uv.fs_unlink, log_path)
+		end
+	end,
+})

@@ -1,0 +1,169 @@
+-- =============================================================================
+-- Core Options
+-- =============================================================================
+
+-- Aggressively disable unused providers
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python_provider = 0
+
+-- Disable unused built-in plugins for startup speed
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_getscript = 1
+vim.g.loaded_getscriptPlugin = 1
+
+-- Nerd Font availability flag (used by plugins)
+vim.g.have_nerd_font = true
+
+-- =============================================================================
+-- Display
+-- =============================================================================
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.mouse = ""
+vim.o.showmode = false
+vim.o.cursorline = true
+vim.o.cmdheight = 2
+vim.o.signcolumn = "yes"
+vim.o.termguicolors = true
+vim.o.guicursor = ""
+vim.o.laststatus = 3
+vim.o.softtabstop = 2
+vim.o.tabstop = 2
+vim.o.showtabline = 2
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
+vim.opt.smoothscroll = true
+vim.opt.hlsearch = false
+vim.opt.shortmess:append("I")
+-- 0.12+ features; has() is a floor, so this remains active on 0.13+.
+if vim.fn.has("nvim-0.12") == 1 then
+	pcall(function()
+		vim.o.winborder = "single"
+	end)
+	pcall(function()
+		vim.o.pumborder = "single"
+	end)
+end
+
+-- =============================================================================
+-- Canvas
+-- =============================================================================
+-- No end-of-buffer marker, no fold filler dots. Separator glyphs are already
+-- Neovim's defaults; listed so the canvas has a single owner.
+vim.opt.fillchars = {
+	eob = " ",
+	fold = " ",
+	vert = "│",
+	horiz = "─",
+	foldsep = "│",
+}
+
+-- =============================================================================
+-- Editing
+-- =============================================================================
+vim.o.clipboard = "unnamedplus"
+vim.o.breakindent = true
+vim.o.ignorecase = true
+vim.o.incsearch = true
+vim.o.smartcase = true
+vim.o.inccommand = "split"
+vim.o.expandtab = true
+vim.o.confirm = true
+vim.o.shiftwidth = 2
+vim.o.scrolloff = 10
+vim.o.list = false
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.o.wrap = false
+vim.o.sidescrolloff = 8
+vim.o.gdefault = true -- global replace by default
+
+-- =============================================================================
+-- Performance
+-- =============================================================================
+vim.o.updatetime = 50
+vim.o.timeoutlen = 300
+vim.opt.ttimeoutlen = 10
+vim.opt.lazyredraw = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.shortmess:append("c")
+vim.opt.synmaxcol = 500
+vim.opt.regexpengine = 0 -- auto-select best regex engine
+
+-- =============================================================================
+-- Files & History
+-- =============================================================================
+vim.o.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.history = 1000
+vim.opt.hidden = true
+-- Stack-style jumplist; keep Neovim's default "clean" (drop unloaded buffers).
+vim.opt.jumpoptions = "stack,clean"
+
+-- =============================================================================
+-- Splits
+-- =============================================================================
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+-- =============================================================================
+-- Folding
+-- =============================================================================
+vim.o.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+if vim.fn.has("nvim-0.12") == 1 then
+	vim.opt.foldtext = ""
+end
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.opt.foldnestmax = 3
+
+-- =============================================================================
+-- Diff
+-- =============================================================================
+if vim.fn.has("nvim-0.12") == 1 then
+	vim.opt.diffopt = {
+		"internal",
+		"filler",
+		"closeoff",
+		"indent-heuristic",
+		"inline:word",
+		"algorithm:histogram",
+		"linematch:40",
+	}
+end
+
+-- =============================================================================
+-- Completion
+-- =============================================================================
+vim.opt.pumheight = 15
+vim.opt.pumwidth = 30
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+-- =============================================================================
+-- Filetype detection patches
+-- =============================================================================
+vim.filetype.add({
+	pattern = {
+		[".*%.html%.j2"] = "jinja.html",
+		[".*%.html%.jinja"] = "jinja.html",
+		[".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
+		[".*/terragrunt%.hcl"] = "hcl.terragrunt",
+	},
+})

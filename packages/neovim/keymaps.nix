@@ -35,8 +35,8 @@ in
     (mkKeymap "n" "<A-h>" ":bprevious<CR>")
 
     # Moving text around
-    (mkKeymap [ "n" "v" "x" ] "<A-j>" "<Esc>:m .+1<CR>==")
     (mkKeymap [ "n" "v" "x" ] "<A-k>" "<Esc>:m .-2<CR>==")
+    (mkKeymap [ "n" "v" "x" ] "<A-j>" "<Esc>:m .+1<CR>==")
     (mkKeymap "v" "<" "<gv")
     (mkKeymap "v" ">" ">gv")
 
