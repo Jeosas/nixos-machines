@@ -39,6 +39,7 @@ in
           neovim
 
           tree-sitter
+          gcc
 
           elmPackages.elm
           elmPackages.elm-format
