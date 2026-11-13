@@ -104,7 +104,7 @@ end)
 -- Media
 --
 
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volumectl"), { locked = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volumectl mute"), { locked = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
