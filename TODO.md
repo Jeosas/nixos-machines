@@ -5,7 +5,7 @@
 - [x] bashrc / bashprofile
 - [x] bat
 - [x] btop
-- [ ] direnv
+- [x] direnv
 - [x] dunst
 - [ ] fastfetch
 - [ ] ghostty (back to default setup with only theme edit)
