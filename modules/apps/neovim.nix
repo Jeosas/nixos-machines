@@ -117,11 +117,6 @@ in
           EDITOR = "nvim";
         };
       };
-
-      programs = {
-        zsh.shellAliases.nv = "nvim";
-        bash.shellAliases.nv = "nvim";
-      };
     };
   };
 }

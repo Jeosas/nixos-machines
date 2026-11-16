@@ -2,7 +2,7 @@
 
 ## Dotfiles to migrate to stow
 
-- [ ] bashrc / bashprofile
+- [x] bashrc / bashprofile
 - [ ] bat
 - [ ] btop
 - [ ] direnv
