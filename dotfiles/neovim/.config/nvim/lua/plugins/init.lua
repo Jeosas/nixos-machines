@@ -40,7 +40,6 @@ vim.pack.add({
 	"https://github.com/b0o/SchemaStore.nvim",
 
 	-- Language-specific
-	"https://github.com/lukas-reineke/headlines.nvim",
 	"https://github.com/chomosuke/typst-preview.nvim",
 }, { confirm = false, load = function() end })
 
@@ -125,5 +124,5 @@ pack.setup({
 	-- -------------------------------------------------------------------------
 	-- Deferred (idle — load after defer ms)
 	-- -------------------------------------------------------------------------
-	{ mod = "headlines", defer = 1, packadd = { "headlines.nvim" } },
+	-- { mod = "headlines", defer = 1, packadd = { "headlines.nvim" } },
 })

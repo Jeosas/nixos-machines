@@ -95,7 +95,7 @@ in
           svelte-language-server
           tailwindcss-language-server
 
-          marksman
+          markdown-oxide
 
           yaml-language-server
           helm-ls

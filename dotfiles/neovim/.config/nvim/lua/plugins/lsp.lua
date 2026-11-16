@@ -279,7 +279,7 @@ local servers = {
 			},
 		},
 	},
-	marksman = {},
+	markdown_oxide = {},
 	nil_ls = { settings = { ["nil"] = { formatting = { command = { "nixfmt" } } } } },
 	pylsp = {},
 	rust_analyzer = { settings = { ["rust-analyzer"] = { cargo = { allFeatures = true } } } },
