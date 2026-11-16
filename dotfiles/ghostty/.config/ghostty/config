@@ -1,0 +1,15 @@
+theme = Catppuccin Mocha
+# background-blur = false
+# background-opacity = 0.9
+
+font-size = 11
+# disable ligature
+font-feature = -calt, -liga, -dlig
+
+font-family = Hack Nerd Font Mono Regular
+font-family-bold = Hack Nerd Font Mono Bold
+font-family-bold-italic = Hack Nerd Font Mono Bold Italic
+font-family-italic = Hack Nerd Font Mono Italic
+
+shell-integration-features = no-cursor
+cursor-style = block

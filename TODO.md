@@ -8,7 +8,7 @@
 - [x] direnv
 - [x] dunst
 - [ ] fastfetch
-- [ ] ghostty (back to default setup with only theme edit)
+- [x] ghostty (back to default setup with only theme edit)
 - [ ] git ?
 - [ ] jj
 - [ ] starship
