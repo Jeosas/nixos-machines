@@ -50,7 +50,8 @@ if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
 fi
 
 if [ "$TERM" = xterm-ghostty ]; then
-  fastfetch
+  figlet -f slant " $(fastfetch -s os --format json | jq -r '.[0].result.name')" | lolcat &&
+    fastfetch
 fi
 
 eval "$(direnv hook bash)"

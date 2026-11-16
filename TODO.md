@@ -7,7 +7,7 @@
 - [x] btop
 - [x] direnv
 - [x] dunst
-- [ ] fastfetch
+- [x] fastfetch
 - [x] ghostty (back to default setup with only theme edit)
 - [ ] git ?
 - [ ] jj
@@ -26,7 +26,6 @@
 ## Planned modifications
 
 - [ ] Remove starship
-- [ ] move from fastfetch to an other mot lightweight and small
 - [ ] Resetup bash (prompt, history, path ellid, vi mode)
 - [ ] move from hyprland to swaywm
 - [ ] move from wofi to fuzzel
