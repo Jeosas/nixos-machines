@@ -3,8 +3,8 @@
 ## Dotfiles to migrate to stow
 
 - [x] bashrc / bashprofile
-- [ ] bat
 - [ ] btop
+- [x] bat
 - [ ] direnv
 - [x] dunst
 - [ ] fastfetch

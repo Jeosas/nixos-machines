@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   namespace,
   config,
@@ -22,13 +23,12 @@ in
       }
     ];
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      programs.bat = {
-        enable = true;
-        config = {
-          theme = "Nord";
-        };
-      };
+    environment.systemPackages = with pkgs; [
+      bat
+    ];
+
+    ${namespace} = {
+      apps.stow.groups = [ "bat" ];
     };
   };
 }
