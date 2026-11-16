@@ -3,8 +3,8 @@
 ## Dotfiles to migrate to stow
 
 - [x] bashrc / bashprofile
-- [ ] btop
 - [x] bat
+- [x] btop
 - [ ] direnv
 - [x] dunst
 - [ ] fastfetch
@@ -16,17 +16,17 @@
 - [x] waybar
 - [x] wofi
 - [x] yazi
-- [ ] theme
+- [ ] theme # will redo on new os
   - [ ] icons
   - [ ] gtk-2 / gtk-3 / gtk-4
   - [ ] cursors
-- [ ] firefix userChrome ?
-- [ ] .profile ?
+- [ ] firefix # will redo on new os
 - [ ] wallpaper images
 
 ## Planned modifications
 
 - [ ] Remove starship
+- [ ] move from fastfetch to an other mot lightweight and small
 - [ ] Resetup bash (prompt, history, path ellid, vi mode)
 - [ ] move from hyprland to swaywm
 - [ ] move from wofi to fuzzel

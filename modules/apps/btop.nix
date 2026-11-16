@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   namespace,
   config,
@@ -22,14 +23,12 @@ in
       }
     ];
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      programs.btop = {
-        enable = true;
-        settings = {
-          color_theme = "nord";
-          theme_background = false;
-        };
-      };
+    environment.systemPackages = with pkgs; [
+      btop
+    ];
+
+    ${namespace} = {
+      apps.stow.groups = [ "btop" ];
     };
   };
 }
