@@ -26,4 +26,4 @@
 
 - [ ] Resetup bash (prompt, history, path ellid, vi mode)
 - [ ] move from hyprland to swaywm
-- [ ] move from wofi to fuzzel
+- [x] move from wofi to fuzzel

@@ -10,7 +10,7 @@
     ${namespace} = {
       apps.stow.groups = [
         "hyprpaper"
-        "wallpaper"
+        "wallpapers"
       ];
     };
   };

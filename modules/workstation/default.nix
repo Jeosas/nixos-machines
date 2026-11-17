@@ -24,6 +24,7 @@ in
     ./desktop/hyprlock.nix
     ./desktop/hyprpaper.nix
     ./desktop/waybar.nix
+    ./desktop/fuzzel.nix
     ./desktop/wofi.nix
     ./hardware.nix
     ./suites/base.nix

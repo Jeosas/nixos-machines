@@ -10,7 +10,7 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region"))
 -- Shell
 --
 
-hl.bind("SUPER + d", hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind("SUPER + d", hl.dsp.exec_cmd("fuzzel"))
 hl.bind("SUPER + v", hl.dsp.exec_cmd("ghostty -e wiremix"))
 hl.bind("SUPER + b", hl.dsp.exec_cmd("ghostty -e bluetuith"))
 hl.bind("SUPER + n", hl.dsp.exec_cmd("ghostty -e nmtui"))
