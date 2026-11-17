@@ -1,0 +1,4 @@
+exec dunst &
+
+exec_always launchbar
+exec_always autotiling

@@ -1,0 +1,22 @@
+### Variables
+
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term ghostty
+set $launcher fuzzel
+set $browser firefox
+
+
+set $cl_high #a6e3a1
+set $cl_indi #a6e3a1 
+set $cl_back #1e1e2e
+set $cl_fore #cdd6f4
+set $cl_urge #f9e2af
+
+
+

@@ -32,7 +32,7 @@ tooltip label {
 }
 
 #workspaces button {
-  padding: 0 2px;
+  padding: 0 4px;
   color: #cdd6f4;
   font-size: 14px;
   font-weight: 500;
@@ -40,12 +40,12 @@ tooltip label {
 #workspaces button:hover {
   background-color: inherit;
 }
-#workspaces button.hosting-monitor.visible {
+#workspaces button.visible {
   color: #1e1e2e;
   background-color: #a6e3a1;
 }
 
-#workspaces button.hosting-monitor.visible label {
+#workspaces button.visible label {
   color: #1e1e2e;
 }
 

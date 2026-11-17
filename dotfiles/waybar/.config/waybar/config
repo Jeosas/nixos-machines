@@ -1,5 +1,32 @@
 [
   {
+    "position": "bottom",
+    "layer": "bottom",
+    "height": 24,
+    "spacing": 6,
+    "modules-left": [
+      "sway/workspaces",
+      "hyprland/workspaces",
+      "custom/separator",
+      "custom/version"
+    ],
+    "modules-right": [
+      "privacy",
+      "tray",
+      "custom/separator",
+      "sway/language",
+      "hyprland/language",
+      "custom/separator",
+      "load",
+      "memory",
+      "temperature",
+      "custom/separator",
+      "network",
+      "wireplumber",
+      "battery",
+      "custom/separator",
+      "clock"
+    ],
     "battery": {
       "format": "{icon} {capacity}%",
       "format-charging": "󰂄 {capacity}%",
@@ -51,7 +78,6 @@
       "interval": 3600,
       "tooltip": false
     },
-    "height": 24,
     "hyprland/workspaces": {
       "active-only": false,
       "all-outputs": false,
@@ -70,34 +96,38 @@
       },
       "sort-by": "id"
     },
-    "layer": "bottom",
+    "hyprland/language": {
+      "format": "󰌌  {variant}"
+    },
+    "sway/workspaces": {
+      "active-only": false,
+      "all-outputs": false,
+      "format": "{icon}",
+      "format-icons": {
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "10": "十"
+      },
+      "sort-by": "id"
+    },
+    "sway/language": {
+      "format": "󰌌  {variant}"
+    },
     "load": {
-      "format": "󰯱 {load1}",
+      "format": "󰻠 {load1}",
       "interval": 5
     },
     "memory": {
-      "format": "󰰏 {percentage}%",
+      "format": "  {percentage}%",
       "interval": 5
     },
-    "modules-left": [
-      "hyprland/workspaces",
-      "custom/separator",
-      "custom/version"
-    ],
-    "modules-right": [
-      "privacy",
-      "tray",
-      "custom/separator",
-      "load",
-      "memory",
-      "temperature",
-      "custom/separator",
-      "network",
-      "wireplumber",
-      "battery",
-      "custom/separator",
-      "clock"
-    ],
     "network": {
       "format-disconnected": "󰖪 ",
       "format-ethernet": "󰈁",
@@ -115,7 +145,6 @@
       "tooltip-format-ethernet": "󰈁 {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
       "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}"
     },
-    "position": "bottom",
     "privacy": {
       "icon-size": 12,
       "icon-spacing": 6,
@@ -131,7 +160,6 @@
       ],
       "transition-duration": 250
     },
-    "spacing": 6,
     "temperature": {
       "critical-threshold": 80,
       "format": " {temperatureC}°C",

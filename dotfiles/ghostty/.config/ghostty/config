@@ -1,6 +1,6 @@
 theme = Catppuccin Mocha
-# background-blur = false
-# background-opacity = 0.9
+background-blur = false
+background-opacity = 0.9
 
 font-size = 11
 # disable ligature

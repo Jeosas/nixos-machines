@@ -20,11 +20,12 @@ in
     ../user.nix
     ./desktop/greetd.nix
     ./desktop/dunst.nix
+    ./desktop/fuzzel.nix
     ./desktop/hyprland.nix
     ./desktop/hyprlock.nix
     ./desktop/hyprpaper.nix
+    ./desktop/swaywm.nix
     ./desktop/waybar.nix
-    ./desktop/fuzzel.nix
     ./desktop/wofi.nix
     ./hardware.nix
     ./suites/base.nix

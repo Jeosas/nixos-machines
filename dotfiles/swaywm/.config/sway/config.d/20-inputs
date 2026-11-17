@@ -1,0 +1,21 @@
+### Input
+
+input type:keyboard {
+    xkb_layout "us,fr"
+    xkb_options "grp:caps_toggle"
+    xkb_variant "altgr-intl,ergol"
+}
+
+input type:touch {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+  
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
