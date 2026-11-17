@@ -8,7 +8,10 @@
     environment.systemPackages = with pkgs; [ hyprpaper ];
 
     ${namespace} = {
-      apps.stow.groups = [ "hyprpaper" ];
+      apps.stow.groups = [
+        "hyprpaper"
+        "wallpaper"
+      ];
     };
   };
 }

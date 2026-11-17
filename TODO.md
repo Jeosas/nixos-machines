@@ -20,8 +20,7 @@
   - [ ] icons
   - [ ] gtk-2 / gtk-3 / gtk-4
   - [ ] cursors
-- [ ] firefix # will redo on new os
-- [ ] wallpaper images
+- [x] wallpaper images
 
 ## Planned modifications
 
