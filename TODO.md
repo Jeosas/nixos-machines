@@ -11,7 +11,7 @@
 - [x] ghostty (back to default setup with only theme edit)
 - [ ] git ?
 - [x] jj
-- [ ] starship
+- [x] starship
 - [ ] tealdeer ?
 - [x] waybar
 - [x] wofi
@@ -25,7 +25,6 @@
 
 ## Planned modifications
 
-- [ ] Remove starship
 - [ ] Resetup bash (prompt, history, path ellid, vi mode)
 - [ ] move from hyprland to swaywm
 - [ ] move from wofi to fuzzel

@@ -1,0 +1,57 @@
+format = "$username[@](white)$hostname$nix_shell${custom.jj}$git_branch$python$rust\n$sudo$directory$battery$status$character"
+
+[battery]
+format = "[$symbol]($style)"
+
+[[battery.display]]
+style = "yellow"
+threshold = 30
+
+[[battery.display]]
+style = "red"
+threshold = 10
+
+[custom.jj]
+command = "d=$(jj log --no-graph -T 'description.first_line()' -r @); test -n \"$d\" && echo $d || echo \"(no desc)\""
+detect_folders = [".jj"]
+disabled = false
+format = "\\[[$symbol($output)]($style)\\]"
+require_repo = true
+style = "bold purple"
+symbol = " "
+when = "jj st"
+
+[directory]
+format = "[$path ]($style)"
+truncation_length = 4
+truncation_symbol = "_/"
+
+[git_branch]
+format = "\\[[$symbol$branch]($style)\\]"
+only_attached = true
+
+[hostname]
+format = "[$hostname](white)"
+ssh_only = false
+trim_at = "."
+
+[nix_shell]
+format = "\\[[$symbol$state( \\($name\\))]($style)\\]"
+symbol = " "
+
+[python]
+format = "\\[[${symbol}${pyenv_prefix}(${version})(\\($virtualenv\\))]($style)\\]"
+symbol = " "
+
+[rust]
+format = "\\[[$symbol($version)]($style)\\]"
+symbol = " "
+
+[sudo]
+format = "[󱑷](bold yellow)"
+
+[username]
+format = "[$user]($style)"
+show_always = true
+style_root = "red"
+style_user = "white"
