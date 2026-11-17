@@ -1,0 +1,22 @@
+[aliases]
+pre-commit = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj diff -f ${1:-'@-'} -t ${2:-'@'} --name-only --no-pager | xargs pre-commit run --files\n",
+  "",
+]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+
+[revset-aliases]
+"closest_bookmark(to)" = "heads(::to & bookmarks())"
+
+[ui]
+default-command = ["log"]
+paginate = "never"
+
+[user]
+email = "jeanbaptiste@wintergerst.fr"
+name = "Jeosas"

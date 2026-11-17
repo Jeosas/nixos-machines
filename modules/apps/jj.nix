@@ -24,48 +24,13 @@ with lib;
       }
     ];
 
-    ${namespace}.apps.git.enable = true;
+    environment.systemPackages = with pkgs; [
+      jujutsu
+    ];
 
-    home-manager.users.${config.${namespace}.user.name} = {
-      programs = {
-        jujutsu = {
-          enable = true;
-          settings = {
-            user = {
-              email = config.${namespace}.apps.git.userEmail;
-              name = config.${namespace}.apps.git.userName;
-            };
-            ui = {
-              paginate = "never";
-              default-command = [ "log" ];
-            };
-            revset-aliases = {
-              "closest_bookmark(to)" = "heads(::to & bookmarks())";
-            };
-            aliases = {
-              tug = [
-                "bookmark"
-                "move"
-                "--from"
-                "closest_bookmark(@-)"
-                "--to"
-                "@-"
-              ];
-              pre-commit = [
-                "util"
-                "exec"
-                "--"
-                "bash"
-                "-c"
-                ''
-                  jj diff -f ''${1:-'@-'} -t ''${2:-'@'} --name-only --no-pager | xargs pre-commit run --files
-                ''
-                ""
-              ];
-            };
-          };
-        };
-      };
+    ${namespace} = {
+      apps.git.enable = true;
+      apps.stow.groups = [ "jj" ];
     };
   };
 }

@@ -10,7 +10,7 @@
 - [x] fastfetch
 - [x] ghostty (back to default setup with only theme edit)
 - [ ] git ?
-- [ ] jj
+- [x] jj
 - [ ] starship
 - [ ] tealdeer ?
 - [x] waybar
