@@ -7,9 +7,9 @@
     bindsym $mod+d exec $launcher
 
     # Settings
-    bindsym $mod+SHIFT+v exec $term -e wiremix
-    bindsym $mod+SHIFT+b exec $term -e bluetuith
-    bindsym $mod+SHIFT+n exec $term -e nmtui
+    bindsym $mod+v exec $term -e wiremix
+    bindsym $mod+b exec $term -e bluetuith
+    bindsym $mod+n exec $term -e nmtui
 
     # Lock
     bindsym $mod+SHIFT+d exec hyprlock

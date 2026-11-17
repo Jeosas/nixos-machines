@@ -3,7 +3,7 @@
   config = {
     services.greetd = {
       enable = true;
-      settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland --unsupported-gpu";
+      settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd \"sway --unsupported-gpu\"";
     };
 
     # Fix systemd messages appearing on login tui

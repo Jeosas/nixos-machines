@@ -32,6 +32,12 @@ in
       ];
     };
 
+    environment.persistence.main = {
+      users.${config.${namespace}.user.name}.directories = [
+        ".config/sway"
+      ];
+    };
+
     environment.systemPackages =
       with pkgs;
       let

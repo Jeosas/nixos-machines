@@ -25,5 +25,5 @@
 ## Planned modifications
 
 - [ ] Resetup bash (prompt, history, path ellid, vi mode)
-- [ ] move from hyprland to swaywm
+- [x] move from hyprland to swaywm
 - [x] move from wofi to fuzzel
