@@ -1,0 +1,36 @@
+[color]
+	ui = true
+
+[delta]
+	line-numbers = true
+	navigate = true
+	side-by-side = true
+	syntax-theme = "Catppuccin Mocha"
+
+[fetch]
+	prune = true
+
+[gpg]
+	format = "openpgp"
+
+[gpg "openpgp"]
+	program = "gpg"
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[pager]
+	blame = "delta"
+  diff = "delta"
+  log = "delta"
+	show = "delta"
+
+[pull]
+	rebase = true
+
+[user]
+	email = "jeanbaptiste@wintergerst.fr"
+	name = "Jeosas"

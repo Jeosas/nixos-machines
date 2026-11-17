@@ -9,7 +9,7 @@
 - [x] dunst
 - [x] fastfetch
 - [x] ghostty (back to default setup with only theme edit)
-- [ ] git ?
+- [x] git ?
 - [x] jj
 - [x] starship
 - [ ] tealdeer ?
