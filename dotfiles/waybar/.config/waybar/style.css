@@ -5,11 +5,11 @@
   font-size: 12px;
   font-weight: 500;
   min-height: 0;
-  color: #e5e9f0;
+  color: #cdd6f4;
 }
 
 window#waybar {
-  background-color: #2e3440;
+  background-color: #11111b;
 }
 
 .modules-left {
@@ -21,19 +21,19 @@ window#waybar {
 }
 
 tooltip {
-  background-color: #2e3440;
+  background-color: #11111b;
 }
 tooltip label {
-  color: #e5e9f0;
+  color: #cdd6f4;
 }
 
 #custom-separator {
-  color: #3b4252;
+  color: #313244;
 }
 
 #workspaces button {
   padding: 0 2px;
-  color: #e5e9f0;
+  color: #cdd6f4;
   font-size: 14px;
   font-weight: 500;
 }
@@ -41,12 +41,12 @@ tooltip label {
   background-color: inherit;
 }
 #workspaces button.hosting-monitor.visible {
-  color: #2e3440;
-  background-color: #a3be8c;
+  color: #1e1e2e;
+  background-color: #a6e3a1;
 }
 
 #workspaces button.hosting-monitor.visible label {
-  color: #2e3440;
+  color: #1e1e2e;
 }
 
 #clock {
@@ -55,20 +55,16 @@ tooltip label {
 }
 
 #battery.warning {
-  color: #bf616a;
+  color: #f9e2af;
 }
 #battery.critical {
-  color: #bf616a;
+  color: #f38ba8;
 }
 
 #temperature.critical {
-  color: #bf616a;
-}
-
-#custom-hl-fullscreen {
-  color: #bf616a;
+  color: #f38ba8;
 }
 
 #privacy-item {
-  color: #bf616a;
+  color: #eba0ac;
 }
