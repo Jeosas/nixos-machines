@@ -31,7 +31,10 @@ in
     ];
 
     ${namespace} = {
-      apps.stow.groups = [ "bash" ];
+      apps.stow.groups = [
+        "profile"
+        "bash"
+      ];
     };
   };
 }
