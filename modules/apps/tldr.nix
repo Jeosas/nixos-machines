@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   namespace,
   config,
@@ -19,23 +20,13 @@ in
       cacheDir = ".cache/tealdeer";
     in
     mkIf cfg.enable {
-      assertions = [
-        {
-          assertion = config.${namespace}.user.enableHomeManager;
-          message = "Home-manager is not enabled.";
-        }
+
+      environment.systemPackages = with pkgs; [
+        tealdeer
       ];
 
-      home-manager.users.${config.${namespace}.user.name} = {
-        programs.tealdeer = {
-          enable = true;
-          enableAutoUpdates = true; # weekly systemd timer
-          settings = {
-            directories = {
-              cache_dir = "${config.${namespace}.user.home}/${cacheDir}";
-            };
-          };
-        };
+      ${namespace} = {
+        apps.stow.groups = [ "tealdeer" ];
       };
 
       environment.persistence.main.users.${config.${namespace}.user.name}.directories = [

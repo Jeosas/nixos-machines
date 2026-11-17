@@ -12,7 +12,7 @@
 - [x] git ?
 - [x] jj
 - [x] starship
-- [ ] tealdeer ?
+- [x] tealdeer
 - [x] waybar
 - [x] wofi
 - [x] yazi
